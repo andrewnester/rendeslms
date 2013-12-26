@@ -9,19 +9,26 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
+var auth = require('http-auth');
+var basic = auth.basic({
+    realm: "Simon Area.",
+    file: __dirname + "/../users.htpasswd"
+});
+
 var app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
+
   app.use(express.favicon());
   app.use(express.logger('dev'));
+  app.use(auth.connect(basic));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser('your secret here'));
   app.use(express.session());
-  app.use(checkAuth);
   app.use(app.router);
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
@@ -37,19 +44,3 @@ app.get('/users', user.list);
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
-
-
-function checkAuth(request, response, next){
-    var header = request.headers['authorization'] || '',
-        token = header.split(/\s+/).pop() || '',
-        auth = new Buffer(token, 'base64').toString(),
-        parts = auth.split(/:/),
-        username = parts[0],
-        password = parts[1];
-
-    if(username != 'nester' && password != 'andrew10'){
-        response.send(403, { error: 'You are not authorized!' });
-    }else{
-        next();
-    }
-}
