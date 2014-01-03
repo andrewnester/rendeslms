@@ -1,3 +1,10 @@
+/*************************************
+ *
+ *      Module definition block
+ *
+ *************************************/
+
+
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
@@ -13,8 +20,17 @@ var basic = auth.basic({
     realm: "Simon Area.",
     file: __dirname + "/../users.htpasswd"
 });
-
 var app = express();
+
+
+
+/*************************************
+ *
+ *    Middlewares assigning block
+ *
+ *************************************/
+
+
 
 app.configure(function(){
   app.set('port', config.get('port'));
@@ -37,8 +53,24 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+
+/*************************************
+ *
+ *          Routes block
+ *
+ *************************************/
+
 app.get('/', routes.index);
 app.get('/users', user.list);
+
+
+
+/*************************************
+ *
+ *    Starting server block
+ *
+ *************************************/
+
 
 http.createServer(app).listen(app.get('port'), function(){
   log.info("Express server listening on port " + app.get('port'));
