@@ -7,13 +7,13 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
 
 var log = require('./libs/log')(module);
 var mongoose = require('./libs/mongoose');
 var config = require('./libs/config');
+var errorHandlers = require('./libs/errorHandlers');
 
 var auth = require('http-auth');
 var basic = auth.basic({
@@ -33,25 +33,20 @@ var app = express();
 
 
 app.configure(function(){
-  app.set('port', config.get('port'));
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
+    app.set('port', config.get('port'));
 
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(auth.connect(basic));
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.cookieParser('your secret here'));
-  app.use(express.session());
-  app.use(app.router);
-  app.use(require('stylus').middleware(__dirname + '/public'));
-  app.use(express.static(path.join(__dirname, 'public')));
+    app.use(auth.connect(basic));
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(express.cookieParser('your secret here'));
+    app.use(express.session());
+    app.use(app.router);
+
+    app.use(errorHandlers.notFound);
+    app.use(errorHandlers.serverError);
+
 });
 
-app.configure('development', function(){
-  app.use(express.errorHandler());
-});
 
 
 /*************************************
@@ -61,9 +56,6 @@ app.configure('development', function(){
  *************************************/
 
 app.get('/', routes.index);
-app.get('/users', user.list);
-
-
 
 /*************************************
  *
