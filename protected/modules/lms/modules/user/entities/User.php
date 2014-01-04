@@ -63,6 +63,12 @@ class User extends CModel
     private $modified;
 
 
+    public function rules(){
+        return array(
+            array('name, password', 'required'),
+        );
+    }
+
 
 
     /**

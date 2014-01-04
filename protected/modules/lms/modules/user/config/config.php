@@ -15,7 +15,12 @@ return array(
             'proxyPath' => __DIR__ . '/../proxies',
             'entityPath' => array(
                 __DIR__ . '/../entities'
-            )
+            ),
+            'driver' => 'pdo_mysql',
+            'user' => 'root',
+            'password' => '',
+            'host' => 'localhost',
+            'dbname' => 'yiilms'
         ),
         'authManager'=>array(
             'class'=>'UserPhpAuthManager',

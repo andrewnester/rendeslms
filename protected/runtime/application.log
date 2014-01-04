@@ -6012,3 +6012,357 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/rendeslms/index.php?r=lms/course
 ---
+2014/01/04 11:34:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "lms/users".' in C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/users')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/users
+---
+2014/01/04 11:34:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/user
+---
+2014/01/04 11:35:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/user
+---
+2014/01/04 11:35:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/user/default
+---
+2014/01/04 11:35:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "lms/user/login".' in C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/login')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/user/login
+---
+2014/01/04 11:36:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/user
+---
+2014/01/04 11:36:23 [error] [exception.CException] exception 'CException' with message 'Property "DoctrineComponent.driver" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\YiiBase.php(220): CComponent->__set('driver', 'pdo_mysql')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('doctrine')
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(35): CModule->__get('doctrine')
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php(167): LMSController->getEntityManager()
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(71): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): LMSController->filterLMSAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/courses
+---
+2014/01/04 11:36:54 [error] [exception.CException] exception 'CException' with message 'Property "DoctrineComponent.driver" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\YiiBase.php(220): CComponent->__set('driver', 'pdo_mysql')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('doctrine')
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(35): CModule->__get('doctrine')
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php(167): LMSController->getEntityManager()
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(71): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): LMSController->filterLMSAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/courses
+---
+2014/01/04 11:36:55 [error] [exception.CException] exception 'CException' with message 'Property "DoctrineComponent.driver" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\YiiBase.php(220): CComponent->__set('driver', 'pdo_mysql')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('doctrine')
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(35): CModule->__get('doctrine')
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php(167): LMSController->getEntityManager()
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(71): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): LMSController->filterLMSAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/courses
+---
+2014/01/04 11:37:10 [error] [exception.CException] exception 'CException' with message 'Property "DoctrineComponent.driver" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\YiiBase.php(220): CComponent->__set('driver', 'pdo_mysql')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('doctrine')
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(35): CModule->__get('doctrine')
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php(167): LMSController->getEntityManager()
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(71): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): LMSController->filterLMSAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/courses
+---
+2014/01/04 11:37:12 [error] [exception.CException] exception 'CException' with message 'Property "DoctrineComponent.driver" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\YiiBase.php(220): CComponent->__set('driver', 'pdo_mysql')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('doctrine')
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(35): CModule->__get('doctrine')
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php(167): LMSController->getEntityManager()
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(71): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): LMSController->filterLMSAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/courses
+---
+2014/01/04 11:37:13 [error] [exception.CException] exception 'CException' with message 'Property "DoctrineComponent.driver" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\YiiBase.php(220): CComponent->__set('driver', 'pdo_mysql')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('doctrine')
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(35): CModule->__get('doctrine')
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php(167): LMSController->getEntityManager()
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(71): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): LMSController->filterLMSAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/courses
+---
+2014/01/04 11:37:15 [error] [exception.CException] exception 'CException' with message 'Property "DoctrineComponent.driver" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\YiiBase.php(220): CComponent->__set('driver', 'pdo_mysql')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('doctrine')
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(35): CModule->__get('doctrine')
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php(167): LMSController->getEntityManager()
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(71): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): LMSController->filterLMSAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/courses
+---
+2014/01/04 11:38:07 [error] [exception.PDOException] exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'dbuser'@'localhost' (using password: YES)' in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Driver\PDOConnection.php:36
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Driver\PDOConnection.php(36): PDO->__construct('mysql:host=loca...', 'dbuser', 'dbpassword', Array)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Driver\PDOMySql\Driver.php(47): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'dbuser', 'dbpassword', Array)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Connection.php(350): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'dbuser', 'dbpassword', Array)
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Connection.php(627): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\Persisters\BasicEntityPersister.php(844): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityRepository.php(157): Doctrine\ORM\Persisters\BasicEntityPersister->loadAll(Array, NULL, NULL, NULL)
+#6 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php(171): Doctrine\ORM\EntityRepository->findBy(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): DefaultController->actionIndex()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php(71): CFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): LMSController->filterLMSAccessControl(Object(CFilterChain))
+#13 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#17 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses')
+#18 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/courses
+---
+2014/01/04 11:40:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/user
+---
+2014/01/04 11:40:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/user/default
+---
+2014/01/04 11:40:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/user/default/
+---
+2014/01/04 11:45:00 [error] [exception.PDOException] exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'dbuser'@'localhost' (using password: YES)' in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Driver\PDOConnection.php:36
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Driver\PDOConnection.php(36): PDO->__construct('mysql:host=loca...', 'dbuser', 'dbpassword', Array)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Driver\PDOMySql\Driver.php(47): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'dbuser', 'dbpassword', Array)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Connection.php(350): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'dbuser', 'dbpassword', Array)
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Connection.php(627): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\Persisters\BasicEntityPersister.php(670): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityRepository.php(171): Doctrine\ORM\Persisters\BasicEntityPersister->load(Array, NULL, NULL, Array, 0, 1, NULL)
+#6 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\user\components\WebUserIdentity.php(18): Doctrine\ORM\EntityRepository->findOneBy(Array)
+#7 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\user\forms\LoginForm.php(53): WebUserIdentity->authenticate()
+#8 C:\xampp\htdocs\rendeslms\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#9 C:\xampp\htdocs\rendeslms\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#11 C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\user\controllers\DefaultController.php(59): CModel->validate()
+#12 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): DefaultController->actionLogin()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('login')
+#17 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#18 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rendeslms/index.php?r=lms/user/default/login
+HTTP_REFERER=http://localhost/rendeslms/index.php?r=lms/user/default/login
+---
+2014/01/04 11:52:21 [warning] [application] Failed to set unsafe attribute "description" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:52:21 [warning] [application] Failed to set unsafe attribute "isPublic" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:52:42 [warning] [application] Failed to set unsafe attribute "description" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:52:42 [warning] [application] Failed to set unsafe attribute "isPublic" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:53:10 [warning] [application] Failed to set unsafe attribute "description" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:53:10 [warning] [application] Failed to set unsafe attribute "isPublic" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:54:06 [warning] [application] Failed to set unsafe attribute "description" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:54:06 [warning] [application] Failed to set unsafe attribute "isPublic" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:56:40 [warning] [application] Failed to set unsafe attribute "description" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:56:40 [warning] [application] Failed to set unsafe attribute "isPublic" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:56:44 [warning] [application] Failed to set unsafe attribute "description" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:56:44 [warning] [application] Failed to set unsafe attribute "isPublic" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:56:48 [warning] [application] Failed to set unsafe attribute "description" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/01/04 11:56:48 [warning] [application] Failed to set unsafe attribute "isPublic" of "Course".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\modules\courses\controllers\DefaultController.php (77)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\controllers\LMSController.php (71)
+in C:\xampp\htdocs\rendeslms\index.php (13)

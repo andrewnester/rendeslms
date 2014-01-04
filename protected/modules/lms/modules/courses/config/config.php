@@ -16,7 +16,12 @@ return array(
             'entityPath' => array(
                 __DIR__ . '/../entities',
                 __DIR__ . '/../../user/entities'
-            )
+            ),
+            'driver' => 'pdo_mysql',
+            'user' => 'root',
+            'password' => '',
+            'host' => 'localhost',
+            'dbname' => 'yiilms'
         ),
     ),
 );

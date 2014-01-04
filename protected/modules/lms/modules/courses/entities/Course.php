@@ -72,6 +72,14 @@ class Course extends CFormModel
     private $updated;
 
 
+    public function rules(){
+        return array(
+            array('name', 'required'),
+        );
+    }
+
+
+
     public function attributeNames()
     {
         return array(

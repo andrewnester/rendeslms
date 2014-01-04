@@ -9,16 +9,21 @@
 
 return array(
     'components' => array(
-        'request' => array(
-            'class' => 'RequestComponent'
-        ),
         'doctrine'=>array(
             'class' => 'DoctrineComponent',
             'basePath' => __DIR__ . '/../',
             'proxyPath' => __DIR__ . '/../proxies',
             'entityPath' => array(
                 __DIR__ . '/../entities'
-            )
+            ),
+            'driver' => 'pdo_mysql',
+            'user' => 'root',
+            'password' => '',
+            'host' => 'localhost',
+            'dbname' => 'yiilms'
+        ),
+        'request' => array(
+            'class' => 'RequestComponent'
         ),
         'errorHandler'=>array(
             'errorAction'=>'lms/lms/error',

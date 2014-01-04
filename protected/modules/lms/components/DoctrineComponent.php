@@ -19,6 +19,12 @@ class DoctrineComponent extends CComponent
     private $basePath;
     private $proxyPath;
     private $entityPath;
+    private $driver;
+    private $user;
+    private $password;
+    private $host;
+    private $dbname;
+
 
     public function init()
     {
@@ -43,64 +49,96 @@ class DoctrineComponent extends CComponent
         $config->setProxyNamespace('Proxies');
         $config->setAutoGenerateProxyClasses(true);
         $connectionOptions = array(
-            'driver' => 'pdo_mysql',
-            'user' => 'root',
-            'password' => '',
-            'host' => 'localhost',
-            'dbname' => 'yiilms'
+            'driver' => $this->getDriver(),
+            'user' => $this->getUser(),
+            'password' => $this->getPassword(),
+            'host' => $this->getHost(),
+            'dbname' => $this->getDbname()
         );
 
         $this->em = EntityManager::create($connectionOptions, $config);
     }
 
-    /**
-     * @param mixed $basePath
-     */
+
     public function setBasePath($basePath)
     {
         $this->basePath = $basePath;
     }
 
-    /**
-     * @return mixed
-     */
     public function getBasePath()
     {
         return $this->basePath;
     }
 
-    /**
-     * @param mixed $entityPath
-     */
     public function setEntityPath($entityPath)
     {
         $this->entityPath = $entityPath;
     }
 
-    /**
-     * @return mixed
-     */
     public function getEntityPath()
     {
         return $this->entityPath;
     }
 
-    /**
-     * @param mixed $proxyPath
-     */
     public function setProxyPath($proxyPath)
     {
         $this->proxyPath = $proxyPath;
     }
 
-    /**
-     * @return mixed
-     */
     public function getProxyPath()
     {
         return $this->proxyPath;
     }
 
+    public function setDbname($dbname)
+    {
+        $this->dbname = $dbname;
+    }
+
+    public function getDbname()
+    {
+        return $this->dbname;
+    }
+
+    public function setDriver($driver)
+    {
+        $this->driver = $driver;
+    }
+
+    public function getDriver()
+    {
+        return $this->driver;
+    }
+
+    public function setHost($host)
+    {
+        $this->host = $host;
+    }
+
+    public function getHost()
+    {
+        return $this->host;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
 
 
 

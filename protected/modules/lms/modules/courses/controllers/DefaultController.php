@@ -74,7 +74,8 @@ class DefaultController extends LMSController
         $course = new Course();
 
         $courseData = $this->getRequest()->get('Course');
-        if(!is_null($courseData))
+        $course->setAttributes($courseData);
+        if(!is_null($courseData) && $course->validate())
         {
             $course->setName($courseData['name']);
             $course->setDescription($courseData['description']);
