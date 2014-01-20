@@ -51,6 +51,13 @@ class Course extends CFormModel
     private $description;
 
     /**
+     * @var Step
+     *
+     * @ORM\OneToMany(targetEntity="Step", mappedBy="course")
+     */
+    private $steps;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="is_public", type="boolean", nullable=false)
@@ -72,13 +79,16 @@ class Course extends CFormModel
     private $updated;
 
 
+    public function __construct()
+    {
+        $this->steps = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function rules(){
         return array(
             array('name', 'required'),
         );
     }
-
-
 
     public function attributeNames()
     {
@@ -102,6 +112,8 @@ class Course extends CFormModel
             'isPublic' => 'Published'
         );
     }
+
+
 
 
     /**

@@ -15,6 +15,9 @@ return array(
             'proxyPath' => __DIR__ . '/../proxies',
             'entityPath' => array(
                 __DIR__ . '/../entities',
+                __DIR__ . '/../entities/quiz',
+                __DIR__ . '/../entities/quiz/question',
+                __DIR__ . '/../entities/lecture',
                 __DIR__ . '/../../user/entities'
             ),
             'driver' => 'pdo_mysql',

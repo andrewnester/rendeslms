@@ -3,15 +3,14 @@
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Step
+ * Video
  *
  * @ORM\Entity
- * @ORM\Table(name="step")
+ * @ORM\Table(name="video")
  * @ORM\HasLifecycleCallbacks
  */
-class Step extends CFormModel
+class Video extends CFormModel
 {
-
     /**
      * @var integer
      *
@@ -22,6 +21,21 @@ class Step extends CFormModel
     private $id;
 
     /**
+     * @var Lecture
+     *
+     * @ORM\ManyToOne(targetEntity="Lecture")
+     * @ORM\JoinColumn(name="lecture_id", referencedColumnName="id")
+     */
+    private $lecture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
@@ -29,40 +43,12 @@ class Step extends CFormModel
     private $name;
 
     /**
-     * @var Course
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Course")
-     * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
+     * @ORM\Column(name="src", type="string", length=255, nullable=false)
      */
-    private $course;
+    private $src;
 
-    /**
-     * @var Lecture
-     *
-     * @ORM\OneToMany(targetEntity="Lecture", mappedBy="step")
-     */
-    private $lectures;
-
-    /**
-     * @var Quiz
-     *
-     * @ORM\OneToMany(targetEntity="Quiz", mappedBy="step")
-     */
-    private $quizzes;
-
-    /**
-     * @var Array
-     *
-     * @ORM\Column(name="path", type="array")
-     */
-    private $path;
-
-    /**
-     * @var Array
-     *
-     * @ORM\Column(name="required_steps", type="simple_array")
-     */
-    private $requiredSteps;
 
     /**
      * @var \DateTime
@@ -77,7 +63,6 @@ class Step extends CFormModel
      * @ORM\Column(name="updated", type="datetime", nullable=false)
      */
     private $updated;
-
 
     /** @ORM\PrePersist */
     public function setCreationDate()

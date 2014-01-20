@@ -8,6 +8,7 @@ $config = __DIR__ . '/../config/console.php';
 
 require_once($yii);
 Yii::createWebApplication($config);
+
 Yii::setPathOfAlias('Symfony', Yii::getPathOfAlias('application.modules.lms.vendor.Symfony'));
 
 $em = Yii::app()->doctrine->getEntityManager();

@@ -3,8 +3,6 @@
 interface IQuiz
 {
     public function getName();
-    public function getType();
-
     /**
      * @return IQuizConfiguration
      */

@@ -16,6 +16,7 @@ class CoursesModule extends CWebModule
 			'courses.proxies.*',
             'courses.components.*',
             'courses.repositories.*',
+            'courses.interfaces.*',
             'application.modules.lms.modules.user.entities.*'
 		));
 	}

@@ -1,11 +1,23 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
 class VariantQuestion extends Question implements IVariantQuestion
 {
-    protected $variants;
+    /**
+     * @var Array
+     *
+     * @ORM\Column(name="variants", type="array")
+     */
+    private$variants;
+
+
     public function getVariants()
     {
-
+        return $this->variants;
     }
 
     public function getQuestion()

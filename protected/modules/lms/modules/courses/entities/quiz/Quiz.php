@@ -1,19 +1,79 @@
 <?php
 
-class Quiz implements IQuiz
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * Quiz
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="quiz")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Quiz extends CFormModel implements IQuiz
 {
-    protected $name;
-    protected $type;
+
+    /**
+     * @var Step
+     *
+     * @ORM\ManyToOne(targetEntity="Step")
+     * @ORM\JoinColumn(name="step_id", referencedColumnName="id")
+     */
+    public $step;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var Question
+     *
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="quiz")
+     */
     protected $questions;
+
+
+    /**
+     * @var QuizConfiguration
+     *
+     * @ORM\OneToOne(targetEntity="QuizConfiguration")
+     * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
+     */
+    protected $configuration;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
+     */
+    private $created;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=false)
+     */
+    private $updated;
+
+
 
     public function getName()
     {
-        // TODO: Implement getName() method.
-    }
-
-    public function getType()
-    {
-        // TODO: Implement getType() method.
+        return $this->name;
     }
 
     /**
@@ -21,8 +81,22 @@ class Quiz implements IQuiz
      */
     public function getConfiguration()
     {
-        // TODO: Implement getConfiguration() method.
+        return $this->configuration;
     }
+
+    /** @ORM\PrePersist */
+    public function setCreationDate()
+    {
+        $this->created = new \DateTime();
+        $this->updated = new \DateTime();
+    }
+
+    /** @ORM\PreUpdate */
+    public function setUpdatedDate()
+    {
+        $this->updated = new \DateTime();
+    }
+
 
 
 }

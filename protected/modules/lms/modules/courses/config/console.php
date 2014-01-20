@@ -11,8 +11,9 @@ return array(
     'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..',
     'import'=>array(
         'application.modules.lms.modules.courses.components.*',
+        'application.modules.lms.modules.courses.interfaces.quiz.*',
+        'application.modules.lms.modules.courses.interfaces.quiz.questions.*',
     ),
-
     'components' => array(
         'doctrine'=>array(
             'class' => 'DoctrineComponent',
@@ -20,8 +21,16 @@ return array(
             'proxyPath' => __DIR__ . '/../proxies',
             'entityPath' => array(
                 __DIR__ . '/../entities',
+                __DIR__ . '/../entities/quiz',
+                __DIR__ . '/../entities/quiz/questions',
+                __DIR__ . '/../entities/lecture',
                 __DIR__ . '/../../user/entities'
-            )
+            ),
+            'driver' => 'pdo_mysql',
+            'user' => 'root',
+            'password' => '',
+            'host' => 'localhost',
+            'dbname' => 'yiilms'
         ),
     ),
 );
