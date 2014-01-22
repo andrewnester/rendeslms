@@ -7,13 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Configuration;
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
-use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Annotations\AnnotationRegistry;
+namespace Rendes\Components;
 
-class DoctrineComponent extends CComponent
+use \Doctrine\ORM\EntityManager;
+use \Doctrine\ORM\Configuration;
+use \Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+use \Doctrine\Common\Annotations\AnnotationReader;
+use \Doctrine\Common\Annotations\AnnotationRegistry;
+
+class DoctrineComponent extends \CComponent
 {
     private $em = null;
     private $basePath;
@@ -33,18 +35,17 @@ class DoctrineComponent extends CComponent
 
     public function initDoctrine()
     {
-        Yii::setPathOfAlias('Doctrine', $this->getBasePath() . '/vendor/Doctrine');
+        \Yii::setPathOfAlias('Doctrine', $this->getBasePath() . '/vendor/Doctrine');
 
-        $cache = new Doctrine\Common\Cache\FilesystemCache($this->getBasePath() . '/cache');
+        $cache = new \Doctrine\Common\Cache\FilesystemCache($this->getBasePath() . '/cache');
         $config = new Configuration();
-        //  $config->setMetadataCacheImpl($cache);
-
 
         $driverImpl = new AnnotationDriver(new AnnotationReader(), $this->getEntityPath());
         AnnotationRegistry::registerAutoloadNamespace('Doctrine\ORM\Mapping', $this->getBasePath() . '/vendor');
 
+     //   $config->setMetadataCacheImpl($cache);
         $config->setMetadataDriverImpl($driverImpl);
-        $config->setQueryCacheImpl($cache);
+       // $config->setQueryCacheImpl($cache);
         $config->setProxyDir($this->getProxyPath());
         $config->setProxyNamespace('Proxies');
         $config->setAutoGenerateProxyClasses(true);

@@ -1,6 +1,8 @@
 <?php
 
-class WebUser extends CWebUser
+namespace Rendes\Modules\User\Components;
+
+class WebUser extends \CWebUser
 {
     private $model = null;
     private $_access=array();
@@ -14,8 +16,8 @@ class WebUser extends CWebUser
 
     private function getModel(){
         if (!$this->isGuest && is_null($this->model)){
-            $em = Yii::app()->controller->module->doctrine->getEntityManager();
-            $userRepository = $em->getRepository('User');
+            $em = \Yii::app()->controller->module->doctrine->getEntityManager();
+            $userRepository = $em->getRepository('Rendes\Modules\User\Entities\User');
             $this->model = $userRepository->find($this->id);
         }
         return $this->model;
@@ -27,7 +29,7 @@ class WebUser extends CWebUser
         if($allowCaching && $params===array() && isset($this->_access[$operation]))
             return $this->_access[$operation];
 
-        $access=Yii::app()->getModule('lms')->getModule('user')->authManager->checkAccess($operation,$this->getId(),$params);
+        $access=\Yii::app()->getModule('lms')->getModule('user')->authManager->checkAccess($operation,$this->getId(),$params);
         if($allowCaching && $params===array())
             $this->_access[$operation]=$access;
 

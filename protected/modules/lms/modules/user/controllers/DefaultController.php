@@ -1,6 +1,8 @@
 <?php
 
-class DefaultController extends LMSController
+namespace Rendes\Modules\User\Controllers;
+
+class DefaultController extends \Rendes\Controllers\LMSController
 {
 
     /**
@@ -28,9 +30,9 @@ class DefaultController extends LMSController
      */
     public function actionError()
     {
-        if($error=Yii::app()->errorHandler->error)
+        if($error=\Yii::app()->errorHandler->error)
         {
-            if(Yii::app()->request->isAjaxRequest)
+            if(\Yii::app()->request->isAjaxRequest)
                 echo $error['message'];
             else
                 $this->render('error', $error);
@@ -42,22 +44,22 @@ class DefaultController extends LMSController
      */
     public function actionLogin()
     {
-        $model=new LoginForm;
+        $model=new \Rendes\Modules\User\Forms\LoginForm;
 
         // if it is ajax validation request
         if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
         {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
+            echo \CActiveForm::validate($model);
+            \Yii::app()->end();
         }
 
         // collect user input data
-        if(isset($_POST['LoginForm']))
+        if(isset($_POST['Rendes_Modules_User_Forms_LoginForm']))
         {
-            $model->attributes=$_POST['LoginForm'];
+            $model->attributes=$_POST['Rendes_Modules_User_Forms_LoginForm'];
             // validate user input and redirect to the previous page if valid
             if($model->validate() && $model->login())
-                $this->redirect(Yii::app()->controller->module->user->returnUrl);
+                $this->redirect(\Yii::app()->controller->module->user->returnUrl);
         }
         // display the login form
         $this->render('login',array('model'=>$model));
@@ -68,8 +70,8 @@ class DefaultController extends LMSController
      */
     public function actionLogout()
     {
-        Yii::app()->user->logout();
-        $this->redirect(Yii::app()->homeUrl);
+        \Yii::app()->user->logout();
+        $this->redirect(\Yii::app()->homeUrl);
     }
 
 }

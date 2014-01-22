@@ -10,7 +10,7 @@
 return array(
     'components' => array(
         'doctrine'=>array(
-            'class' => 'DoctrineComponent',
+            'class' => '\Rendes\Components\DoctrineComponent',
             'basePath' => __DIR__ . '/../../../',
             'proxyPath' => __DIR__ . '/../proxies',
             'entityPath' => array(
@@ -23,12 +23,12 @@ return array(
             'dbname' => 'yiilms'
         ),
         'authManager'=>array(
-            'class'=>'UserPhpAuthManager',
+            'class'=>'\Rendes\Modules\User\Components\UserPhpAuthManager',
             'defaultRoles' => array('guest'),
         ),
 
         'user'=>array(
-            'class' => 'WebUser',
+            'class' => '\Rendes\Modules\User\Components\WebUser',
             'loginUrl'=>array('/lms/user/default/login'),
             // enable cookie-based authentication
             'allowAutoLogin'=>true,

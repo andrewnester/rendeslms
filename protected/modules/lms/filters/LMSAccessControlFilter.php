@@ -7,13 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class LMSAccessControlFilter extends CAccessControlFilter
+namespace Rendes\Filters;
+
+class LMSAccessControlFilter extends \CAccessControlFilter
 {
     protected function preFilter($filterChain)
     {
-        $app=Yii::app();
+        $app=\Yii::app();
         $request=$app->getRequest();
-        $user=Yii::app()->getModule('lms')->getModule('user')->user;
+        $user=\Yii::app()->getModule('lms')->getModule('user')->user;
         $verb=$request->getRequestType();
         $ip=$request->getUserHostAddress();
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace Rendes\Modules\Courses\Entities\Quiz\Questions;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"variant" = "VariantQuestion"})
  */
-abstract class Question implements IQuestion
+abstract class Question implements \Rendes\Modules\Courses\Interfaces\Quiz\Questions\IQuestion
 {
 
     /**
@@ -45,7 +47,7 @@ abstract class Question implements IQuestion
     protected $question;
 
     /**
-     * @var IQuestionConfiguration
+     * @var \Rendes\Modules\Courses\Interfaces\Quiz\Questions\IQuestionConfiguration
      */
     protected $configuration;
 

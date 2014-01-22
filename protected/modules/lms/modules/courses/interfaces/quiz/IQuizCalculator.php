@@ -4,6 +4,8 @@
  * Date: 17.01.14
  */
 
+namespace Rendes\Modules\Courses\Interfaces\Quiz;
+
 interface IQuizCalculator
 {
     /**

@@ -1,5 +1,7 @@
 <?php
 
+namespace Rendes\Controllers;
+
 class DefaultController extends LMSController
 {
 

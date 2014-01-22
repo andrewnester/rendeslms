@@ -1,11 +1,13 @@
 <?php
 
+namespace Rendes\Modules\Courses\Entities\Quiz\Questions;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  */
-class VariantQuestion extends Question implements IVariantQuestion
+class VariantQuestion extends Question implements \Rendes\Modules\Courses\Interfaces\Quiz\Questions\IVariantQuestion
 {
     /**
      * @var Array

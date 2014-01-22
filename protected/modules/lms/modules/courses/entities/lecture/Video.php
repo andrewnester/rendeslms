@@ -1,5 +1,7 @@
 <?php
 
+namespace Rendes\Modules\Courses\Entities\Lecture;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="video")
  * @ORM\HasLifecycleCallbacks
  */
-class Video extends CFormModel
+class Video extends \CFormModel
 {
     /**
      * @var integer

@@ -1,5 +1,7 @@
 <?php
 
+namespace Rendes\Modules\Courses\Entities\Quiz;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -8,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="quiz_configuration")
  */
-class QuizConfiguration extends CFormModel implements IQuizConfiguration
+class QuizConfiguration extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Quiz\IQuizConfiguration
 {
 
     /**

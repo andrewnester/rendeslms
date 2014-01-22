@@ -7,7 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class RequestComponent extends CComponent
+namespace Rendes\Components;
+
+class RequestComponent extends \CComponent
 {
     public function init()
     {

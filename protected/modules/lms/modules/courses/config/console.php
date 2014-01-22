@@ -6,25 +6,21 @@
  * Time: 16:32
  * To change this template use File | Settings | File Templates.
  */
+Yii::setPathOfAlias('Rendes', __DIR__ . '/../../../');
 
 return array(
     'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..',
-    'import'=>array(
-        'application.modules.lms.modules.courses.components.*',
-        'application.modules.lms.modules.courses.interfaces.quiz.*',
-        'application.modules.lms.modules.courses.interfaces.quiz.questions.*',
-    ),
     'components' => array(
         'doctrine'=>array(
-            'class' => 'DoctrineComponent',
+            'class' => '\Rendes\Components\DoctrineComponent',
             'basePath' => __DIR__ . '/../../../',
-            'proxyPath' => __DIR__ . '/../proxies',
+            'proxyPath' => __DIR__ . '/../Proxies',
             'entityPath' => array(
-                __DIR__ . '/../entities',
-                __DIR__ . '/../entities/quiz',
-                __DIR__ . '/../entities/quiz/questions',
-                __DIR__ . '/../entities/lecture',
-                __DIR__ . '/../../user/entities'
+                __DIR__ . '/../Entities',
+                __DIR__ . '/../Entities/Quiz',
+                __DIR__ . '/../Entities/Quiz/Questions',
+                __DIR__ . '/../Entities/Lecture',
+                __DIR__ . '/../../User/Entities'
             ),
             'driver' => 'pdo_mysql',
             'user' => 'root',

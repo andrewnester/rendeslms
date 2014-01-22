@@ -1,5 +1,7 @@
 <?php
 
+namespace Rendes\Modules\Courses\Entities\Quiz\Questions;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -8,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="question_configuration")
  */
-class QuestionConfiguration extends CFormModel  implements IQuestionConfiguration
+class QuestionConfiguration extends \CFormModel  implements \Rendes\Modules\Courses\Interfaces\Quiz\Questions\IQuestionConfiguration
 {
 
     /**
@@ -46,12 +48,12 @@ class QuestionConfiguration extends CFormModel  implements IQuestionConfiguratio
         // TODO: Implement getWidget() method.
     }
 
-    public function setCalculator(IQuestionCalculator $calculator)
+    public function setCalculator(\Rendes\Modules\Courses\Interfaces\Quiz\Questions\IQuestionCalculator $calculator)
     {
         // TODO: Implement setCalculator() method.
     }
 
-    public function setWidget(IQuestionWidget $widget)
+    public function setWidget(\Rendes\Modules\Courses\Interfaces\Quiz\Questions\IQuestionWidget $widget)
     {
         // TODO: Implement setWidget() method.
     }

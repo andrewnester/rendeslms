@@ -1,9 +1,17 @@
 <?php
 
-class UserRepository extends LMSRepository
+namespace Rendes\Modules\User\Repositories;
+
+class UserRepository extends \Rendes\Components\LMSRepository
 {
     protected $_id = 'UserRepository';
 
+
+    public function getTeachers()
+    {
+        $query = $this->getEntityManager()->createQuery('SELECT u FROM \Rendes\Modules\User\Entities\User u WHERE u.role IN (\'administrator\', \'teacher\')');
+        return $query->getArrayResult();
+    }
 
     /**
      * Fetches the data from the persistent data storage.

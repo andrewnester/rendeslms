@@ -1,7 +1,10 @@
 <?php
 
-Yii::import('zii.widgets.grid.CGridView');
-class LMSGridView extends CGridView
+namespace Rendes\Widgets;
+
+\Yii::import('application.widgets.TbJsonGridView');
+
+class LMSGridView extends \TbJsonGridView
 {
 
     /**
@@ -11,9 +14,9 @@ class LMSGridView extends CGridView
     {
         if($this->columns===array())
         {
-            if($this->dataProvider instanceof CActiveDataProvider)
+            if($this->dataProvider instanceof \CActiveDataProvider)
                 $this->columns=$this->dataProvider->model->attributeNames();
-            elseif($this->dataProvider instanceof IDataProvider)
+            elseif($this->dataProvider instanceof \IDataProvider)
             {
                 // use the keys of the first row of data as the default columns
                 $data=$this->dataProvider->getData();
@@ -29,8 +32,8 @@ class LMSGridView extends CGridView
             else
             {
                 if(!isset($column['class']))
-                    $column['class']='CDataColumn';
-                $column=Yii::createComponent($column, $this);
+                    $column['class']='TbJsonDataColumn';
+                $column=\Yii::createComponent($column, $this);
             }
             if(!$column->visible)
             {

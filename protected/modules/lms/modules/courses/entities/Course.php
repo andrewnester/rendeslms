@@ -7,16 +7,18 @@
  * To change this template use File | Settings | File Templates.
  */
 
+namespace Rendes\Modules\Courses\Entities;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Course
  *
  * @ORM\Table(name="course")
- * @ORM\Entity(repositoryClass="CourseRepository")
+ * @ORM\Entity(repositoryClass="\Rendes\Modules\Courses\Repositories\CourseRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Course extends CFormModel
+class Course extends \CFormModel
 {
 
     /**
@@ -29,9 +31,9 @@ class Course extends CFormModel
     private $id;
 
     /**
-     * @var User
+     * @var \Rendes\Modules\User\Entities\User
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="\Rendes\Modules\User\Entities\User")
      * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
      */
     private $teacher;
@@ -51,7 +53,7 @@ class Course extends CFormModel
     private $description;
 
     /**
-     * @var Step
+     * @var \Rendes\Modules\Courses\Entities\Step
      *
      * @ORM\OneToMany(targetEntity="Step", mappedBy="course")
      */
@@ -263,6 +265,22 @@ class Course extends CFormModel
     public function setUpdatedDate()
     {
         $this->updated = new \DateTime();
+    }
+
+    /**
+     * @param \Step $steps
+     */
+    public function setSteps($steps)
+    {
+        $this->steps = $steps;
+    }
+
+    /**
+     * @return \Step
+     */
+    public function getSteps()
+    {
+        return $this->steps;
     }
 
 

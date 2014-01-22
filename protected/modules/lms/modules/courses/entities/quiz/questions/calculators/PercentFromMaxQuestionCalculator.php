@@ -4,7 +4,9 @@
  * Date: 17.01.14
  */
 
-class PercentFromMaxQuestionCalculator implements IQuestionCalculator
+namespace Rendes\Modules\Courses\Entities\Quiz\Questions\Calculators;
+
+class PercentFromMaxQuestionCalculator implements \Rendes\Modules\Courses\Interfaces\Quiz\Questions\IQuestionCalculator
 {
     public function calculate($answers, $proposedAnswers)
     {

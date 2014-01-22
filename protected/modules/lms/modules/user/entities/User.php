@@ -1,15 +1,17 @@
 <?php
 
+namespace Rendes\Modules\User\Entities;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="UserRepository")
+ * @ORM\Entity(repositoryClass="\Rendes\Modules\User\Repositories\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class User extends CModel
+class User extends \CModel
 {
     /**
      * @var integer

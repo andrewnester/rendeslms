@@ -5,6 +5,9 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+
+Yii::setPathOfAlias('Rendes', __DIR__.'/../modules/lms/');
+
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Rendes LMS',
@@ -14,13 +17,14 @@ return array(
 
 	// autoloading model and component classes
 	'import'=>array(
-		'application.models.*',
 		'application.components.*',
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		'lms',
+		'lms' => array(
+            'class' => '\Rendes\LmsModule',
+        ),
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'andrew10',
@@ -37,16 +41,31 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
-		/*
+
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                'lms/courses/<id:\d+>'=>'lms/courses/default/view',
+                'lms/courses/<id:\d+>/<action:\w+>'=>'lms/courses/default/<action>',
+                'lms/courses/<courseID:\d+>/<controller:\w+>/<id:\d+>'=>'lms/courses/<controller>/view',
+                'lms/courses/<courseID:\d+>/<controller:\w+>/<action:(create|update|delete)>/<id:\d+>'=>'lms/courses/<controller>/<action>',
+                'lms/courses/<courseID:\d+>/<controller:\w+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
+                'lms/<module:\w+>/<action:\w+>'=>'lms/<module>/default/<action>',
 			),
 		),
-		*/
+
+
+        'errorHandler'=>array(
+            'errorAction'=>'site/error',
+        ),
+        'clientScript'=>array(
+            'packages'=>array(
+                'json-grid-view'=>array(
+                    'baseUrl'=> 'assets/js/',
+                    'js'=>array('jquery.json.yiigridview.js', 'jquery.jqote2.min.js'),
+                ),
+            ),
+        ),
         'db'=>array(
             'connectionString' => 'mysql:host=localhost;dbname=yiilms',
             'emulatePrepare' => true,

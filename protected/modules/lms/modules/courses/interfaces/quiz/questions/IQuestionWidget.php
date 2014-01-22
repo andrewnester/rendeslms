@@ -1,5 +1,7 @@
 <?php
 
+namespace Rendes\Modules\Courses\Interfaces\Quiz\Questions;
+
 // COULD BE YII WIDGET!!!
 interface IQuestionWidget
 {

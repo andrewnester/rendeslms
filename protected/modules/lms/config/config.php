@@ -7,14 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 return array(
     'components' => array(
         'doctrine'=>array(
-            'class' => 'DoctrineComponent',
+            'class' => '\Rendes\Components\DoctrineComponent',
             'basePath' => __DIR__ . '/../',
-            'proxyPath' => __DIR__ . '/../proxies',
+            'proxyPath' => __DIR__ . '/../Proxies',
             'entityPath' => array(
-                __DIR__ . '/../entities'
+                __DIR__ . '/../Entities'
             ),
             'driver' => 'pdo_mysql',
             'user' => 'root',
@@ -23,14 +24,15 @@ return array(
             'dbname' => 'yiilms'
         ),
         'request' => array(
-            'class' => 'RequestComponent'
-        ),
-        'errorHandler'=>array(
-            'errorAction'=>'lms/lms/error',
+            'class' => '\Rendes\Components\RequestComponent'
         ),
     ),
     'modules'=>array(
-        'courses',
-        'user'
+        'courses' => array(
+            'class' => '\Rendes\Modules\Courses\CoursesModule'
+        ),
+        'user'=> array(
+            'class' => '\Rendes\Modules\User\UserModule'
+        ),
     ),
 );

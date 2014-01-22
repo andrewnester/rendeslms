@@ -5,7 +5,12 @@
  * LoginForm is the data structure for keeping
  * user login form data. It is used by the 'login' action of 'SiteController'.
  */
-class LoginForm extends CFormModel
+
+namespace Rendes\Modules\User\Forms;
+
+use \Rendes\Modules\User\Components;
+
+class LoginForm extends \CFormModel
 {
 	public $username;
 	public $password;
@@ -48,8 +53,8 @@ class LoginForm extends CFormModel
 	{
 		if(!$this->hasErrors())
 		{
-            Yii::import('application.modules.lms.user.components.*');
-			$this->_identity=new WebUserIdentity($this->username,$this->password);
+            \Yii::import('application.modules.lms.user.components.*');
+			$this->_identity=new \Rendes\Modules\User\Components\WebUserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate())
 				$this->addError('password','Incorrect username or password.');
 		}
@@ -63,13 +68,13 @@ class LoginForm extends CFormModel
 	{
 		if($this->_identity===null)
 		{
-			$this->_identity=new WebUserIdentity($this->username,$this->password);
+			$this->_identity=new \Rendes\Modules\User\Components\WebUserIdentity($this->username,$this->password);
 			$this->_identity->authenticate();
 		}
-		if($this->_identity->errorCode===WebUserIdentity::ERROR_NONE)
+		if($this->_identity->errorCode===\Rendes\Modules\User\Components\WebUserIdentity::ERROR_NONE)
 		{
 			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
-			return Yii::app()->controller->module->user->login($this->_identity,$duration);
+			return \Yii::app()->controller->module->user->login($this->_identity,$duration);
 		}
 		else
 			return false;

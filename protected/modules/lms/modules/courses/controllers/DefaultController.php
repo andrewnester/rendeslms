@@ -1,6 +1,8 @@
 <?php
 
-class DefaultController extends LMSController
+namespace Rendes\Modules\Courses\Controllers;
+
+class DefaultController extends \Rendes\Controllers\LMSController
 {
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -28,7 +30,7 @@ class DefaultController extends LMSController
     {
         return array(
             array('allow',
-                'actions'=>array('index'),
+                'actions'=>array('index', 'search'),
                 'users'=> array('*'),
             ),
             array('allow',
@@ -138,72 +140,55 @@ class DefaultController extends LMSController
      */
     public function actionIndex()
     {
-        $criteria = new CDbCriteria();
-
-        $likeParams = array(
-            'name', 'description'
-        );
-
-        $courseParams = $this->getRequest()->get('Course', array());
-        $searchParams = array();
-        foreach($courseParams as $key=>$value){
-            if(strlen($value) > 0){
-                $searchParams[] = array(
-                    'key' => $key,
-                    'value' => in_array($key, $likeParams) ? '%' . $value . '%' : $value,
-                    'type' => in_array($key, $likeParams) ? ' LIKE ' : ' = ',
-                );
-            }
-        }
-
-        if(!$this->checkAccess('administrator')){
-            $searchParams[] = array(
-                'key' => 'isPublic',
-                'value' => 1,
-                'type' => ' = ',
-            );
-        }
-
-        $criteria->params = $searchParams;
-        $dataProvider = $this->getEntityManager()->getRepository('Course');
-
-        $dataProvider->setCriteria($criteria);
-
-        $teachers = $this->getEntityManager()->getRepository('User')->findBy(array('role' => array('teacher', 'administrator')));
-        $teachersList = array(
-            "" => ""
-        );
-        foreach($teachers as $teacher){
-            $teachersList[$teacher->getId()] = $teacher->getName();
-        }
-
-        $domain = new Course();
-        $domain->setAttributes($courseParams, false);
+        $dataProvider = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course');
+        $userService = new \Rendes\Modules\User\Services\UserService();
 
         $this->render('index',array(
             'dataProvider'=>$dataProvider,
-            'teachers' => $teachersList,
-            'domain' => $domain
+            'teachers' => $userService->getTeachersList($this->getEntityManager()),
+            'domain' => new \Rendes\Modules\Courses\Entities\Course()
         ));
     }
 
 
+    public function actionSearch()
+    {
+        $isAdmin = $this->checkAccess('administrator');
+
+        $requestService = new \Rendes\Modules\Courses\Services\RequestService();
+        $criteria = $requestService->prepareSearchCriteria($this->getRequest(), $isAdmin);
+
+        $dataProvider = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course');
+        $dataProvider->setCriteria($criteria);
+
+        $userService = new \Rendes\Modules\User\Services\UserService();
+
+        $domain = new \Rendes\Modules\Courses\Entities\Course();
+        $domain->setAttributes($requestService->getData('Course'), false);
+
+        $this->renderPartial('_grid',array(
+            'dataProvider'=>$dataProvider,
+            'teachers' => $userService->getTeachersList($this->getEntityManager()),
+            'filter' => $domain
+        ));
+    }
 
 
     /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer $id the ID of the model to be loaded
-     * @return Course the loaded model
-     * @throws CHttpException
+     * @return \Rendes\Modules\Courses\Entities\Course
+     * @throws \CHttpException
      */
     private function loadCourse($id)
     {
-        $entityManager = $this->getEntityManager();
-
-        $course = $entityManager->find('Course', $id);
-        if($course===null)
-            throw new CHttpException(404,'The requested page does not exist.');
+        try{
+            $course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($id);
+        }
+        catch(\Exception $e){
+            throw new \CHttpException(404,'The requested page does not exist.');
+        }
         return $course;
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace Rendes\Modules\Courses\Entities\Lecture;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -8,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="lecture")
  */
-class Lecture extends CFormModel
+class Lecture extends \CFormModel
 {
     /**
      * @var integer
@@ -20,22 +22,22 @@ class Lecture extends CFormModel
     private $id;
 
     /**
-     * @var Step
+     * @var \Rendes\Modules\Courses\Entities\Step
      *
-     * @ORM\ManyToOne(targetEntity="Step")
+     * @ORM\ManyToOne(targetEntity="\Rendes\Modules\Courses\Entities\Step")
      * @ORM\JoinColumn(name="step_id", referencedColumnName="id")
      */
     private $step;
 
     /**
-     * @var Video
+     * @var \Rendes\Modules\Courses\Entities\Lecture\Video
      *
      * @ORM\OneToMany(targetEntity="Video", mappedBy="lecture")
      */
     private $videos;
 
     /**
-     * @var Document
+     * @var \Rendes\Modules\Courses\Entities\Lecture\Document
      *
      * @ORM\OneToMany(targetEntity="Document", mappedBy="lecture")
      */

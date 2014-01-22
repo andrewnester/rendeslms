@@ -1,6 +1,6 @@
 <?php
 /* @var $this CourseController */
-/* @var $model Course */
+/* @var $model \Rendes\Modules\Courses\Entities\Course */
 
 $this->breadcrumbs=array(
 	'Courses'=>array('index'),
@@ -51,3 +51,24 @@ if($this->checkAccess('teacher')){
         )
     ),
 )); ?>
+
+<hr/>
+
+<h2>Course Steps</h2>
+<?php $courseSteps = $model->getSteps(); ?>
+<?php if(count($courseSteps) > 0): ?>
+    <table>
+    <?php foreach($courseSteps as $step): ?>
+        <tr>
+            <td><a href='<?php echo Yii::app()->createUrl('lms/courses/steps/view', array('courseID' => $model->getID(),  'id' => $step->getID())) ?>'><?php echo $step->getName(); ?></a></td>
+            <td><?php echo $step->getDescription(); ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <p>There are no available steps</p>
+<?php endif; ?>
+
+<?php if($this->checkAccess('administrator')): ?>
+    <a href='<?php echo Yii::app()->createUrl('/lms/courses/steps/create', array('courseID' => $model->getId())) ?>'>Add New Step</a>
+<?php endif; ?>

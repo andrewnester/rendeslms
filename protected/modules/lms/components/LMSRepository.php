@@ -6,9 +6,12 @@
  * Time: 14:42
  * To change this template use File | Settings | File Templates.
  */
-use Doctrine\ORM\EntityRepository;
 
-abstract class LMSRepository extends EntityRepository implements IDataProvider
+namespace Rendes\Components;
+
+use \Doctrine\ORM\EntityRepository;
+
+abstract class LMSRepository extends EntityRepository implements \IDataProvider
 {
     protected $_id;
     private $_data;
@@ -49,7 +52,7 @@ abstract class LMSRepository extends EntityRepository implements IDataProvider
     /**
      * Returns the pagination object.
      * @param string $className the pagination object class name. Parameter is available since version 1.1.13.
-     * @return CPagination|false the pagination object. If this is false, it means the pagination is disabled.
+     * @return \CPagination|false the pagination object. If this is false, it means the pagination is disabled.
      */
     public function getPagination($className='CPagination')
     {
@@ -208,28 +211,28 @@ abstract class LMSRepository extends EntityRepository implements IDataProvider
 
     /**
      * Returns the query criteria.
-     * @return CDbCriteria the query criteria
+     * @return \CDbCriteria the query criteria
      */
     public function getCriteria()
     {
         if($this->_criteria===null)
-            $this->_criteria=new CDbCriteria;
+            $this->_criteria=new \CDbCriteria;
         return $this->_criteria;
     }
 
     /**
      * Sets the query criteria.
-     * @param CDbCriteria|array $value the query criteria. This can be either a CDbCriteria object or an array
+     * @param \CDbCriteria|array $value the query criteria. This can be either a CDbCriteria object or an array
      * representing the query criteria.
      */
     public function setCriteria($value)
     {
-        $this->_criteria=$value instanceof CDbCriteria ? $value : new CDbCriteria($value);
+        $this->_criteria=$value instanceof \CDbCriteria ? $value : new \CDbCriteria($value);
     }
 
     /**
      * Returns the count query criteria.
-     * @return CDbCriteria the count query criteria.
+     * @return \CDbCriteria the count query criteria.
      * @since 1.1.14
      */
     public function getCountCriteria()
@@ -241,19 +244,19 @@ abstract class LMSRepository extends EntityRepository implements IDataProvider
 
     /**
      * Sets the count query criteria.
-     * @param CDbCriteria|array $value the count query criteria. This can be either a CDbCriteria object
+     * @param \CDbCriteria|array $value the count query criteria. This can be either a CDbCriteria object
      * or an array representing the query criteria.
      * @since 1.1.14
      */
     public function setCountCriteria($value)
     {
-        $this->_countCriteria=$value instanceof CDbCriteria ? $value : new CDbCriteria($value);
+        $this->_countCriteria=$value instanceof \CDbCriteria ? $value : new \CDbCriteria($value);
     }
 
     /**
      * Returns the sorting object.
      * @param string $className the sorting object class name. Parameter is available since version 1.1.13.
-     * @return CSort the sorting object. If this is false, it means the sorting is disabled.
+     * @return \CSort the sorting object. If this is false, it means the sorting is disabled.
      */
     public function getSort($className='CSort')
     {
@@ -271,7 +274,7 @@ abstract class LMSRepository extends EntityRepository implements IDataProvider
         $keys=array();
         foreach($this->getData() as $i=>$entity)
         {
-            $key=$this->keyAttribute===null ? $entity->getId()  : $entity->get{$this->keyAttribute}();
+            $key=$this->keyAttribute===null ? $entity['id']  : $entity[$this->keyAttribute];
             $keys[$i]=is_array($key) ? implode(',',$key) : $key;
         }
         return $keys;

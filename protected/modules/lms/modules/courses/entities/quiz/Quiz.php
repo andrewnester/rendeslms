@@ -1,7 +1,8 @@
 <?php
 
-use Doctrine\ORM\Mapping as ORM;
+namespace Rendes\Modules\Courses\Entities\Quiz;
 
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Quiz
@@ -10,13 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="quiz")
  * @ORM\HasLifecycleCallbacks
  */
-class Quiz extends CFormModel implements IQuiz
+class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Quiz\IQuiz
 {
 
     /**
-     * @var Step
+     * @var \Rendes\Modules\Courses\Entities\Step
      *
-     * @ORM\ManyToOne(targetEntity="Step")
+     * @ORM\ManyToOne(targetEntity="\Rendes\Modules\Courses\Entities\Step")
      * @ORM\JoinColumn(name="step_id", referencedColumnName="id")
      */
     public $step;
@@ -39,9 +40,9 @@ class Quiz extends CFormModel implements IQuiz
     private $name;
 
     /**
-     * @var Question
+     * @var \Rendes\Modules\Courses\Entities\Quiz\Questions\Question
      *
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="quiz")
+     * @ORM\OneToMany(targetEntity="\Rendes\Modules\Courses\Entities\Quiz\Questions\Question", mappedBy="quiz")
      */
     protected $questions;
 
@@ -77,7 +78,7 @@ class Quiz extends CFormModel implements IQuiz
     }
 
     /**
-     * @return IQuizConfiguration
+     * @return \Rendes\Modules\Courses\Interfaces\Quiz\IQuizConfiguration
      */
     public function getConfiguration()
     {

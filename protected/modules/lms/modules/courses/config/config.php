@@ -10,7 +10,7 @@
 return array(
     'components' => array(
         'doctrine'=>array(
-            'class' => 'DoctrineComponent',
+            'class' => '\Rendes\Components\DoctrineComponent',
             'basePath' => __DIR__ . '/../../../',
             'proxyPath' => __DIR__ . '/../proxies',
             'entityPath' => array(

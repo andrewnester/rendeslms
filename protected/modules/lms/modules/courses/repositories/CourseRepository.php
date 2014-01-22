@@ -1,8 +1,21 @@
 <?php
 
-class CourseRepository extends LMSRepository
+namespace Rendes\Modules\Courses\Repositories;
+
+class CourseRepository extends \Rendes\Components\LMSRepository
 {
     protected $_id = 'CourseRepository';
+
+
+    public function getByID($id)
+    {
+        $query = $this->getEntityManager()
+                      ->createQuery('SELECT c
+                                        FROM ' . $this->getEntityName() . ' c
+                                        WHERE c.id=:id');
+        $query->setParameter('id', $id);
+        return $query->getSingleResult();
+    }
 
       /**
      * Fetches the data from the persistent data storage.
@@ -12,7 +25,9 @@ class CourseRepository extends LMSRepository
     {
         $criteria=clone $this->getCriteria();
 
-        $qb = $this->_em->getRepository("Course")->createQueryBuilder('c');
+        $qb = $this->_em->getRepository('\Rendes\Modules\Courses\Entities\Course')->createQueryBuilder('c');
+        $qb->addSelect('partial t.{id, name}');
+        $qb->join('c.teacher', 't');
         if(!empty($criteria->params)){
             $params = array_pop($criteria->params);
             $qb = $qb->where('c.'.$params['key'].$params['type'].':'.$params['key']);
@@ -27,7 +42,7 @@ class CourseRepository extends LMSRepository
         }
 
         $query = $qb->getQuery();
-        $this->data = $query->getResult();
+        $this->data = $query->getArrayResult();
         return $this->data;
     }
 
@@ -37,11 +52,7 @@ class CourseRepository extends LMSRepository
      */
     protected function calculateTotalItemCount()
     {
-        $qb = $this->_em->createQueryBuilder();
-        $qb->select('count(c.id)');
-        $qb->from('Course','c');
-
-        $count = $qb->getQuery()->getSingleScalarResult();
-        return $count;
+        $query = $this->_em->createQuery('SELECT COUNT(c.id) FROM \Rendes\Modules\Courses\Entities\Course c');
+        return $query->getSingleScalarResult();
     }
 }
