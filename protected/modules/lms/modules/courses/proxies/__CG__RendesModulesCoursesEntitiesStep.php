@@ -147,6 +147,12 @@ class Step extends \Rendes\Modules\Courses\Entities\Step implements \Doctrine\OR
         return parent::getRequiredSteps();
     }
 
+    public function getRequiredStepsIDs()
+    {
+        $this->__load();
+        return parent::getRequiredStepsIDs();
+    }
+
     public function setCreated($created)
     {
         $this->__load();

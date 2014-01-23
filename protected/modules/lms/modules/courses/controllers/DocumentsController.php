@@ -4,7 +4,7 @@ namespace Rendes\Modules\Courses\Controllers;
 
 use Rendes\Modules\Courses\Services\StepService;
 
-class StepsController extends \Rendes\Controllers\LMSController
+class DocumentsController extends \Rendes\Controllers\LMSController
 {
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -69,36 +69,35 @@ class StepsController extends \Rendes\Controllers\LMSController
         ));
     }
 
-    public function actionCreate($courseID)
+    public function actionCreate($lectureID, $stepID, $courseID)
     {
-        $step = new \Rendes\Modules\Courses\Entities\Step();
+        $document = new \Rendes\Modules\Courses\Entities\Lecture\Document();
         try{
-            $course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($courseID);
+            $lecture = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByID($lectureID);
         }catch(\Exception $e){
-            throw new \CHttpException(404, 'Such course does not exist');
+            throw new \CHttpException(404, 'Such lecture does not exist');
         }
 
-        $stepData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Step');
-        $step->setAttributes($stepData);
+        $documentData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Lecture_Document');
+        $document->setAttributes($documentData, false);
+        $document->setScenario('create');
 
-        $stepsService = new \Rendes\Modules\Courses\Services\StepService();
+        $documentsService = new \Rendes\Modules\Courses\Services\DocumentsService();
 
-        if(!is_null($stepData) && $step->validate())
+        if(!is_null($documentData) && $document->validate())
         {
-            $step = $stepsService->populateStep($step, $course, $stepData);
+            $document = $documentsService->populate($document, $lecture, $documentData);
 
-            $this->getEntityManager()->persist($step);
+            $this->getEntityManager()->persist($document);
             $this->getEntityManager()->flush();
 
-            $this->redirect(array('/lms/courses/default/view','id' => $courseID));
+            $this->redirect(array('/lms/courses/lectures/view','id' => $lectureID, 'stepID' => $stepID, 'courseID' => $courseID));
         }
 
-        $stepsList = $stepsService->getCourseStepsList($courseID);
 
         $this->render('create',array(
-            'model'=>$step,
-            'course' => $course,
-            'steps' => $stepsList
+            'model'=>$document,
+            'lecture' => $lecture,
         ));
     }
 

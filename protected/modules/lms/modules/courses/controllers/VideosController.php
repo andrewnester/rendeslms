@@ -4,7 +4,7 @@ namespace Rendes\Modules\Courses\Controllers;
 
 use Rendes\Modules\Courses\Services\StepService;
 
-class StepsController extends \Rendes\Controllers\LMSController
+class VideosController extends \Rendes\Controllers\LMSController
 {
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -34,7 +34,15 @@ class StepsController extends \Rendes\Controllers\LMSController
     }
 
 
-
+    /**
+     * Lists all models.
+     */
+    public function actionIndex($courseID)
+    {
+        $this->render('index',array(
+            'steps' => $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByCourseID($courseID)
+        ));
+    }
 
     public function actionUpdate($id, $courseID)
     {
@@ -110,8 +118,6 @@ class StepsController extends \Rendes\Controllers\LMSController
         ));
     }
 
-
-
     protected function loadStep($id)
     {
         try{
@@ -123,5 +129,7 @@ class StepsController extends \Rendes\Controllers\LMSController
 
         return $step;
     }
+
+
 
 }

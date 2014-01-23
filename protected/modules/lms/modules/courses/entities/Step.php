@@ -236,6 +236,18 @@ class Step extends \CFormModel
     }
 
     /**
+     * @return Array
+     */
+    public function getRequiredStepsIDs()
+    {
+        $requiredStepsIDs = array();
+        foreach($this->getRequiredSteps() as $step){
+            $requiredStepsIDs[] = $step->getId();
+        }
+        return $requiredStepsIDs;
+    }
+
+    /**
      * @param \DateTime $created
      */
     public function setCreated($created)
