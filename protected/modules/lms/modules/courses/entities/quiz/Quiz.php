@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Quiz
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Rendes\Modules\Courses\Repositories\QuizRepository")
  * @ORM\Table(name="quiz")
  * @ORM\HasLifecycleCallbacks
  */
@@ -20,8 +20,7 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
      * @ORM\ManyToOne(targetEntity="\Rendes\Modules\Courses\Entities\Step")
      * @ORM\JoinColumn(name="step_id", referencedColumnName="id")
      */
-    public $step;
-
+    private $step;
 
     /**
      * @var integer
@@ -40,12 +39,22 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
      * @var \Rendes\Modules\Courses\Entities\Quiz\Questions\Question
      *
-     * @ORM\OneToMany(targetEntity="\Rendes\Modules\Courses\Entities\Quiz\Questions\Question", mappedBy="quiz")
+     * @ORM\ManyToMany(targetEntity="\Rendes\Modules\Courses\Entities\Quiz\Questions\Question")
+     * @ORM\JoinTable(name="User_Group",
+     *      joinColumns={@ORM\JoinColumn(name="quiz_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="question_id", referencedColumnName="id")}
+     *      )
      */
-    protected $questions;
-
+    private $questions;
 
     /**
      * @var QuizConfiguration
@@ -53,8 +62,7 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
      * @ORM\OneToOne(targetEntity="QuizConfiguration")
      * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
      */
-    protected $configuration;
-
+    private $configuration;
 
     /**
      * @var \DateTime
@@ -71,6 +79,103 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     private $updated;
 
 
+
+
+    /**
+     * @param \DateTime $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Quiz\Questions\Question $questions
+     */
+    public function setQuestions($questions)
+    {
+        $this->questions = $questions;
+    }
+
+    /**
+     * @return \Rendes\Modules\Courses\Entities\Quiz\Questions\Question
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Step $step
+     */
+    public function setStep($step)
+    {
+        $this->step = $step;
+    }
+
+    /**
+     * @return \Rendes\Modules\Courses\Entities\Step
+     */
+    public function getStep()
+    {
+        return $this->step;
+    }
+
+    /**
+     * @param \DateTime $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Quiz\QuizConfiguration $configuration
+     */
+    public function setConfiguration($configuration)
+    {
+        $this->configuration = $configuration;
+    }
 
     public function getName()
     {
@@ -97,6 +202,24 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     {
         $this->updated = new \DateTime();
     }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+
 
 
 

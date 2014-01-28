@@ -14,7 +14,7 @@ class VariantQuestion extends Question implements \Rendes\Modules\Courses\Interf
      *
      * @ORM\Column(name="variants", type="array")
      */
-    private$variants;
+    private $variants;
 
 
     public function getVariants()

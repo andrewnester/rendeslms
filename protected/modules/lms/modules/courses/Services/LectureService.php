@@ -15,11 +15,6 @@ class LectureService extends \Rendes\Services\BaseService
      */
     private $repository = null;
 
-    public function __construct()
-    {
-        //TODO: init repository
-    }
-
     /**
      * @return Interfaces\ResultRepositories\ILectureResultRepository
      */

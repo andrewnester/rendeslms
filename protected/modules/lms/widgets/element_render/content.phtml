@@ -1,0 +1,38 @@
+<hr/>
+<h2><?php echo $this->header ?></h2>
+<?php $methodName = 'get'.$this->name; ?>
+<?php $items = $this->model->$methodName(); ?>
+
+<?php if(count($items) > 0): ?>
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <?php foreach($items as $item): ?>
+                        <tr>
+                            <td>
+                                <a href="<?php echo Yii::app()->createUrl($this->link . '/view', array_merge(array('id' => $item->getId()), $this->linkParams)) ?>">
+                                    <?php echo $item->getName(); ?>
+                                </a></td>
+                            <td><?php echo $item->getDescription() ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </td>
+            <?php if($this->order): ?>
+            <td>
+                <?php $this->widget('\Rendes\Widgets\SortableListWidget', array(
+                    'id' => strtolower($this->name).'-order',
+                    'items' => $items,
+                    'path' => Yii::app()->createUrl($this->link . '/order', $this->linkParams),
+                    'header' => $this->header . ' Order',
+                    'width' => 300
+                )); ?>
+            </td>
+            <?php endif; ?>
+        </tr>
+    </table>
+<?php else: ?>
+    <p>There are no <?php echo strtolower($this->header) ?></p>
+<?php endif; ?>
+<p><a href="<?php echo Yii::app()->createUrl($this->link . '/create', $this->linkParams) ?>">Add New</a></p>
