@@ -1,0 +1,21 @@
+<div style="width: <?php echo $this->width ?>px">
+
+    <?php if(!is_null($this->header)): ?>
+    <p><strong><?php echo $this->header ?></strong></p>
+    <?php endif; ?>
+
+    <form action="<?php echo $this->path ?>" method="post" name="<?php echo $this->id ?>" id="<?php echo $this->id ?>" >
+    <span style='hidden' class='result-order-saving' id="<?php echo $this->id ?>-result"></span>
+    <?php ob_start() ?>
+    <ol id="<?php echo $this->id ?>-sortable" class="sort-list">
+        <?php foreach($this->items as $item): ?>
+            <li class="ui-state-default">
+                <a href=""><?php echo $item->getName(); ?></a>
+                <input type="hidden" name='order[]' value="<?php echo $item->getID(); ?>" />
+            </li>
+        <?php endforeach; ?>
+    </ol>
+    <?php ob_end_flush(); ?>
+    <a class="nice-button" onclick="saveOrder('<?php echo $this->id ?>')" >Save</a>
+    </form>
+</div>

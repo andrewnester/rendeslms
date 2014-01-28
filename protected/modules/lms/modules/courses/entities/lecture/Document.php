@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Document
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Rendes\Modules\Courses\Repositories\DocumentRepository")
  * @ORM\Table(name="document")
  * @ORM\HasLifecycleCallbacks
  */
@@ -55,6 +55,13 @@ class Document extends \CFormModel
      * @var string
      */
     private $doc;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="order_position", type="integer", nullable=false)
+     */
+    private $order;
 
 
     /**
@@ -212,6 +219,22 @@ class Document extends \CFormModel
     public function getDoc()
     {
         return $this->doc;
+    }
+
+    /**
+     * @param int $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOrder()
+    {
+        return $this->order;
     }
 
 

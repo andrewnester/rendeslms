@@ -27,6 +27,12 @@ return array(
             'class' => '\Rendes\Components\RequestComponent'
         ),
     ),
+
+    'params' => array(
+        'resultRepositories' => array(
+            'lectures' => '\Rendes\Modules\Courses\Repositories\LectureResultRepository'
+        ),
+    ),
     'modules'=>array(
         'courses' => array(
             'class' => '\Rendes\Modules\Courses\CoursesModule'

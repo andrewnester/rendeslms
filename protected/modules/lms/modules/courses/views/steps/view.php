@@ -67,15 +67,24 @@ if($this->checkAccess('teacher')){
     <table>
         <?php foreach($lectures as $lecture): ?>
             <tr>
-                <td><a href='<?php echo Yii::app()->createUrl('lms/courses/lectures/view', array('courseID' => $courseID,  'stepID' => $step->getID(), 'id' => $lecture->getID())) ?>'><?php echo $lecture->getName(); ?></a></td>
+                <td><a href='<?php echo Yii::app()->createUrl('lms/courses/lectures/view', array('courseID' => $courseID,  'stepID' => $model->getID(), 'id' => $lecture->getID())) ?>'><?php echo $lecture->getName(); ?></a></td>
                 <td><?php echo $lecture->getDescription(); ?></td>
+                <td><?php echo $lecture->isPassed() ? 'Yes' : 'No'; ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
+
+    <?php $this->widget('\Rendes\Widgets\SortableListWidget', array(
+        'id' => 'lectures-order',
+        'items' => $lectures,
+        'path' => Yii::app()->createUrl('/lms/courses/lectures/order', array('courseID' => $courseID,  'stepID' => $model->getID() )),
+        'header' => 'Lectures Order'
+    )); ?>
+
 <?php else: ?>
     <p>There are no lectures</p>
 <?php endif; ?>
-<p><a href="<?php echo Yii::app()->createUrl('lms/courses/lectures/create', array('courseID' => $courseID,  'stepID' => $step->getID() ))  ?>">Add New Lecture</a></p>
+<p><a href="<?php echo Yii::app()->createUrl('lms/courses/lectures/create', array('courseID' => $courseID,  'stepID' => $model->getID() ))  ?>">Add New Lecture</a></p>
 <hr/>
 
 <h3>Quizzes</h3>
@@ -84,12 +93,20 @@ if($this->checkAccess('teacher')){
     <table>
         <?php foreach($quizzes as $quiz): ?>
             <tr>
-                <td><a href='<?php echo Yii::app()->createUrl('lms/courses/quizzes/view', array('courseID' => $courseID,  'stepID' => $step->getID(), 'id' => $quiz->getID())) ?>'><?php echo $quiz->getName(); ?></a></td>
+                <td><a href='<?php echo Yii::app()->createUrl('lms/courses/quizzes/view', array('courseID' => $courseID,  'stepID' => $model->getID(), 'id' => $quiz->getID())) ?>'><?php echo $quiz->getName(); ?></a></td>
                 <td><?php echo $quiz->getDescription(); ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
+
+    <?php $this->widget('\Rendes\Widgets\SortableListWidget', array(
+        'id' => 'quizzes-order',
+        'items' => $lectures,
+        'path' => Yii::app()->createUrl('/lms/courses/quizzes/order', array('courseID' => $courseID,  'stepID' => $model->getID() )),
+        'header' => 'Quizzes Order'
+    )); ?>
+
 <?php else: ?>
     <p>There are no quizzes</p>
 <?php endif; ?>
-<p><a href="<?php echo Yii::app()->createUrl('lms/courses/quizzes/create', array('courseID' => $courseID,  'stepID' => $step->getID() ))  ?>">Add New Quiz</a></p>
+<p><a href="<?php echo Yii::app()->createUrl('lms/courses/quizzes/create', array('courseID' => $courseID,  'stepID' => $model->getID() ))  ?>">Add New Quiz</a></p>

@@ -1,6 +1,6 @@
 <?php
 /* @var $this CourseController */
-/* @var $model Course */
+/* @var $model \Rendes\Modules\Courses\Entities\Lecture\Lecture */
 
 $this->breadcrumbs=array(
 	'Courses'=>array('index'),
@@ -56,6 +56,15 @@ if($this->checkAccess('teacher')){
             </tr>
         <?php endforeach; ?>
     </table>
+
+    <?php $this->widget('\Rendes\Widgets\SortableListWidget', array(
+        'id' => 'documents-order',
+        'items' => $documents,
+        'path' => Yii::app()->createUrl('/lms/courses/docuemnts/order', array('courseID' => $courseID,  'stepID' => $model->getID() )),
+        'header' => 'Documents Order',
+        'width' => 400
+    )); ?>
+
 <?php else: ?>
     <p>There are no documents</p>
 <?php endif; ?>
@@ -86,3 +95,22 @@ if($this->checkAccess('teacher')){
 <?php endif; ?>
 <p><a href="<?php echo Yii::app()->createUrl('/lms/courses/videos/create', array('lectureID' => $model->getId(), 'stepID' => $model->getStep()->getId(), 'courseID' => $model->getStep()->getCourse()->getId())) ?>">Add New Video</a></p>
 
+<h2>Passing Rules</h2>
+<?php $passingRules = $model->getPassingRules(); ?>
+<?php if(count($passingRules) > 0): ?>
+    <table>
+        <?php foreach($passingRules as $ruleID => $options): ?>
+            <tr>
+                <td><?php echo $rules[$ruleID]['name'] ?></td>
+                <td>
+                    <?php echo $rules[$ruleID]['description'] ?>
+                    <?php foreach($options as $option => $value): ?>
+                        <p><strong><?php echo $rules[$ruleID]['fields'][$option]['label'] ?>:</strong> <?php echo $value ?></p>
+                    <?php endforeach; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <p>There are no passing rules</p>
+<?php endif; ?>

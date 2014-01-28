@@ -101,26 +101,28 @@ class DocumentsController extends \Rendes\Controllers\LMSController
         ));
     }
 
-    public function actionView($id, $courseID)
+    public function actionView($id, $lectureID, $stepID, $courseID)
     {
         $this->render('view',array(
-            'model'=>$this->loadStep($id),
-            'courseID' => $courseID
+            'model'=>$this->loadDocument($id),
+            'courseID' => $courseID,
+            'stepID' => $stepID,
+            'lectureID' => $lectureID
         ));
     }
 
 
 
-    protected function loadStep($id)
+    protected function loadDocument($id)
     {
         try{
-            $step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($id);
+            $document = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Document')->getByID($id);
         }
         catch(\Exception $e){
             throw new \CHttpException(404,'The requested page does not exist.');
         }
 
-        return $step;
+        return $document;
     }
 
 }

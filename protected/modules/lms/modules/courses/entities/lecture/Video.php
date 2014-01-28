@@ -51,6 +51,13 @@ class Video extends \CFormModel
      */
     private $src;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="order_position", type="integer", nullable=false)
+     */
+    private $order;
+
 
     /**
      * @var \DateTime
@@ -78,6 +85,136 @@ class Video extends \CFormModel
     {
         $this->updated = new \DateTime();
     }
+
+    /**
+     * @param \DateTime $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Lecture\Lecture $lecture
+     */
+    public function setLecture($lecture)
+    {
+        $this->lecture = $lecture;
+    }
+
+    /**
+     * @return \Rendes\Modules\Courses\Entities\Lecture\Lecture
+     */
+    public function getLecture()
+    {
+        return $this->lecture;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param int $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param string $src
+     */
+    public function setSrc($src)
+    {
+        $this->src = $src;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSrc()
+    {
+        return $this->src;
+    }
+
+    /**
+     * @param \DateTime $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+
 
 
 }

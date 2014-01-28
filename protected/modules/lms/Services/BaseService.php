@@ -6,7 +6,7 @@
 
 namespace Rendes\Services;
 
-class BaseService
+abstract class BaseService
 {
     private $entityManager;
 
@@ -19,5 +19,11 @@ class BaseService
             $this->entityManager = \Yii::app()->controller->module->doctrine->getEntityManager();
         }
         return $this->entityManager;
+    }
+
+    public function loadResultRepository($name)
+    {
+        $repositoryName = \Yii::app()->getModule('lms')->params->resultRepositories[$name];
+        return new $repositoryName();
     }
 }

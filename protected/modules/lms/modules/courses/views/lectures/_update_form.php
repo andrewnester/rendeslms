@@ -73,6 +73,37 @@
         </table>
     </div>
 
+    <h3>Passing Rules</h3>
+    <div class="row">
+        <table>
+        <?php $passingRules = $model->getPassingRules(); ?>
+        <?php foreach($rules as $rule): ?>
+            <tr>
+                <td>
+                    <label for='doc<?php echo $rule['id']; ?>' ><?php echo $rule['name']; ?></label>
+                    <input type="hidden" name='Rendes_Modules_Courses_Entities_Lecture_Lecture[rules_id][]' value="" />
+                    <input id='doc<?php echo $rule['id']; ?>' type="checkbox" name='Rendes_Modules_Courses_Entities_Lecture_Lecture[rules_id][]' value='<?php echo $rule['id']; ?>' <?php if(isset($passingRules[$rule['id']])): ?> checked="checked" <?php endif; ?>/>
+                </td>
+                <td>
+                    <table>
+                    <?php foreach($rule['fields'] as $field): ?>
+                        <tr>
+                            <td>
+                                <label for="<?php echo $field['id'] ?>"><?php echo $field['label'] ?>:</label>
+                            </td>
+                            <td>
+                                <?php $value = isset($passingRules[$rule['id']], $passingRules[$rule['id']][$field['name']]) ? $passingRules[$rule['id']][$field['name']] : $field['default']  ?>
+                                <input type="<?php echo $field['type'] ?>" name="Rendes_Modules_Courses_Entities_Lecture_Lecture[rules][<?php echo $rule['id']; ?>][<?php echo $field['name'] ?>]" value="<?php echo $value ?>"/>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </table>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </table>
+    </div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Save'); ?>
 	</div>

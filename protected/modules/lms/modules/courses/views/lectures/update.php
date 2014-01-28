@@ -25,4 +25,4 @@ if($this->checkAccess('teacher')){
 
 <h1>Update Lecture "<?php echo $model->name; ?>"</h1>
 
-<?php $this->renderPartial('_update_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_update_form', array('model'=>$model, 'rules' => $rules)); ?>

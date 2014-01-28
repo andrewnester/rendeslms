@@ -6,6 +6,7 @@
  * Time: 16:32
  * To change this template use File | Settings | File Templates.
  */
+Yii::setPathOfAlias('Rendes', __DIR__.'/../');
 
 return array(
     'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..',
@@ -15,7 +16,7 @@ return array(
 
     'components' => array(
         'doctrine'=>array(
-            'class' => 'DoctrineComponent',
+            'class' => '\Rendes\Components\DoctrineComponent',
             'basePath' => __DIR__ . '/../',
             'entityPath' => array(
                 __DIR__ . '/../entities'

@@ -64,6 +64,31 @@ class Lecture extends \CFormModel
      */
     private $passingRules;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Document")
+     * @ORM\JoinTable(name="required_to_pass_documents",
+     *      joinColumns={@ORM\JoinColumn(name="lecture_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id")}
+     *      )
+     */
+    private $requiredToPassDocuments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Video")
+     * @ORM\JoinTable(name="required_to_pass_videos",
+     *      joinColumns={@ORM\JoinColumn(name="lecture_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="video_id", referencedColumnName="id")}
+     *      )
+     */
+    private $requiredToPassVideos;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="order_position", type="integer", nullable=false)
+     */
+    private $order;
+
 
     public function rules(){
         return array(
@@ -71,7 +96,18 @@ class Lecture extends \CFormModel
         );
     }
 
+    public function __construct()
+    {
+        $this->requiredToPassDocuments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->requiredToPassVideos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+
+    public function isPassed()
+    {
+        $lectureService = new \Rendes\Modules\Courses\Services\LectureService();
+        return $lectureService->isPassed($this);
+    }
 
     /**
      * @param string $description
@@ -150,7 +186,7 @@ class Lecture extends \CFormModel
      */
     public function getPassingRules()
     {
-        return $this->passingRules;
+        return $this->passingRules ? $this->passingRules : array();
     }
 
     /**
@@ -183,6 +219,45 @@ class Lecture extends \CFormModel
     public function getVideos()
     {
         return $this->videos;
+    }
+
+    /**
+     * @param int $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+
+
+
+    public function setRequiredToPassDocuments($requiredToPassDocuments)
+    {
+        $this->requiredToPassDocuments = $requiredToPassDocuments;
+    }
+
+    public function getRequiredToPassDocuments()
+    {
+        return $this->requiredToPassDocuments;
+    }
+
+    public function setRequiredToPassVideos($requiredToPassVideos)
+    {
+        $this->requiredToPassVideos = $requiredToPassVideos;
+    }
+
+    public function getRequiredToPassVideos()
+    {
+        return $this->requiredToPassVideos;
     }
 
 

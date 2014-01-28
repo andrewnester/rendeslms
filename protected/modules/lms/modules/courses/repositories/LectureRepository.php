@@ -14,4 +14,11 @@ class LectureRepository extends EntityRepository
         $query->setParameter('id', $id);
         return $query->getSingleResult();
     }
+
+    public function getByIDArray($idArray)
+    {
+        $query = $this->getEntityManager()->createQuery('SELECT l FROM \Rendes\Modules\Courses\Entities\Lecture\Lecture l WHERE l.id IN (:ids)');
+        $query->setParameter('ids', $idArray);
+        return $query->getResult();
+    }
 }

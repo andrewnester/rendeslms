@@ -9,5 +9,5 @@ use \Rendes\Modules\Courses\Interfaces\ResultRepositories as ResultRepositories;
 
 interface ILecturePassingRule
 {
-    public function validate(ResultRepositories\ILectureResultRepository $repository);
+    public function validate(ResultRepositories\ILectureResultRepository $repository, $options=array());
 }
