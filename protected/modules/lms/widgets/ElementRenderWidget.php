@@ -15,6 +15,8 @@ class ElementRenderWidget extends \CWidget
     public $link = null;
     public $order = true;
     public $linkParams = array();
+    public $nameField = 'Name';
+    public $descriptionField = 'Description';
 
     public function run()
     {

@@ -1,0 +1,15 @@
+{
+    "id": 1,
+    "name": "Percent From All Answered",
+    "description": "Should be answered concrete percent of all questions",
+    "classname": "\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Rules\\PercentAnsweredQuizRule",
+    "fields":{
+        "percent" : {
+            "id": "percent",
+            "label": "Percent",
+            "name": "percent",
+            "type": "text",
+            "default": 80
+        }
+    }
+}

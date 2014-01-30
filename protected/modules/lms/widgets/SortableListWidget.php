@@ -14,6 +14,7 @@ class SortableListWidget extends \CWidget
     public $id = null;
     public $width = 200;
     public $header = null;
+    public $nameField = "Name";
 
     public function init()
     {

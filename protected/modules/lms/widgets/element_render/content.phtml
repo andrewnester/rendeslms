@@ -1,6 +1,8 @@
 <hr/>
 <h2><?php echo $this->header ?></h2>
 <?php $methodName = 'get'.$this->name; ?>
+<?php $methodGetName = 'get'.$this->nameField; ?>
+<?php $methodGetDesc = 'get'.$this->descriptionField; ?>
 <?php $items = $this->model->$methodName(); ?>
 
 <?php if(count($items) > 0): ?>
@@ -12,9 +14,9 @@
                         <tr>
                             <td>
                                 <a href="<?php echo Yii::app()->createUrl($this->link . '/view', array_merge(array('id' => $item->getId()), $this->linkParams)) ?>">
-                                    <?php echo $item->getName(); ?>
+                                    <?php echo $item->$methodGetName(); ?>
                                 </a></td>
-                            <td><?php echo $item->getDescription() ?></td>
+                            <td><?php echo $item->$methodGetDesc() ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
@@ -24,6 +26,7 @@
                 <?php $this->widget('\Rendes\Widgets\SortableListWidget', array(
                     'id' => strtolower($this->name).'-order',
                     'items' => $items,
+                    'nameField' => $this->nameField,
                     'path' => Yii::app()->createUrl($this->link . '/order', $this->linkParams),
                     'header' => $this->header . ' Order',
                     'width' => 300

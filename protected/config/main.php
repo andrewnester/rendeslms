@@ -52,6 +52,10 @@ return array(
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/lectures/<lectureID:\d+>/<controller:\w+>/<id:\d+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/lectures/<lectureID:\d+>/<controller:\w+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
 
+                'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/quizzes/<quizID:\d+>/<controller:\w+>/<id:\d+>'=>'lms/courses/<controller>/view',
+                'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/quizzes/<quizID:\d+>/<controller:\w+>/<id:\d+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
+                'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/quizzes/<quizID:\d+>/<controller:\w+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
+
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/<controller:\w+>/<id:\d+>'=>'lms/courses/<controller>/view',
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/<controller:\w+>/<id:\d+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/<controller:\w+>/<action:\w+>/'=>'lms/courses/<controller>/<action>',

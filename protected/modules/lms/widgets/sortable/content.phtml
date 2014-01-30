@@ -1,5 +1,5 @@
 <div style="width: <?php echo $this->width ?>px">
-
+    <?php $methodGetName = 'get'.$this->nameField ?>
     <?php if(!is_null($this->header)): ?>
     <p><strong><?php echo $this->header ?></strong></p>
     <?php endif; ?>
@@ -10,7 +10,7 @@
     <ol id="<?php echo $this->id ?>-sortable" class="sort-list">
         <?php foreach($this->items as $item): ?>
             <li class="ui-state-default">
-                <a href=""><?php echo $item->getName(); ?></a>
+                <a href=""><?php echo $item->$methodGetName(); ?></a>
                 <input type="hidden" name='order[]' value="<?php echo $item->getID(); ?>" />
             </li>
         <?php endforeach; ?>

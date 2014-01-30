@@ -42,11 +42,9 @@ if($this->checkAccess('teacher')){
     <?php $this->widget('\Rendes\Widgets\ElementRenderWidget', array(
         'name' => 'Questions',
         'header' => 'Questions',
-        'nameField' => 'Title',
-        'descriptionField' => 'Type',
         'model' => $model,
         'link' => '/lms/courses/questions',
-        'order' => true,
+        'order' => false,
         'linkParams' => array(
             'quizID' => $model->getId(),
             'stepID' => $model->getStep()->getId(),

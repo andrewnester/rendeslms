@@ -1,0 +1,15 @@
+{
+    "id": 2,
+    "name": "Count From All Answered",
+    "description": "Should be answered concrete count of all questions",
+    "classname": "\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Rules\\CountAnsweredQuizRule",
+    "fields":{
+        "percent" : {
+            "id": "count",
+            "label": "Count",
+            "name": "count",
+            "type": "text",
+            "default": 0
+        }
+    }
+}

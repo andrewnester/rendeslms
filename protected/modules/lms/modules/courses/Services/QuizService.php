@@ -21,7 +21,7 @@ class QuizService extends \Rendes\Services\BaseService
     public function getResultRepository()
     {
         if(is_null($this->repository)){
-            $this->repository = $this->loadResultRepository('lectures');
+            $this->repository = $this->loadResultRepository('quiz');
         }
         return $this->repository;
     }
@@ -34,5 +34,20 @@ class QuizService extends \Rendes\Services\BaseService
         return $quiz;
     }
 
+    public function getAvailableRules()
+    {
+        $rules = array();
+        $pathToRulesDir = __DIR__ . '/../Entities/Quiz/Rules/';
+        $dir = opendir($pathToRulesDir);
+        while (false !== ($entry = readdir($dir))) {
+            if(strpos($entry, '.json') !== false){
+                $configContent = file_get_contents($pathToRulesDir . $entry);
+                $decoded = json_decode($configContent, true);
+                $rules[$decoded['id']] = $decoded;
+            }
+        }
+
+        return $rules;
+    }
 
 }

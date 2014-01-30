@@ -1,0 +1,15 @@
+{
+    "id": 3,
+    "name": "Points Received",
+    "description": "Should be received concrete points",
+    "classname": "\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Rules\\PercentAnsweredQuizRule",
+    "fields":{
+        "percent" : {
+            "id": "percent",
+            "label": "Percent",
+            "name": "percent",
+            "type": "text",
+            "default": 80
+        }
+    }
+}

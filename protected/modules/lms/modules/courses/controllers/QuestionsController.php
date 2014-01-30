@@ -2,7 +2,7 @@
 
 namespace Rendes\Modules\Courses\Controllers;
 
-class QuizzesController extends \Rendes\Controllers\LMSController
+class QuestionsController extends \Rendes\Controllers\LMSController
 {
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -30,7 +30,6 @@ class QuizzesController extends \Rendes\Controllers\LMSController
     {
         return array();
     }
-
 
 
 
@@ -69,37 +68,37 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
 
 
-
-
-
-    public function actionCreate($stepID, $courseID)
+    public function actionCreate($quizID, $stepID, $courseID)
     {
-        $quiz = new \Rendes\Modules\Courses\Entities\Quiz\Quiz();
+        $questionType = $this->getRequest()->get('type', 'Question');
         try{
-            $step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($stepID);
+            $className = "\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\".$questionType;
+            $question = new $className();
+            $quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($quizID);
         }catch(\Exception $e){
             throw new \CHttpException(404, 'Such step does not exist');
         }
 
-        $quizData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Quiz_Quiz');
-        $quiz->setAttributes($quizData);
+        $questionData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Quiz_Questions_'.$questionType);
+        $question->setAttributes($questionData);
 
-        $quizService = new \Rendes\Modules\Courses\Services\QuizService();
+        $questionService = new \Rendes\Modules\Courses\Services\QuestionService();
 
-        if(!is_null($quizData) && $quiz->validate())
+        if(!is_null($questionData) && $question->validate())
         {
-            $quiz = $quizService->populate($quiz, $step, $quizData);
+            $method = 'populate'.$questionType;
+            $question = $questionService->$method($question, $questionData);
+            $this->getEntityManager()->persist($question);
 
-            $this->getEntityManager()->persist($quiz);
+            $quiz->getQuestions()->add($question);
             $this->getEntityManager()->flush();
 
             $this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
         }
 
         $this->render('create',array(
-            'model'=>$quiz,
-            'step' => $step,
-            'rules' => $quizService->getAvailableRules(),
+            'model'=>$question,
+            'types' => $questionService->getAvailableTypes()
         ));
     }
 
@@ -118,20 +117,25 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
 
 
-    public function actionOrder($stepID, $courseID)
+    public function actionForm()
     {
-        $orderData = $this->getRequest()->get('order');
-        $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
-        $lecturesIterator = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByIDArray(array_values($orderData));
-        foreach($lecturesIterator as $lecture){
-            $lecture->setOrder($lecturesService->countOrder($orderData, $lecture->getId()));
+        $questionType = $this->getRequest()->get('questionType');
+
+        try{
+            $className = '\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\'.$questionType;
+            $question = new $className();
+        }catch(\Exception $e){
+            $this->getRequest()->json(array('error' => 'There is no such question type'), 500);
         }
 
-        $this->getEntityManager()->flush();
-        $this->getEntityManager()->clear();
-
-        $this->getRequest()->json(array('message' => 'Successfully Saved'));
+        $this->renderPartial('_' . strtolower($questionType), array(
+            'model' => $question
+        ));
     }
+
+
+
+
 
     protected function loadQuiz($id)
     {
@@ -144,7 +148,5 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
         return $quiz;
     }
-
-
 
 }

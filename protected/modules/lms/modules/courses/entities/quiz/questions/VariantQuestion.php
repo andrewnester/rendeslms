@@ -22,25 +22,15 @@ class VariantQuestion extends Question implements \Rendes\Modules\Courses\Interf
         return $this->variants;
     }
 
-    public function getQuestion()
+    /**
+     * @param Array $variants
+     */
+    public function setVariants($variants)
     {
-        // TODO: Implement getQuestion() method.
+        $this->variants = $variants;
     }
 
-    public function getAnswers()
-    {
-        // TODO: Implement getAnswers() method.
-    }
 
-    public function getConfiguration()
-    {
-        // TODO: Implement getConfiguration() method.
-    }
-
-    public function getResult($proposedAnswers)
-    {
-        // TODO: Implement getResult() method.
-    }
 
 
 }

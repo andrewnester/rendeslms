@@ -49,7 +49,7 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
      * @var \Rendes\Modules\Courses\Entities\Quiz\Questions\Question
      *
      * @ORM\ManyToMany(targetEntity="\Rendes\Modules\Courses\Entities\Quiz\Questions\Question")
-     * @ORM\JoinTable(name="User_Group",
+     * @ORM\JoinTable(name="quiz_questions",
      *      joinColumns={@ORM\JoinColumn(name="quiz_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="question_id", referencedColumnName="id")}
      *      )
@@ -57,12 +57,11 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     private $questions;
 
     /**
-     * @var QuizConfiguration
+     * @var string
      *
-     * @ORM\OneToOne(targetEntity="QuizConfiguration")
-     * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id")
+     * @ORM\Column(name="passing_rule", type="string", length=255, nullable=false)
      */
-    private $configuration;
+    private $passingRule;
 
     /**
      * @var \DateTime
@@ -78,8 +77,55 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
      */
     private $updated;
 
+    private $quizRulesNamespace;
+
+    public function __construct()
+    {
+        $this->quizRulesNamespace = \Yii::app()->getModule('lms')->params['namespaces']['quiz']['rules'] . '\\';
+        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
+
+    public function isPassed()
+    {
+
+    }
+
+    public function isStarted()
+    {
+
+    }
+
+
+
+
+    /**
+     * @param string $passingRule
+     */
+    public function setPassingRule($passingRule)
+    {
+        $this->passingRule = $passingRule;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassingRule()
+    {
+        if(empty($this->passingRule)){
+            return new \stdClass();
+        }
+
+        try{
+            $className = $this->quizRulesNamespace . $this->passingRule;
+            $rule = new $className();
+        }catch(\Exception $e){
+            throw new \CException('There is no such quiz passing rule');
+        }
+
+        return $rule;
+    }
 
     /**
      * @param \DateTime $created
@@ -122,7 +168,7 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     }
 
     /**
-     * @return \Rendes\Modules\Courses\Entities\Quiz\Questions\Question
+     * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getQuestions()
     {

@@ -27,6 +27,41 @@
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'description'); ?>
+        <?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
+        <?php echo $form->error($model,'description'); ?>
+    </div>
+
+    <h3>Passing Rule</h3>
+    <div class="row">
+        <table>
+            <?php $passingRule = $model->getPassingRule(); ?>
+            <?php foreach($rules as $rule): ?>
+                <tr>
+                    <td>
+                        <label for='rule<?php echo $rule['id']; ?>' ><?php echo $rule['name']; ?></label>
+                        <?php echo CHtml::radioButton('Rendes_Modules_Courses_Entities_Quiz_Quiz[rule_id]', false, array('id' => 'rule'.$rule['id'], 'value' => $rule['id']) ); ?>
+                    </td>
+                    <td>
+                        <table>
+                            <?php foreach($rule['fields'] as $field): ?>
+                                <tr>
+                                    <td>
+                                        <label for="<?php echo $field['id'] ?>"><?php echo $field['label'] ?>:</label>
+                                    </td>
+                                    <td>
+                                        <input type="<?php echo $field['type'] ?>" name="Rendes_Modules_Courses_Entities_Quiz_Quiz[rule][<?php echo $field['name'] ?>]" value=""/>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Save'); ?>
 	</div>

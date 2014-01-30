@@ -14,4 +14,11 @@ class QuizRepository extends EntityRepository
         $query->setParameter('id', $id);
         return $query->getSingleResult();
     }
+
+    public function getAvailableCalculators()
+    {
+        return array(
+            ''
+        );
+    }
 }

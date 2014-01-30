@@ -1,0 +1,8 @@
+<div class="form">
+    <?php echo CHtml::radioButtonList($this->name, '', $this->items); ?>
+    <?php echo CHtml::hiddenField($this->name.'Discriminator'); ?>
+</div><!-- form -->
+
+<div id='<?php echo $this->name ?>Container'>
+
+</div>

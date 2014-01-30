@@ -32,6 +32,11 @@ return array(
         'resultRepositories' => array(
             'lectures' => '\Rendes\Modules\Courses\Repositories\LectureResultRepository'
         ),
+        'namespaces' => array(
+            'quiz' => array(
+                'rules' => '\Rendes\Modules\Courses\Entities\Quiz\Rules',
+            ),
+        ),
     ),
     'modules'=>array(
         'courses' => array(
