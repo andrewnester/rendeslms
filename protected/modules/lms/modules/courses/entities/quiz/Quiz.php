@@ -57,11 +57,18 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     private $questions;
 
     /**
-     * @var string
+     * @var array
      *
-     * @ORM\Column(name="passing_rule", type="string", length=255, nullable=false)
+     * @ORM\Column(name="passing_rule", type="array", nullable=false)
      */
     private $passingRule;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="widget", type="array", nullable=false)
+     */
+    private $widget;
 
     /**
      * @var \DateTime
@@ -77,28 +84,71 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
      */
     private $updated;
 
-    private $quizRulesNamespace;
+
+
 
     public function __construct()
     {
-        $this->quizRulesNamespace = \Yii::app()->getModule('lms')->params['namespaces']['quiz']['rules'] . '\\';
         $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
-
+    /**
+     * @return bool
+     */
     public function isPassed()
     {
 
     }
 
+    /**
+     * @return bool
+     */
     public function isStarted()
     {
 
     }
 
 
+    /**
+     * @return array
+     */
+    public function rules(){
+        return array(
+            array('name, description, passingRule, widget', 'required'),
+        );
+    }
 
+
+
+    /**
+     * @param array $widget
+     */
+    public function setWidget($widget)
+    {
+        $this->widget = $widget;
+    }
+
+    /**
+     * @return array
+     */
+    public function getWidget()
+    {
+        if(empty($this->widget)){
+            return array();
+        }
+
+        return $this->widget;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWidgetObject()
+    {
+        $widget = array_shift(array_values($this->widget));
+        return new $widget['classname']($widget['options']);
+    }
 
     /**
      * @param string $passingRule
@@ -109,22 +159,24 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getPassingRule()
     {
         if(empty($this->passingRule)){
-            return new \stdClass();
+            return array();
         }
 
-        try{
-            $className = $this->quizRulesNamespace . $this->passingRule;
-            $rule = new $className();
-        }catch(\Exception $e){
-            throw new \CException('There is no such quiz passing rule');
-        }
+        return $this->passingRule;
+    }
 
-        return $rule;
+    /**
+     * @return \Rendes\Modules\Courses\Interfaces\Quiz\IQuizRule
+     */
+    public function getPassingRuleObject()
+    {
+        $rule = array_shift(array_values($this->passingRule));
+        return new $rule['classname']($rule['options']);
     }
 
     /**
@@ -216,24 +268,11 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     }
 
     /**
-     * @param \Rendes\Modules\Courses\Entities\Quiz\QuizConfiguration $configuration
+     * @return string
      */
-    public function setConfiguration($configuration)
-    {
-        $this->configuration = $configuration;
-    }
-
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @return \Rendes\Modules\Courses\Interfaces\Quiz\IQuizConfiguration
-     */
-    public function getConfiguration()
-    {
-        return $this->configuration;
     }
 
     /** @ORM\PrePersist */
@@ -264,9 +303,6 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     {
         return $this->description;
     }
-
-
-
 
 
 }

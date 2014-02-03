@@ -4,11 +4,11 @@
     "description": "Should be answered concrete count of all questions",
     "classname": "\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Rules\\CountAnsweredQuizRule",
     "fields":{
-        "percent" : {
+        "count" : {
             "id": "count",
             "label": "Count",
             "name": "count",
-            "type": "text",
+            "type": "textField",
             "default": 0
         }
     }

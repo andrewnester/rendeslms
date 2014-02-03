@@ -26,4 +26,12 @@ abstract class BaseService
         $repositoryName = \Yii::app()->getModule('lms')->params->resultRepositories[$name];
         return new $repositoryName();
     }
+
+    public function getClassName($classname)
+    {
+        if (preg_match('@\\\\([\w]+)$@', $classname, $matches)) {
+            $classname = $matches[1];
+        }
+        return $classname;
+    }
 }

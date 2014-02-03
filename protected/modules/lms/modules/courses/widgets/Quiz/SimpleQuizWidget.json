@@ -1,0 +1,15 @@
+{
+    "id": 2,
+    "name": "Simple Quiz",
+    "description": "Show quiz in provided order",
+    "classname": "\\Rendes\\Modules\\Courses\\Widgets\\Quiz\\SimpleQuizWidget",
+    "fields":{
+        "random" : {
+            "id": "random",
+            "label": "Randomize Questions?",
+            "name": "random",
+            "type": "checkBox",
+            "default": false
+        }
+    }
+}

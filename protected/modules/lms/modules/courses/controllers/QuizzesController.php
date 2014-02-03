@@ -38,31 +38,30 @@ class QuizzesController extends \Rendes\Controllers\LMSController
     public function actionUpdate($id, $stepID, $courseID)
     {
         try{
+            $quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($id);
             $step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($stepID);
-            $lecture = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByID($id);
         }catch(\Exception $e){
-            throw new \CHttpException(404, 'Such lecture does not exist');
+            throw new \CHttpException(404, 'Such step does not exist');
         }
 
-        $lectureData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Lecture_Lecture');
-        $lecture->setAttributes($lectureData);
+        $quizData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Quiz_Quiz');
+        $quizService = new \Rendes\Modules\Courses\Services\QuizService();
 
-        $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
-
-        if(!is_null($lectureData) && $lecture->validate())
+        if(!is_null($quizData))
         {
-            $lecture = $lecturesService->populate($lecture, $step, $lectureData);
-
-            $this->getEntityManager()->persist($lecture);
-            $this->getEntityManager()->flush();
-
-            $this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
+            $quiz = $quizService->populate($quiz, $step, $quizData);
+            if($quiz->validate()){
+                $this->getEntityManager()->persist($quiz);
+                $this->getEntityManager()->flush();
+                $this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
+            }
         }
 
         $this->render('update',array(
-            'model' => $lecture,
-            'rules' => $lecturesService->getAvailableRules(),
+            'model'=>$quiz,
             'step' => $step,
+            'rules' => $quizService->getAvailableRules(),
+            'widgets' => $quizService->getAvailableWidgets(),
         ));
     }
 
@@ -82,24 +81,23 @@ class QuizzesController extends \Rendes\Controllers\LMSController
         }
 
         $quizData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Quiz_Quiz');
-        $quiz->setAttributes($quizData);
-
         $quizService = new \Rendes\Modules\Courses\Services\QuizService();
 
-        if(!is_null($quizData) && $quiz->validate())
+        if(!is_null($quizData))
         {
             $quiz = $quizService->populate($quiz, $step, $quizData);
-
-            $this->getEntityManager()->persist($quiz);
-            $this->getEntityManager()->flush();
-
-            $this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
+            if($quiz->validate()){
+                $this->getEntityManager()->persist($quiz);
+                $this->getEntityManager()->flush();
+                $this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
+            }
         }
 
         $this->render('create',array(
             'model'=>$quiz,
             'step' => $step,
             'rules' => $quizService->getAvailableRules(),
+            'widgets' => $quizService->getAvailableWidgets(),
         ));
     }
 
@@ -108,8 +106,11 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
     public function actionView($id, $stepID, $courseID)
     {
+        $quizService = new \Rendes\Modules\Courses\Services\QuizService();
         $this->render('view',array(
             'model' => $this->loadQuiz($id),
+            'rules' => $quizService->getAvailableRules(),
+            'widgets' => $quizService->getAvailableWidgets(),
             'stepID' => $stepID,
             'courseID' => $courseID
         ));

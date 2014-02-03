@@ -1,0 +1,22 @@
+{
+    "id": 1,
+    "name": "Limited Time Quiz",
+    "description": "All questions should be answered during concrete period of time",
+    "classname": "\\Rendes\\Modules\\Courses\\Widgets\\Quiz\\LimitedTimeQuizWidget",
+    "fields":{
+        "time" : {
+            "id": "time",
+            "label": "Time Limit (sec)",
+            "name": "time",
+            "type": "textField",
+            "default": 300
+        },
+        "random" : {
+            "id": "random",
+            "label": "Randomize Questions?",
+            "name": "random",
+            "type": "checkBox",
+            "default": false
+        }
+    }
+}

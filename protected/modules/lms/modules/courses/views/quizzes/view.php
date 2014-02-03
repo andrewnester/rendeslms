@@ -38,6 +38,46 @@ if($this->checkAccess('teacher')){
 
 <hr/>
 
+<h2>Passing Rule</h2>
+<?php $passingRule = $model->getPassingRule(); ?>
+<?php if(count($passingRule) > 0): ?>
+    <table>
+        <?php foreach($passingRule as $ruleID => $options): ?>
+            <tr>
+                <td><?php echo $rules[$ruleID]['name'] ?></td>
+                <td>
+                    <?php echo $rules[$ruleID]['description'] ?>
+                    <?php foreach($options['options'] as $option => $value): ?>
+                        <p><strong><?php echo $rules[$ruleID]['fields'][$option]['label'] ?>:</strong> <?php echo $value ?></p>
+                    <?php endforeach; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <p>There are no passing rules</p>
+<?php endif; ?>
+
+<h2>Widget To Display Quiz</h2>
+<?php $widget = $model->getwidget(); ?>
+<?php if(count($widget) > 0): ?>
+    <table>
+        <?php foreach($widget as $widgetID => $options): ?>
+            <tr>
+                <td><?php echo $widgets[$widgetID]['name'] ?></td>
+                <td>
+                    <?php echo $widgets[$widgetID]['description'] ?>
+                    <?php foreach($options['options'] as $option => $value): ?>
+                        <p><strong><?php echo $widgets[$widgetID]['fields'][$option]['label'] ?>:</strong> <?php echo $value ?></p>
+                    <?php endforeach; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <p>There are no widgets</p>
+<?php endif; ?>
+
 <?php if($this->checkAccess('teacher')): ?>
     <?php $this->widget('\Rendes\Widgets\ElementRenderWidget', array(
         'name' => 'Questions',

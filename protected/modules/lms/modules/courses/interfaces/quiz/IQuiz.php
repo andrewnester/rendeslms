@@ -5,11 +5,9 @@ namespace Rendes\Modules\Courses\Interfaces\Quiz;
 interface IQuiz
 {
     public function getName();
-    /**
-     * @return IQuizConfiguration
-     */
-    public function getConfiguration();
-
+    public function getDescription();
+    public function getPassingRuleObject();
+    public function getQuestions();
 }
 
 

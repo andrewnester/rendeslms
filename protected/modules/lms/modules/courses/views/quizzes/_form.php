@@ -1,6 +1,6 @@
 <?php
 /* @var $this CourseController */
-/* @var $model \Rendes\Modules\Courses\Entities\Lecture\Lecture */
+/* @var $model \Rendes\Modules\Courses\Entities\Quiz\Quiz */
 /* @var $form CActiveForm */
 ?>
 
@@ -27,21 +27,16 @@
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'description'); ?>
-        <?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
-        <?php echo $form->error($model,'description'); ?>
-    </div>
-
     <h3>Passing Rule</h3>
     <div class="row">
         <table>
             <?php $passingRule = $model->getPassingRule(); ?>
+            <?php $ruleId = !empty($passingRule) ? array_shift(array_keys($passingRule))  : false  ?>
             <?php foreach($rules as $rule): ?>
                 <tr>
                     <td>
                         <label for='rule<?php echo $rule['id']; ?>' ><?php echo $rule['name']; ?></label>
-                        <?php echo CHtml::radioButton('Rendes_Modules_Courses_Entities_Quiz_Quiz[rule_id]', false, array('id' => 'rule'.$rule['id'], 'value' => $rule['id']) ); ?>
+                        <?php echo CHtml::radioButton('Rendes_Modules_Courses_Entities_Quiz_Quiz[rule_id]', $rule['id'] == $ruleId , array('id' => 'rule'.$rule['id'], 'value' => $rule['id']) ); ?>
                     </td>
                     <td>
                         <table>
@@ -51,7 +46,41 @@
                                         <label for="<?php echo $field['id'] ?>"><?php echo $field['label'] ?>:</label>
                                     </td>
                                     <td>
-                                        <input type="<?php echo $field['type'] ?>" name="Rendes_Modules_Courses_Entities_Quiz_Quiz[rule][<?php echo $field['name'] ?>]" value=""/>
+                                        <?php $method=$field['type'];  ?>
+                                        <?php echo CHtml::$method("Rendes_Modules_Courses_Entities_Quiz_Quiz[rule][".$rule['id']."][".$field['name']."]",
+                                            isset($passingRule[$rule['id']]['options'][$field['name']]) ? $passingRule[$rule['id']]['options'][$field['name']] : $field['default']) ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+
+    <h3>Widget To Display Quiz</h3>
+    <div class="row">
+        <table>
+            <?php $widget = $model->getWidget(); ?>
+            <?php $widgetID = !empty($widget) ? array_shift(array_keys($widget))  : false  ?>
+            <?php foreach($widgets as $availableWidget): ?>
+                <tr>
+                    <td>
+                        <label for='widget<?php echo $availableWidget['id']; ?>' ><?php echo $availableWidget['name']; ?></label>
+                        <?php echo CHtml::radioButton('Rendes_Modules_Courses_Entities_Quiz_Quiz[widget_id]', $availableWidget['id'] == $widgetID , array('id' => 'widget'.$availableWidget['id'], 'value' => $availableWidget['id']) ); ?>
+                    </td>
+                    <td>
+                        <table>
+                            <?php foreach($availableWidget['fields'] as $field): ?>
+                                <tr>
+                                    <td>
+                                        <label for="<?php echo $field['id'] ?>"><?php echo $field['label'] ?>:</label>
+                                    </td>
+                                    <td>
+                                        <?php $method=$field['type'];  ?>
+                                        <?php echo CHtml::$method("Rendes_Modules_Courses_Entities_Quiz_Quiz[widget][".$availableWidget['id']."][".$field['name']."]",
+                                                    isset($widget[$availableWidget['id']]['options'][$field['name']]) ? $widget[$availableWidget['id']]['options'][$field['name']] : $field['default']) ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

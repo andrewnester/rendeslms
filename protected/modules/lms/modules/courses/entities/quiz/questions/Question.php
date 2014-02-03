@@ -3,6 +3,7 @@
 namespace Rendes\Modules\Courses\Entities\Quiz\Questions;
 
 use Doctrine\ORM\Mapping as ORM;
+use Rendes\Modules\Courses\Services\QuestionService;
 
 /**
  * Question
@@ -47,22 +48,20 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
     protected $answers;
 
     /**
+     * @var array
+     *
+     * @ORM\Column(name="calculator", type="array", nullable=false)
+     */
+    public $calculator;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="question", type="string", length=255, nullable=false)
      */
     protected $question;
 
-    /**
-     * @var \Rendes\Modules\Courses\Interfaces\Quiz\Questions\IQuestionConfiguration
-     */
-    protected $configuration;
 
-    public function getResult($proposedAnswers)
-    {
-        $calculator = $this->configuration->getCalculator();
-        return $calculator->calculate($this->answers, $proposedAnswers);
-    }
 
     /**
      * @return Array
@@ -78,11 +77,6 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
     public function getQuestion()
     {
         return $this->question;
-    }
-
-    public function getConfiguration()
-    {
-        // TODO: Implement getConfiguration() method.
     }
 
     public function getType()
@@ -136,14 +130,6 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
     }
 
     /**
-     * @param \Rendes\Modules\Courses\Interfaces\Quiz\Questions\IQuestionConfiguration $configuration
-     */
-    public function setConfiguration($configuration)
-    {
-        $this->configuration = $configuration;
-    }
-
-    /**
      * @param string $question
      */
     public function setQuestion($question)
@@ -167,8 +153,29 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
         return $this->title;
     }
 
+    /**
+     * @param array $calculator
+     */
+    public function setCalculator($calculator)
+    {
+        $this->calculator = $calculator;
+    }
 
+    /**
+     * @return array
+     */
+    public function getCalculator()
+    {
+        return $this->calculator;
+    }
 
-
+    /**
+     * @return array
+     */
+    public function getWidget()
+    {
+        $questionService = new \Rendes\Modules\Courses\Services\QuestionService();
+        return $questionService->getWidgetByClassName(get_called_class());
+    }
 
 }

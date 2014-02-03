@@ -29,6 +29,15 @@ class QuestionService extends \Rendes\Services\BaseService
         return $question;
     }
 
+    public function getWidgetByClassName($classname)
+    {
+        $widgetPath = \Yii::app()->getModule('lms')->params->namespaces['questions']['widgets'];
+        $widgetClass = $widgetPath . '\\' . $this->getClassName($classname);
+        return new $widgetClass();
+    }
+
+
+
     public function getAvailableTypes()
     {
         return array(

@@ -8,7 +8,7 @@
             "id": "percent",
             "label": "Percent",
             "name": "percent",
-            "type": "text",
+            "type": "textField",
             "default": 80
         }
     }

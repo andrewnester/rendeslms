@@ -33,9 +33,9 @@ return array(
             'lectures' => '\Rendes\Modules\Courses\Repositories\LectureResultRepository'
         ),
         'namespaces' => array(
-            'quiz' => array(
-                'rules' => '\Rendes\Modules\Courses\Entities\Quiz\Rules',
-            ),
+            'questions' => array(
+                'widgets' => '\Rendes\Modules\Courses\Widgets\Questions'
+            )
         ),
     ),
     'modules'=>array(
