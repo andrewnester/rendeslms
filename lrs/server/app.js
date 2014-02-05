@@ -8,19 +8,16 @@
 var express = require('express')
   , routes = require('./routes')
   , http = require('http')
-  , path = require('path');
+  , passport = require('passport');
 
 var log = require('./libs/log')(module);
 var mongoose = require('./libs/mongoose');
 var config = require('./libs/config');
 var errorHandlers = require('./libs/errorHandlers');
+var oauth2 = require('./libs/oauth2');
 
-var auth = require('http-auth');
-var basic = auth.basic({
-    realm: "Simon Area.",
-    file: __dirname + "/../users.htpasswd"
-});
 var app = express();
+
 
 
 
@@ -30,12 +27,10 @@ var app = express();
  *
  *************************************/
 
-
-
 app.configure(function(){
     app.set('port', config.get('port'));
 
-    app.use(auth.connect(basic));
+    app.use(passport.initialize());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('your secret here'));
@@ -47,6 +42,7 @@ app.configure(function(){
 
 });
 
+require('./libs/auth');
 
 
 /*************************************
@@ -56,13 +52,22 @@ app.configure(function(){
  *************************************/
 
 app.get('/', routes.index);
+app.post('/oauth/token', oauth2.token);
+app.get('/api/userInfo',
+    passport.authenticate('bearer', { session: false }),
+    function(req, res) {
+        res.json({ user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope })
+    }
+);
+
+
+
 
 /*************************************
  *
  *    Starting server block
  *
  *************************************/
-
 
 http.createServer(app).listen(app.get('port'), function(){
   log.info("Express server listening on port " + app.get('port'));
