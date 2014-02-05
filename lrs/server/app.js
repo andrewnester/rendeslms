@@ -50,16 +50,10 @@ require('./libs/auth');
  *          Routes block
  *
  *************************************/
+app.post('/oauth/token', oauth2.token);
+app.all('*', passport.authenticate('bearer', { session: false }));
 
 app.get('/', routes.index);
-app.post('/oauth/token', oauth2.token);
-app.get('/api/userInfo',
-    passport.authenticate('bearer', { session: false }),
-    function(req, res) {
-        res.json({ user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope })
-    }
-);
-
 
 
 
