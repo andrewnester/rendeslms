@@ -45,5 +45,9 @@ User.methods.checkPassword = function(password) {
     return this.encryptPassword(password) === this.hashedPassword;
 };
 
+User.methods.checkPassword = function(password) {
+    return this.encryptPassword(password) === this.hashedPassword;
+};
+
 var UserModel = mongoose.model('User', User);
 module.exports = UserModel;

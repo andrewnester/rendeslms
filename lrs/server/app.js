@@ -5,18 +5,17 @@
  *************************************/
 
 
-var express = require('express')
-  , routes = require('./routes')
-  , http = require('http')
-  , passport = require('passport');
+var express = require('express');
+
+var app = express();
+var passport = require('passport');
+var http = require('http');
+
 
 var log = require('./libs/log')(module);
 var mongoose = require('./libs/mongoose');
 var config = require('./libs/config');
 var errorHandlers = require('./libs/errorHandlers');
-var oauth2 = require('./libs/oauth2');
-
-var app = express();
 
 
 
@@ -42,6 +41,7 @@ app.configure(function(){
 
 });
 
+var routes = require('./routes')(app, passport);
 require('./libs/auth');
 
 
@@ -50,11 +50,6 @@ require('./libs/auth');
  *          Routes block
  *
  *************************************/
-app.post('/oauth/token', oauth2.token);
-app.all('*', passport.authenticate('bearer', { session: false }));
-
-app.get('/', routes.index);
-
 
 
 /*************************************

@@ -1,11 +1,6 @@
-
-/*
- * GET home page.
- */
-
-var log = require('../libs/log')(module);
-
-exports.index = function(req, res){
-    res.status(200);
-    return res.send({ msg: 'All is ok' });
+module.exports = function(app, passport) {
+    require('./oauth/index')(app);
+    require('./users')(app, passport);
+    require('./xapi')(app, passport);
+    require('./main')(app, passport);
 };
