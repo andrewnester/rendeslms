@@ -23,6 +23,10 @@ ResponseService.prototype = {
         this.res.send(200, IDs);
     },
 
+    statementsFound : function(statements){
+        this.res.send(200, statements);
+    },
+
     statementConflict: function(statement){
         log.error('Conflict statement: ' + statement._id);
         this.res.send(409, 'Conflict');
