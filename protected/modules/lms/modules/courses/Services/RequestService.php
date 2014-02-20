@@ -9,7 +9,7 @@ namespace Rendes\Modules\Courses\Services;
 class RequestService
 {
     /**
-     * @var \Rendes\Components\RequestComponent
+     * @var \Rendes\Components\HttpClientComponent
      */
     private $request;
     private $searchData = array();

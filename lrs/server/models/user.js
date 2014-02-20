@@ -15,6 +15,10 @@ var User = new mongoose.Schema({
         type: String,
         required: true
     },
+    clientId: {
+        type: String,
+        required: true
+    },
     created: {
         type: Date,
         default: Date.now

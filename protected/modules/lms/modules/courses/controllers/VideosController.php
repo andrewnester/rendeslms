@@ -53,7 +53,7 @@ class VideosController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'There is no such step');
         }
 
-        $stepData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Step');
+        $stepData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Step');
         $step->setAttributes($stepData);
 
         $stepsService = new \Rendes\Modules\Courses\Services\StepService();
@@ -86,7 +86,7 @@ class VideosController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'Such course does not exist');
         }
 
-        $stepData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Step');
+        $stepData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Step');
         $step->setAttributes($stepData);
 
         $stepsService = new \Rendes\Modules\Courses\Services\StepService();

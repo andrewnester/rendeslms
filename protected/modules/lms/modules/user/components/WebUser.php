@@ -8,13 +8,16 @@ class WebUser extends \CWebUser
     private $_access=array();
 
     public function getRole() {
-        if($user = $this->getModel()){
+        if($user = $this->getEntity()){
             return $user->role;
         }
         return false;
     }
 
-    private function getModel(){
+    /**
+     * @return null|\Rendes\Modules\User\Entities\User
+     */
+    public function getEntity(){
         if (!$this->isGuest && is_null($this->model)){
             $em = \Yii::app()->controller->module->doctrine->getEntityManager();
             $userRepository = $em->getRepository('Rendes\Modules\User\Entities\User');

@@ -6,6 +6,7 @@ module.exports = function(app, passport) {
     app.all('*', passport.authenticate('bearer', { session: false }));
 
     app.get('/', function(req, res){
+        console.log(req.user);
         res.status(200);
         return res.send({ msg: 'All is ok' });
     });

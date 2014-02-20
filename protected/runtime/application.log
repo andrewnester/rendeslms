@@ -1,0 +1,245 @@
+2014/02/20 12:30:24 [error] [exception.CException] exception 'CException' with message 'Rendes\Components\XAPIComponent and its behaviors do not have a method or closure named "init".' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(387): CComponent->__call('init', Array)
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(387): Rendes\Components\XAPIComponent->init()
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('xapi')
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(48): CModule->__get('xapi')
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(36): Rendes\Controllers\LMSController->getXAPI()
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#11 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php?r=lms
+---
+2014/02/20 12:41:27 [error] [exception.CException] exception 'CException' with message 'Property "Rendes\LmsModule.request" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(105): CComponent->__get('request')
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(43): CModule->__get('request')
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(27): Rendes\Components\XAPIComponent->getHttpClientComponent()
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getStatements()
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/20 12:41:42 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:122
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(86): Rendes\Components\HttpClientComponent->handleStatus(Resource id #32)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(28): Rendes\Components\HttpClientComponent->sendGet('http://localhos...', Array)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getStatements()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/20 13:44:30 [error] [exception.CException] exception 'CException' with message 'Property "Rendes\Modules\User\Components\WebUser.username" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\auth\CWebUser.php(146): CComponent->__get('username')
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(52): CWebUser->__get('username')
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/20 13:47:06 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Forbidden! You need to log in first' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:45
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/20 13:47:19 [error] [exception.CHttpException.500] exception 'CHttpException' with message 'Internal Server Error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:124
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(69): Rendes\Components\HttpClientComponent->handleStatus(Resource id #131)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(54): Rendes\Components\HttpClientComponent->sendPost('http://localhos...', Array, false)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php
+---
+2014/02/20 13:47:41 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:124
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(69): Rendes\Components\HttpClientComponent->handleStatus(Resource id #131)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(54): Rendes\Components\HttpClientComponent->sendPost('http://localhos...', Array, false)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php
+---
+2014/02/20 13:48:23 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:124
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(69): Rendes\Components\HttpClientComponent->handleStatus(Resource id #131)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(54): Rendes\Components\HttpClientComponent->sendPost('http://localhos...', Array, false)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php
+---
+2014/02/20 13:48:26 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:124
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(69): Rendes\Components\HttpClientComponent->handleStatus(Resource id #131)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(54): Rendes\Components\HttpClientComponent->sendPost('http://localhos...', Array, false)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/20 13:48:56 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:124
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(69): Rendes\Components\HttpClientComponent->handleStatus(Resource id #131)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(54): Rendes\Components\HttpClientComponent->sendPost('http://localhos...', Array, false)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/20 13:51:34 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(71): Rendes\Components\HttpClientComponent->handleStatus(Resource id #131)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(54): Rendes\Components\HttpClientComponent->sendPost('http://localhos...', Array, false)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/20 13:56:15 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:124
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(69): Rendes\Components\HttpClientComponent->handleStatus(Resource id #131)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(54): Rendes\Components\HttpClientComponent->sendPost('http://localhos...', Array, false)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/20 13:58:34 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Forbidden' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(71): Rendes\Components\HttpClientComponent->handleStatus(Resource id #131)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(54): Rendes\Components\HttpClientComponent->sendPost('http://localhos...', Array, false)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getTokens()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/20 14:05:29 [error] [php] Undefined property: Rendes\Components\XAPIComponent::$entityManager (C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:79)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(59): Rendes\Components\XAPIComponent->getEntityManager()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->requestTokens()
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): Rendes\Controllers\DefaultController->runAction()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Controllers\DefaultController->runActionWithFilters()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Controllers\DefaultController->run()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (79)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (79)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (59)
+2014/02/20 14:13:31 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php:128
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\HttpClientComponent.php(90): Rendes\Components\HttpClientComponent->handleStatus(Resource id #131)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(36): Rendes\Components\HttpClientComponent->sendGet('http://localhos...', Array, Array)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getStatements()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---

@@ -1,6 +1,10 @@
 var mongoose = require('../../libs/mongoose');
 
 var Statement = new mongoose.Schema({
+    client_id:{
+        type: String,
+        required: true
+    },
     actor:{
         type: mongoose.Schema.Types.Mixed,
         required:true

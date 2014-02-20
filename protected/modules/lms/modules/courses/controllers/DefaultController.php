@@ -75,7 +75,7 @@ class DefaultController extends \Rendes\Controllers\LMSController
     {
         $course = new Course();
 
-        $courseData = $this->getRequest()->get('Course');
+        $courseData = $this->getHttpClient()->get('Course');
         $course->setAttributes($courseData);
         if(!is_null($courseData) && $course->validate())
         {
@@ -107,7 +107,7 @@ class DefaultController extends \Rendes\Controllers\LMSController
     {
         $course=$this->loadCourse($id);
 
-        $courseData = $this->getRequest()->get('Course');
+        $courseData = $this->getHttpClient()->get('Course');
         if(!is_null($courseData))
         {
             $course->setName($courseData['name']);
@@ -156,7 +156,7 @@ class DefaultController extends \Rendes\Controllers\LMSController
         $isAdmin = $this->checkAccess('administrator');
 
         $requestService = new \Rendes\Modules\Courses\Services\RequestService();
-        $criteria = $requestService->prepareSearchCriteria($this->getRequest(), $isAdmin);
+        $criteria = $requestService->prepareSearchCriteria($this->getHttpClient(), $isAdmin);
 
         $dataProvider = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course');
         $dataProvider->setCriteria($criteria);

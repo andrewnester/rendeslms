@@ -25,21 +25,28 @@ class LMSController extends \Controller
     }
 
     /**
-     * @return \Rendes\Components\RequestComponent
+     * @return \Rendes\Components\HttpClientComponent
      */
-    public function getRequest()
+    public function getHttpClient()
     {
-        return \Yii::app()->getModule('lms')->request;
+        return \Yii::app()->getModule('lms')->http;
     }
 
     /**
-     * @return LMSUser
+     * @return \Rendes\Modules\User\Components\WebUser
      */
     public function getUser()
     {
         return \Yii::app()->getModule('lms')->getModule('user')->user;
     }
 
+    /**
+     * @return \Rendes\Components\XAPIComponent
+     */
+    public function getXAPI()
+    {
+        return \Yii::app()->getModule('lms')->xapi;
+    }
 
 
     /**

@@ -44,7 +44,7 @@ server.exchange(oauth2orize.exchange.password(function(client, username, passwor
             }
         });
 
-        var info = { scope: '*' }
+        var info = { scope: '*' };
         token.save(function (err, token) {
             if (err) {
                 return done(err);

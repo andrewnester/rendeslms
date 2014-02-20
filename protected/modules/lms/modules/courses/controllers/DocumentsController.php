@@ -45,7 +45,7 @@ class DocumentsController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'There is no such step');
         }
 
-        $stepData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Step');
+        $stepData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Step');
         $step->setAttributes($stepData);
 
         $stepsService = new \Rendes\Modules\Courses\Services\StepService();
@@ -78,7 +78,7 @@ class DocumentsController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'Such lecture does not exist');
         }
 
-        $documentData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Lecture_Document');
+        $documentData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Lecture_Document');
         $document->setAttributes($documentData, false);
         $document->setScenario('create');
 

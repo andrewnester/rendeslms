@@ -51,6 +51,20 @@ class User extends \CModel
     private $role;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="access_token", type="string", length=255, nullable=false)
+     */
+    private $accessToken;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="refreshToken", type="string", length=255, nullable=false)
+     */
+    private $refreshToken;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
@@ -198,6 +212,40 @@ class User extends \CModel
     {
         $this->modified = new \DateTime();
     }
+
+    /**
+     * @param string $accessToken
+     */
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @param string $refreshToken
+     */
+    public function setRefreshToken($refreshToken)
+    {
+        $this->refreshToken = $refreshToken;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRefreshToken()
+    {
+        return $this->refreshToken;
+    }
+
+
 
 
     public function attributeNames()

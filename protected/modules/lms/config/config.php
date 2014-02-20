@@ -23,8 +23,14 @@ return array(
             'host' => 'localhost',
             'dbname' => 'yiilms'
         ),
-        'request' => array(
-            'class' => '\Rendes\Components\RequestComponent'
+        'http' => array(
+            'class' => '\Rendes\Components\HttpClientComponent'
+        ),
+        'xapi' => array(
+            'class' => '\Rendes\Components\XAPIComponent',
+            'baseUrl' => 'http://localhost:3000/xapi/',
+            'clientID' => 'mobileV1',
+            'clientSecret' => 'abc123456'
         ),
     ),
 

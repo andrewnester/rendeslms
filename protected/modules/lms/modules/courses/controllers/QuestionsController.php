@@ -43,7 +43,7 @@ class QuestionsController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'Such lecture does not exist');
         }
 
-        $lectureData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Lecture_Lecture');
+        $lectureData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Lecture_Lecture');
         $lecture->setAttributes($lectureData);
 
         $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
@@ -70,7 +70,7 @@ class QuestionsController extends \Rendes\Controllers\LMSController
 
     public function actionCreate($quizID, $stepID, $courseID)
     {
-        $questionType = $this->getRequest()->get('type', 'Question');
+        $questionType = $this->getHttpClient()->get('type', 'Question');
         try{
             $className = "\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\".$questionType;
             $question = new $className();
@@ -79,7 +79,7 @@ class QuestionsController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'Such step does not exist');
         }
 
-        $questionData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Quiz_Questions_'.$questionType);
+        $questionData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Quiz_Questions_'.$questionType);
         $question->setAttributes($questionData);
 
         $questionService = new \Rendes\Modules\Courses\Services\QuestionService();
@@ -119,13 +119,13 @@ class QuestionsController extends \Rendes\Controllers\LMSController
 
     public function actionForm()
     {
-        $questionType = $this->getRequest()->get('questionType');
+        $questionType = $this->getHttpClient()->get('questionType');
 
         try{
             $className = '\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\'.$questionType;
             $question = new $className();
         }catch(\Exception $e){
-            $this->getRequest()->json(array('error' => 'There is no such question type'), 500);
+            $this->getHttpClient()->json(array('error' => 'There is no such question type'), 500);
         }
 
         $this->renderPartial('_' . strtolower($questionType), array(

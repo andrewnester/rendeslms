@@ -43,7 +43,7 @@ class LecturesController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'Such lecture does not exist');
         }
 
-        $lectureData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Lecture_Lecture');
+        $lectureData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Lecture_Lecture');
         $lecture->setAttributes($lectureData);
 
         $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
@@ -74,7 +74,7 @@ class LecturesController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'Such step does not exist');
         }
 
-        $lectureData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Lecture_Lecture');
+        $lectureData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Lecture_Lecture');
         $lecture->setAttributes($lectureData);
 
         $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
@@ -109,7 +109,7 @@ class LecturesController extends \Rendes\Controllers\LMSController
 
     public function actionOrder($stepID, $courseID)
     {
-        $orderData = $this->getRequest()->get('order');
+        $orderData = $this->getHttpClient()->get('order');
         $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
         $lecturesIterator = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByIDArray(array_values($orderData));
         foreach($lecturesIterator as $lecture){
@@ -119,7 +119,7 @@ class LecturesController extends \Rendes\Controllers\LMSController
         $this->getEntityManager()->flush();
         $this->getEntityManager()->clear();
 
-        $this->getRequest()->json(array('message' => 'Successfully Saved'));
+        $this->getHttpClient()->json(array('message' => 'Successfully Saved'));
     }
 
     protected function loadLecture($id)

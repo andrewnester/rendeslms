@@ -44,7 +44,7 @@ class QuizzesController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'Such step does not exist');
         }
 
-        $quizData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Quiz_Quiz');
+        $quizData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Quiz_Quiz');
         $quizService = new \Rendes\Modules\Courses\Services\QuizService();
 
         if(!is_null($quizData))
@@ -80,7 +80,7 @@ class QuizzesController extends \Rendes\Controllers\LMSController
             throw new \CHttpException(404, 'Such step does not exist');
         }
 
-        $quizData = $this->getRequest()->get('Rendes_Modules_Courses_Entities_Quiz_Quiz');
+        $quizData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Quiz_Quiz');
         $quizService = new \Rendes\Modules\Courses\Services\QuizService();
 
         if(!is_null($quizData))
@@ -121,7 +121,7 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
     public function actionOrder($stepID, $courseID)
     {
-        $orderData = $this->getRequest()->get('order');
+        $orderData = $this->getHttpClient()->get('order');
         $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
         $lecturesIterator = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByIDArray(array_values($orderData));
         foreach($lecturesIterator as $lecture){
@@ -131,7 +131,7 @@ class QuizzesController extends \Rendes\Controllers\LMSController
         $this->getEntityManager()->flush();
         $this->getEntityManager()->clear();
 
-        $this->getRequest()->json(array('message' => 'Successfully Saved'));
+        $this->getHttpClient()->json(array('message' => 'Successfully Saved'));
     }
 
     protected function loadQuiz($id)
