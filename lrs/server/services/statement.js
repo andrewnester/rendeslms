@@ -5,15 +5,15 @@ function StatementService(){}
 
 StatementService.prototype = {
 
-    storeIfNotExist: function(statement, success, exist, error)
+    storeIfNotExist: function(user, statement, success, exist, error)
     {
         var that = this;
-        StatementModel.findById(statement.id, function(err, foundStatement){
+        StatementModel.findOne({'id':statement.id, 'clientId': user.clientId}, function(err, foundStatement){
             if(foundStatement){
                 return exist(foundStatement);
             }
 
-            var statementObject = that.prepare(statement);
+            var statementObject = that.prepare(user, statement);
             return statementObject.save(function (err, statement) {
                     if (err){
                         return error(err);
@@ -24,7 +24,7 @@ StatementService.prototype = {
         });
     },
 
-    storeStatements: function(statements, success, exist, error)
+    storeStatements: function(user, statements, success, exist, error)
     {
         var total = statements.length;
         var that = this;
@@ -34,7 +34,7 @@ StatementService.prototype = {
         {
             storedStatements.push(statement);
             if (--total) {
-                return that.storeStatement(statements.pop(), _stored, exist, error)
+                return that.storeStatement(user, statements.pop(), _stored, exist, error)
             }
             else{
                 return success(storedStatements);
@@ -43,16 +43,16 @@ StatementService.prototype = {
 
 
         var statement = statements.pop();
-        this.storeStatement(statement, _stored, exist, error);
+        this.storeStatement(user, statement, _stored, exist, error);
     },
 
-    storeStatement: function(statement, success, exist, error)
+    storeStatement: function(user, statement, success, exist, error)
     {
         if(statement.id != undefined){
-            return this.storeIfNotExist(statement, success, exist, error);
+            return this.storeIfNotExist(user, statement, success, exist, error);
         }
 
-        var statementObject = this.prepare(statement);
+        var statementObject = this.prepare(user, statement);
         return statementObject.save(function (err, statement) {
                 if (err){
                     return error(err);
@@ -62,8 +62,9 @@ StatementService.prototype = {
         )
     },
 
-    prepare: function(statement)
+    prepare: function(user, statement)
     {
+        statement['clientId'] = user.clientId;
         if(statement.id != undefined){
             statement._id = statement.id;
         }
@@ -144,7 +145,7 @@ StatementService.prototype = {
         return searchOptions;
     },
 
-    findOneOrMore: function(options, limit, success, error)
+    findOneOrMore: function(user, options, limit, success, error)
     {
         StatementModel.find(options, {}, {limit: limit}, function(err, statements){
            if(err){

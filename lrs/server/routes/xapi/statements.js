@@ -16,7 +16,7 @@ module.exports = function(app) {
         var receivedStatement = req.body;
         receivedStatement.id = statementId;
 
-        statementService.storeIfNotExist(receivedStatement,
+        statementService.storeIfNotExist(req.user, receivedStatement,
             response.statementPutOk.bind(response),
             response.statementConflict.bind(response),
             response.error.bind(response));
@@ -31,12 +31,12 @@ module.exports = function(app) {
         }
 
         if( statements.length > 0 ){
-            return statementService.storeStatements(statements,
+            return statementService.storeStatements(req.user, statements,
                 response.statementsPostOk.bind(response),
                 response.statementConflict.bind(response),
                 response.error.bind(response));
         }
-        return statementService.storeStatement(statements,
+        return statementService.storeStatement(req.user, statements,
             response.statementPostOk.bind(response),
             response.statementConflict.bind(response),
             response.error.bind(response));
@@ -48,7 +48,7 @@ module.exports = function(app) {
         var limit = req.query.limit != undefined && req.query.limit < 50 && req.query.limit > 0 ? req.query.limit : 50;
         var searchOptions = statementService.prepareSearchOptions(req);
         console.log(searchOptions);
-        statementService.findOneOrMore(searchOptions, limit, response.statementsFound.bind(response), response.error.bind(response));
+        statementService.findOneOrMore(req.user, searchOptions, limit, response.statementsFound.bind(response), response.error.bind(response));
 
 
     });

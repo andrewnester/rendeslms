@@ -1,7 +1,7 @@
 var mongoose = require('../../libs/mongoose');
 
 var Statement = new mongoose.Schema({
-    client_id:{
+    clientId:{
         type: String,
         required: true
     },

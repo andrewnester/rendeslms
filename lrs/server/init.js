@@ -6,7 +6,7 @@ var AccessTokenModel        = require('./models/accessToken');
 var RefreshTokenModel        = require('./models/refreshToken');
 
 UserModel.remove({}, function(err) {
-    var user = new UserModel({ username: "admin", password: "90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad", clientId: 'mobileV1' });
+    var user = new UserModel({ username: "admin2", password: "90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad", clientId: 'mobileV1' });
     user.save(function(err, user) {
         if(err) return log.error(err);
         else log.info("New user - %s:%s",user.username,user.password);
