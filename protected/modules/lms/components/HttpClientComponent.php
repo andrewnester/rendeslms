@@ -62,6 +62,9 @@ class HttpClientComponent extends \CComponent
     public function sendPost($url, $data, $json = true, $headers = array())
     {
         $postData = $json ? json_encode($data) : http_build_query($data);
+        if($json){
+            $headers[] = 'Content-type: application/json';
+        }
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
@@ -102,6 +105,11 @@ class HttpClientComponent extends \CComponent
     public function sendPut($url, $data, $json = true, $headers = array())
     {
         $putData = $json ? json_encode($data) : http_build_query($data);
+
+        if($json){
+            $headers[] = 'Content-type: application/json';
+        }
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
         curl_setopt($ch, CURLOPT_URL, $url);

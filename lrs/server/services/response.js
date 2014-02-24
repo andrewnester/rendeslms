@@ -6,7 +6,7 @@ ResponseService.prototype = {
 
     res:{},
 
-    statementPutOk : function(){
+    statementPutOk : function(statement){
         this.res.send(204, 'No Content');
     },
 

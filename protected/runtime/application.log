@@ -317,3 +317,766 @@ Stack trace:
 #10 {main}
 REQUEST_URI=/rendeslms/index.php/lms
 ---
+2014/02/24 13:42:52 [error] [exception.Doctrine\ORM\ORMException] exception 'Doctrine\ORM\ORMException' with message 'The identifier id is missing for a query of Rendes\Modules\User\Entities\User' in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\ORMException.php:160
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityManager.php(380): Doctrine\ORM\ORMException::missingIdentifierField('Rendes\Modules\...', 'id')
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityRepository.php(131): Doctrine\ORM\EntityManager->find('Rendes\Modules\...', NULL, 0, NULL)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Components\WebUser.php(24): Doctrine\ORM\EntityRepository->find(NULL)
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(31): Rendes\Modules\User\Components\WebUser->getEntity()
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(90): Rendes\Components\XAPIComponent->authenticate()
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->postStatement(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/rendeslms/index.php/lms/
+---
+2014/02/24 13:43:47 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Forbidden! You need to log in first' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:28
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(90): Rendes\Components\XAPIComponent->authenticate()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->postStatement(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#8 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/rendeslms/index.php/lms/
+---
+2014/02/24 13:43:58 [error] [php] Object of class DateInterval could not be converted to int (C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Entities\User.php:249)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->postStatement()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): Rendes\Controllers\DefaultController->runAction()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Controllers\DefaultController->runActionWithFilters()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Controllers\DefaultController->run()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Entities\User.php (249)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (33)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (90)
+2014/02/24 13:46:46 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:115
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(35): Rendes\Components\XAPIComponent->requestTokens()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(90): Rendes\Components\XAPIComponent->authenticate()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->postStatement(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php
+---
+2014/02/24 13:49:35 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:115
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(35): Rendes\Components\XAPIComponent->requestTokens()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(90): Rendes\Components\XAPIComponent->authenticate()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->postStatement(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php
+---
+2014/02/24 13:49:36 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:115
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(35): Rendes\Components\XAPIComponent->requestTokens()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(90): Rendes\Components\XAPIComponent->authenticate()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->postStatement(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php
+---
+2014/02/24 13:49:40 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Forbidden' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:115
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(35): Rendes\Components\XAPIComponent->requestTokens()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(90): Rendes\Components\XAPIComponent->authenticate()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->postStatement(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/24 13:52:51 [error] [php] Undefined property: stdClass::$expires (C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:160)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(89): Rendes\Components\XAPIComponent->authenticate()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->postStatement()
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): Rendes\Controllers\DefaultController->runAction()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Controllers\DefaultController->runActionWithFilters()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Controllers\DefaultController->run()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (160)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (118)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (34)
+2014/02/24 13:57:25 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:85
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/24 13:58:22 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/24 13:59:00 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/24 14:00:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/24 14:05:38 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/24 14:05:52 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+---
+2014/02/24 14:07:24 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:08:18 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:09:30 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:18:41 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:18:59 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:19:40 [error] [exception.CHttpException.204] exception 'CHttpException' with message 'LRS Connection:No Content' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:20:04 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:21:32 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:106
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->postStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:21:56 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:106
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->postStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:23:01 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:28:01 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:28:34 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:28:48 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:33:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:34:06 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:34:50 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:37:28 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:38:04 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:44:02 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:44:21 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:48:29 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:48:50 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:49:00 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:51:13 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:51:41 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:56:43 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:57:03 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:58:22 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 14:59:06 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:05:25 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:06:06 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:06:49 [error] [exception.CHttpException.409] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:09:05 [error] [exception.CHttpException.204] exception 'CHttpException' with message 'LRS Connection:No Content' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:09:16 [error] [exception.CHttpException.204] exception 'CHttpException' with message 'LRS Connection:No Content' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:10:16 [error] [exception.CHttpException.204] exception 'CHttpException' with message 'LRS Connection:No Content' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:13:13 [error] [exception.CHttpException.204] exception 'CHttpException' with message 'LRS Connection:No Content' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:13:34 [error] [exception.CHttpException.204] exception 'CHttpException' with message 'LRS Connection:No Content' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:14:23 [error] [exception.CHttpException.204] exception 'CHttpException' with message 'LRS Connection:No Content' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---
+2014/02/24 16:15:50 [error] [exception.CHttpException.204] exception 'CHttpException' with message 'LRS Connection:No Content' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:87
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(60): Rendes\Components\XAPIComponent->putStatement(Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
+---

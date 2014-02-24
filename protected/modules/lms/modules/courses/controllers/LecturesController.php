@@ -33,7 +33,6 @@ class LecturesController extends \Rendes\Controllers\LMSController
 
 
 
-
     public function actionUpdate($id, $stepID, $courseID)
     {
         try{

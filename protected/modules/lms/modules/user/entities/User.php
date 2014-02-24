@@ -65,6 +65,20 @@ class User extends \CModel
     private $refreshToken;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="expires", type="integer", nullable=false)
+     */
+    private $expires;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="token_updated", type="datetime", nullable=false)
+     */
+    private $tokenUpdated;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
@@ -79,11 +93,17 @@ class User extends \CModel
     private $modified;
 
 
+
+
+
+
     public function rules(){
         return array(
             array('name, password', 'required'),
         );
     }
+
+
 
 
 
@@ -222,10 +242,14 @@ class User extends \CModel
     }
 
     /**
-     * @return string
+     * @return string|bool
      */
     public function getAccessToken()
     {
+
+        if((time() - $this->getTokenUpdated()->getTimestamp()) >= $this->getExpires()){
+            return false;
+        }
         return $this->accessToken;
     }
 
@@ -244,6 +268,39 @@ class User extends \CModel
     {
         return $this->refreshToken;
     }
+
+    /**
+     * @param \DateTime $tokenUpdated
+     */
+    public function setTokenUpdated($tokenUpdated)
+    {
+        $this->tokenUpdated = $tokenUpdated;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTokenUpdated()
+    {
+        return $this->tokenUpdated;
+    }
+
+    /**
+     * @param int $expires
+     */
+    public function setExpires($expires)
+    {
+        $this->expires = $expires;
+    }
+
+    /**
+     * @return int
+     */
+    public function getExpires()
+    {
+        return $this->expires;
+    }
+
 
 
 

@@ -21,17 +21,33 @@ class XAPIComponent extends \CComponent
 
     }
 
+    public function authenticate()
+    {
+        $user = $this->getUser();
+        if($user->isGuest){
+            throw new \CHttpException(403, 'Forbidden! You need to log in first');
+        }
+
+        $user = $user->getEntity();
+        if(!$user->getAccessToken()){
+            if(!$user->getRefreshToken()){
+                $this->requestTokens();
+            }else{
+                $this->refreshTokens();
+            }
+        }
+    }
+
     /**
      * @param array $searchOptions
      * @return bool|mixed
      */
     public function getStatements($searchOptions = array())
     {
+        $this->authenticate();
+
         $http = $this->getHttpClientComponent();
         $user = $this->getUser()->getEntity();
-        if(!$user->getAccessToken()){
-            $this->requestTokens();
-        }
 
         $jsonResponse = $http->sendGet($this->getBaseUrl() . 'statements', $searchOptions, array('Authorization: Bearer ' . $user->getAccessToken()));
         if($jsonResponse === false){
@@ -39,13 +55,8 @@ class XAPIComponent extends \CComponent
         }
 
         $status = $http->getStatus();
-        if($status == 401){
-            $this->refreshTokens();
-        }
-
-        $status = $http->getStatus();
         if($status != 200){
-            throw new \CHttpException($status, $http->getStatusMessage($status));
+            throw new \CHttpException($status, 'LRS Connection:' . $http->getStatusMessage($status));
         }
 
         $jsonResponse = $http->sendGet($this->getBaseUrl() . 'statements', $searchOptions, array('Authorization: Bearer ' . $user->getAccessToken()));
@@ -56,13 +67,58 @@ class XAPIComponent extends \CComponent
         return json_decode($jsonResponse);
     }
 
-    public function requestTokens()
+    /**
+     * @param array $statement
+     */
+    public function putStatement($statement)
+    {
+        $this->authenticate();
+        $user = $this->getUser()->getEntity();
+
+        if(!isset($statement['id'])){
+            return false;
+        }
+
+        $http = $this->getHttpClientComponent();
+        $http->sendPut($this->getBaseUrl() . 'statements?statementId='.$statement['id'], $statement, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
+
+        $status = $http->getStatus();
+        if($status != 200){
+            throw new \CHttpException($status, 'LRS Connection:' . $http->getStatusMessage($status));
+        }
+
+        return true;
+    }
+
+    /**
+     * @param array $statement
+     */
+    public function postStatement($statement)
+    {
+        $this->authenticate();
+        $user = $this->getUser()->getEntity();
+
+        $http = $this->getHttpClientComponent();
+        $http->sendPost($this->getBaseUrl() . 'statements', $statement, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
+
+        $status = $http->getStatus();
+        if($status != 200){
+            throw new \CHttpException($status, 'LRS Connection:' . $http->getStatusMessage($status));
+        }
+
+        return true;
+    }
+
+
+
+
+    /**
+     * @throws \CHttpException
+     */
+    private function requestTokens()
     {
         $http = $this->getHttpClientComponent();
         $user = $this->getUser()->getEntity();
-        if(!$user){
-            throw new \CHttpException(403, 'Forbidden! You need to log in first');
-        }
 
         $jsonResponse = $http->sendPost($this->getBaseUrl() . 'oauth/token', array(
             'grant_type' => 'password',
@@ -72,21 +128,25 @@ class XAPIComponent extends \CComponent
             'password' => $user->getPassword()
         ), false);
 
+        $status = $http->getStatus();
+        if($status != 200){
+            throw new \CHttpException($status, $http->getStatusMessage($status));
+        }
+
         $tokens = json_decode($jsonResponse);
-        $user->setAccessToken($tokens->access_token);
-        $user->setRefreshToken($tokens->refresh_token);
+        $user = $this->populateUserTokens($user, $tokens);
+
         $em = $this->getEntityManager();
         $em->flush();
     }
 
-
-    public function refreshTokens()
+    /**
+     * @throws \CHttpException
+     */
+    private function refreshTokens()
     {
         $http = $this->getHttpClientComponent();
         $user = $this->getUser()->getEntity();
-        if(!$user){
-            throw new \CHttpException(403, 'Forbidden! You need to log in first');
-        }
 
         $jsonResponse = $http->sendPost($this->getBaseUrl() . 'oauth/token', array(
             'grant_type' => 'refresh_token',
@@ -95,12 +155,33 @@ class XAPIComponent extends \CComponent
             'refresh_token' => $user->getRefreshToken(),
         ), false);
 
+        $status = $http->getStatus();
+        if($status != 200){
+            throw new \CHttpException($status, $http->getStatusMessage($status));
+        }
+
         $tokens = json_decode($jsonResponse);
-        $user->setAccessToken($tokens->access_token);
-        $user->setRefreshToken($tokens->refresh_token);
+        $user = $this->populateUserTokens($user, $tokens);
+
         $em = $this->getEntityManager();
         $em->flush();
     }
+
+    /**
+     * @param \Rendes\Modules\User\Entities\User $user
+     * @param object $tokens
+     * @return \Rendes\Modules\User\Entities\User
+     */
+    private function populateUserTokens($user, $tokens)
+    {
+        $user->setAccessToken($tokens->access_token);
+        $user->setRefreshToken($tokens->refresh_token);
+        $user->setExpires($tokens->expires_in);
+        $user->setTokenUpdated(new \DateTime());
+        return $user;
+    }
+
+
 
     /**
      * @return \Rendes\Components\HttpClientComponent
@@ -109,7 +190,6 @@ class XAPIComponent extends \CComponent
     {
         return \Yii::app()->getModule('lms')->http;
     }
-
 
     /**
      * @return \Doctrine\ORM\EntityManager
@@ -122,7 +202,6 @@ class XAPIComponent extends \CComponent
         return $this->entityManager;
     }
 
-
     /**
      * @return \Rendes\Modules\User\Components\WebUser
      */
@@ -130,6 +209,8 @@ class XAPIComponent extends \CComponent
     {
         return \Yii::app()->getModule('lms')->getModule('user')->user;
     }
+
+
 
 
     public function setBaseUrl($baseUrl)
@@ -161,8 +242,5 @@ class XAPIComponent extends \CComponent
     {
         return $this->clientSecret;
     }
-
-
-
 
 }

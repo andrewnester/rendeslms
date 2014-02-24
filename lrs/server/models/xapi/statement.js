@@ -32,8 +32,7 @@ var Statement = new mongoose.Schema({
     },
     authority:{
         type: mongoose.Schema.Types.Mixed
-    },
-    attachments:[{}]
+    }
 });
 
 

@@ -8,9 +8,13 @@ StatementService.prototype = {
     storeIfNotExist: function(user, statement, success, exist, error)
     {
         var that = this;
-        StatementModel.findOne({'id':statement.id, 'clientId': user.clientId}, function(err, foundStatement){
+        StatementModel.findOne({'_id':statement.id}, function(err, foundStatement){
             if(foundStatement){
-                return exist(foundStatement);
+                if(that.compareStatements(foundStatement, statement)){
+                    return success(foundStatement);
+                }else{
+                    return exist(foundStatement);
+                }
             }
 
             var statementObject = that.prepare(user, statement);
@@ -18,6 +22,7 @@ StatementService.prototype = {
                     if (err){
                         return error(err);
                     }
+
                     return success(statement);
                 }
             )
@@ -75,6 +80,7 @@ StatementService.prototype = {
     {
 
         searchOptions = {
+            'clientId': req.user.clientId,
             'verb.id':{'$ne': 'http://www.adlnet.gov/XAPIprofile/voided'}
         };
 
@@ -157,7 +163,64 @@ StatementService.prototype = {
                return success(statements);
            }
         }).limit(limit);
+    },
+
+    compareStatements: function(statement1, statement2)
+    {
+
+        if(JSON.stringify(this.sortObject(statement1.actor)) != JSON.stringify(this.sortObject(statement2.actor))){
+            return false;
+        }
+
+        if(JSON.stringify(this.sortObject(statement1.verb)) != JSON.stringify(this.sortObject(statement2.verb))){
+            return false;
+        }
+
+        if(JSON.stringify(this.sortObject(statement1.object)) != JSON.stringify(this.sortObject(statement2.object))){
+            return false;
+        }
+
+        if(JSON.stringify(this.sortObject(statement1.result)) != JSON.stringify(this.sortObject(statement2.result))){
+            return false;
+        }
+
+        if(JSON.stringify(this.sortObject(statement1.context)) != JSON.stringify(this.sortObject(statement2.context) )){
+            return false;
+        }
+
+        if(JSON.stringify(this.sortObject(statement1.timestamp)) != JSON.stringify(this.sortObject(statement2.timestamp))){
+            return false;
+        }
+
+        if(JSON.stringify(this.sortObject(statement1.authority)) != JSON.stringify(this.sortObject(statement2.authority))){
+            return false;
+        }
+
+        if(JSON.stringify(this.sortObject(statement1.attachments)) != JSON.stringify(this.sortObject(statement2.attachments))){
+            return false;
+        }
+
+        return true;
+    },
+
+    sortObject: function(obj)
+    {
+        if(obj == undefined){
+            return {};
+        }
+
+        var keys = Object.keys(obj),
+            len = keys.length, sortedObj = {};
+
+        keys.sort();
+        for (var i = 0; i < len; i++){
+            sortedObj[keys[i]] = obj[keys[i]];
+        }
+
+        return sortedObj;
     }
+
+
 };
 
 module.exports = new StatementService();
