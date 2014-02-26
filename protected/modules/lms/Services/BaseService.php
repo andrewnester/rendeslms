@@ -21,6 +21,14 @@ abstract class BaseService
         return $this->entityManager;
     }
 
+    /**
+     * @return \SwiftMailer
+     */
+    public function getMailer()
+    {
+        return \Yii::app()->mail;
+    }
+
     public function loadResultRepository($name)
     {
         $repositoryName = \Yii::app()->getModule('lms')->params->resultRepositories[$name];
@@ -33,5 +41,13 @@ abstract class BaseService
             $classname = $matches[1];
         }
         return $classname;
+    }
+
+    /**
+     * @return \Rendes\Components\XAPIComponent
+     */
+    public function getXAPI()
+    {
+        return \Yii::app()->getModule('lms')->xapi;
     }
 }

@@ -65,6 +65,72 @@ class DefaultController extends \Rendes\Controllers\LMSController
         $this->render('login',array('model'=>$model));
     }
 
+
+    /**
+     * Displays the login page
+     */
+    public function actionRegister()
+    {
+        $user = new \Rendes\Modules\User\Entities\User;
+        $user->scenario = 'register';
+
+        $http = $this->getHttpClient();
+        $userData = $http->getPost('Rendes_Modules_User_Entities_User');
+
+        $this->performAjaxValidation($user);
+
+        if($userData){
+            $user->attributes = $userData;
+            if($user->validate()){
+                $userService = new \Rendes\Modules\User\Services\UserService();
+                $entityManager = $this->getEntityManager();
+                $user = $userService->populate($user, $userData);
+
+
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                $userService->sendActivationLink($user, $this->createAbsoluteUrl('/lms/user/activate'));
+
+                $this->redirect('default/activation');
+            }
+        }
+        // display the login form
+        $this->render('register', array('model'=>$user));
+    }
+
+
+    public function actionActivate($code)
+    {
+        $entityManager = $this->getEntityManager();
+        try{
+            $userToActivate = $entityManager->getRepository('Rendes\Modules\User\Entities\User')
+                                            ->findByActivateCode($code);
+        }catch(\Exception $e){
+            $this->render('failed');
+            die();
+        }
+
+
+        $userToActivate->setActivateCode('');
+        $userToActivate->setActivated(true);
+
+        $userService = new \Rendes\Modules\User\Services\UserService();
+        $userService->registerInLRS($userToActivate);
+
+        $entityManager->flush();
+
+        $this->render('activated');
+    }
+
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax'])){
+            echo \CActiveForm::validate($model);
+            \Yii::app()->end();
+        }
+    }
+
     /**
      * Logs out the current user and redirect to homepage.
      */

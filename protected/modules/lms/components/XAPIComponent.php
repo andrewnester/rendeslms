@@ -31,9 +31,9 @@ class XAPIComponent extends \CComponent
         $user = $user->getEntity();
         if(!$user->getAccessToken()){
             if(!$user->getRefreshToken()){
-                $this->requestTokens();
+                $this->requestTokens($user);
             }else{
-                $this->refreshTokens();
+                $this->refreshTokens($user);
             }
         }
     }
@@ -111,14 +111,33 @@ class XAPIComponent extends \CComponent
 
 
 
-
-    /**
-     * @throws \CHttpException
-     */
-    private function requestTokens()
+    public function registerUser(\Rendes\Modules\User\Entities\User $user)
     {
         $http = $this->getHttpClientComponent();
-        $user = $this->getUser()->getEntity();
+        $registerUser = array(
+            'username' => $user->getName(),
+            'password' => $user->getPassword(),
+            'clientId' => $this->getClientID(),
+        );
+        $http->sendPost($this->getBaseUrl() . 'users/register', $registerUser);
+
+        $status = $http->getStatus();
+        if($status != 200){
+            throw new \CHttpException($status, 'LRS Connection:' . $http->getStatusMessage($status));
+        }
+
+        $this->requestTokens($user);
+        return true;
+    }
+
+
+    /**
+     * @param \Rendes\Modules\User\Entities\User $user
+     * @throws \CHttpException
+     */
+    private function requestTokens(\Rendes\Modules\User\Entities\User $user)
+    {
+        $http = $this->getHttpClientComponent();
 
         $jsonResponse = $http->sendPost($this->getBaseUrl() . 'oauth/token', array(
             'grant_type' => 'password',
@@ -143,10 +162,9 @@ class XAPIComponent extends \CComponent
     /**
      * @throws \CHttpException
      */
-    private function refreshTokens()
+    private function refreshTokens(\Rendes\Modules\User\Entities\User $user)
     {
         $http = $this->getHttpClientComponent();
-        $user = $this->getUser()->getEntity();
 
         $jsonResponse = $http->sendPost($this->getBaseUrl() . 'oauth/token', array(
             'grant_type' => 'refresh_token',
@@ -180,6 +198,8 @@ class XAPIComponent extends \CComponent
         $user->setTokenUpdated(new \DateTime());
         return $user;
     }
+
+
 
 
 

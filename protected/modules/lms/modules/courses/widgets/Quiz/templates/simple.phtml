@@ -1,0 +1,25 @@
+<script type='text/javascript'>
+    var QuizConfig = {
+        baseUrl: "<?php echo $questionsUrl?>"
+    };
+</script>
+
+<div id='quiz-container' ng-app='quiz'>
+    <div ng-controller="QuizQuestionCtrl">
+        <div id='quiz-navigation'>
+            <a href="#" ng-click="first()">Start</a>
+            <a href="#">Next</a>
+            <a href="#">Prev</a>
+        </div>
+        <div id='quiz-question'>
+            <h2>{{question.name}}</h2>
+            <div id='question-text'>
+                <strong>Question:</strong>{{question.text}}
+            </div>
+            <div id='question-answer-form'>
+                <p ng-include="question.form"></p>
+                <input type='button' value="Send"/>
+            </div>
+        </div>
+    </div>
+</div>

@@ -67,7 +67,19 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
 
 
+    public function actionStart($id, $stepID, $courseID)
+    {
+        try{
+            $quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($id);
+        }catch(\Exception $e){
+            throw new \CHttpException(404, 'Such quiz does not exist');
+        }
 
+        $quizService = new \Rendes\Modules\Courses\Services\QuizService();
+        $widget = $quizService->getQuizWidget($quiz);
+
+        $this->render('start', array('quiz' => $quiz, 'widget' => $widget));
+    }
 
 
 

@@ -22,11 +22,18 @@ class WebUserIdentity extends \CUserIdentity
 
         if((!is_object($user)) || (sha1(md5($this->password)) !== $user->password)) {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
-        } else {
-            $this->_id = $user->id;
-            $this->username = $user->name;
-            $this->errorCode = self::ERROR_NONE;
+            $this->errorMessage = \Yii::t('user', 'Username or password is not correct');
+            return !$this->errorCode;
         }
+
+        if(!$user->getActivated()){
+            $this->errorMessage = \Yii::t('user', 'Account not activated');
+            return !$this->errorCode;
+        }
+
+        $this->_id = $user->id;
+        $this->username = $user->name;
+        $this->errorCode = self::ERROR_NONE;
         return !$this->errorCode;
     }
 

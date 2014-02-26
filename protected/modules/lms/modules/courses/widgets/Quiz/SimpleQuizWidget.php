@@ -6,10 +6,24 @@
 
 namespace Rendes\Modules\Courses\Widgets\Quiz;
 
-class SimpleQuizWidget implements \Rendes\Modules\Courses\Interfaces\Quiz\IQuizWidget
+class SimpleQuizWidget extends BaseQuizWidget
 {
-    public function render(\Rendes\Modules\Courses\Interfaces\Quiz\IQuiz $quiz)
+    public function init()
     {
-
+        parent::init();
     }
+
+    public function run()
+    {
+        $this->renderWidget($this->quiz);
+    }
+
+    public function renderWidget(\Rendes\Modules\Courses\Interfaces\Quiz\IQuiz $quiz)
+    {
+        $step = $quiz->getStep();
+        $course = $step->getCourse();
+        $questionsUrl = \Yii::app()->createAbsoluteUrl('courses/'.$course->getId().'/steps/'.$step->getId().'/quizzes/'.$quiz->getId().'/questions');
+        include_once __DIR__ . '/templates/simple.phtml';
+    }
+
 }

@@ -67,6 +67,18 @@ return array(
 			),
 		),
 
+        'mail' => array(
+            'class' => 'SwiftMailer',
+            'fromEmail' => 'newaltgroup@bk.ru',
+            'transportType'=>'smtp',
+            'transportOptions'=>array(
+                'host'=>'smtp.mail.ru',
+                'username'=>'newaltgroup@bk.ru',
+                'password'=>'andrew100000',
+                'port'=>'25',
+            ),
+        ),
+
 
         'errorHandler'=>array(
             'errorAction'=>'site/error',
@@ -111,6 +123,7 @@ return array(
 				),
 				*/
 			),
+
 		),
 	),
 

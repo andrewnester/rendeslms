@@ -38,6 +38,11 @@ class User extends \CModel
 
     /**
      * @var string
+     */
+    private $passwordRepeat;
+
+    /**
+     * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
@@ -51,30 +56,44 @@ class User extends \CModel
     private $role;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activated", type="boolean", nullable=false)
+     */
+    private $activated;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="access_token", type="string", length=255, nullable=false)
+     * @ORM\Column(name="activate_code", type="string", length=255, nullable=false)
+     */
+    private $activateCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="access_token", type="string", length=255, nullable=true)
      */
     private $accessToken;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="refreshToken", type="string", length=255, nullable=false)
+     * @ORM\Column(name="refreshToken", type="string", length=255, nullable=true)
      */
     private $refreshToken;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="expires", type="integer", nullable=false)
+     * @ORM\Column(name="expires", type="integer", nullable=true)
      */
     private $expires;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="token_updated", type="datetime", nullable=false)
+     * @ORM\Column(name="token_updated", type="datetime", nullable=true)
      */
     private $tokenUpdated;
 
@@ -100,6 +119,9 @@ class User extends \CModel
     public function rules(){
         return array(
             array('name, password', 'required'),
+            array('name, email', '\Rendes\Validators\DoctrineUnique', 'on' => 'register'),
+            array('passwordRepeat, email', 'required', 'on' => 'register'),
+            array('passwordRepeat', 'compare', 'compareAttribute'=>'password', 'on' => 'register'),
         );
     }
 
@@ -192,7 +214,7 @@ class User extends \CModel
      */
     public function setPassword($password)
     {
-        $passwordEncoder = new PasswordEncoder();
+        $passwordEncoder = new \Rendes\Modules\User\Services\PasswordEncoder();
         $this->password = $passwordEncoder->encode(($password));
     }
 
@@ -299,6 +321,55 @@ class User extends \CModel
     public function getExpires()
     {
         return $this->expires;
+    }
+
+    /**
+     * @param string $activateCode
+     */
+    public function setActivateCode($activateCode)
+    {
+        $this->activateCode = $activateCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getActivateCode()
+    {
+        return $this->activateCode;
+    }
+
+    /**
+     * @param boolean $activated
+     */
+    public function setActivated($activated)
+    {
+        $this->activated = $activated;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getActivated()
+    {
+        return $this->activated;
+    }
+
+    /**
+     * @param string $passwordRepeat
+     */
+    public function setPasswordRepeat($passwordRepeat)
+    {
+        $passwordEncoder = new \Rendes\Modules\User\Services\PasswordEncoder();
+        $this->passwordRepeat = $passwordEncoder->encode(($passwordRepeat));
+    }
+
+    /**
+     * @return string
+     */
+    public function getPasswordRepeat()
+    {
+        return $this->passwordRepeat;
     }
 
 

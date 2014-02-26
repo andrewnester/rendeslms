@@ -65,6 +65,7 @@ class HttpClientComponent extends \CComponent
         if($json){
             $headers[] = 'Content-type: application/json';
         }
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);

@@ -1080,3 +1080,932 @@ Stack trace:
 #9 {main}
 REQUEST_URI=/rendeslms/index.php/lms?XDEBUG_SESSION_START=PHPSTORM
 ---
+2014/02/24 16:49:19 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(126): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\Courses\Controllers\QuestionsController->actionForm()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#4 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/form
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (126)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/24 16:50:53 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(126): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\Courses\Controllers\QuestionsController->actionForm()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#4 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/form
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (126)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 11:35:16 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(126): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\Courses\Controllers\QuestionsController->actionForm()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#4 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/form
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (126)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 11:36:19 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(126): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\Courses\Controllers\QuestionsController->actionForm()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#4 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/form
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (126)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 11:39:30 [warning] [application] Failed to set unsafe attribute "title" of "Rendes\Modules\Courses\Entities\Quiz\Questions\Question".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 11:39:30 [warning] [application] Failed to set unsafe attribute "question" of "Rendes\Modules\Courses\Entities\Quiz\Questions\Question".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 11:39:30 [warning] [application] Failed to set unsafe attribute "weight" of "Rendes\Modules\Courses\Entities\Quiz\Questions\Question".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 11:39:30 [warning] [application] Failed to set unsafe attribute "answers" of "Rendes\Modules\Courses\Entities\Quiz\Questions\Question".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 11:59:40 [error] [exception.CException] exception 'CException' with message 'Property "Rendes\Modules\User\Entities\User.username" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\helpers\CHtml.php(2529): CComponent->__get('username')
+#1 C:\xampp\htdocs\rendeslms\framework\web\helpers\CHtml.php(2252): CHtml::resolveValue(Object(Rendes\Modules\User\Entities\User), 'username')
+#2 C:\xampp\htdocs\rendeslms\framework\web\helpers\CHtml.php(1434): CHtml::activeInputField('text', Object(Rendes\Modules\User\Entities\User), 'username', Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\widgets\CActiveForm.php(725): CHtml::activeTextField(Object(Rendes\Modules\User\Entities\User), 'username', Array)
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\views\default\register.php(35): CActiveForm->textField(Object(Rendes\Modules\User\Entities\User), 'username')
+#5 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('register', Array, true)
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(85): CController->render('register', Array)
+#10 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+---
+2014/02/25 12:01:05 [error] [php] Object of class Rendes\Modules\User\Entities\User could not be converted to string (C:\xampp\htdocs\rendeslms\framework\web\helpers\CHtml.php:162)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(126): require()
+#1 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(95): Rendes\Modules\User\Controllers\DefaultController->renderInternal()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(869): Rendes\Modules\User\Controllers\DefaultController->renderFile()
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): Rendes\Modules\User\Controllers\DefaultController->renderPartial()
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(85): Rendes\Modules\User\Controllers\DefaultController->render()
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): Rendes\Modules\User\Controllers\DefaultController->runAction()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\User\Controllers\DefaultController->runActionWithFilters()
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\User\Controllers\DefaultController->run()
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\views\default\register.php (46)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php (85)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 12:01:37 [error] [exception.CException] exception 'CException' with message 'Property "Rendes\Modules\User\Entities\User.password2" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\helpers\CHtml.php(2529): CComponent->__get('password2')
+#1 C:\xampp\htdocs\rendeslms\framework\web\helpers\CHtml.php(2252): CHtml::resolveValue(Object(Rendes\Modules\User\Entities\User), 'password2')
+#2 C:\xampp\htdocs\rendeslms\framework\web\helpers\CHtml.php(1628): CHtml::activeInputField('password', Object(Rendes\Modules\User\Entities\User), 'password2', Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\widgets\CActiveForm.php(771): CHtml::activePasswordField(Object(Rendes\Modules\User\Entities\User), 'password2', Array)
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\views\default\register.php(47): CActiveForm->passwordField(Object(Rendes\Modules\User\Entities\User), 'password2')
+#5 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('register', Array, true)
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(85): CController->render('register', Array)
+#10 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+---
+2014/02/25 12:37:08 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\User\Entities\PasswordEncoder.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Entities\User.php(217): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\framework\base\CComponent.php(152): Rendes\Modules\User\Entities\User->setPassword()
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModel.php(472): Rendes\Modules\User\Entities\User->__set()
+#3 C:\xampp\htdocs\rendeslms\framework\base\CComponent.php(152): Rendes\Modules\User\Entities\User->setAttributes()
+#4 C:\xampp\htdocs\rendeslms\framework\web\widgets\CActiveForm.php(919): Rendes\Modules\User\Entities\User->__set()
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(96): validate()
+#6 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(80): Rendes\Modules\User\Controllers\DefaultController->performAjaxValidation()
+#7 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): Rendes\Modules\User\Controllers\DefaultController->runAction()
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\User\Controllers\DefaultController->runActionWithFilters()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\User\Controllers\DefaultController->run()
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Entities\User.php (217)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php (96)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php (80)
+2014/02/25 12:37:10 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\User\Entities\PasswordEncoder.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Entities\User.php(217): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\framework\base\CComponent.php(152): Rendes\Modules\User\Entities\User->setPassword()
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModel.php(472): Rendes\Modules\User\Entities\User->__set()
+#3 C:\xampp\htdocs\rendeslms\framework\base\CComponent.php(152): Rendes\Modules\User\Entities\User->setAttributes()
+#4 C:\xampp\htdocs\rendeslms\framework\web\widgets\CActiveForm.php(919): Rendes\Modules\User\Entities\User->__set()
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(96): validate()
+#6 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(80): Rendes\Modules\User\Controllers\DefaultController->performAjaxValidation()
+#7 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): Rendes\Modules\User\Controllers\DefaultController->runAction()
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\User\Controllers\DefaultController->runActionWithFilters()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\User\Controllers\DefaultController->run()
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Entities\User.php (217)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php (96)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php (80)
+2014/02/25 12:38:41 [error] [exception.CException] exception 'CException' with message 'Rendes\Modules\User\Entities\User and its behaviors do not have a method or closure named "getTableSchema".' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\validators\CUniqueValidator.php(96): CComponent->__call('getTableSchema', Array)
+#1 C:\xampp\htdocs\rendeslms\framework\validators\CUniqueValidator.php(96): Rendes\Modules\User\Entities\User->getTableSchema()
+#2 C:\xampp\htdocs\rendeslms\framework\validators\CValidator.php(213): CUniqueValidator->validateAttribute(Object(Rendes\Modules\User\Entities\User), 'name')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CModel.php(159): CValidator->validate(Object(Rendes\Modules\User\Entities\User), NULL)
+#4 C:\xampp\htdocs\rendeslms\framework\web\widgets\CActiveForm.php(920): CModel->validate(NULL)
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(96): CActiveForm::validate(Object(Rendes\Modules\User\Entities\User))
+#6 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(80): Rendes\Modules\User\Controllers\DefaultController->performAjaxValidation(Object(Rendes\Modules\User\Entities\User))
+#7 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#13 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 14:11:27 [error] [exception.CException] exception 'CException' with message 'Property "CUrlManager.mail" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\YiiBase.php(220): CComponent->__set('mail', Array)
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(522): CModule->getComponent('urlManager')
+#3 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(140): CApplication->getUrlManager()
+#4 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#6 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+---
+2014/02/25 14:13:23 [error] [exception.Doctrine\DBAL\DBALException] exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'activate_code' cannot be null' in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Statement.php:138
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Statement.php(138): PDOStatement->execute(NULL)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\Persisters\BasicEntityPersister.php(277): Doctrine\DBAL\Statement->execute()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\UnitOfWork.php(920): Doctrine\ORM\Persisters\BasicEntityPersister->executeInserts()
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\UnitOfWork.php(311): Doctrine\ORM\UnitOfWork->executeInserts(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityManager.php(355): Doctrine\ORM\UnitOfWork->commit(NULL)
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(90): Doctrine\ORM\EntityManager->flush()
+#6 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#14 {main}
+
+Next exception 'Doctrine\DBAL\DBALException' with message 'An exception occurred while executing 'INSERT INTO user (name, password, email, role, activated, activate_code, access_token, refreshToken, expires, token_updated, created, modified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)' with params {"1":"andrew","2":"9a2a4c40fc3429524836b16d4147a44c069f8a90","3":"andrew.nester.dev@gmail.com","4":"student","5":0,"6":null,"7":null,"8":null,"9":null,"10":null,"11":"2014-02-25 14:13:23","12":"2014-02-25 14:13:23"}:
+
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'activate_code' cannot be null' in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\DBALException.php:47
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Statement.php(140): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(PDOException), 'INSERT INTO use...', Array)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\Persisters\BasicEntityPersister.php(277): Doctrine\DBAL\Statement->execute()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\UnitOfWork.php(920): Doctrine\ORM\Persisters\BasicEntityPersister->executeInserts()
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\UnitOfWork.php(311): Doctrine\ORM\UnitOfWork->executeInserts(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityManager.php(355): Doctrine\ORM\UnitOfWork->commit(NULL)
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(90): Doctrine\ORM\EntityManager->flush()
+#6 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 14:20:51 [error] [exception.Doctrine\DBAL\DBALException] exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'access_token' cannot be null' in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Statement.php:138
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Statement.php(138): PDOStatement->execute(NULL)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\Persisters\BasicEntityPersister.php(277): Doctrine\DBAL\Statement->execute()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\UnitOfWork.php(920): Doctrine\ORM\Persisters\BasicEntityPersister->executeInserts()
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\UnitOfWork.php(311): Doctrine\ORM\UnitOfWork->executeInserts(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityManager.php(355): Doctrine\ORM\UnitOfWork->commit(NULL)
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(91): Doctrine\ORM\EntityManager->flush()
+#6 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#14 {main}
+
+Next exception 'Doctrine\DBAL\DBALException' with message 'An exception occurred while executing 'INSERT INTO user (name, password, email, role, activated, activate_code, access_token, refreshToken, expires, token_updated, created, modified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)' with params {"1":"andrew","2":"9a2a4c40fc3429524836b16d4147a44c069f8a90","3":"andrew.nester.dev@gmail.com","4":"student","5":0,"6":"ff09b23e226cee3e651adbd81f337dad","7":null,"8":null,"9":null,"10":null,"11":"2014-02-25 14:20:51","12":"2014-02-25 14:20:51"}:
+
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'access_token' cannot be null' in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\DBALException.php:47
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\DBAL\Statement.php(140): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(PDOException), 'INSERT INTO use...', Array)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\Persisters\BasicEntityPersister.php(277): Doctrine\DBAL\Statement->execute()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\UnitOfWork.php(920): Doctrine\ORM\Persisters\BasicEntityPersister->executeInserts()
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\UnitOfWork.php(311): Doctrine\ORM\UnitOfWork->executeInserts(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityManager.php(355): Doctrine\ORM\UnitOfWork->commit(NULL)
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(91): Doctrine\ORM\EntityManager->flush()
+#6 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 14:38:22 [error] [exception.CException] exception 'CException' with message 'CWebApplication and its behaviors do not have a method or closure named "getName".' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(62): CComponent->__call('getName', Array)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(62): CWebApplication->getName()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(93): Rendes\Modules\User\Services\UserService->sendActivationLink(Object(Rendes\Modules\User\Entities\User), 'http://localhos...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 14:40:20 [error] [exception.Swift_TransportException] exception 'Swift_TransportException' with message 'Failed to authenticate on SMTP server with username "newaltgroup@bk.ru" using 2 possible authenticators' in C:\xampp\htdocs\rendeslms\protected\extensions\swiftmailer\classes\Swift\Transport\Esmtp\AuthHandler.php:176
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\extensions\swiftmailer\classes\Swift\Transport\EsmtpTransport.php(265): Swift_Transport_Esmtp_AuthHandler->afterEhlo(Object(Swift_SmtpTransport))
+#1 C:\xampp\htdocs\rendeslms\protected\extensions\swiftmailer\classes\Swift\Transport\AbstractSmtpTransport.php(123): Swift_Transport_EsmtpTransport->_doHeloCommand()
+#2 C:\xampp\htdocs\rendeslms\protected\extensions\swiftmailer\classes\Swift\Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 C:\xampp\htdocs\rendeslms\protected\components\SwiftMailer.php(41): Swift_Mailer->send(Object(Swift_Message))
+#4 C:\xampp\htdocs\rendeslms\protected\components\SwiftMailer.php(47): SwiftMailer->send('newaltgroup@bk....', 'andrew.nester.d...', 'Rendes LMS - Ac...', 'Here is your ac...')
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(62): SwiftMailer->sendFromAdmin('andrew.nester.d...', 'Rendes LMS - Ac...', 'Here is your ac...')
+#6 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(93): Rendes\Modules\User\Services\UserService->sendActivationLink(Object(Rendes\Modules\User\Entities\User), 'http://localhos...')
+#7 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#13 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 14:41:53 [error] [exception.CHttpException.Failed to authenticate on SMTP server with username "newaltgroup@bk.ru" using 2 possible authenticators] exception 'CHttpException' in C:\xampp\htdocs\rendeslms\protected\components\SwiftMailer.php:44
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\components\SwiftMailer.php(51): SwiftMailer->send('newaltgroup@bk....', 'andrew.nester.d...', 'Rendes LMS - Ac...', 'Here is your ac...')
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(62): SwiftMailer->sendFromAdmin('andrew.nester.d...', 'Rendes LMS - Ac...', 'Here is your ac...')
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(93): Rendes\Modules\User\Services\UserService->sendActivationLink(Object(Rendes\Modules\User\Entities\User), 'http://localhos...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Modules\User\Controllers\DefaultController->actionRegister()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('register')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/register
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 14:42:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "activation".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('activation')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activation')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activation
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 14:43:26 [error] [exception.CException] exception 'CException' with message 'Rendes\Modules\User\Controllers\DefaultController cannot find the requested view "failed".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('failed', NULL, true)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(110): CController->render('failed')
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('3dbd8032982b9fa...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=3dbd8032982b9fa8b5d0ed033783cb2c
+---
+2014/02/25 14:45:09 [error] [exception.CException] exception 'CException' with message 'Rendes\Modules\User\Controllers\DefaultController cannot find the requested view "failed".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('failed', NULL, true)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(110): CController->render('failed')
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('3dbd8032982b9fa...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=3dbd8032982b9fa8b5d0ed033783cb2c
+---
+2014/02/25 14:45:46 [error] [exception.CException] exception 'CException' with message 'Rendes\Modules\User\Controllers\DefaultController cannot find the requested view "failed".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('failed', NULL, true)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(111): CController->render('failed')
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('3dbd8032982b9fa...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=3dbd8032982b9fa8b5d0ed033783cb2c
+---
+2014/02/25 14:45:59 [error] [exception.CException] exception 'CException' with message 'Rendes\Modules\User\Controllers\DefaultController cannot find the requested view "failed".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('failed', NULL, true)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(110): CController->render('failed')
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('3dbd8032982b9fa...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=3dbd8032982b9fa8b5d0ed033783cb2c
+---
+2014/02/25 14:46:31 [error] [exception.CException] exception 'CException' with message 'Rendes\Modules\User\Controllers\DefaultController cannot find the requested view "activated".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('activated', NULL, true)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(120): CController->render('activated')
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('3dbd8032982b9fa...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=3dbd8032982b9fa8b5d0ed033783cb2c
+---
+2014/02/25 14:46:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user
+---
+2014/02/25 14:59:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "activation".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('activation')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activation')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activation
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 15:00:23 [error] [exception.CException] exception 'CException' with message 'Rendes\Modules\User\Controllers\DefaultController cannot find the requested view "default/activated".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('default/activat...', NULL, true)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(120): CController->render('default/activat...')
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('1958027e2d69a84...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=1958027e2d69a84a3123f0fea872549c
+---
+2014/02/25 15:00:50 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#4 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#5 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate
+---
+2014/02/25 15:01:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "activation".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('activation')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activation')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/default/activation
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 15:07:10 [error] [php] Undefined variable: userToActivate (C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php:114)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): Rendes\Modules\User\Controllers\DefaultController->runAction()
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\User\Controllers\DefaultController->runActionWithFilters()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\User\Controllers\DefaultController->run()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=8396a7cfdb1a0fe158729bed0b892a03
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php (114)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 15:08:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "activation".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('activation')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activation')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/default/activation
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 15:10:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "activation".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('activation')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activation')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/default/activation
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 15:11:07 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(72): Rendes\Components\XAPIComponent->registerUser(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(119): Rendes\Modules\User\Services\UserService->registerInLRS(Object(Rendes\Modules\User\Entities\User))
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('45cc5247a10e80a...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=45cc5247a10e80a252ea440116ec8339
+---
+2014/02/25 15:11:54 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'LRS Connection:Bad Request' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(72): Rendes\Components\XAPIComponent->registerUser(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(119): Rendes\Modules\User\Services\UserService->registerInLRS(Object(Rendes\Modules\User\Entities\User))
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('45cc5247a10e80a...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=45cc5247a10e80a252ea440116ec8339
+---
+2014/02/25 15:14:46 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'LRS Connection:Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(72): Rendes\Components\XAPIComponent->registerUser(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(119): Rendes\Modules\User\Services\UserService->registerInLRS(Object(Rendes\Modules\User\Entities\User))
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('45cc5247a10e80a...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=45cc5247a10e80a252ea440116ec8339
+---
+2014/02/25 15:15:45 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'LRS Connection:Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(72): Rendes\Components\XAPIComponent->registerUser(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(119): Rendes\Modules\User\Services\UserService->registerInLRS(Object(Rendes\Modules\User\Entities\User))
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('45cc5247a10e80a...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=45cc5247a10e80a252ea440116ec8339
+---
+2014/02/25 15:18:04 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'LRS Connection:Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(72): Rendes\Components\XAPIComponent->registerUser(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(119): Rendes\Modules\User\Services\UserService->registerInLRS(Object(Rendes\Modules\User\Entities\User))
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('45cc5247a10e80a...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=45cc5247a10e80a252ea440116ec8339
+---
+2014/02/25 15:19:10 [error] [php] Argument 1 passed to Rendes\Components\XAPIComponent::requestTokens() must be an instance of Rendes\Modules\User\Entities\User, array given, called in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php on line 129 and defined (C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:138)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(119): Rendes\Modules\User\Services\UserService->registerInLRS()
+#1 unknown(0): Rendes\Modules\User\Controllers\DefaultController->actionActivate()
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): Rendes\Modules\User\Controllers\DefaultController->runAction()
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\User\Controllers\DefaultController->runActionWithFilters()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\User\Controllers\DefaultController->run()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=45cc5247a10e80a252ea440116ec8339
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (138)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php (129)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php (72)
+2014/02/25 15:20:22 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(72): Rendes\Components\XAPIComponent->registerUser(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(119): Rendes\Modules\User\Services\UserService->registerInLRS(Object(Rendes\Modules\User\Entities\User))
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('45cc5247a10e80a...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=45cc5247a10e80a252ea440116ec8339
+---
+2014/02/25 15:20:33 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'LRS Connection:Application error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(72): Rendes\Components\XAPIComponent->registerUser(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(119): Rendes\Modules\User\Services\UserService->registerInLRS(Object(Rendes\Modules\User\Entities\User))
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('45cc5247a10e80a...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=45cc5247a10e80a252ea440116ec8339
+---
+2014/02/25 15:21:26 [error] [exception.CHttpException.500] exception 'CHttpException' with message 'LRS Connection:Internal Server Error' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:126
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\UserService.php(72): Rendes\Components\XAPIComponent->registerUser(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Controllers\DefaultController.php(119): Rendes\Modules\User\Services\UserService->registerInLRS(Object(Rendes\Modules\User\Entities\User))
+#2 [internal function]: Rendes\Modules\User\Controllers\DefaultController->actionActivate('45cc5247a10e80a...')
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Controllers\DefaultController), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activate')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/activate?code=45cc5247a10e80a252ea440116ec8339
+---
+2014/02/25 15:24:51 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Forbidden' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:178
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(36): Rendes\Components\XAPIComponent->refreshTokens(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(47): Rendes\Components\XAPIComponent->authenticate()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getStatements()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php
+---
+2014/02/25 15:25:20 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Forbidden' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:178
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(36): Rendes\Components\XAPIComponent->refreshTokens(Object(Rendes\Modules\User\Entities\User))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(47): Rendes\Components\XAPIComponent->authenticate()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getStatements()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#9 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php
+---
+2014/02/25 15:25:33 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'LRS Connection:Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:59
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getStatements()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php
+---
+2014/02/25 15:25:36 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'LRS Connection:Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:59
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getStatements()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms
+---
+2014/02/25 15:27:01 [error] [exception.CHttpException.401] exception 'CHttpException' with message 'LRS Connection:Unauthorized' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:60
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getStatements()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#7 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms
+---
+2014/02/25 15:31:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "activation".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('activation')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activation')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/default/activation
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 15:32:13 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Forbidden! You need to log in first' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:28
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(47): Rendes\Components\XAPIComponent->authenticate()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\DefaultController.php(37): Rendes\Components\XAPIComponent->getStatements()
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(49): Rendes\Controllers\DefaultController->actionIndex()
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms')
+#8 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/rendeslms/index.php/lms
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/activate?code=3c4bffc477f8450fcfa167878249a803
+---
+2014/02/25 15:32:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "activation".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('activation')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('activation')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/defaul...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/default/activation
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/register
+---
+2014/02/25 15:38:10 [warning] [application] Failed to set unsafe attribute "title" of "Rendes\Modules\Courses\Entities\Quiz\Questions\VariantQuestion".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 15:38:10 [warning] [application] Failed to set unsafe attribute "question" of "Rendes\Modules\Courses\Entities\Quiz\Questions\VariantQuestion".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 15:38:10 [warning] [application] Failed to set unsafe attribute "weight" of "Rendes\Modules\Courses\Entities\Quiz\Questions\VariantQuestion".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 15:38:10 [warning] [application] Failed to set unsafe attribute "answers" of "Rendes\Modules\Courses\Entities\Quiz\Questions\VariantQuestion".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 15:38:10 [warning] [application] Failed to set unsafe attribute "variants" of "Rendes\Modules\Courses\Entities\Quiz\Questions\VariantQuestion".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 15:38:43 [warning] [application] Failed to set unsafe attribute "title" of "Rendes\Modules\Courses\Entities\Quiz\Questions\Question".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 15:38:43 [warning] [application] Failed to set unsafe attribute "question" of "Rendes\Modules\Courses\Entities\Quiz\Questions\Question".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 15:38:43 [warning] [application] Failed to set unsafe attribute "weight" of "Rendes\Modules\Courses\Entities\Quiz\Questions\Question".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 15:38:43 [warning] [application] Failed to set unsafe attribute "answers" of "Rendes\Modules\Courses\Entities\Quiz\Questions\Question".
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (83)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/25 16:05:45 [error] [exception.CException] exception 'CException' with message 'Property "Rendes\Modules\Courses\Widgets\Quiz\SimpleQuizWidget.options" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CWidgetFactory.php(161): CComponent->__set('options', Array)
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Services\QuizService.php(106): CWidgetFactory->createWidget(Object(Rendes\Modules\Courses\Services\QuizService), '\Rendes\Modules...', Array)
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuizzesController.php(79): Rendes\Modules\Courses\Services\QuizService->getQuizWidget(Object(Rendes\Modules\Courses\Entities\Quiz\Quiz))
+#3 [internal function]: Rendes\Modules\Courses\Controllers\QuizzesController->actionStart('1', '4', '9')
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\Courses\Controllers\QuizzesController), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\Courses\Controllers\QuizzesController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('start')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/qui...')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/start
+---
+2014/02/25 16:21:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Such quiz does not exist' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuizzesController.php:75
+Stack trace:
+#0 [internal function]: Rendes\Modules\Courses\Controllers\QuizzesController->actionStart('2', '4', '9')
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\Courses\Controllers\QuizzesController), Array)
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\Courses\Controllers\QuizzesController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('start')
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/qui...')
+#13 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/2/start
+---
+2014/02/25 18:01:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "lms/courses/9/steps/4/quizzes/1/question.html".' in C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/9/s...')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/question.html
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/start
+---
+2014/02/26 12:45:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "courses/9/steps/4/quizzes/1/questions/first".' in C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('courses/9/steps...')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/rendeslms/index.php/courses/9/steps/4/quizzes/1/questions/first
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/start
+---

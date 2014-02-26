@@ -10,8 +10,11 @@ class UserPhpAuthManager extends \CPhpAuthManager{
 
         parent::init();
 
-        if(!\Yii::app()->getModule('lms')->getModule('user')->user->isGuest){
-            $this->assign(\Yii::app()->getModule('lms')->getModule('user')->user->role, \Yii::app()->getModule('lms')->getModule('user')->user->id);
+        $user = \Yii::app()->getModule('lms')->getModule('user')->user;
+        if(!$user->isGuest){
+            if($user->getEntity()->getActivated()){
+                $this->assign(\Yii::app()->getModule('lms')->getModule('user')->user->role, \Yii::app()->getModule('lms')->getModule('user')->user->id);
+            }
         }
     }
 }

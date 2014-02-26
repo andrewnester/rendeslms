@@ -147,6 +147,90 @@ class User extends \Rendes\Modules\User\Entities\User implements \Doctrine\ORM\P
         return parent::setModifiedDate();
     }
 
+    public function setAccessToken($accessToken)
+    {
+        $this->__load();
+        return parent::setAccessToken($accessToken);
+    }
+
+    public function getAccessToken()
+    {
+        $this->__load();
+        return parent::getAccessToken();
+    }
+
+    public function setRefreshToken($refreshToken)
+    {
+        $this->__load();
+        return parent::setRefreshToken($refreshToken);
+    }
+
+    public function getRefreshToken()
+    {
+        $this->__load();
+        return parent::getRefreshToken();
+    }
+
+    public function setTokenUpdated($tokenUpdated)
+    {
+        $this->__load();
+        return parent::setTokenUpdated($tokenUpdated);
+    }
+
+    public function getTokenUpdated()
+    {
+        $this->__load();
+        return parent::getTokenUpdated();
+    }
+
+    public function setExpires($expires)
+    {
+        $this->__load();
+        return parent::setExpires($expires);
+    }
+
+    public function getExpires()
+    {
+        $this->__load();
+        return parent::getExpires();
+    }
+
+    public function setActivateCode($activateCode)
+    {
+        $this->__load();
+        return parent::setActivateCode($activateCode);
+    }
+
+    public function getActivateCode()
+    {
+        $this->__load();
+        return parent::getActivateCode();
+    }
+
+    public function setActivated($activated)
+    {
+        $this->__load();
+        return parent::setActivated($activated);
+    }
+
+    public function getActivated()
+    {
+        $this->__load();
+        return parent::getActivated();
+    }
+
+    public function setPasswordRepeat($passwordRepeat)
+    {
+        $this->__load();
+        return parent::setPasswordRepeat($passwordRepeat);
+    }
+
+    public function getPasswordRepeat()
+    {
+        $this->__load();
+        return parent::getPasswordRepeat();
+    }
+
     public function attributeNames()
     {
         $this->__load();
@@ -487,7 +571,7 @@ class User extends \Rendes\Modules\User\Entities\User implements \Doctrine\ORM\P
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'name', 'password', 'email', 'role', 'created', 'modified');
+        return array('__isInitialized__', 'id', 'name', 'password', 'email', 'role', 'activated', 'activateCode', 'accessToken', 'refreshToken', 'expires', 'tokenUpdated', 'created', 'modified');
     }
 
     public function __clone()

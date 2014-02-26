@@ -142,15 +142,6 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     }
 
     /**
-     * @return mixed
-     */
-    public function getWidgetObject()
-    {
-        $widget = array_shift(array_values($this->widget));
-        return new $widget['classname']($widget['options']);
-    }
-
-    /**
      * @param string $passingRule
      */
     public function setPassingRule($passingRule)

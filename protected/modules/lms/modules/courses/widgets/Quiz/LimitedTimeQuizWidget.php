@@ -6,9 +6,9 @@
 
 namespace Rendes\Modules\Courses\Widgets\Quiz;
 
-class LimitedTimeQuizWidget implements \Rendes\Modules\Courses\Interfaces\Quiz\IQuizWidget
+class LimitedTimeQuizWidget extends BaseQuizWidget
 {
-    public function render(\Rendes\Modules\Courses\Interfaces\Quiz\IQuiz $quiz)
+    public function renderWidget(\Rendes\Modules\Courses\Interfaces\Quiz\IQuiz $quiz)
     {
 
     }

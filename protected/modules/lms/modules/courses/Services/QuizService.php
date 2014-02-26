@@ -91,4 +91,18 @@ class QuizService extends \Rendes\Services\BaseService
         return $widgets;
     }
 
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
+     * @return mixed
+     */
+    public function getQuizWidget(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz)
+    {
+        $widget = array_shift(array_values($quiz->getWidget()));
+
+        $properties = array(
+            'quiz' => $quiz,
+            'options' => $widget['options']
+        );
+        return \Yii::app()->getWidgetFactory()->createWidget($this, $widget['classname'], $properties);
+    }
 }

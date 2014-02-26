@@ -14,6 +14,20 @@ class UserRepository extends \Rendes\Components\LMSRepository
     }
 
     /**
+     * @param string $code
+     * @return \Rendes\Modules\User\Entities\User
+     */
+    public function findByActivateCode($code)
+    {
+        $query = $this->getEntityManager()
+                      ->createQuery('SELECT u FROM ' . $this->getEntityName() . ' u WHERE u.activateCode=:code');
+        $query->setParameter('code', $code);
+        return $query->getSingleResult();
+    }
+
+
+
+    /**
      * Fetches the data from the persistent data storage.
      * @return array list of data items
      */

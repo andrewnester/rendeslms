@@ -6,7 +6,9 @@
 
 namespace Rendes\Modules\User\Services;
 
-class UserService
+use Rendes\Services\BaseService;
+
+class UserService extends BaseService
 {
     public function getTeachersList(\Doctrine\ORM\EntityManager $em)
     {
@@ -21,5 +23,52 @@ class UserService
         }
 
         return $teachersList;
+    }
+
+
+    public function populate(\Rendes\Modules\User\Entities\User $user, $userData, $role = 'student')
+    {
+        $user->setName($userData['name']);
+        $user->setPassword($userData['password']);
+        $user->setEmail($userData['email']);
+        $user->setActivated(false);
+        $user->setActivateCode($this->generateActivationCode($user));
+        $user->setRole($role);
+        return $user;
+    }
+
+    /**
+     * @param \Rendes\Modules\User\Entities\User $user
+     * @return string
+     */
+    public function generateActivationCode(\Rendes\Modules\User\Entities\User $user)
+    {
+        return md5(sha1($user->getName() . time()));
+    }
+
+    /**
+     * @param \Rendes\Modules\User\Entities\User $user
+     * @param string $linkToActivate
+     * @return mixed
+     */
+    public function sendActivationLink(\Rendes\Modules\User\Entities\User $user, $linkToActivate)
+    {
+        $mailer = $this->getMailer();
+        $linkToActivate .= '?code=' . $user->getActivateCode();
+
+        $message = 'Here is your activation link';
+        $message .= '<a href="'.$linkToActivate.'">'.$linkToActivate.'</a>';
+
+        return $mailer->sendFromAdmin($user->getEmail(), \Yii::app()->name . ' - Activation Code', $message);
+    }
+
+    /**
+     * @param \Rendes\Modules\User\Entities\User $user
+     * @return bool
+     */
+    public function registerInLRS(\Rendes\Modules\User\Entities\User $user)
+    {
+        $xapi = $this->getXAPI();
+        return $xapi->registerUser($user);
     }
 }

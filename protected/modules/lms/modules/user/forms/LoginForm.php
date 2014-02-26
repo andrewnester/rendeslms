@@ -56,7 +56,7 @@ class LoginForm extends \CFormModel
             \Yii::import('application.modules.lms.user.components.*');
 			$this->_identity=new \Rendes\Modules\User\Components\WebUserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect username or password.');
+				$this->addError('password', $this->_identity->errorMessage);
 		}
 	}
 

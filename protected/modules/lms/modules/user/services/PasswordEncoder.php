@@ -7,6 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
+namespace Rendes\Modules\User\Services;
+
 class PasswordEncoder
 {
     public function encode($password)
