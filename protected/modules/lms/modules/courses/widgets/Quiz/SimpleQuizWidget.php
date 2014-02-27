@@ -22,7 +22,8 @@ class SimpleQuizWidget extends BaseQuizWidget
     {
         $step = $quiz->getStep();
         $course = $step->getCourse();
-        $questionsUrl = \Yii::app()->createAbsoluteUrl('courses/'.$course->getId().'/steps/'.$step->getId().'/quizzes/'.$quiz->getId().'/questions');
+        $questionsUrl = \Yii::app()->createAbsoluteUrl('lms/courses/'.$course->getId().'/steps/'.$step->getId().'/quizzes/'.$quiz->getId().'/questions');
+        $templatesUrl = \Yii::app()->request->getBaseUrl(true) . '/assets/templates';
         include_once __DIR__ . '/templates/simple.phtml';
     }
 

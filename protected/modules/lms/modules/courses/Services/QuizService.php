@@ -105,4 +105,35 @@ class QuizService extends \Rendes\Services\BaseService
         );
         return \Yii::app()->getWidgetFactory()->createWidget($this, $widget['classname'], $properties);
     }
+
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
+     * @return mixed
+     */
+    public function getQuizOptions(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz)
+    {
+        $widget = array_shift(array_values($quiz->getWidget()));
+        return $widget['options'];
+    }
+
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
+     * @return array
+     */
+    public function getQuestionsOrder(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz)
+    {
+        $question = $quiz->getQuestions();
+        $quizOptions = $this->getQuizOptions($quiz);
+
+        $order = array();
+        foreach($question as $question){
+            $order[] = $question->getId();
+        }
+
+        if(isset($quizOptions['random']) && $quizOptions['random']){
+            shuffle($order);
+        }
+
+        return $order;
+    }
 }

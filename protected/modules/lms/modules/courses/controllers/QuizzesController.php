@@ -116,6 +116,7 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
 
 
+
     public function actionView($id, $stepID, $courseID)
     {
         $quizService = new \Rendes\Modules\Courses\Services\QuizService();
@@ -134,6 +135,9 @@ class QuizzesController extends \Rendes\Controllers\LMSController
     public function actionOrder($stepID, $courseID)
     {
         $orderData = $this->getHttpClient()->get('order');
+        if(!$orderData){
+            $this->redirect(array('/lms'));
+        }
         $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
         $lecturesIterator = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByIDArray(array_values($orderData));
         foreach($lecturesIterator as $lecture){

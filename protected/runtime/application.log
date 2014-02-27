@@ -2009,3 +2009,362 @@ Stack trace:
 REQUEST_URI=/rendeslms/index.php/courses/9/steps/4/quizzes/1/questions/first
 HTTP_REFERER=http://localhost/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/start
 ---
+2014/02/27 15:51:05 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(125): ReflectionClass->__construct()
+#2 unknown(0): Rendes\Modules\Courses\Controllers\QuestionsController->actionOrder()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (125)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/27 15:51:27 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(125): ReflectionClass->__construct()
+#2 unknown(0): Rendes\Modules\Courses\Controllers\QuestionsController->actionOrder()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (125)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/27 15:56:20 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(125): ReflectionClass->__construct()
+#2 unknown(0): Rendes\Modules\Courses\Controllers\QuestionsController->actionOrder()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (125)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/27 15:56:31 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(125): ReflectionClass->__construct()
+#2 unknown(0): Rendes\Modules\Courses\Controllers\QuestionsController->actionOrder()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+2014/02/27 15:58:11 [error] [exception.CException] exception 'CException' with message 'A session had already been started - ignoring session_start()' in C:\xampp\htdocs\rendeslms\protected\modules\lms\LmsModule.php:6
+Stack trace:
+#0 [internal function]: YiiBase::Rendes\{closure}(8, 'A session had a...', 'C:\xampp\htdocs...', 114, Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\CHttpSession.php(114): session_start()
+#2 C:\xampp\htdocs\rendeslms\framework\web\auth\CWebUser.php(199): CHttpSession->open()
+#3 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(387): CWebUser->init()
+#4 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('user')
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Filters\LMSAccessControlFilter.php(18): CModule->__get('user')
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(38): Rendes\Filters\LMSAccessControlFilter->preFilter(Object(CFilterChain))
+#7 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('order')
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#14 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+---
+2014/02/27 15:58:29 [error] [exception.CException] exception 'CException' with message 'A session had already been started - ignoring session_start()' in C:\xampp\htdocs\rendeslms\protected\modules\lms\LmsModule.php:6
+Stack trace:
+#0 [internal function]: YiiBase::Rendes\{closure}(8, 'A session had a...', 'C:\xampp\htdocs...', 114, Array)
+#1 C:\xampp\htdocs\rendeslms\framework\web\CHttpSession.php(114): session_start()
+#2 C:\xampp\htdocs\rendeslms\framework\web\auth\CWebUser.php(199): CHttpSession->open()
+#3 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(387): CWebUser->init()
+#4 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('user')
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Filters\LMSAccessControlFilter.php(18): CModule->__get('user')
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(38): Rendes\Filters\LMSAccessControlFilter->preFilter(Object(CFilterChain))
+#7 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('order')
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#14 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+---
+2014/02/27 15:58:34 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(125): ReflectionClass->__construct()
+#2 unknown(0): Rendes\Modules\Courses\Controllers\QuestionsController->actionOrder()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (125)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/27 15:59:44 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Quiz\Questions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(125): ReflectionClass->__construct()
+#2 unknown(0): Rendes\Modules\Courses\Controllers\QuestionsController->actionOrder()
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#5 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuestionsController->runAction()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuestionsController->filterLMSAccessControl()
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuestionsController->runActionWithFilters()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuestionsController->run()
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php (125)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/27 16:02:21 [error] [exception.CException] exception 'CException' with message 'Alias "\Rendes\Modules\Courses\Entities\Quiz\Questions\" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\xampp\htdocs\rendeslms\framework\YiiBase.php:282
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(125): YiiBase::import('\Rendes\Modules...', true)
+#1 [internal function]: Rendes\Modules\Courses\Controllers\QuestionsController->actionOrder('1', '1', '4', '9')
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\Courses\Controllers\QuestionsController), Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\Courses\Controllers\QuestionsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('order')
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#14 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+---
+2014/02/27 16:16:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "order".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('order')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('order')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+---
+2014/02/27 16:16:49 [error] [php] array_values() expects parameter 1 to be array, null given (C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuizzesController.php:153)
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#1 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#2 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\QuizzesController->runAction()
+#4 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): Rendes\Filters\LMSAccessControlFilter->filter()
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\QuizzesController->filterLMSAccessControl()
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\QuizzesController->runActionWithFilters()
+#10 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\QuizzesController->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/order
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuizzesController.php (153)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php (65)
+in C:\xampp\htdocs\rendeslms\index.php (13)
+2014/02/27 16:17:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "lms".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('lms')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('lms')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/qui...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/lms
+---
+2014/02/27 16:17:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "order".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('order')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('order')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+---
+2014/02/27 16:18:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "order".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('order')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('order')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/1/order
+---
+2014/02/27 16:31:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php:175
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(141): Rendes\Modules\Courses\Controllers\QuestionsController->loadQuiz('5')
+#1 [internal function]: Rendes\Modules\Courses\Controllers\QuestionsController->actionView('5', '4', '9')
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\Courses\Controllers\QuestionsController), Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\Courses\Controllers\QuestionsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#14 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/5/
+---
+2014/02/27 16:31:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php:175
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(141): Rendes\Modules\Courses\Controllers\QuestionsController->loadQuiz('5')
+#1 [internal function]: Rendes\Modules\Courses\Controllers\QuestionsController->actionView('5', '4', '9')
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\Courses\Controllers\QuestionsController), Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\Courses\Controllers\QuestionsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#14 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/5
+---
+2014/02/27 16:31:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php:175
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\QuestionsController.php(141): Rendes\Modules\Courses\Controllers\QuestionsController->loadQuiz('5')
+#1 [internal function]: Rendes\Modules\Courses\Controllers\QuestionsController->actionView('5', '4', '9')
+#2 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\Courses\Controllers\QuestionsController), Array)
+#3 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\Courses\Controllers\QuestionsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(65): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#14 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/5/view
+---
+2014/02/27 16:42:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "courses/9/steps/4/quizzes/1/questions/order".' in C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('courses/9/steps...')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/rendeslms/index.php/courses/9/steps/4/quizzes/1/questions/order
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/start
+---
+2014/02/27 16:43:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "undefined".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('undefined')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('undefined')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/que...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/questions/undefined
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/start
+---
+2014/02/27 16:46:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "lms/courses/undefined/undefined".' in C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/und...')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/undefined/undefined
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/start
+---
+2014/02/27 16:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "lms/courses/undefined/undefined".' in C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/und...')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/undefined/undefined
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/courses/9/steps/4/quizzes/1/start
+---

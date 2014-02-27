@@ -2,6 +2,8 @@
 
 namespace Rendes\Modules\Courses\Controllers;
 
+use Rendes\Modules\Courses\Services\QuizService;
+
 class QuestionsController extends \Rendes\Controllers\LMSController
 {
     /**
@@ -31,6 +33,17 @@ class QuestionsController extends \Rendes\Controllers\LMSController
         return array();
     }
 
+
+    public function actionView($id, $quizID, $stepID, $courseID)
+    {
+        try{
+            $question = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Questions\Question')->getArrayResultByID($id);
+        }catch(\Exception $e){
+            $this->getHttpClient()->json(array('error' => 'There is no such question'), 500);
+        }
+
+        $this->getHttpClient()->json(array('question' => (array)$question), 200);
+    }
 
 
 
@@ -72,8 +85,8 @@ class QuestionsController extends \Rendes\Controllers\LMSController
     {
         $questionType = $this->getHttpClient()->get('type', 'Question');
         try{
-            $className = "\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\".$questionType;
-            $question = new $className();
+            \Yii::import('\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\'.$questionType, true);
+            $question = new \ReflectionClass('\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\'.$questionType);
             $quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($quizID);
         }catch(\Exception $e){
             throw new \CHttpException(404, 'Such step does not exist');
@@ -105,15 +118,19 @@ class QuestionsController extends \Rendes\Controllers\LMSController
 
 
 
-
-
-    public function actionView($id, $stepID, $courseID)
+    public function actionOrder($quizID, $stepID, $courseID)
     {
-        $this->render('view',array(
-            'model' => $this->loadQuiz($id),
-            'stepID' => $stepID,
-            'courseID' => $courseID
-        ));
+        try{
+            $quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($quizID);
+        }catch(\Exception $e){
+            $this->getHttpClient()->json(array('error' => 'There is no such quiz'), 500);
+        }
+
+
+        $quizService = new \Rendes\Modules\Courses\Services\QuizService();
+        $questionsOrder = $quizService->getQuestionsOrder($quiz);
+
+        $this->getHttpClient()->json(array('order' => $questionsOrder), 200);
     }
 
 

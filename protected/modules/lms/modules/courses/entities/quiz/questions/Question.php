@@ -8,11 +8,11 @@ use Rendes\Modules\Courses\Services\QuestionService;
 /**
  * Question
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Rendes\Modules\Courses\Repositories\QuestionRepository")
  * @ORM\Table(name="question")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"question"="Question", "variant" = "VariantQuestion"})
+ * @ORM\DiscriminatorMap({"question"="Question", "variantquestion" = "VariantQuestion"})
  */
 class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Quiz\Questions\IQuestion
 {

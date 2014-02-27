@@ -1,26 +1,71 @@
 angular.module('quiz', []).
     factory('quizService', ['$http', function(http) {
         var QuizService = function(){
-            order: []
+            this.questionOrder = null;
+            this.questionIndex = 0;
+            this.questions = [];
         };
 
-        QuizService.prototype.first = function(){
-            http({method: 'GET', url: QuizConfig.baseUrl + '/first'}).
+
+        QuizService.prototype.order = function(successCallback){
+            var that = this;
+            http({method: 'GET', url: QuizConfig.baseUrl + '/order'}).
                 success(function(data, status, headers, config) {
-                    console.log(data);
+                    that.questionOrder = data.order != undefined ? data.order : [];
+                    successCallback();
                 }).
                 error(function(data, status, headers, config) {
-                    console.log(data);
-                    console.log('error');
+                    console.log('Error while loading order');
                 });
         };
 
+        QuizService.prototype.first = function(successCallback){
+            var questionID = this.questionOrder[0];
+            if(this.questions[questionID] != undefined){
+                return successCallback(this.questions[questionID]);
+            }
 
-        QuizService.prototype.next = function(){
+            this._loadQuestion(questionID, successCallback);
         };
 
 
-        QuizService.prototype.prev = function(){
+        QuizService.prototype.next = function(successCallback, endCallback){
+            var questionID = this.questionOrder[++this.questionIndex];
+            if(questionID == undefined){
+                return endCallback();
+            }
+            if(this.questions[questionID] != undefined){
+                return successCallback(this.questions[questionID]);
+            }
+
+            this._loadQuestion(questionID, successCallback);
+        };
+
+
+        QuizService.prototype.prev = function(successCallback, endCallback){
+            var questionID = this.questionOrder[--this.questionIndex];
+            if(questionID == undefined){
+                return endCallback();
+            }
+
+            if(this.questions[questionID] != undefined){
+                return successCallback(this.questions[questionID]);
+            }
+
+            this._loadQuestion(questionID, successCallback);
+        };
+
+        QuizService.prototype._loadQuestion = function(questionID, successCallback){
+            var that = this;
+            http({method: 'GET', url: QuizConfig.baseUrl + '/' + questionID + '/view' }).
+                success(function(data, status, headers, config) {
+                    data.question.form = QuizConfig.baseTemplateUrl + '/'+ data.question.type + '.html';
+                    that.questions[questionID] = data.question;
+                    successCallback(data.question);
+                }).
+                error(function(data, status, headers, config) {
+                    console.log('error');
+                });
         };
 
         QuizService.prototype.validate = function(questionID, answers){
@@ -34,16 +79,7 @@ angular.module('quiz', []).
                 });
         };
 
-        QuizService.prototype.order = function(){
-            http({method: 'GET', url: QuizConfig.baseUrl + '/order'}).
-                success(function(data, status, headers, config) {
-                    console.log(data);
-                }).
-                error(function(data, status, headers, config) {
-                    console.log(data);
-                    console.log('error');
-                });
-        };
+
 
 
         return new QuizService();
@@ -54,21 +90,39 @@ angular.module('quiz', []).
 function QuizQuestionCtrl($scope, quizService)
 {
     $scope.first = function() {
-        quizService.order();
-        $scope.question = quizService.first();
+        if(quizService.questionOrder == null){
+            quizService.order(function(){
+                quizService.first(function(question){
+                    $scope.question = question
+                });
+            });
+        }else{
+            quizService.first(function(question){
+                $scope.question = question
+            });
+        }
     };
 
     $scope.next = function() {
-        $scope.question = quizService.next();
+        quizService.next(
+            function(question){
+                $scope.question = question
+            },
+            function(){
+
+            });
     };
 
     $scope.prev = function() {
-        $scope.question = quizService.prev();
+         quizService.prev(
+            function(question){
+                $scope.question = question
+            },
+            function(){
+
+            });
     };
 
-
-
-    $scope.question = {name:'learn angular', text:'learn angular', form: 'http://localhost/rendeslms/assets/templates/variantquestion.html', variants:[{text:'var1'}, {text:'var2'}]};
 
     $scope.answerForm = function(){
         var questionType = $scope.question.type;

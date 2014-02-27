@@ -1,6 +1,7 @@
 <script type='text/javascript'>
     var QuizConfig = {
-        baseUrl: "<?php echo $questionsUrl?>"
+        baseUrl: "<?php echo $questionsUrl?>",
+        baseTemplateUrl : "<?php echo $templatesUrl?>"
     };
 </script>
 
@@ -8,13 +9,13 @@
     <div ng-controller="QuizQuestionCtrl">
         <div id='quiz-navigation'>
             <a href="#" ng-click="first()">Start</a>
-            <a href="#">Next</a>
-            <a href="#">Prev</a>
+            <a href="#" ng-click="next()">Next</a>
+            <a href="#" ng-click="prev()">Prev</a>
         </div>
         <div id='quiz-question'>
-            <h2>{{question.name}}</h2>
+            <h2>{{question.title}}</h2>
             <div id='question-text'>
-                <strong>Question:</strong>{{question.text}}
+                <strong>Question:</strong>{{question.question}}
             </div>
             <div id='question-answer-form'>
                 <p ng-include="question.form"></p>
