@@ -6,6 +6,6 @@ interface IQuestion
 {
     public function getQuestion();
     public function getAnswers();
-    public function getCalculator();
+    public function getValidator();
     public function getWidget();
 }

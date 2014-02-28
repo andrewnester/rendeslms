@@ -52,7 +52,7 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
      *
      * @ORM\Column(name="calculator", type="array", nullable=false)
      */
-    public $calculator;
+    public $validator;
 
     /**
      * @var string
@@ -156,17 +156,22 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
     /**
      * @param array $calculator
      */
-    public function setCalculator($calculator)
+    public function setValidator($calculator)
     {
-        $this->calculator = $calculator;
+        $this->validator = $calculator;
     }
 
     /**
      * @return array
      */
-    public function getCalculator()
+    public function getValidator()
     {
-        return $this->calculator;
+        return $this->validator;
+    }
+
+    public function getValidatorObject()
+    {
+        return new \Rendes\Modules\Courses\Entities\Quiz\Questions\Validators\SimpleQuestionValidator();
     }
 
     /**

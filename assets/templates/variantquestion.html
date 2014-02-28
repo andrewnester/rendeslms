@@ -1,6 +1,9 @@
 <ul>
     <li ng-repeat="variant in question.variants">
-        <input type="checkbox" value='{{variant}}'>
+        <input type="checkbox" value='{{variant}}' name='answers[]'
+               ng-checked="answers.indexOf(fruitName) > -1"
+               ng-click="toggleAnswers(variant)"/>
         <span>{{variant}}</span>
     </li>
 </ul>
+<input type='button' ng-click="validate(question.id, checkedAnswers())" value="Send"/>

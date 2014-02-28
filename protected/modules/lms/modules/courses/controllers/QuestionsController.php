@@ -34,6 +34,27 @@ class QuestionsController extends \Rendes\Controllers\LMSController
     }
 
 
+    public function actionValidate($id, $quizID, $stepID, $courseID)
+    {
+        try{
+            $question = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Questions\Question')->getByID($id);
+        }catch(\Exception $e){
+            $this->getHttpClient()->json(array('error' => 'There is no such question'), 500);
+        }
+
+
+        $proposedAnswers = $this->getHttpClient()->get('answers');
+        if(!$proposedAnswers){
+            $this->getHttpClient()->json(array('error' => 'Please provide answers'), 400);
+        }
+
+        $validator = $question->getValidatorObject();
+        $validationResult = $validator->validate($question->getAnswers(), $proposedAnswers);
+
+        $this->getHttpClient()->json(array('isRight' => $validationResult), 200);
+    }
+
+
     public function actionView($id, $quizID, $stepID, $courseID)
     {
         try{
@@ -86,7 +107,8 @@ class QuestionsController extends \Rendes\Controllers\LMSController
         $questionType = $this->getHttpClient()->get('type', 'Question');
         try{
             \Yii::import('\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\'.$questionType, true);
-            $question = new \ReflectionClass('\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\'.$questionType);
+            $questionClass = new \ReflectionClass('\\Rendes\\Modules\\Courses\\Entities\\Quiz\\Questions\\'.$questionType);
+            $question = $questionClass->newInstance();
             $quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($quizID);
         }catch(\Exception $e){
             throw new \CHttpException(404, 'Such step does not exist');

@@ -14,7 +14,6 @@ $this->menu=array(
 
 if($this->checkAccess('teacher')){
     $this->menu[] = array('label'=>'Create Quiz', 'url'=>array('create'));
-    $this->menu[] = array('label'=>'Update Quiz', 'url'=>array('update', 'id'=>$quiz->id, 'stepID'=>$stepID, 'courseID'=>$courseID ));
     $this->menu[] = array('label'=>'Delete Quiz', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$quiz->id),'confirm'=>'Are you sure you want to delete this item?'));
 }
 

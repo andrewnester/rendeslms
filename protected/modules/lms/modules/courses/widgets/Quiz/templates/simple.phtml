@@ -6,20 +6,30 @@
 </script>
 
 <div id='quiz-container' ng-app='quiz'>
-    <div ng-controller="QuizQuestionCtrl">
+    <div ng-controller="QuizQuestionCtrl" data-ng-init='first()'>
         <div id='quiz-navigation'>
             <a href="#" ng-click="first()">Start</a>
             <a href="#" ng-click="next()">Next</a>
             <a href="#" ng-click="prev()">Prev</a>
         </div>
-        <div id='quiz-question'>
+
+        <div id='quiz-question-loading' style="display: {{loading}}">
+            loading...
+        </div>
+
+        <div id='quiz-question-result'>
+            <div id='quiz-question-result-{{result}}'>
+                {{resultText}}
+            </div>
+        </div>
+
+        <div id='quiz-question' style="display: {{display}}">
             <h2>{{question.title}}</h2>
             <div id='question-text'>
                 <strong>Question:</strong>{{question.question}}
             </div>
             <div id='question-answer-form'>
-                <p ng-include="question.form"></p>
-                <input type='button' value="Send"/>
+                <ng-include src="question.form"></ng-include>
             </div>
         </div>
     </div>
