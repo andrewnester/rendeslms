@@ -28,7 +28,12 @@ class QuizzesController extends \Rendes\Controllers\LMSController
      */
     public function accessRules()
     {
-        return array();
+        return array(
+            array('allow',
+                'actions' => array('view'),
+                'roles' => array('administrator', 'teacher', 'student'),
+            ),
+        );
     }
 
 
@@ -120,10 +125,14 @@ class QuizzesController extends \Rendes\Controllers\LMSController
     public function actionView($id, $stepID, $courseID)
     {
         $quizService = new \Rendes\Modules\Courses\Services\QuizService();
+        $quiz = $this->loadQuiz($id);
+        $userEntity = $this->getUser()->getEntity();
+
         $this->render('view',array(
-            'model' => $this->loadQuiz($id),
+            'model' =>  $quiz,
             'rules' => $quizService->getAvailableRules(),
             'widgets' => $quizService->getAvailableWidgets(),
+            'quizResults' => $quizService->getQuizResults($quiz, $userEntity),
             'stepID' => $stepID,
             'courseID' => $courseID
         ));

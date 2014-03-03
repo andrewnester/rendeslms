@@ -10,6 +10,7 @@ abstract class BaseQuizWidget extends \CWidget implements \Rendes\Modules\Course
 {
     public $quiz;
     public $options;
+    public $assetUrl;
 
     public function init()
     {
@@ -23,9 +24,8 @@ abstract class BaseQuizWidget extends \CWidget implements \Rendes\Modules\Course
 
     private function registerClientScript()
     {
-        $baseUrl = \Yii::app()->baseUrl;
-        $cs = \Yii::app()->getClientScript();
-        $cs->registerScriptFile($baseUrl.'/assets/js/angular.min.js');
-        $cs->registerScriptFile($baseUrl.'/assets/js/quiz/quiz.js');
+        $this->assetUrl = \Yii::app()->getAssetManager()->publish(\Yii::getPathOfAlias('application.modules.lms.assets'));
+        \Yii::app()->clientScript->registerScriptFile($this->assetUrl.'/js/angular.min.js');
+        \Yii::app()->clientScript->registerScriptFile($this->assetUrl.'/js/quiz/quiz.js');
     }
 }

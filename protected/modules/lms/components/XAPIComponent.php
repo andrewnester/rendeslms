@@ -149,11 +149,12 @@ class XAPIComponent extends \CComponent
 
         $status = $http->getStatus();
         if($status != 200){
-            throw new \CHttpException($status, $http->getStatusMessage($status));
+            $this->registerUser($user);
+            return;
         }
 
         $tokens = json_decode($jsonResponse);
-        $user = $this->populateUserTokens($user, $tokens);
+        $this->populateUserTokens($user, $tokens);
 
         $em = $this->getEntityManager();
         $em->flush();
@@ -175,11 +176,12 @@ class XAPIComponent extends \CComponent
 
         $status = $http->getStatus();
         if($status != 200){
-            throw new \CHttpException($status, $http->getStatusMessage($status));
+            $this->requestTokens($user);
+            return;
         }
 
         $tokens = json_decode($jsonResponse);
-        $user = $this->populateUserTokens($user, $tokens);
+        $this->populateUserTokens($user, $tokens);
 
         $em = $this->getEntityManager();
         $em->flush();
@@ -190,13 +192,12 @@ class XAPIComponent extends \CComponent
      * @param object $tokens
      * @return \Rendes\Modules\User\Entities\User
      */
-    private function populateUserTokens($user, $tokens)
+    private function populateUserTokens(&$user, $tokens)
     {
         $user->setAccessToken($tokens->access_token);
         $user->setRefreshToken($tokens->refresh_token);
         $user->setExpires($tokens->expires_in);
         $user->setTokenUpdated(new \DateTime());
-        return $user;
     }
 
 

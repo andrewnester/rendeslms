@@ -136,4 +136,22 @@ class QuizService extends \Rendes\Services\BaseService
 
         return $order;
     }
+
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
+     * @param \Rendes\Modules\User\Entities\User $user
+     * @return bool|mixed
+     */
+    public function getQuizResults(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
+    {
+        $xapi = $this->getXAPI();
+        $searchOptions = array(
+            'agent' => json_encode(array(
+                'mbox' => $user->getEmail()
+            )),
+            'activity' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$quiz->getStep()->getCourse()->getId().'/steps/'.$quiz->getStep()->getId().'/quizzes/'.$quiz->getId()),
+            'related_activities' => true
+        );
+        return $xapi->getStatements($searchOptions);
+    }
 }

@@ -1,6 +1,10 @@
 var mongoose = require('../../libs/mongoose');
 
 var Statement = new mongoose.Schema({
+    uuid:{
+        type: String,
+        required: true
+    },
     clientId:{
         type: String,
         required: true

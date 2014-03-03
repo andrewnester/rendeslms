@@ -1,5 +1,6 @@
 var StatementModel = require('../models/xapi/statement');
 var log = require('../libs/log')(module);
+var uuid = require('uuid');
 
 function StatementService(){}
 
@@ -8,7 +9,7 @@ StatementService.prototype = {
     storeIfNotExist: function(user, statement, success, exist, error)
     {
         var that = this;
-        StatementModel.findOne({'_id':statement.id}, function(err, foundStatement){
+        StatementModel.findOne({'uuid':statement.id}, function(err, foundStatement){
             if(foundStatement){
                 if(that.compareStatements(foundStatement, statement)){
                     return success(foundStatement);
@@ -71,7 +72,9 @@ StatementService.prototype = {
     {
         statement['clientId'] = user.clientId;
         if(statement.id != undefined){
-            statement._id = statement.id;
+            statement.uuid = statement.id;
+        }else{
+            statement.uuid = uuid.v4();
         }
         return new StatementModel(statement);
     },
@@ -85,18 +88,21 @@ StatementService.prototype = {
         };
 
         if(req.query.statementId != undefined){
-            searchOptions._id = req.query.statementId;
+            searchOptions.uuid = req.query.statementId;
         }
 
         if(req.query.voidedStatementId != undefined){
-            searchOptions._id = req.query.voidedStatementId;
+            searchOptions.uuid = req.query.voidedStatementId;
             searchOptions['verb.id'] = 'http://www.adlnet.gov/XAPIprofile/voided';
         }
 
         if(req.query.activity != undefined){
             if(req.query.related_activities == true){
                 searchOptions.$or = [
-                    {'object.contextActivities': {$elemMatch : {id: req.query.activity}}},
+                    {'context.contextActivities.parent.id': req.query.activity},
+                    {'context.contextActivities.grouping.id': req.query.activity},
+                    {'context.contextActivities.category.id': req.query.activity},
+                    {'context.contextActivities.other.id': req.query.activity},
                     {'$and':[{'object.objectType':'Activity'}, {'object.id':req.query.activity}]},
                     {'$and':[{'object.objectType':'SubDocument'}, {'object.id':req.query.activity}]}
                 ];
@@ -145,8 +151,6 @@ StatementService.prototype = {
         if(req.query.registration != undefined){
             searchOptions['context.registration'] = req.query.registration;
         }
-
-
 
         return searchOptions;
     },

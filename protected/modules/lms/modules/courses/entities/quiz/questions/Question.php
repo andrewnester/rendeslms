@@ -62,7 +62,6 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
     protected $question;
 
 
-
     /**
      * @return Array
      */

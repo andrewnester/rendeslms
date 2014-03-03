@@ -1,36 +1,58 @@
 <script type='text/javascript'>
     var QuizConfig = {
         baseUrl: "<?php echo $questionsUrl?>",
-        baseTemplateUrl : "<?php echo $templatesUrl?>"
+        baseTemplateUrl : "<?php echo $this->assetUrl . '/templates/'?>"
     };
 </script>
 
 <div id='quiz-container' ng-app='quiz'>
     <div ng-controller="QuizQuestionCtrl" data-ng-init='first()'>
-        <div id='quiz-navigation'>
-            <a href="#" ng-click="first()">Start</a>
+        <div id='quiz-navigation' ng-hide='endQuiz'>
             <a href="#" ng-click="next()">Next</a>
             <a href="#" ng-click="prev()">Prev</a>
+            <a href="#" ng-click="finishQuiz()">End Quiz</a>
         </div>
 
         <div id='quiz-question-loading' style="display: {{loading}}">
             loading...
         </div>
 
-        <div id='quiz-question-result'>
-            <div id='quiz-question-result-{{result}}'>
-                {{resultText}}
+        <div id='quiz-question-result' ng-hide='endQuiz'>
+            <div id='quiz-question-result-{{question.result}}'>
+                {{question.resultText}}
             </div>
         </div>
 
-        <div id='quiz-question' style="display: {{display}}">
+        <div id='quiz-question' style="display: {{display}}" ng-hide='endQuiz'>
             <h2>{{question.title}}</h2>
             <div id='question-text'>
                 <strong>Question:</strong>{{question.question}}
             </div>
-            <div id='question-answer-form'>
+            <div id='question-answer-form' ng-hide='question.done'>
                 <ng-include src="question.form"></ng-include>
             </div>
+            <div id='question-your-answer' ng-show='question.done'>
+                Your answer: {{question.answers}}
+            </div>
         </div>
+
+        <div id='quiz-final-page'  ng-show='endQuiz'>
+            <p>You finished quiz!</p>
+            <table>
+                <tr>
+                    <td>Total:</td>
+                    <td>{{totalQuestions()}}</td>
+                </tr>
+                <tr>
+                    <td>Total answered:</td>
+                    <td>{{totalAnsweredQuestions()}}</td>
+                </tr>
+                <tr>
+                    <td>Right answers:</td>
+                    <td>{{totalRightAnswers()}}</td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 </div>
