@@ -7,7 +7,7 @@
 namespace Rendes\Modules\Courses\Services;
 use \Rendes\Modules\Courses\Interfaces as Interfaces;
 
-class LectureService extends \Rendes\Services\BaseService
+class LectureService extends CourseBaseService
 {
 
     /**

@@ -6,7 +6,7 @@
 
 namespace Rendes\Modules\Courses\Interfaces\ResultRepositories;
 
-interface ILectureResultRepository
+interface ILectureResultRepository extends IResultRepository
 {
     public function getUserPassedDocuments($lectureID, $userID);
     public function getUserPassedVideos($lectureID, $userID);

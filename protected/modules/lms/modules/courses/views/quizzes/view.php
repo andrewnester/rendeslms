@@ -38,8 +38,6 @@ if($this->checkAccess('teacher')){
 
 <hr/>
 
-<?php var_dump($quizResults); ?>
-
 <h2>Passing Rule</h2>
 <?php $passingRule = $model->getPassingRule(); ?>
 <?php if(count($passingRule) > 0): ?>

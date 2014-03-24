@@ -50,18 +50,14 @@ class XAPIComponent extends \CComponent
         $user = $this->getUser()->getEntity();
 
         $jsonResponse = $http->sendGet($this->getBaseUrl() . 'statements', $searchOptions, array('Authorization: Bearer ' . $user->getAccessToken()));
-        if($jsonResponse === false){
-            throw new \CHttpException(500, 'Internal server error');
-        }
 
         $status = $http->getStatus();
         if($status != 200){
-            throw new \CHttpException($status, 'LRS Connection:' . $http->getStatusMessage($status));
+            return false;
         }
 
-        $jsonResponse = $http->sendGet($this->getBaseUrl() . 'statements', $searchOptions, array('Authorization: Bearer ' . $user->getAccessToken()));
         if($jsonResponse === false){
-            throw new \CHttpException(500, 'Internal server error');
+            return false;
         }
 
         return json_decode($jsonResponse);
@@ -82,12 +78,7 @@ class XAPIComponent extends \CComponent
         $http = $this->getHttpClientComponent();
         $http->sendPut($this->getBaseUrl() . 'statements?statementId='.$statement['id'], $statement, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
 
-        $status = $http->getStatus();
-        if($status != 200){
-            throw new \CHttpException($status, 'LRS Connection:' . $http->getStatusMessage($status));
-        }
-
-        return true;
+        return $http->getStatus() == 204;
     }
 
     /**
@@ -101,12 +92,7 @@ class XAPIComponent extends \CComponent
         $http = $this->getHttpClientComponent();
         $http->sendPost($this->getBaseUrl() . 'statements', $statement, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
 
-        $status = $http->getStatus();
-        if($status != 200){
-            throw new \CHttpException($status, 'LRS Connection:' . $http->getStatusMessage($status));
-        }
-
-        return true;
+        return $http->getStatus() == 200;
     }
 
 
@@ -123,7 +109,7 @@ class XAPIComponent extends \CComponent
 
         $status = $http->getStatus();
         if($status != 200){
-            throw new \CHttpException($status, 'LRS Connection:' . $http->getStatusMessage($status));
+            throw new \CHttpException($status, 'Learning Record Error - Cannot register user');
         }
 
         $this->requestTokens($user);
@@ -149,8 +135,11 @@ class XAPIComponent extends \CComponent
 
         $status = $http->getStatus();
         if($status != 200){
-            $this->registerUser($user);
-            return;
+            if($status != 0){
+                $this->registerUser($user);
+                return;
+            }
+            throw new \CHttpException($status, 'Learning Record Error - Cannot get authentication tokens');
         }
 
         $tokens = json_decode($jsonResponse);

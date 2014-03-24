@@ -7,7 +7,7 @@
 namespace Rendes\Modules\Courses\Services;
 use \Rendes\Modules\Courses\Interfaces as Interfaces;
 
-class QuizService extends \Rendes\Services\BaseService
+class QuizService extends CourseBaseService
 {
 
     /**
@@ -16,7 +16,7 @@ class QuizService extends \Rendes\Services\BaseService
     private $repository = null;
 
     /**
-     * @return Interfaces\ResultRepositories\ILectureResultRepository
+     * @return Interfaces\ResultRepositories\IQuizResultRepository
      */
     public function getResultRepository()
     {
@@ -154,4 +154,55 @@ class QuizService extends \Rendes\Services\BaseService
         );
         return $xapi->getStatements($searchOptions);
     }
+
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
+     * @param \Rendes\Modules\User\Entities\User $user
+     * @return bool
+     */
+    public function isAvailableToStart(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
+    {
+        $attemptsCount = $this->getResultRepository()->getAttemptCount($quiz, $user);
+        $quizOptions = $this->getQuizOptions($quiz);
+        if(isset($quizOptions['attempts']) && $quizOptions['attempts'] <= $attemptsCount){
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
+     * @param \Rendes\Modules\User\Entities\User $user
+     * @return array
+     */
+    public function prepareAttemptStatement(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
+    {
+        return array(
+            'actor' => array(
+                'mbox' => $user->getEmail()
+            ),
+            'verb' => array(
+                'id' => 'http://adlnet.gov/expapi/verbs/attempted'
+            ),
+            'object' => array(
+                'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$quiz->getStep()->getCourse()->getId().'/steps/'.$quiz->getStep()->getId().'/quizzes/'.$quiz->getId()),
+                'definition' => array(
+                    'name' => array(
+                        'en-US' => $quiz->getName()
+                    ),
+                    'description' => array(
+                        'en-US' => $quiz->getDescription())
+                )
+            ),
+            'context' => array(
+                'contextActivities' => array(
+                    'grouping' => array(
+                        'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$quiz->getStep()->getCourse()->getId().'/steps/'.$quiz->getStep()->getId()),
+                    )
+                )
+            )
+        );
+    }
+
 }

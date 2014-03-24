@@ -30,9 +30,9 @@ class QuizzesController extends \Rendes\Controllers\LMSController
     {
         return array(
             array('allow',
-                'actions' => array('view'),
                 'roles' => array('administrator', 'teacher', 'student'),
             ),
+            array('deny')
         );
     }
 
@@ -81,8 +81,20 @@ class QuizzesController extends \Rendes\Controllers\LMSController
         }
 
         $quizService = new \Rendes\Modules\Courses\Services\QuizService();
+
+        $userEntity = $this->getUser()->getEntity();
+        if(!$quizService->isAvailableToStart($quiz, $userEntity)){
+            $this->render('quiz_unavailable');
+            die();
+        }
+
         $widget = $quizService->getQuizWidget($quiz);
 
+        $statement = $quizService->prepareAttemptStatement($quiz, $userEntity);
+        $isRecorded = $quizService->getResultRepository()->recordStatement($statement);
+        if(!$isRecorded){
+            throw new \CHttpException(500, 'Learning Record Store Error - Quiz can not be started. Please contact administrator');
+        }
         $this->render('start', array('quiz' => $quiz, 'widget' => $widget));
     }
 
@@ -133,6 +145,7 @@ class QuizzesController extends \Rendes\Controllers\LMSController
             'rules' => $quizService->getAvailableRules(),
             'widgets' => $quizService->getAvailableWidgets(),
             'quizResults' => $quizService->getQuizResults($quiz, $userEntity),
+            'attemptCount' => $quizService->getResultRepository()->getAttemptCount($quiz, $userEntity),
             'stepID' => $stepID,
             'courseID' => $courseID
         ));
@@ -158,6 +171,10 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
         $this->getHttpClient()->json(array('message' => 'Successfully Saved'));
     }
+
+
+
+
 
     protected function loadQuiz($id)
     {

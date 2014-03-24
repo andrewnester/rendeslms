@@ -51,8 +51,11 @@ class QuestionsController extends \Rendes\Controllers\LMSController
         $validator = $question->getValidatorObject();
         $validationResult = $validator->validate($question->getAnswers(), $proposedAnswers);
 
-        $this->sendQuestionResult($question, $validationResult, $quizID, $stepID, $courseID);
-        $this->getHttpClient()->json(array('isRight' => $validationResult), 200);
+        $questionService = new \Rendes\Modules\Courses\Services\QuestionService();
+        $statement = $questionService->prepareQuestionResultStatement($question, $this->getUser()->getEntity(), $validationResult, $courseID, $stepID, $quizID);
+        $isRecorded = $questionService->getResultRepository()->recordStatement($statement);
+
+        $this->getHttpClient()->json(array('isRight' => $validationResult), $isRecorded ? 200 : 500);
     }
 
 
@@ -176,43 +179,6 @@ class QuestionsController extends \Rendes\Controllers\LMSController
     }
 
 
-
-
-    protected function sendQuestionResult(\Rendes\Modules\Courses\Entities\Quiz\Questions\Question $question, $validationResult, $quizID, $stepID, $courseID)
-    {
-        $xapi = $this->getXAPI();
-        $user = $this->getUser()->getEntity();
-        $statement = array(
-            'actor' => array(
-                'mbox' => $user->getEmail()
-            ),
-            'verb' => array(
-                'id' => 'http://adlnet.gov/expapi/verbs/answered'
-            ),
-            'object' => array(
-                'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$courseID.'/steps/'.$stepID.'/quizzes/'.$quizID.'/questions/'.$question->getId()),
-                'definition' => array(
-                    'name' => array(
-                        'en-US' => $question->getTitle()
-                    ),
-                    'description' => array(
-                        'en-US' => $question->getQuestion()
-                    ),
-                )
-            ),
-            'result' => array(
-                'success' => $validationResult
-            ),
-            'context' => array(
-                'contextActivities' => array(
-                    'grouping' => array(
-                        'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$courseID.'/steps/'.$stepID.'/quizzes/'.$quizID),
-                    )
-                )
-            )
-        );
-        $xapi->postStatement($statement);
-    }
 
 
     protected function loadQuiz($id)

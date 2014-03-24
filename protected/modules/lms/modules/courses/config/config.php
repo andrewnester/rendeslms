@@ -27,4 +27,11 @@ return array(
             'dbname' => 'yiilms'
         ),
     ),
+
+    'params' => array(
+        'resultRepositories' => array(
+            'quiz' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuizResultRepository',
+            'question' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuestionResultRepository'
+        ),
+    ),
 );

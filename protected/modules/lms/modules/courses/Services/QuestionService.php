@@ -7,9 +7,26 @@
 namespace Rendes\Modules\Courses\Services;
 use \Rendes\Modules\Courses\Entities\Quiz as Quiz;
 use \Rendes\Modules\Courses\Entities\Quiz\Questions as Questions;
+use \Rendes\Modules\Courses\Interfaces as Interfaces;
 
-class QuestionService extends \Rendes\Services\BaseService
+class QuestionService extends CourseBaseService
 {
+
+    /**
+     * @var Interfaces\ResultRepositories\IQuestionResultRepository
+     */
+    private $repository = null;
+
+    /**
+     * @return Interfaces\ResultRepositories\IQuestionResultRepository
+     */
+    public function getResultRepository()
+    {
+        if(is_null($this->repository)){
+            $this->repository = $this->loadResultRepository('question');
+        }
+        return $this->repository;
+    }
 
     public function populateQuestion(Questions\Question $question, $questionData)
     {
@@ -37,6 +54,38 @@ class QuestionService extends \Rendes\Services\BaseService
     }
 
 
+    public function prepareQuestionResultStatement(Questions\Question $question, \Rendes\Modules\User\Entities\User $user, $validationResult, $courseID, $stepID, $quizID)
+    {
+        return array(
+            'actor' => array(
+                'mbox' => $user->getEmail()
+            ),
+            'verb' => array(
+                'id' => 'http://adlnet.gov/expapi/verbs/answered'
+            ),
+            'object' => array(
+                'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$courseID.'/steps/'.$stepID.'/quizzes/'.$quizID.'/questions/'.$question->getId()),
+                'definition' => array(
+                    'name' => array(
+                        'en-US' => $question->getTitle()
+                    ),
+                    'description' => array(
+                        'en-US' => $question->getQuestion()
+                    ),
+                )
+            ),
+            'result' => array(
+                'success' => $validationResult
+            ),
+            'context' => array(
+                'contextActivities' => array(
+                    'grouping' => array(
+                        'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$courseID.'/steps/'.$stepID.'/quizzes/'.$quizID),
+                    )
+                )
+            )
+        );
+    }
 
     public function getAvailableTypes()
     {

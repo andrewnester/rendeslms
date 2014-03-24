@@ -10,6 +10,13 @@
             "name": "random",
             "type": "checkBox",
             "default": false
+        },
+        "attempts" : {
+            "id": "attempts",
+            "label": "Available Attempts",
+            "name": "attempts",
+            "type": "textField",
+            "default": 1
         }
     }
 }

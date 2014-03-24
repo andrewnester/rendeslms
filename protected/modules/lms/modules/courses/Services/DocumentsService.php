@@ -7,7 +7,7 @@
 namespace Rendes\Modules\Courses\Services;
 use \Rendes\Modules\Courses\Entities\Lecture as Lecture;
 
-class DocumentsService extends \Rendes\Services\BaseService
+class DocumentsService extends CourseBaseService
 {
 
     public function populate(Lecture\Document $document, Lecture\Lecture $lecture, $documentData)

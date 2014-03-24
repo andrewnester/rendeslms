@@ -6,9 +6,8 @@
 
 namespace Rendes\Modules\Courses\Services;
 
-class StepService extends \Rendes\Services\BaseService
+class StepService extends CourseBaseService
 {
-
 
     /**
      * @param \Doctrine\ORM\EntityManager $em
