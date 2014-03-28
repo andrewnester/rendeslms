@@ -7,5 +7,8 @@ describe('UserModel', function () {
         UserModel.should.be.have.property('schema');
     });
 
-
+    it('Должно быть моделью mongoose', function () {
+        UserModel.should.be.have.property('model');
+        UserModel.should.be.have.property('schema');
+    });
 });

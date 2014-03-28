@@ -32,6 +32,9 @@ return array(
             'clientID' => 'mobileV1',
             'clientSecret' => 'abc123456'
         ),
+		'quizValidator' => array(
+			'class' => '\Rendes\Modules\Course\Services\Quiz\Validators\QuizStartValidator'
+		)
     ),
 
     'params' => array(

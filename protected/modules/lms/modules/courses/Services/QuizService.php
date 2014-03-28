@@ -31,14 +31,7 @@ class QuizService extends CourseBaseService
         $quiz->setName($quizData['name']);
         $quiz->setDescription($quizData['description']);
 
-        $rules = $this->getAvailableRules();
-        $rule = array();
-        $ruleID = isset($quizData['rule_id']) ? $quizData['rule_id'] : null;
-        if(!is_null($ruleID)){
-            $rule[$ruleID]['classname'] = $rules[$ruleID]['classname'];
-            $rule[$ruleID]['options'] = isset($quizData['rule'][$ruleID]) ? $quizData['rule'][$ruleID] : array();
-            $quiz->setPassingRule($rule);
-        }
+		$quiz->setAttributes($quizData, false);
 
         $widgets = $this->getAvailableWidgets();
         $widget = array();
@@ -56,20 +49,14 @@ class QuizService extends CourseBaseService
     /**
      * @return array
      */
-    public function getAvailableRules()
+    public function getAvailableTypes()
     {
-        $rules = array();
-        $pathToRulesDir = __DIR__ . '/../Entities/Quiz/Rules/';
-        $dir = opendir($pathToRulesDir);
-        while (false !== ($entry = readdir($dir))) {
-            if(strpos($entry, '.json') !== false){
-                $configContent = file_get_contents($pathToRulesDir . $entry);
-                $decoded = json_decode($configContent, true);
-                $rules[$decoded['id']] = $decoded;
-            }
-        }
-
-        return $rules;
+		$quizTypes = \Yii::app()->getModule('lms')->getModule('courses')->params->quizTypes;
+		$availableTypes = array();
+		foreach($quizTypes as $quizType){
+			$availableTypes[$quizType['class']] = $quizType['name'];
+		}
+		return $availableTypes;
     }
 
     /**
@@ -108,25 +95,15 @@ class QuizService extends CourseBaseService
 
     /**
      * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
-     * @return mixed
-     */
-    public function getQuizOptions(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz)
-    {
-        $widget = array_shift(array_values($quiz->getWidget()));
-        return $widget['options'];
-    }
-
-    /**
-     * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
      * @return array
      */
     public function getQuestionsOrder(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz)
     {
-        $question = $quiz->getQuestions();
-        $quizOptions = $this->getQuizOptions($quiz);
+        $questions = $quiz->getQuestions();
+        $quizOptions = $quiz->getOptions($quiz);
 
         $order = array();
-        foreach($question as $question){
+        foreach($questions as $question){
             $order[] = $question->getId();
         }
 
@@ -136,6 +113,29 @@ class QuizService extends CourseBaseService
 
         return $order;
     }
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
+	 * @return array
+	 */
+	public function generateTabs(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz)
+	{
+		$hashService = new \Rendes\Services\HashService();
+		$widgets = $this->getAvailableWidgets();
+
+		$tabs = array();
+		foreach($this->getAvailableTypes() as $class => $type){
+			$quizReflectionClass = new \ReflectionClass($class);
+			$activeTab = $quiz instanceof $class;
+			$tabs[$hashService->hash(trim($class, '\\'))] = array(
+				'title' => $type,
+				'view' => 'types/_'.strtolower($quizReflectionClass->getShortName()),
+				'data' => array('model' => $activeTab ? $quiz : new $class(), 'widgets' => $widgets)
+			);
+		}
+
+		return $tabs;
+	}
 
     /**
      * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
@@ -162,13 +162,8 @@ class QuizService extends CourseBaseService
      */
     public function isAvailableToStart(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
     {
-        $attemptsCount = $this->getResultRepository()->getAttemptCount($quiz, $user);
-        $quizOptions = $this->getQuizOptions($quiz);
-        if(isset($quizOptions['attempts']) && $quizOptions['attempts'] <= $attemptsCount){
-            return false;
-        }
-
-        return true;
+		$validator = $this->getService('quizStartValidator');
+		return $validator->validate($quiz, $user);
     }
 
     /**

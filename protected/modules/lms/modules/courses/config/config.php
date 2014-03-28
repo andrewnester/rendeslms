@@ -33,5 +33,9 @@ return array(
             'quiz' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuizResultRepository',
             'question' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuestionResultRepository'
         ),
+		'quizTypes' => array(
+			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\CountAnsweredQuiz', 'name' => 'Count Answered'),
+			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\PointsReceivedQuiz', 'name' => 'Points Received'),
+		)
     ),
 );

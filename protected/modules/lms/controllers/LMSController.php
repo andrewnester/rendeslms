@@ -48,6 +48,16 @@ class LMSController extends \Controller
         return \Yii::app()->getModule('lms')->xapi;
     }
 
+	public function safeClassLoad($className)
+	{
+		try{
+			\Yii::import($className, true);
+			$class = new \ReflectionClass($className);
+		}catch(\Exception $e){
+			throw new \CHttpException($e->getMessage());
+		}
+		return $class->newInstance();
+	}
 
     /**
      * @param string $operation

@@ -14,7 +14,6 @@ $this->breadcrumbs=array(
 <h1>Create Quiz</h1>
 
 <?php $this->renderPartial('_form', array(
-    'model' => $model,
-    'rules' => $rules,
-    'widgets' => $widgets
+    'tabs' => $tabs,
+	'activeTab' => $activeTab,
 )); ?>

@@ -8,11 +8,11 @@ namespace Rendes\Modules\Courses\Services;
 
 abstract class CourseBaseService extends \Rendes\Services\BaseService
 {
+	public abstract function getResultRepository();
 
-    public function loadResultRepository($name)
+    protected function loadResultRepository($name)
     {
         $repositoryName = \Yii::app()->getModule('lms')->getModule('courses')->params->resultRepositories[$name];
         return new $repositoryName();
     }
-
 }

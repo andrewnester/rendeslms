@@ -42,5 +42,10 @@ class StepService extends CourseBaseService
         return $step;
     }
 
+	public function getResultRepository()
+	{
+		// TODO: Implement getResultRepository() method.
+	}
+
 
 }

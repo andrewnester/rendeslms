@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="\Rendes\Modules\Courses\Repositories\QuizRepository")
  * @ORM\Table(name="quiz")
  * @ORM\HasLifecycleCallbacks
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"countanswered"="CountAnsweredQuiz", "pointsreceived" = "PointsReceivedQuiz"})
  */
 class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Quiz\IQuiz
 {
@@ -59,13 +62,6 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     /**
      * @var array
      *
-     * @ORM\Column(name="passing_rule", type="array", nullable=false)
-     */
-    private $passingRule;
-
-    /**
-     * @var array
-     *
      * @ORM\Column(name="widget", type="array", nullable=false)
      */
     private $widget;
@@ -92,7 +88,6 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
         $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
     /**
      * @return bool
      */
@@ -115,10 +110,27 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
      */
     public function rules(){
         return array(
-            array('name, description, passingRule, widget', 'required'),
+            array('name, description, widget', 'required'),
         );
     }
 
+
+	public function attributeNames()
+	{
+		return array(
+			'name', 'description', 'widgets'
+		);
+	}
+
+
+	/**
+	 * @return array
+	 */
+	public function getOptions()
+	{
+		$widget = array_shift(array_values($this->getWidget()));
+		return $widget['options'];
+	}
 
 
     /**
@@ -139,35 +151,6 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
         }
 
         return $this->widget;
-    }
-
-    /**
-     * @param string $passingRule
-     */
-    public function setPassingRule($passingRule)
-    {
-        $this->passingRule = $passingRule;
-    }
-
-    /**
-     * @return array
-     */
-    public function getPassingRule()
-    {
-        if(empty($this->passingRule)){
-            return array();
-        }
-
-        return $this->passingRule;
-    }
-
-    /**
-     * @return \Rendes\Modules\Courses\Interfaces\Quiz\IQuizRule
-     */
-    public function getPassingRuleObject()
-    {
-        $rule = array_shift(array_values($this->passingRule));
-        return new $rule['classname']($rule['options']);
     }
 
     /**

@@ -46,4 +46,11 @@ class DocumentsService extends CourseBaseService
     {
         return '/assets/docs/';
     }
+
+	public function getResultRepository()
+	{
+		// TODO: Implement getResultRepository() method.
+	}
+
+
 }

@@ -29,11 +29,6 @@ abstract class BaseService
         return \Yii::app()->mail;
     }
 
-    public function loadResultRepository($name)
-    {
-        $repositoryName = \Yii::app()->getModule('lms')->params->resultRepositories[$name];
-        return new $repositoryName();
-    }
 
     public function getClassName($classname)
     {
@@ -50,4 +45,19 @@ abstract class BaseService
     {
         return \Yii::app()->getModule('lms')->xapi;
     }
+
+	/**
+	 * @param $name
+	 * @return mixed
+	 */
+	public function getService($name)
+	{
+		return \Yii::app()->getModule('lms')->$name;
+	}
+
+	protected function loadResultRepository($name)
+	{
+		$repositoryName = \Yii::app()->getModule('lms')->params->resultRepositories[$name];
+		return new $repositoryName();
+	}
 }

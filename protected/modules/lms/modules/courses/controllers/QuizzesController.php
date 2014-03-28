@@ -65,7 +65,7 @@ class QuizzesController extends \Rendes\Controllers\LMSController
         $this->render('update',array(
             'model'=>$quiz,
             'step' => $step,
-            'rules' => $quizService->getAvailableRules(),
+            'rules' => $quizService->getAvailableTypes(),
             'widgets' => $quizService->getAvailableWidgets(),
         ));
     }
@@ -102,14 +102,16 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
     public function actionCreate($stepID, $courseID)
     {
-        $quiz = new \Rendes\Modules\Courses\Entities\Quiz\Quiz();
+		$type = $this->getHttpClient()->get('type', 'Quiz');
+		$quiz = $this->safeClassLoad('\\Rendes\\Modules\\Courses\\Entities\\Quiz\\'.$type);
+
         try{
             $step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($stepID);
         }catch(\Exception $e){
             throw new \CHttpException(404, 'Such step does not exist');
         }
 
-        $quizData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Quiz_Quiz');
+        $quizData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Quiz_'.$type);
         $quizService = new \Rendes\Modules\Courses\Services\QuizService();
 
         if(!is_null($quizData))
@@ -122,14 +124,14 @@ class QuizzesController extends \Rendes\Controllers\LMSController
             }
         }
 
+		$hashService = new \Rendes\Services\HashService();
+
         $this->render('create',array(
-            'model'=>$quiz,
             'step' => $step,
-            'rules' => $quizService->getAvailableRules(),
-            'widgets' => $quizService->getAvailableWidgets(),
+			'activeTab' => $hashService->hash(get_class($quiz)),
+			'tabs' => $quizService->generateTabs($quiz)
         ));
     }
-
 
 
 
@@ -142,7 +144,7 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
         $this->render('view',array(
             'model' =>  $quiz,
-            'rules' => $quizService->getAvailableRules(),
+            'rules' => $quizService->getAvailableTypes(),
             'widgets' => $quizService->getAvailableWidgets(),
             'quizResults' => $quizService->getQuizResults($quiz, $userEntity),
             'attemptCount' => $quizService->getResultRepository()->getAttemptCount($quiz, $userEntity),

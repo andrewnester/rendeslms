@@ -23,7 +23,6 @@ interface IQuiz
      * @return string
      */
     public function getDescription();
-    public function getPassingRuleObject();
     public function getQuestions();
 }
 
