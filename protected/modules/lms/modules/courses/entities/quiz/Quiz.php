@@ -48,16 +48,13 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
      */
     private $description;
 
-    /**
-     * @var \Rendes\Modules\Courses\Entities\Quiz\Questions\Question
-     *
-     * @ORM\ManyToMany(targetEntity="\Rendes\Modules\Courses\Entities\Quiz\Questions\Question")
-     * @ORM\JoinTable(name="quiz_questions",
-     *      joinColumns={@ORM\JoinColumn(name="quiz_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="question_id", referencedColumnName="id")}
-     *      )
-     */
-    private $questions;
+	/**
+	 * @var \Rendes\Modules\Courses\Entities\Quiz\Questions\Question
+	 *
+	 * @ORM\OneToMany(targetEntity="\Rendes\Modules\Courses\Entities\Quiz\Questions\Question", mappedBy="quiz")
+	 * @ORM\OrderBy({"order" = "ASC"})
+	 */
+	private $questions;
 
     /**
      * @var array
@@ -65,6 +62,13 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
      * @ORM\Column(name="widget", type="array", nullable=false)
      */
     private $widget;
+
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="order_position", type="integer", nullable=false)
+	 */
+	private $order;
 
     /**
      * @var \DateTime
@@ -79,6 +83,8 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
      * @ORM\Column(name="updated", type="datetime", nullable=false)
      */
     private $updated;
+
+
 
 
 
@@ -103,6 +109,17 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     {
 
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getType()
+	{
+		if (preg_match('@\\\\([\w]+)$@', get_called_class(), $matches)) {
+			$classname = $matches[1];
+		}
+		return $classname;
+	}
 
 
     /**
@@ -278,5 +295,27 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
         return $this->description;
     }
 
+	/**
+	 * @param int $order
+	 */
+	public function setOrder($order)
+	{
+		$this->order = $order;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getOrder()
+	{
+		return $this->order;
+	}
+
+
+
+	public function getQuizTypeDescription()
+	{
+
+	}
 
 }

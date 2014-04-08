@@ -75,25 +75,6 @@ class LectureService extends CourseBaseService
         return true;
     }
 
-
-    /**
-     * @param array $orderArray
-     * @param int $lectureID
-     * @return int
-     */
-    public function countOrder($orderArray, $lectureID)
-    {
-        $orderCount = count($orderArray);
-        for($i=0; $i<$orderCount; $i++){
-            if($lectureID == $orderArray[$i]){
-                return $i+1;
-            }
-        }
-
-        return 0;
-    }
-
-
     private function getRulesChain(\Rendes\Modules\Courses\Entities\Lecture\Lecture $lecture)
     {
         $rules = array();

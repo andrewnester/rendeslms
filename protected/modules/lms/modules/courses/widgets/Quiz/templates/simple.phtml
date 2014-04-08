@@ -10,7 +10,7 @@
         <div id='quiz-navigation' ng-hide='endQuiz'>
             <a href="#" ng-click="next()">Next</a>
             <a href="#" ng-click="prev()">Prev</a>
-            <a href="#" ng-click="finishQuiz()">End Quiz</a>
+            <a href="<?php echo $questionsUrl?>/../end" >End Quiz</a>
         </div>
 
         <div id='quiz-question-loading' style="display: {{loading}}">
@@ -28,31 +28,15 @@
             <div id='question-text'>
                 <strong>Question:</strong>{{question.question}}
             </div>
-            <div id='question-answer-form' ng-hide='question.done'>
+            <div id='question-answer-form' ng-hide='question.done || question.doneEarlier'>
                 <ng-include src="question.form"></ng-include>
             </div>
-            <div id='question-your-answer' ng-show='question.done'>
-                Your answer: {{question.answers}}
-            </div>
+            <div id='question-your-answer' ng-show='question.done && !question.doneEarlier'>
+				Your answer: {{question.answers}}
+			</div>
+			<div id='question-earlier' ng-show='question.doneEarlier'>
+				You have already answered this question. Go to the next one
+			</div>
         </div>
-
-        <div id='quiz-final-page'  ng-show='endQuiz'>
-            <p>You finished quiz!</p>
-            <table>
-                <tr>
-                    <td>Total:</td>
-                    <td>{{totalQuestions()}}</td>
-                </tr>
-                <tr>
-                    <td>Total answered:</td>
-                    <td>{{totalAnsweredQuestions()}}</td>
-                </tr>
-                <tr>
-                    <td>Right answers:</td>
-                    <td>{{totalRightAnswers()}}</td>
-                </tr>
-            </table>
-        </div>
-
     </div>
 </div>

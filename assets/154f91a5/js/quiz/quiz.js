@@ -18,7 +18,7 @@ angular.module('quiz', []).
 
         QuizService.prototype.order = function(successCallback){
             var that = this;
-            http({method: 'GET', url: QuizConfig.baseUrl + '/order'}).
+            http({method: 'GET', url: QuizConfig.baseUrl + '/questionorder'}).
                 success(function(data, status, headers, config) {
                     that.questionOrder = data.order != undefined ? data.order : [];
                     successCallback();
@@ -74,7 +74,10 @@ angular.module('quiz', []).
                 success(function(data, status, headers, config) {
                     data.question.form = QuizConfig.baseTemplateUrl + '/'+ data.question.type + '.html';
                     that.questions[questionID] = data.question;
-                    handler.success(data.question);
+                    if(data.answered == true){
+                        that.questions[questionID].doneEarlier = true;
+                    }
+                    handler.success(that.questions[questionID]);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('error');

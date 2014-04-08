@@ -140,24 +140,6 @@ class QuizService extends CourseBaseService
     /**
      * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
      * @param \Rendes\Modules\User\Entities\User $user
-     * @return bool|mixed
-     */
-    public function getQuizResults(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
-    {
-        $xapi = $this->getXAPI();
-        $searchOptions = array(
-            'agent' => json_encode(array(
-                'mbox' => $user->getEmail()
-            )),
-            'activity' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$quiz->getStep()->getCourse()->getId().'/steps/'.$quiz->getStep()->getId().'/quizzes/'.$quiz->getId()),
-            'related_activities' => true
-        );
-        return $xapi->getStatements($searchOptions);
-    }
-
-    /**
-     * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
-     * @param \Rendes\Modules\User\Entities\User $user
      * @return bool
      */
     public function isAvailableToStart(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
@@ -171,7 +153,7 @@ class QuizService extends CourseBaseService
      * @param \Rendes\Modules\User\Entities\User $user
      * @return array
      */
-    public function prepareAttemptStatement(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
+    public function prepareAttemptStatement($sessionID, \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
     {
         return array(
             'actor' => array(
@@ -181,7 +163,8 @@ class QuizService extends CourseBaseService
                 'id' => 'http://adlnet.gov/expapi/verbs/attempted'
             ),
             'object' => array(
-                'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$quiz->getStep()->getCourse()->getId().'/steps/'.$quiz->getStep()->getId().'/quizzes/'.$quiz->getId()),
+                'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$quiz->getStep()->getCourse()->getId().'/steps/'.$quiz->getStep()->getId().'/quizzes/'),
+				'objectType' => 'Activity',
                 'definition' => array(
                     'name' => array(
                         'en-US' => $quiz->getName()
@@ -191,6 +174,7 @@ class QuizService extends CourseBaseService
                 )
             ),
             'context' => array(
+				'registration' => $sessionID,
                 'contextActivities' => array(
                     'grouping' => array(
                         'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$quiz->getStep()->getCourse()->getId().'/steps/'.$quiz->getStep()->getId()),
@@ -199,5 +183,4 @@ class QuizService extends CourseBaseService
             )
         );
     }
-
 }

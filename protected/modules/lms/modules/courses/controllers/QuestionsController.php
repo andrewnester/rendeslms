@@ -42,7 +42,6 @@ class QuestionsController extends \Rendes\Controllers\LMSController
             $this->getHttpClient()->json(array('error' => 'There is no such question'), 500);
         }
 
-
         $proposedAnswers = $this->getHttpClient()->get('answers');
         if(!$proposedAnswers){
             $this->getHttpClient()->json(array('error' => 'Please provide answers'), 400);
@@ -52,7 +51,14 @@ class QuestionsController extends \Rendes\Controllers\LMSController
         $validationResult = $validator->validate($question->getAnswers(), $proposedAnswers);
 
         $questionService = new \Rendes\Modules\Courses\Services\QuestionService();
-        $statement = $questionService->prepareQuestionResultStatement($question, $this->getUser()->getEntity(), $validationResult, $courseID, $stepID, $quizID);
+
+		$userEntity = $this->getUser()->getEntity();
+		$sessionID = $this->getXAPI()->getCurrentSession($userEntity);
+		if(!$sessionID){
+			$this->getHttpClient()->json(array('isRight' => false), 500);
+		}
+
+        $statement = $questionService->prepareQuestionResultStatement($question, $userEntity, $sessionID, $validationResult, $courseID, $stepID, $quizID);
         $isRecorded = $questionService->getResultRepository()->recordStatement($statement);
 
         $this->getHttpClient()->json(array('isRight' => $validationResult), $isRecorded ? 200 : 500);
@@ -62,12 +68,18 @@ class QuestionsController extends \Rendes\Controllers\LMSController
     public function actionView($id, $quizID, $stepID, $courseID)
     {
         try{
-            $question = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Questions\Question')->getArrayResultByID($id);
+            $questionArray = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Questions\Question')->getArrayResultByID($id);
+			$question = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Questions\Question')->getByID($id);
         }catch(\Exception $e){
             $this->getHttpClient()->json(array('error' => 'There is no such question'), 500);
         }
 
-        $this->getHttpClient()->json(array('question' => (array)$question), 200);
+		$userEntity = $this->getUser()->getEntity();
+		$sessionID = $this->getXAPI()->getCurrentSession($userEntity);
+		$questionService = new \Rendes\Modules\Courses\Services\QuestionService();
+		$isAnswered = $questionService->isAnsweredQuestion($question, $userEntity, $sessionID);
+
+        $this->getHttpClient()->json(array('question' => (array)$questionArray, 'answered' => $isAnswered), 200);
     }
 
 
@@ -142,9 +154,26 @@ class QuestionsController extends \Rendes\Controllers\LMSController
     }
 
 
+	public function actionOrder($quizID, $stepID, $courseID)
+	{
+		$orderData = $this->getHttpClient()->get('order');
+		if(!$orderData){
+			$this->redirect(array('/lms'));
+		}
+		$questionService = new \Rendes\Modules\Courses\Services\QuestionService();
+		$questionIterator = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Questions\Question')->getByIDArray(array_values($orderData));
+		foreach($questionIterator as $question){
+			$question->setOrder($questionService->countOrder($orderData, $question->getId()));
+		}
+
+		$this->getEntityManager()->flush();
+		$this->getEntityManager()->clear();
+
+		$this->getHttpClient()->json(array('message' => 'Successfully Saved'));
+	}
 
 
-    public function actionOrder($quizID, $stepID, $courseID)
+    public function actionQuestionOrder($quizID, $stepID, $courseID)
     {
         try{
             $quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($quizID);

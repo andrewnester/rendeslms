@@ -60,7 +60,8 @@ class XAPIComponent extends \CComponent
             return false;
         }
 
-        return json_decode($jsonResponse);
+        $result = json_decode($jsonResponse);
+		return is_array($result) ? $result : array($result);
     }
 
     /**
@@ -90,10 +91,89 @@ class XAPIComponent extends \CComponent
         $user = $this->getUser()->getEntity();
 
         $http = $this->getHttpClientComponent();
-        $http->sendPost($this->getBaseUrl() . 'statements', $statement, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
+        $response = $http->sendPost($this->getBaseUrl() . 'statements', $statement, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
 
-        return $http->getStatus() == 200;
+        return ($http->getStatus() == 200) ? $response : false;
     }
+
+	/**
+	 * @param array $statement
+	 */
+	public function postStatements($statements)
+	{
+		$this->authenticate();
+		$user = $this->getUser()->getEntity();
+
+		$http = $this->getHttpClientComponent();
+		$response = $http->sendPost($this->getBaseUrl() . 'statements', $statements, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
+
+		return ($http->getStatus() == 200) ? json_decode($response) : false;
+	}
+
+
+
+	public function startSession(\Rendes\Modules\User\Entities\User $user)
+	{
+		$response = $this->postStatement(array(
+			'actor' => array(
+				'mbox' => $user->getEmail()
+			),
+			'verb' => array(
+				'id' => 'http://adlnet.gov/expapi/verbs/initialized'
+			),
+			'object' => array(
+				'id' => 'session',
+			)
+		));
+
+		return $response;
+	}
+
+	public function getCurrentSession(\Rendes\Modules\User\Entities\User $user)
+	{
+		$initializedSessions = $this->getStatements(array(
+			'verb' => 'http://adlnet.gov/expapi/verbs/initialized',
+			'agent' => json_encode(array(
+				'mbox' => $user->getEmail()
+			))
+		));
+
+		if(!$initializedSessions){
+			return false;
+		}
+
+		$lastSessionID = $initializedSessions[0]->id;
+
+		$terminatedSession = $this->getStatements(array(
+			'verb' => 'http://adlnet.gov/expapi/verbs/terminated',
+			'agent' => json_encode(array(
+				'mbox' => $user->getEmail()
+			)),
+			'registration' => $lastSessionID
+		));
+
+		return !$terminatedSession ? $lastSessionID : false;
+	}
+
+	public function endSession(\Rendes\Modules\User\Entities\User $user, $sessionID)
+	{
+		$response = $this->postStatement(array(
+			'actor' => array(
+				'mbox' => $user->getEmail()
+			),
+			'verb' => array(
+				'id' => 'http://adlnet.gov/expapi/verbs/terminated'
+			),
+			'object' => array(
+				'id' => 'session',
+			),
+			'context' => array(
+				'registration' => $sessionID,
+			)
+		));
+
+		return $response;
+	}
 
 
 

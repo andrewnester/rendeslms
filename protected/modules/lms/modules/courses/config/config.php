@@ -26,6 +26,9 @@ return array(
             'host' => 'localhost',
             'dbname' => 'yiilms'
         ),
+		'quizStartValidator' => array(
+			'class' => '\Rendes\Modules\Courses\Services\Quiz\Validators\QuizStartValidator'
+		)
     ),
 
     'params' => array(
@@ -36,6 +39,6 @@ return array(
 		'quizTypes' => array(
 			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\CountAnsweredQuiz', 'name' => 'Count Answered'),
 			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\PointsReceivedQuiz', 'name' => 'Points Received'),
-		)
+		),
     ),
 );

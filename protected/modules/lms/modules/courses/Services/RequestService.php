@@ -14,6 +14,11 @@ class RequestService
     private $request;
     private $searchData = array();
 
+	public function __construct()
+	{
+		$this->request = new \Rendes\Components\HttpClientComponent();
+	}
+
     public function prepareSearchCriteria($isAdmin = false)
     {
         $criteria = new \CDbCriteria();

@@ -5,7 +5,7 @@
 <?php $methodGetDesc = 'get'.$this->descriptionField; ?>
 <?php $items = $this->model->$methodName(); ?>
 
-<?php if(count($items) > 0): ?>
+<?php if(!empty($items)): ?>
     <table>
         <tr>
             <td>

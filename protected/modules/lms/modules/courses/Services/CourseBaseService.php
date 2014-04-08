@@ -15,4 +15,21 @@ abstract class CourseBaseService extends \Rendes\Services\BaseService
         $repositoryName = \Yii::app()->getModule('lms')->getModule('courses')->params->resultRepositories[$name];
         return new $repositoryName();
     }
+
+	public function countOrder($orderArray, $elementID)
+	{
+		$orderCount = count($orderArray);
+		for($i=0; $i<$orderCount; $i++){
+			if($elementID == $orderArray[$i]){
+				return $i+1;
+			}
+		}
+
+		return 0;
+	}
+
+	public function getService($name)
+	{
+		return \Yii::app()->getModule('lms')->getModule('courses')->$name;
+	}
 }

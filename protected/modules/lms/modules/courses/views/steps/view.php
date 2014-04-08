@@ -46,17 +46,6 @@ if($this->checkAccess('teacher')){
 
 
 <?php $this->widget('\Rendes\Widgets\ElementRenderWidget', array(
-    'name' => 'RequiredSteps',
-    'header' => 'Required Steps',
-    'model' => $model,
-    'link' => '/lms/courses/steps',
-    'order' => false,
-    'linkParams' => array(
-        'courseID' => $courseID,
-    )
-)); ?>
-
-<?php $this->widget('\Rendes\Widgets\ElementRenderWidget', array(
     'name' => 'Lectures',
     'header' => 'Lectures',
     'model' => $model,

@@ -50,4 +50,9 @@ class PointsReceivedQuiz extends Quiz
 		return $attributes;
 	}
 
+	public function getQuizTypeDescription()
+	{
+		return \Yii::t('quiz', 'You need to receive at least') . ' ' . $this->getPoints() . ' ' . \Yii::t('quiz', 'point(s)');
+	}
+
 }

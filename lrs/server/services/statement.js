@@ -71,6 +71,7 @@ StatementService.prototype = {
     prepare: function(user, statement)
     {
         statement['clientId'] = user.clientId;
+        statement['object'].objectType = 'Activity';
         if(statement.id != undefined){
             statement.uuid = statement.id;
         }else{
@@ -157,7 +158,7 @@ StatementService.prototype = {
 
     findOneOrMore: function(user, options, limit, success, error)
     {
-        StatementModel.find(options, {}, {limit: limit}, function(err, statements){
+        StatementModel.find(options, {}, {limit: limit, sort:{stored: -1}}, function(err, statements){
            if(err){
                return error(err);
            }

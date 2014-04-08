@@ -42,37 +42,37 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
     public function actionUpdate($id, $stepID, $courseID)
     {
-        try{
-            $quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($id);
-            $step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($stepID);
-        }catch(\Exception $e){
-            throw new \CHttpException(404, 'Such step does not exist');
-        }
+		try{
+			$quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($id);
+			$step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($stepID);
+		}catch(\Exception $e){
+			throw new \CHttpException(404, 'Such step does not exist');
+		}
 
-        $quizData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Quiz_Quiz');
-        $quizService = new \Rendes\Modules\Courses\Services\QuizService();
+		$type = $quiz->getType();
 
-        if(!is_null($quizData))
-        {
-            $quiz = $quizService->populate($quiz, $step, $quizData);
-            if($quiz->validate()){
-                $this->getEntityManager()->persist($quiz);
-                $this->getEntityManager()->flush();
-                $this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
-            }
-        }
+		$quizData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Quiz_'.$type);
+		$quizService = new \Rendes\Modules\Courses\Services\QuizService();
 
-        $this->render('update',array(
+		if(!is_null($quizData))
+		{
+			$quiz = $quizService->populate($quiz, $step, $quizData);
+			if($quiz->validate()){
+				$this->getEntityManager()->flush();
+				$this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
+			}
+		}
+
+        $this->render('update', array(
             'model'=>$quiz,
-            'step' => $step,
-            'rules' => $quizService->getAvailableTypes(),
+            'type' => strtolower($type),
             'widgets' => $quizService->getAvailableWidgets(),
         ));
     }
 
 
 
-    public function actionStart($id, $stepID, $courseID)
+    public function actionStart($id)
     {
         try{
             $quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($id);
@@ -90,14 +90,49 @@ class QuizzesController extends \Rendes\Controllers\LMSController
 
         $widget = $quizService->getQuizWidget($quiz);
 
-        $statement = $quizService->prepareAttemptStatement($quiz, $userEntity);
-        $isRecorded = $quizService->getResultRepository()->recordStatement($statement);
-        if(!$isRecorded){
-            throw new \CHttpException(500, 'Learning Record Store Error - Quiz can not be started. Please contact administrator');
-        }
-        $this->render('start', array('quiz' => $quiz, 'widget' => $widget));
+		$sessionID = $quizService->getXAPI()->getCurrentSession($userEntity);
+		if($sessionID === false){
+			$sessionID = $quizService->getXAPI()->startSession($userEntity);
+			$statement = $quizService->prepareAttemptStatement($sessionID, $quiz, $userEntity);
+			$isRecorded = $quizService->getResultRepository()->recordStatement($statement);
+			if(!$isRecorded){
+				throw new \CHttpException(500, 'Learning Record Store Error - Quiz can not be started. Please contact administrator');
+			}
+		}
+
+		$answeredQuestions = $quizService->getResultRepository()->getAnsweredQuestions($quiz, $userEntity, $sessionID);
+        $this->render('start', array('quiz' => $quiz, 'widget' => $widget, 'answeredQuestions' => $answeredQuestions));
     }
 
+
+	public function actionEnd($id)
+	{
+		try{
+			$quiz = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByID($id);
+		}catch(\Exception $e){
+			throw new \CHttpException(404, 'Such quiz does not exist');
+		}
+
+		$quizService = new \Rendes\Modules\Courses\Services\QuizService();
+
+		$userEntity = $this->getUser()->getEntity();
+		$sessionID = $this->getXAPI()->getCurrentSession($userEntity);
+		if(!$sessionID){
+			throw new \CHttpException(500, 'Learning Record Store Error - Quiz can not be ended. There is no session started.');
+		}
+
+		$isRecorded = $quizService->getXAPI()->endSession($userEntity, $sessionID);
+		if(!$isRecorded){
+			throw new \CHttpException(500, 'Learning Record Store Error - Quiz can not be started. Please contact administrator');
+		}
+
+		$this->render('end', array(
+			'quiz' => $quiz,
+			'answers' => $quizService->getResultRepository()->getAnsweredQuestions($quiz, $userEntity, $sessionID),
+			'rightAnswers' => $quizService->getResultRepository()->getRightAnsweredQuestions($quiz, $userEntity, $sessionID),
+			'attempts' => $quizService->getResultRepository()->getAttempts($quiz, $userEntity),
+		));
+	}
 
 
     public function actionCreate($stepID, $courseID)
@@ -146,7 +181,6 @@ class QuizzesController extends \Rendes\Controllers\LMSController
             'model' =>  $quiz,
             'rules' => $quizService->getAvailableTypes(),
             'widgets' => $quizService->getAvailableWidgets(),
-            'quizResults' => $quizService->getQuizResults($quiz, $userEntity),
             'attemptCount' => $quizService->getResultRepository()->getAttemptCount($quiz, $userEntity),
             'stepID' => $stepID,
             'courseID' => $courseID

@@ -16,6 +16,8 @@
         <?php endforeach; ?>
     </ol>
     <?php ob_end_flush(); ?>
-    <a class="nice-button" onclick="saveOrder('<?php echo $this->id ?>')" >Save</a>
+		<?php if(count($this->items) > 0): ?>
+    		<a class="nice-button" onclick="saveOrder('<?php echo $this->id ?>')" >Save</a>
+		<?php endif; ?>
     </form>
 </div>

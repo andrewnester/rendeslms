@@ -24,6 +24,7 @@ interface IQuiz
      */
     public function getDescription();
     public function getQuestions();
+	public function getQuizTypeDescription();
 }
 
 

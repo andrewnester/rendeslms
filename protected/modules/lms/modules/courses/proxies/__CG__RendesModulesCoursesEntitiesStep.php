@@ -135,24 +135,6 @@ class Step extends \Rendes\Modules\Courses\Entities\Step implements \Doctrine\OR
         return parent::getQuizzes();
     }
 
-    public function setRequiredSteps($requiredSteps)
-    {
-        $this->__load();
-        return parent::setRequiredSteps($requiredSteps);
-    }
-
-    public function getRequiredSteps()
-    {
-        $this->__load();
-        return parent::getRequiredSteps();
-    }
-
-    public function getRequiredStepsIDs()
-    {
-        $this->__load();
-        return parent::getRequiredStepsIDs();
-    }
-
     public function setCreated($created)
     {
         $this->__load();
@@ -535,7 +517,7 @@ class Step extends \Rendes\Modules\Courses\Entities\Step implements \Doctrine\OR
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'name', 'description', 'path', 'created', 'updated', 'course', 'lectures', 'quizzes', 'requiredSteps');
+        return array('__isInitialized__', 'id', 'name', 'description', 'path', 'created', 'updated', 'course', 'lectures', 'quizzes');
     }
 
     public function __clone()

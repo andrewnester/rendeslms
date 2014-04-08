@@ -33,6 +33,14 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
      */
     protected $title;
 
+	/**
+	 * @var \Rendes\Modules\Courses\Entities\Quiz\Quiz
+	 *
+	 * @ORM\ManyToOne(targetEntity="\Rendes\Modules\Courses\Entities\Quiz\Quiz")
+	 * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
+	 */
+	protected $quiz;
+
     /**
      * @var float
      *
@@ -53,6 +61,13 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
      * @ORM\Column(name="calculator", type="array", nullable=false)
      */
     public $validator;
+
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="order_position", type="integer", nullable=false)
+	 */
+	private $order;
 
     /**
      * @var string
@@ -181,5 +196,39 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
         $questionService = new \Rendes\Modules\Courses\Services\QuestionService();
         return $questionService->getWidgetByClassName(get_called_class());
     }
+
+	/**
+	 * @param int $order
+	 */
+	public function setOrder($order)
+	{
+		$this->order = $order;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getOrder()
+	{
+		return $this->order;
+	}
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
+	 */
+	public function setQuiz($quiz)
+	{
+		$this->quiz = $quiz;
+	}
+
+	/**
+	 * @return \Rendes\Modules\Courses\Entities\Quiz\Quiz
+	 */
+	public function getQuiz()
+	{
+		return $this->quiz;
+	}
+
+
 
 }

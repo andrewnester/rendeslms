@@ -30,13 +30,6 @@ class StepService extends CourseBaseService
     {
         $step->setName($stepData['name']);
         $step->setDescription($stepData['description']);
-
-        $requiredSteps = array();
-        foreach($stepData['requiredStepsIDs'] as $stepID){
-            $requiredSteps[] = $this->getEntityManager()->getReference('\Rendes\Modules\Courses\Entities\Step', $stepID);
-        }
-
-        $step->setRequiredSteps($requiredSteps);
         $step->setCourse($course);
 
         return $step;

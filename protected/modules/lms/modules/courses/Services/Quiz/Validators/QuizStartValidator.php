@@ -16,8 +16,11 @@ class QuizStartValidator extends CourseBaseService implements IQuizStartValidato
 	 */
 	private $repository = null;
 
+	public function init(){}
+
 	public function validate(Quiz $quiz, User $user)
 	{
+
 		$attemptsCount = $this->getResultRepository()->getAttemptCount($quiz, $user);
 		$quizOptions = $quiz->getOptions();
 		if(isset($quizOptions['attempts']) && $quizOptions['attempts'] <= $attemptsCount){
@@ -33,10 +36,11 @@ class QuizStartValidator extends CourseBaseService implements IQuizStartValidato
 	public function getResultRepository()
 	{
 		if(is_null($this->repository)){
-			$this->repository = $this->loadResultRepository('lectures');
+			$this->repository = $this->loadResultRepository('quiz');
 		}
 		return $this->repository;
 	}
+
 
 
 }

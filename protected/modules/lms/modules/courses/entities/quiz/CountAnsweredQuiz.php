@@ -50,4 +50,9 @@ class CountAnsweredQuiz extends Quiz
 		return $attributes;
 	}
 
+	public function getQuizTypeDescription()
+	{
+		return \Yii::t('quiz', 'You need to answer at least') . ' ' . $this->getNeedCount() . ' ' . \Yii::t('quiz', 'question(s)');
+	}
+
 }

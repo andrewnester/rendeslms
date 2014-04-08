@@ -53,8 +53,7 @@ class QuestionService extends CourseBaseService
         return new $widgetClass();
     }
 
-
-    public function prepareQuestionResultStatement(Questions\Question $question, \Rendes\Modules\User\Entities\User $user, $validationResult, $courseID, $stepID, $quizID)
+	public function prepareQuestionResultStatement(Questions\Question $question, \Rendes\Modules\User\Entities\User $user, $sessionID, $validationResult, $courseID, $stepID, $quizID)
     {
         return array(
             'actor' => array(
@@ -65,6 +64,7 @@ class QuestionService extends CourseBaseService
             ),
             'object' => array(
                 'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$courseID.'/steps/'.$stepID.'/quizzes/'.$quizID.'/questions/'.$question->getId()),
+				'objectType' => 'Activity',
                 'definition' => array(
                     'name' => array(
                         'en-US' => $question->getTitle()
@@ -78,14 +78,30 @@ class QuestionService extends CourseBaseService
                 'success' => $validationResult
             ),
             'context' => array(
+				'registration' => $sessionID,
                 'contextActivities' => array(
                     'grouping' => array(
+						'registration' => $sessionID,
                         'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$courseID.'/steps/'.$stepID.'/quizzes/'.$quizID),
                     )
                 )
             )
         );
     }
+
+	public function isAnsweredQuestion(\Rendes\Modules\Courses\Entities\Quiz\Questions\Question $question, \Rendes\Modules\User\Entities\User $user, $sessionID)
+	{
+		$searchOptions = array(
+			'agent' => json_encode(array(
+				'mbox' => $user->getEmail()
+			)),
+			'verb' => 'http://adlnet.gov/expapi/verbs/answered',
+			'activity' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$question->getQuiz()->getStep()->getCourse()->getId().'/steps/'.$question->getQuiz()->getStep()->getId().'/quizzes/'.$question->getQuiz()->getId(). '/questions/'.$question->getId()),
+			'registration' => $sessionID
+		);
+		$statements = $this->getXAPI()->getStatements($searchOptions);
+		return $statements !== false && !empty($statements);
+	}
 
     public function getAvailableTypes()
     {
@@ -94,4 +110,6 @@ class QuestionService extends CourseBaseService
             'VariantQuestion' => 'Question with variants'
         );
     }
+
+
 }

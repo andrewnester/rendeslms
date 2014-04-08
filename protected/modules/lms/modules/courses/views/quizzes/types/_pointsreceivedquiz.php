@@ -9,7 +9,7 @@
 
     <?php $form=$this->beginWidget('CActiveForm', array(
         'id'=>'point-received-quiz-form',
-        'action' => 'create',
+		'action' => isset($action) ? $action : 'create',
         // Please note: When you enable ajax validation, make sure the corresponding
         // controller action is handling ajax validation correctly.
         // There is a call to performAjaxValidation() commented in generated controller code.
@@ -51,7 +51,7 @@
 				<tr>
 					<td>
 						<label for='widget<?php echo $availableWidget['id']; ?>' ><?php echo $availableWidget['name']; ?></label>
-						<?php echo CHtml::radioButton('Rendes_Modules_Courses_Entities_Quiz_Quiz[widget_id]', $availableWidget['id'] == $widgetID , array('id' => 'widget'.$availableWidget['id'], 'value' => $availableWidget['id']) ); ?>
+						<?php echo CHtml::radioButton('Rendes_Modules_Courses_Entities_Quiz_PointsReceivedQuiz[widget_id]', $availableWidget['id'] == $widgetID , array('id' => 'widget'.$availableWidget['id'], 'value' => $availableWidget['id']) ); ?>
 					</td>
 					<td>
 						<table>
@@ -62,7 +62,7 @@
 									</td>
 									<td>
 										<?php $method=$field['type'];  ?>
-										<?php echo CHtml::$method("Rendes_Modules_Courses_Entities_Quiz_Quiz[widget][".$availableWidget['id']."][".$field['name']."]",
+										<?php echo CHtml::$method("Rendes_Modules_Courses_Entities_Quiz_PointsReceivedQuiz[widget][".$availableWidget['id']."][".$field['name']."]",
 											isset($widget[$availableWidget['id']]['options'][$field['name']]) ? $widget[$availableWidget['id']]['options'][$field['name']] : $field['default']) ?>
 									</td>
 								</tr>

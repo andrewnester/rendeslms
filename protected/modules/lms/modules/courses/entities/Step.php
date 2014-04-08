@@ -68,17 +68,6 @@ class Step extends \CFormModel
     private $path;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Step")
-     * @ORM\JoinTable(name="required_steps",
-     *      joinColumns={@ORM\JoinColumn(name="step_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="required_step_id", referencedColumnName="id")}
-     *      )
-     */
-    private $requiredSteps;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
@@ -218,34 +207,6 @@ class Step extends \CFormModel
     public function getQuizzes()
     {
         return $this->quizzes;
-    }
-
-    /**
-     * @param Array $requiredSteps
-     */
-    public function setRequiredSteps($requiredSteps)
-    {
-        $this->requiredSteps = $requiredSteps;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRequiredSteps()
-    {
-        return $this->requiredSteps;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRequiredStepsIDs()
-    {
-        $requiredStepsIDs = array();
-        foreach($this->getRequiredSteps() as $step){
-            $requiredStepsIDs[] = $step->getId();
-        }
-        return $requiredStepsIDs;
     }
 
     /**
