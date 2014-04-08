@@ -11,15 +11,7 @@ class QuizResultRepository extends BaseResultRepository implements ResultReposit
 {
     public function getAttemptCount(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
     {
-        $xapi = $this->getXAPI();
-        $searchOptions = array(
-            'agent' => json_encode(array(
-                'mbox' => $user->getEmail()
-            )),
-            'verb' => 'http://adlnet.gov/expapi/verbs/attempted' ,
-            'activity' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$quiz->getStep()->getCourse()->getId().'/steps/'.$quiz->getStep()->getId().'/quizzes/'.$quiz->getId()),
-        );
-        $statements = $xapi->getStatements($searchOptions);
+        $statements = $this->getAttempts($quiz, $user);
         return is_array($statements) ? count($statements) : 1;
     }
 

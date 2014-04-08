@@ -8,8 +8,8 @@
 <div id='quiz-container' ng-app='quiz'>
     <div ng-controller="QuizQuestionCtrl" data-ng-init='first()'>
         <div id='quiz-navigation' ng-hide='endQuiz'>
+			<a href="#" ng-click="prev()">Prev</a>
             <a href="#" ng-click="next()">Next</a>
-            <a href="#" ng-click="prev()">Prev</a>
             <a href="<?php echo $questionsUrl?>/../end" >End Quiz</a>
         </div>
 

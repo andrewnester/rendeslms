@@ -30,6 +30,7 @@ angular.module('quiz', []).
 
 
         QuizService.prototype.first = function(handler){
+            handler.before();
             var questionID = this.questionOrder[0];
             if(this.questions[questionID] != undefined){
                 return handler.success(this.questions[questionID]);
@@ -40,6 +41,7 @@ angular.module('quiz', []).
 
 
         QuizService.prototype.next = function(handler){
+            handler.before();
             var questionID = this.questionOrder[++this.questionIndex];
             if(questionID == undefined){
                 this.questionIndex = 0;
@@ -54,6 +56,7 @@ angular.module('quiz', []).
 
 
         QuizService.prototype.prev = function(handler){
+            handler.before();
             var questionID = this.questionOrder[--this.questionIndex];
             if(questionID == undefined){
                 ++this.questionIndex;
@@ -173,6 +176,7 @@ QuizHandlers.prototype.end = function(){
 };
 
 QuizHandlers.prototype.before = function(){
+    this.scope.answers = [];
     this.scope.loading = 'block';
     this.scope.display = 'none';
 };
@@ -183,7 +187,6 @@ function QuizQuestionCtrl($scope, quizService)
 
     $scope.first = function() {
         var quizhandler = new QuizHandlers($scope);
-        quizhandler.before();
         if(quizService.questionOrder == null){
             quizService.order(function(){
                 quizService.first(quizhandler);
@@ -195,13 +198,11 @@ function QuizQuestionCtrl($scope, quizService)
 
     $scope.next = function() {
         var quizhandler = new QuizHandlers($scope);
-        quizhandler.before();
         quizService.next(quizhandler, function(){});
     };
 
     $scope.prev = function() {
         var quizhandler = new QuizHandlers($scope);
-        quizhandler.before();
         quizService.prev(quizhandler, function(){});
     };
 
