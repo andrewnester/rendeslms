@@ -12,6 +12,6 @@ $this->breadcrumbs=array(
 <h1>Create Question</h1>
 
 <?php $this->renderPartial('_form', array(
-    'model' => $model,
-    'types' => $types
+	'tabs' => $tabs,
+	'activeTab' => $activeTab,
 )); ?>

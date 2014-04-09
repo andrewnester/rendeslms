@@ -6,8 +6,12 @@
 ?>
 
 
-<?php $this->widget('\Rendes\Widgets\AjaxLoadOnRadioChangeWidget', array(
-    'items' => $types,
-    'name' => 'questionType',
-    'path' => 'form'
-)); ?>
+<div class="form">
+	<?php
+	$this->widget('CTabView', array(
+		'tabs' => $tabs,
+		'activeTab' => $activeTab
+	));
+
+	?>
+</div><!-- form -->

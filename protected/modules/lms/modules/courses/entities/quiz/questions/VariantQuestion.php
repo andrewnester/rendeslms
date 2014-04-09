@@ -17,6 +17,14 @@ class VariantQuestion extends Question implements \Rendes\Modules\Courses\Interf
     private $variants;
 
 
+	public function rules()
+	{
+		$rules = parent::rules();
+		$rules[] = array('variants', 'required');
+		$rules[] = array('variants','type','type'=>'array','allowEmpty'=>false);
+		return $rules;
+	}
+
     public function getVariants()
     {
         return $this->variants;

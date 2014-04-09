@@ -32,8 +32,16 @@ class QuestionService extends CourseBaseService
     {
         $question->setTitle($questionData['title']);
         $question->setQuestion($questionData['question']);
-        $question->setWeight($questionData['weight']);
-        $question->setAnswers($questionData['answers']);
+
+		$answers = array();
+		if(is_array($questionData['answers'])){
+			foreach($questionData['answers'] as $answer){
+				if($answer != ''){
+					$answers[] = $answer;
+				}
+			}
+		}
+        $question->setAnswers($answers);
 
         return $question;
     }
@@ -41,7 +49,16 @@ class QuestionService extends CourseBaseService
     public function populateVariantQuestion(Questions\VariantQuestion $question, $questionData)
     {
         $question = $this->populateQuestion($question, $questionData);
-        $question->setVariants($questionData['variants']);
+
+		$variants = array();
+		if(is_array($questionData['variants'])){
+			foreach($questionData['variants'] as $variant){
+				if($variant != ''){
+					$variants[] = $variant;
+				}
+			}
+		}
+        $question->setVariants($variants);
 
         return $question;
     }
@@ -105,11 +122,35 @@ class QuestionService extends CourseBaseService
 
     public function getAvailableTypes()
     {
-        return array(
-            'Question' => 'Simple Question',
-            'VariantQuestion' => 'Question with variants'
-        );
+		$questionTypes = \Yii::app()->getModule('lms')->getModule('courses')->params->questionTypes;
+		$availableTypes = array();
+		foreach($questionTypes as $questionType){
+			$availableTypes[$questionType['class']] = $questionType['name'];
+		}
+		return $availableTypes;
     }
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Quiz\Questions\Question $question
+	 * @return array
+	 */
+	public function generateTabs(\Rendes\Modules\Courses\Entities\Quiz\Questions\Question $question)
+	{
+		$hashService = new \Rendes\Services\HashService();
+
+		$tabs = array();
+		foreach($this->getAvailableTypes() as $class => $type){
+			$quizReflectionClass = new \ReflectionClass($class);
+			$activeTab = $question instanceof $class;
+			$tabs[$hashService->hash(trim($class, '\\'))] = array(
+				'title' => $type,
+				'view' => 'types/_'.strtolower($quizReflectionClass->getShortName()),
+				'data' => array('model' => $activeTab ? $question : new $class())
+			);
+		}
+
+		return $tabs;
+	}
 
 
 }

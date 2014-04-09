@@ -196,10 +196,10 @@ class QuizzesController extends \Rendes\Controllers\LMSController
         if(!$orderData){
             $this->redirect(array('/lms'));
         }
-        $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
-        $lecturesIterator = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByIDArray(array_values($orderData));
-        foreach($lecturesIterator as $lecture){
-            $lecture->setOrder($lecturesService->countOrder($orderData, $lecture->getId()));
+        $quizService = new \Rendes\Modules\Courses\Services\QuizService();
+        $quizIterator = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Quiz\Quiz')->getByIDArray(array_values($orderData));
+        foreach($quizIterator as $quiz){
+            $quiz->setOrder($quizService->countOrder($orderData, $quiz->getId()));
         }
 
         $this->getEntityManager()->flush();

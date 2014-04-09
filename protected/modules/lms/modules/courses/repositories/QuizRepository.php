@@ -15,6 +15,13 @@ class QuizRepository extends EntityRepository
         return $query->getSingleResult();
     }
 
+	public function getByIDArray($idArray)
+	{
+		$query = $this->getEntityManager()->createQuery('SELECT q FROM \Rendes\Modules\Courses\Entities\Quiz\Quiz q WHERE q.id IN (:ids)');
+		$query->setParameter('ids', $idArray);
+		return $query->getResult();
+	}
+
     public function getAvailableCalculators()
     {
         return array(

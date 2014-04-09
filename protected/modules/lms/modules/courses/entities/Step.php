@@ -57,6 +57,7 @@ class Step extends \CFormModel
      * @var \Rendes\Modules\Courses\Entities\Quiz\Quiz
      *
      * @ORM\OneToMany(targetEntity="\Rendes\Modules\Courses\Entities\Quiz\Quiz", mappedBy="step")
+	 * @ORM\OrderBy({"order" = "ASC"})
      */
     private $quizzes;
 

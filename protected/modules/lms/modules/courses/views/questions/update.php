@@ -2,9 +2,11 @@
 /* @var $this CourseController */
 /* @var $model Course */
 
+\Yii::app()->clientScript->registerCoreScript('jquery');
+
 $this->breadcrumbs=array(
 	'Courses'=>array('index'),
-	$model->name=>array('view','id'=>$model->id),
+	$model->title=>array('view','id'=>$model->id),
 	'Update',
 );
 
@@ -23,6 +25,6 @@ if($this->checkAccess('teacher')){
 
 ?>
 
-<h1>Update Lecture "<?php echo $model->name; ?>"</h1>
+<h1>Update Question "<?php echo $model->title; ?>"</h1>
 
-<?php $this->renderPartial('_update_form', array('model'=>$model, 'rules' => $rules)); ?>
+<?php $this->renderPartial('types/_'.$type, array('model' => $model, 'action' => 'update')); ?>

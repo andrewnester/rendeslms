@@ -22,7 +22,7 @@
 
     <?php $form=$this->beginWidget('CActiveForm', array(
         'id'=>'question-form',
-        'action' => 'create',
+		'action' => isset($action) ? $action : 'create',
         // Please note: When you enable ajax validation, make sure the corresponding
         // controller action is handling ajax validation correctly.
         // There is a call to performAjaxValidation() commented in generated controller code.
@@ -47,20 +47,26 @@
     </div>
 
     <div class="row">
-        <?php echo $form->labelEx($model,'weight'); ?>
-        <?php echo $form->rangeField($model, 'weight') ?>
-        <?php echo $form->error($model,'weight'); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->labelEx($model,'answers'); ?>
-        <p><input type="text" name='Rendes_Modules_Courses_Entities_Quiz_Questions_VariantQuestion[answers][]'/></p>
+		<?php if(is_array($model->getAnswers())): ?>
+			<?php foreach($model->getAnswers() as $answer): ?>
+				<p><input type="text" name='Rendes_Modules_Courses_Entities_Quiz_Questions_VariantQuestion[answers][]' value="<?php echo $answer ?>"/></p>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<p><input type="text" name='Rendes_Modules_Courses_Entities_Quiz_Questions_VariantQuestion[answers][]'/></p>
+		<?php endif; ?>
         <a onclick="addNewAnswer(this)">Add One More Answer</a>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model,'variants'); ?>
-        <p><input type="text" name='Rendes_Modules_Courses_Entities_Quiz_Questions_VariantQuestion[variants][]'/></p>
+		<?php if(is_array($model->getVariants())): ?>
+			<?php foreach($model->getVariants() as $variant): ?>
+				<p><input type="text" name='Rendes_Modules_Courses_Entities_Quiz_Questions_VariantQuestion[variants][]' value="<?php echo $variant ?>"/></p>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<p><input type="text" name='Rendes_Modules_Courses_Entities_Quiz_Questions_VariantQuestion[variants][]'/></p>
+		<?php endif; ?>
         <a onclick="addNewVariant(this)">Add One More Variant</a>
     </div>
 

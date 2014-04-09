@@ -53,7 +53,8 @@ class XAPIComponent extends \CComponent
 
         $status = $http->getStatus();
         if($status != 200){
-            return false;
+			$this->refreshTokens($user);
+			return false;
         }
 
         if($jsonResponse === false){
@@ -79,7 +80,13 @@ class XAPIComponent extends \CComponent
         $http = $this->getHttpClientComponent();
         $http->sendPut($this->getBaseUrl() . 'statements?statementId='.$statement['id'], $statement, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
 
-        return $http->getStatus() == 204;
+		$status = $http->getStatus();
+		if($status == 401){
+			$this->refreshTokens($user);
+			return false;
+		}
+
+        return $status == 204;
     }
 
     /**
@@ -93,7 +100,13 @@ class XAPIComponent extends \CComponent
         $http = $this->getHttpClientComponent();
         $response = $http->sendPost($this->getBaseUrl() . 'statements', $statement, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
 
-        return ($http->getStatus() == 200) ? $response : false;
+		$status = $http->getStatus();
+		if($status == 401){
+			$this->refreshTokens($user);
+			return false;
+		}
+
+        return ($status == 200) ? $response : false;
     }
 
 	/**
@@ -107,7 +120,13 @@ class XAPIComponent extends \CComponent
 		$http = $this->getHttpClientComponent();
 		$response = $http->sendPost($this->getBaseUrl() . 'statements', $statements, true,  array('Authorization: Bearer ' . $user->getAccessToken()));
 
-		return ($http->getStatus() == 200) ? json_decode($response) : false;
+		$status = $http->getStatus();
+		if($status == 401){
+			$this->refreshTokens($user);
+			return false;
+		}
+
+		return ($status == 200) ? json_decode($response) : false;
 	}
 
 
@@ -215,10 +234,6 @@ class XAPIComponent extends \CComponent
 
         $status = $http->getStatus();
         if($status != 200){
-            if($status != 0){
-                $this->registerUser($user);
-                return;
-            }
             throw new \CHttpException($status, 'Learning Record Error - Cannot get authentication tokens');
         }
 
@@ -227,6 +242,8 @@ class XAPIComponent extends \CComponent
 
         $em = $this->getEntityManager();
         $em->flush();
+
+		return $status == 200;
     }
 
     /**

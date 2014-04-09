@@ -40,5 +40,9 @@ return array(
 			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\CountAnsweredQuiz', 'name' => 'Count Answered'),
 			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\PointsReceivedQuiz', 'name' => 'Points Received'),
 		),
+		'questionTypes' => array(
+			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\Questions\Question', 'name' => 'Simple Question'),
+			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\Questions\VariantQuestion', 'name' => 'Variant Question'),
+		),
     ),
 );

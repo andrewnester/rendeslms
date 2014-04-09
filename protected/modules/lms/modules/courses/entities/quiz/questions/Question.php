@@ -11,6 +11,7 @@ use Rendes\Modules\Courses\Services\QuestionService;
  * @ORM\Entity(repositoryClass="\Rendes\Modules\Courses\Repositories\QuestionRepository")
  * @ORM\Table(name="question")
  * @ORM\InheritanceType("JOINED")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"question"="Question", "variantquestion" = "VariantQuestion"})
  */
@@ -24,7 +25,7 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -42,13 +43,6 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
 	protected $quiz;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="weight", type="float", length=255, nullable=false)
-     */
-    protected $weight;
-
-    /**
      * @var Array
      *
      * @ORM\Column(name="answers", type="array", length=255, nullable=false)
@@ -60,14 +54,14 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
      *
      * @ORM\Column(name="calculator", type="array", nullable=false)
      */
-    public $validator;
+    protected $validator;
 
 	/**
 	 * @var integer
 	 *
 	 * @ORM\Column(name="order_position", type="integer", nullable=false)
 	 */
-	private $order;
+	protected $order;
 
     /**
      * @var string
@@ -75,6 +69,26 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
      * @ORM\Column(name="question", type="string", length=255, nullable=false)
      */
     protected $question;
+
+
+
+	/**
+	 * @return array
+	 */
+	public function rules(){
+		return array(
+			array('title, question, answers', 'required'),
+			array('answers','type','type'=>'array','allowEmpty'=>false),
+		);
+	}
+
+
+	public function attributeNames()
+	{
+		return array(
+			'title', 'question', 'answers'
+		);
+	}
 
 
     /**
@@ -95,13 +109,25 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
 
     public function getType()
     {
-        $questionService = new \Rendes\Modules\Courses\Services\QuestionService();
-        $types = $questionService->getAvailableTypes();
-        if (preg_match('@\\\\([\w]+)$@', get_called_class(), $matches)) {
-            $classname = $matches[1];
-        }
-        return $types[$classname];
+		if (preg_match('@\\\\([\w]+)$@', get_called_class(), $matches)) {
+			$classname = $matches[1];
+		}
+		return $classname;
     }
+
+
+	public function getTypeDescription()
+	{
+		$questionService = new \Rendes\Modules\Courses\Services\QuestionService();
+		$types = $questionService->getAvailableTypes();
+		$calledClass = get_called_class();
+		foreach($types as $className => $name){
+			if($className == '\\'.$calledClass){
+				return $name;
+			}
+		}
+		return 'Question';
+	}
 
     /**
      * @param int $id
@@ -117,22 +143,6 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param float $weight
-     */
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
-    }
-
-    /**
-     * @return float
-     */
-    public function getWeight()
-    {
-        return $this->weight;
     }
 
     /**
@@ -230,5 +240,10 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
 	}
 
 
+	/** @ORM\PrePersist */
+	public function onPersist()
+	{
+		$this->order = 0;
+	}
 
 }

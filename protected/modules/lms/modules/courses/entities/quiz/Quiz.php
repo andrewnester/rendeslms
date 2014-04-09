@@ -267,8 +267,9 @@ class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Qui
     }
 
     /** @ORM\PrePersist */
-    public function setCreationDate()
+    public function onPersist()
     {
+		$this->order = 0;
         $this->created = new \DateTime();
         $this->updated = new \DateTime();
     }
