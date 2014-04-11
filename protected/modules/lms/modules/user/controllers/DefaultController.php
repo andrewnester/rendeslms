@@ -71,11 +71,11 @@ class DefaultController extends \Rendes\Controllers\LMSController
      */
     public function actionRegister()
     {
-        $user = new \Rendes\Modules\User\Entities\User;
+        $user = new \Rendes\Modules\User\Entities\Student();
         $user->scenario = 'register';
 
         $http = $this->getHttpClient();
-        $userData = $http->getPost('Rendes_Modules_User_Entities_User');
+        $userData = $http->getPost('Rendes_Modules_User_Entities_Student');
 
         $this->performAjaxValidation($user);
 
@@ -84,8 +84,8 @@ class DefaultController extends \Rendes\Controllers\LMSController
             if($user->validate()){
                 $userService = new \Rendes\Modules\User\Services\UserService();
                 $entityManager = $this->getEntityManager();
-                $user = $userService->populate($user, $userData);
-
+				$methodName = 'populate'. $user->getType();
+                $user = $userService->$methodName($user, $userData);
 
                 $entityManager->persist($user);
                 $entityManager->flush();

@@ -6,8 +6,10 @@
 
 namespace Rendes\Modules\Courses\Services;
 use \Rendes\Modules\Courses\Interfaces as Interfaces;
+use \Rendes\Modules\Courses\Interfaces\Services\ILearningActivityService;
+use \Rendes\Modules\User\Entities\User;
 
-class LectureService extends CourseBaseService
+class LectureService extends CourseBaseService implements ILearningActivityService
 {
 
     /**
@@ -30,71 +32,24 @@ class LectureService extends CourseBaseService
     {
         $lecture->setName($lectureData['name']);
         $lecture->setDescription($lectureData['description']);
-
-        $rules = array();
-        foreach($lectureData['rules_id'] as $ruleID){
-            if(!empty($ruleID)){
-                $rules[$ruleID] = isset($lectureData['rules'][$ruleID]) ? $lectureData['rules'][$ruleID] : array();
-            }
-        }
-
-        $lecture->setPassingRules($rules);
         $lecture->setStep($step);
         return $lecture;
     }
 
-    public function getAvailableRules()
-    {
-        $rules = array();
-        $pathToRulesDir = __DIR__ . '/../Entities/Lecture/Rules/';
-        $dir = opendir($pathToRulesDir);
-        while (false !== ($entry = readdir($dir))) {
-            if(strpos($entry, '.json') !== false){
-                $configContent = file_get_contents($pathToRulesDir . $entry);
-                $decoded = json_decode($configContent, true);
-                $rules[$decoded['id']] = $decoded;
-            }
-        }
+	public function isAvailableToStart($activityObject, User $user)
+	{
+		// TODO: Implement isAvailableToStart() method.
+	}
 
-        return $rules;
-    }
+	public function isPassed($activityObject, User $user)
+	{
+		// TODO: Implement isPassed() method.
+	}
 
-    /**
-     * @param \Rendes\Modules\Courses\Entities\Lecture\Lecture $lecture
-     * @return bool
-     */
-    public function isPassed(\Rendes\Modules\Courses\Entities\Lecture\Lecture $lecture)
-    {
-        $rules = $this->getRulesChain($lecture);
-        foreach($rules as $rule){
-            if(!$rule['class']->validate($this->getResultRepository(), $rule['options'])){
-                return false;
-            }
-        }
+	public function currentProgress($activityObject, User $user)
+	{
+		// TODO: Implement currentProgress() method.
+	}
 
-        return true;
-    }
-
-    private function getRulesChain(\Rendes\Modules\Courses\Entities\Lecture\Lecture $lecture)
-    {
-        $rules = array();
-        $passingRules = $lecture->getPassingRules();
-        $availableRules = $this->getAvailableRules();
-        foreach($passingRules as $ruleID => $options){
-            $rules[] = array(
-                'class' => new $availableRules[$ruleID]['classname'],
-                'options' => $options
-            );
-        }
-
-        if(empty($rules)){
-            $rules[] = array(
-                'class' => new \Rendes\Modules\Courses\Entities\Lecture\Rules\ViewedLectureRule(),
-                'options' => array()
-            );
-        }
-
-        return $rules;
-    }
 
 }

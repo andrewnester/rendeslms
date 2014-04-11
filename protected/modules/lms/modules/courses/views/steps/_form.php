@@ -31,12 +31,6 @@
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'requiredSteps'); ?>
-        <?php echo $form->checkBoxList($model,'requiredStepsIDs',$steps, array('separator' => '')); ?>
-        <?php echo $form->error($model,'requiredSteps'); ?>
-    </div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Save'); ?>
 	</div>

@@ -3,6 +3,7 @@
 namespace Rendes\Modules\Courses\Entities\Quiz;
 
 use Doctrine\ORM\Mapping as ORM;
+use \Rendes\Modules\Courses\Interfaces\Quiz\IQuiz;
 
 /**
  * Quiz
@@ -14,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"countanswered"="CountAnsweredQuiz", "pointsreceived" = "PointsReceivedQuiz"})
  */
-class Quiz extends \CFormModel implements \Rendes\Modules\Courses\Interfaces\Quiz\IQuiz
+class Quiz extends \CFormModel implements IQuiz
 {
 
     /**

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity(repositoryClass="\Rendes\Modules\Courses\Repositories\LectureRepository")
  * @ORM\Table(name="lecture")
+ * @ORM\HasLifecycleCallbacks
  */
 class Lecture extends \CFormModel
 {
@@ -33,6 +34,7 @@ class Lecture extends \CFormModel
      * @var \Rendes\Modules\Courses\Entities\Lecture\Video
      *
      * @ORM\OneToMany(targetEntity="Video", mappedBy="lecture")
+	 * @ORM\OrderBy({"order" = "ASC"})
      */
     private $videos;
 
@@ -40,8 +42,17 @@ class Lecture extends \CFormModel
      * @var \Rendes\Modules\Courses\Entities\Lecture\Document
      *
      * @ORM\OneToMany(targetEntity="Document", mappedBy="lecture")
+	 * @ORM\OrderBy({"order" = "ASC"})
      */
     private $documents;
+
+	/**
+	 * @var \Rendes\Modules\Courses\Entities\Lecture\Slide
+	 *
+	 * @ORM\OneToMany(targetEntity="Slide", mappedBy="lecture")
+	 * @ORM\OrderBy({"order" = "ASC"})
+	 */
+	private $slides;
 
     /**
      * @var string
@@ -58,31 +69,6 @@ class Lecture extends \CFormModel
     private $name;
 
     /**
-     * @var Array
-     *
-     * @ORM\Column(name="passing_rules", type="array")
-     */
-    private $passingRules;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Document")
-     * @ORM\JoinTable(name="required_to_pass_documents",
-     *      joinColumns={@ORM\JoinColumn(name="lecture_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id")}
-     *      )
-     */
-    private $requiredToPassDocuments;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Video")
-     * @ORM\JoinTable(name="required_to_pass_videos",
-     *      joinColumns={@ORM\JoinColumn(name="lecture_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="video_id", referencedColumnName="id")}
-     *      )
-     */
-    private $requiredToPassVideos;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="order_position", type="integer", nullable=false)
@@ -96,18 +82,6 @@ class Lecture extends \CFormModel
         );
     }
 
-    public function __construct()
-    {
-        $this->requiredToPassDocuments = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->requiredToPassVideos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-
-    public function isPassed()
-    {
-        $lectureService = new \Rendes\Modules\Courses\Services\LectureService();
-        return $lectureService->isPassed($this);
-    }
 
     /**
      * @param string $description
@@ -174,22 +148,6 @@ class Lecture extends \CFormModel
     }
 
     /**
-     * @param Array $passingRules
-     */
-    public function setPassingRules($passingRules)
-    {
-        $this->passingRules = $passingRules;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getPassingRules()
-    {
-        return $this->passingRules ? $this->passingRules : array();
-    }
-
-    /**
      * @param \Rendes\Modules\Courses\Entities\Step $step
      */
     public function setStep($step)
@@ -237,30 +195,27 @@ class Lecture extends \CFormModel
         return $this->order;
     }
 
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Lecture\Slide $slides
+	 */
+	public function setSlides($slides)
+	{
+		$this->slides = $slides;
+	}
 
+	/**
+	 * @return \Rendes\Modules\Courses\Entities\Lecture\Slide
+	 */
+	public function getSlides()
+	{
+		return $this->slides;
+	}
 
-
-    public function setRequiredToPassDocuments($requiredToPassDocuments)
-    {
-        $this->requiredToPassDocuments = $requiredToPassDocuments;
-    }
-
-    public function getRequiredToPassDocuments()
-    {
-        return $this->requiredToPassDocuments;
-    }
-
-    public function setRequiredToPassVideos($requiredToPassVideos)
-    {
-        $this->requiredToPassVideos = $requiredToPassVideos;
-    }
-
-    public function getRequiredToPassVideos()
-    {
-        return $this->requiredToPassVideos;
-    }
-
-
+	/** @ORM\PrePersist */
+	public function onPersist()
+	{
+		$this->order = 0;
+	}
 
 
 }

@@ -34,6 +34,17 @@ class VideosController extends \Rendes\Controllers\LMSController
     }
 
 
+	public function actions()
+	{
+		return array(
+			'create'=>array(
+				'class'=>'Rendes\Modules\Courses\Actions\Lectures\CreateAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Lecture\Video',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\VideoService',
+			)
+		);
+	}
+
     /**
      * Lists all models.
      */
@@ -60,7 +71,7 @@ class VideosController extends \Rendes\Controllers\LMSController
 
         if(!is_null($stepData) && $step->validate())
         {
-            $step = $stepsService->populateStep($step, $course, $stepData);
+            $step = $stepsService->populate($step, $course, $stepData);
 
             $this->getEntityManager()->persist($step);
             $this->getEntityManager()->flush();
@@ -77,51 +88,18 @@ class VideosController extends \Rendes\Controllers\LMSController
         ));
     }
 
-    public function actionCreate($courseID)
-    {
-        $step = new \Rendes\Modules\Courses\Entities\Step();
-        try{
-            $course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($courseID);
-        }catch(\Exception $e){
-            throw new \CHttpException(404, 'Such course does not exist');
-        }
-
-        $stepData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Step');
-        $step->setAttributes($stepData);
-
-        $stepsService = new \Rendes\Modules\Courses\Services\StepService();
-
-        if(!is_null($stepData) && $step->validate())
-        {
-            $step = $stepsService->populateStep($step, $course, $stepData);
-
-            $this->getEntityManager()->persist($step);
-            $this->getEntityManager()->flush();
-
-            $this->redirect(array('/lms/courses/default/view','id' => $courseID));
-        }
-
-        $stepsList = $stepsService->getCourseStepsList($courseID);
-
-        $this->render('create',array(
-            'model'=>$step,
-            'course' => $course,
-            'steps' => $stepsList
-        ));
-    }
-
-    public function actionView($id, $courseID)
+    public function actionView($id, $stepID, $courseID)
     {
         $this->render('view',array(
-            'model'=>$this->loadStep($id),
+            'model'=>$this->loadVideo($id),
             'courseID' => $courseID
         ));
     }
 
-    protected function loadStep($id)
+    protected function loadVideo($id)
     {
         try{
-            $step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($id);
+            $step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Video')->getByID($id);
         }
         catch(\Exception $e){
             throw new \CHttpException(404,'The requested page does not exist.');

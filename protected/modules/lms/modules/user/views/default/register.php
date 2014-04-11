@@ -49,6 +49,30 @@ $this->breadcrumbs=array(
         <?php echo $form->error($model,'passwordRepeat'); ?>
     </div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'fio'); ?>
+		<?php echo $form->textField($model,'fio'); ?>
+		<?php echo $form->error($model,'fio'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'age'); ?>
+		<?php echo $form->numberField($model,'age'); ?>
+		<?php echo $form->error($model,'age'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'studentNumber'); ?>
+		<?php echo $form->textField($model,'studentNumber'); ?>
+		<?php echo $form->error($model,'studentNumber'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'place'); ?>
+		<?php echo $form->textField($model,'place'); ?>
+		<?php echo $form->error($model,'place'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Register'); ?>
 	</div>

@@ -9,9 +9,7 @@
 
 namespace Rendes\Components;
 
-use \Doctrine\ORM\EntityRepository;
-
-abstract class LMSRepository extends EntityRepository implements \IDataProvider
+abstract class LMSRepository extends BaseRepository implements \IDataProvider
 {
     protected $_id;
     private $_data;
@@ -60,7 +58,7 @@ abstract class LMSRepository extends EntityRepository implements \IDataProvider
         {
             $this->_pagination=new $className;
             if(($id=$this->getId())!='')
-                $this->_pagination->pageVar=$id.'_page';
+                $this->_pagination->pageVar='page';
         }
         return $this->_pagination;
     }

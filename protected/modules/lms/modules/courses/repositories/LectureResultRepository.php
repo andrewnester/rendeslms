@@ -1,7 +1,7 @@
 <?php
 
 namespace Rendes\Modules\Courses\Repositories;
-
+use \Rendes\Components\BaseRepository;
 
 class LectureResultRepository implements \Rendes\Modules\Courses\Interfaces\ResultRepositories\ILectureResultRepository
 {

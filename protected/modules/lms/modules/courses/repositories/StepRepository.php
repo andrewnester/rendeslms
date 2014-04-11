@@ -1,24 +1,16 @@
 <?php
 
 namespace Rendes\Modules\Courses\Repositories;
+use \Rendes\Components\BaseRepository;
 
-use Doctrine\ORM\EntityRepository;
-
-class StepRepository extends EntityRepository
+class StepRepository extends BaseRepository
 {
-    protected $_id = 'StepsRepository';
+    protected $_id = '\Rendes\Modules\Courses\Entities\Step';
 
     public function getByCourseID($courseID)
     {
         $query = $this->getEntityManager()->createQuery('SELECT s FROM \Rendes\Modules\Courses\Entities\Step s WHERE s.course = :id');
         $query->setParameter('id', $courseID);
         return $query->getArrayResult();
-    }
-
-    public function getByID($id)
-    {
-        $query = $this->getEntityManager()->createQuery('SELECT s FROM \Rendes\Modules\Courses\Entities\Step s WHERE s.id = :id');
-        $query->setParameter('id', $id);
-        return $query->getSingleResult();
     }
 }

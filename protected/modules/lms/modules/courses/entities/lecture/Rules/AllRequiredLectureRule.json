@@ -1,7 +1,0 @@
-{
-    "id": 1,
-    "name": "All Required Elements",
-    "description": "Should be passed all of the required elements",
-    "classname": "\\Rendes\\Modules\\Courses\\Entities\\Lecture\\Rules\\AllRequiredLectureRule",
-    "fields":{}
-}

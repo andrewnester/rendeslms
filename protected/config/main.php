@@ -48,6 +48,8 @@ return array(
                 'lms/courses/<id:\d+>'=>'lms/courses/default/view',
                 'lms/courses/<id:\d+>/<action:\w+>'=>'lms/courses/default/<action>',
 
+				'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/lectures/<lectureID:\d+>/slides/play'=>'lms/courses/slides/index',
+
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/lectures/<lectureID:\d+>/<controller:\w+>/<id:\d+>'=>'lms/courses/<controller>/view',
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/lectures/<lectureID:\d+>/<controller:\w+>/<id:\d+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/lectures/<lectureID:\d+>/<controller:\w+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
@@ -61,7 +63,7 @@ return array(
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/<controller:\w+>/<action:\w+>/'=>'lms/courses/<controller>/<action>',
 
                 'lms/courses/<courseID:\d+>/<controller:\w+>/<id:\d+>'=>'lms/courses/<controller>/view',
-                'lms/courses/<courseID:\d+>/<controller:\w+>/<action:(create|update|delete)>/<id:\d+>'=>'lms/courses/<controller>/<action>',
+                'lms/courses/<courseID:\d+>/<controller:\w+>/<action:(create|update|delete|unassign)>/<id:\d+>'=>'lms/courses/<controller>/<action>',
                 'lms/courses/<courseID:\d+>/<controller:\w+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
                 'lms/<module:\w+>/<action:\w+>'=>'lms/<module>/default/<action>',
 			),

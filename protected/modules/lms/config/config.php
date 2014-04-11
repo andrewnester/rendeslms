@@ -51,6 +51,9 @@ return array(
         'courses' => array(
             'class' => '\Rendes\Modules\Courses\CoursesModule'
         ),
+		'groups'=> array(
+			'class' => '\Rendes\Modules\Groups\GroupsModule'
+		),
         'user'=> array(
             'class' => '\Rendes\Modules\User\UserModule'
         ),

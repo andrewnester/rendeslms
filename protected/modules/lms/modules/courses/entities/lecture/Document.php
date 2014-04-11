@@ -63,7 +63,6 @@ class Document extends \CFormModel
      */
     private $order;
 
-
     /**
      * @var \DateTime
      *
@@ -241,12 +240,13 @@ class Document extends \CFormModel
 
 
 
-    /** @ORM\PrePersist */
-    public function setCreationDate()
-    {
-        $this->created = new \DateTime();
-        $this->updated = new \DateTime();
-    }
+	/** @ORM\PrePersist */
+	public function onPersist()
+	{
+		$this->order = 0;
+		$this->created = new \DateTime();
+		$this->updated = new \DateTime();
+	}
 
     /** @ORM\PreUpdate */
     public function setUpdatedDate()

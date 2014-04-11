@@ -33,7 +33,21 @@ class DocumentsController extends \Rendes\Controllers\LMSController
         return array();
     }
 
-
+	public function actions()
+	{
+		return array(
+			'order'=>array(
+				'class'=>'\Rendes\Modules\Courses\Actions\OrderAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Lecture\Document',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\DocumentsService',
+			),
+			'create'=>array(
+				'class'=>'Rendes\Modules\Courses\Actions\Lectures\CreateAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Lecture\Document',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\DocumentsService',
+			)
+		);
+	}
 
 
     public function actionUpdate($id, $courseID)
@@ -52,7 +66,7 @@ class DocumentsController extends \Rendes\Controllers\LMSController
 
         if(!is_null($stepData) && $step->validate())
         {
-            $step = $stepsService->populateStep($step, $course, $stepData);
+            $step = $stepsService->populate($step, $course, $stepData);
 
             $this->getEntityManager()->persist($step);
             $this->getEntityManager()->flush();
@@ -69,38 +83,6 @@ class DocumentsController extends \Rendes\Controllers\LMSController
         ));
     }
 
-    public function actionCreate($lectureID, $stepID, $courseID)
-    {
-        $document = new \Rendes\Modules\Courses\Entities\Lecture\Document();
-        try{
-            $lecture = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByID($lectureID);
-        }catch(\Exception $e){
-            throw new \CHttpException(404, 'Such lecture does not exist');
-        }
-
-        $documentData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Lecture_Document');
-        $document->setAttributes($documentData, false);
-        $document->setScenario('create');
-
-        $documentsService = new \Rendes\Modules\Courses\Services\DocumentsService();
-
-        if(!is_null($documentData) && $document->validate())
-        {
-            $document = $documentsService->populate($document, $lecture, $documentData);
-
-            $this->getEntityManager()->persist($document);
-            $this->getEntityManager()->flush();
-
-            $this->redirect(array('/lms/courses/lectures/view','id' => $lectureID, 'stepID' => $stepID, 'courseID' => $courseID));
-        }
-
-
-        $this->render('create',array(
-            'model'=>$document,
-            'lecture' => $lecture,
-        ));
-    }
-
     public function actionView($id, $lectureID, $stepID, $courseID)
     {
         $this->render('view',array(
@@ -110,7 +92,6 @@ class DocumentsController extends \Rendes\Controllers\LMSController
             'lectureID' => $lectureID
         ));
     }
-
 
 
     protected function loadDocument($id)

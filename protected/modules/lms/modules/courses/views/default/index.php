@@ -19,7 +19,6 @@ if($this->checkAccess('teacher')){
 <?php $this->renderPartial('_grid',array(
     'dataProvider'=>$dataProvider,
     'filter'=>$domain,
-    'teachers' => $teachers
 )); ?>
 
 

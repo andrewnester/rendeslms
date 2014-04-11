@@ -19,12 +19,17 @@ class RequestService
 		$this->request = new \Rendes\Components\HttpClientComponent();
 	}
 
+	public function getLimit()
+	{
+		return 20;
+	}
+
     public function prepareSearchCriteria($isAdmin = false)
     {
         $criteria = new \CDbCriteria();
         $likeParams = array('name', 'description');
 
-        $courseParams = $this->getData('Course');
+        $courseParams = $this->getData('Grid');
 
         $searchParams = array();
         foreach($courseParams as $key=>$value){
@@ -49,6 +54,15 @@ class RequestService
 
         return $criteria;
     }
+
+	public function prepareLimit($criteria)
+	{
+		$criteria->limit = $this->getLimit();
+		$page = $this->request->get('page', -1);
+		$criteria->offset = $page != -1 ? ($page-1)*$criteria->limit : -1;
+
+		return $criteria;
+	}
 
     public function getData($name, $default = array())
     {

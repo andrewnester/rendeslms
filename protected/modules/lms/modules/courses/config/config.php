@@ -18,7 +18,8 @@ return array(
                 __DIR__ . '/../entities/quiz',
                 __DIR__ . '/../entities/quiz/question',
                 __DIR__ . '/../entities/lecture',
-                __DIR__ . '/../../user/entities'
+                __DIR__ . '/../../user/entities',
+				__DIR__ . '/../../Groups/entities'
             ),
             'driver' => 'pdo_mysql',
             'user' => 'root',

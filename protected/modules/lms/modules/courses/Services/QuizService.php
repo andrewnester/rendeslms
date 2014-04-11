@@ -6,8 +6,9 @@
 
 namespace Rendes\Modules\Courses\Services;
 use \Rendes\Modules\Courses\Interfaces as Interfaces;
+use \Rendes\Modules\Courses\Interfaces\Services\ILearningActivityService;
 
-class QuizService extends CourseBaseService
+class QuizService extends CourseBaseService implements ILearningActivityService
 {
 
     /**
@@ -140,17 +141,6 @@ class QuizService extends CourseBaseService
     /**
      * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
      * @param \Rendes\Modules\User\Entities\User $user
-     * @return bool
-     */
-    public function isAvailableToStart(\Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
-    {
-		$validator = $this->getService('quizStartValidator');
-		return $validator->validate($quiz, $user);
-    }
-
-    /**
-     * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
-     * @param \Rendes\Modules\User\Entities\User $user
      * @return array
      */
     public function prepareAttemptStatement($sessionID, \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz, \Rendes\Modules\User\Entities\User $user)
@@ -183,4 +173,27 @@ class QuizService extends CourseBaseService
             )
         );
     }
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
+	 * @param \Rendes\Modules\User\Entities\User $user
+	 * @return bool
+	 */
+	public function isAvailableToStart($quiz, \Rendes\Modules\User\Entities\User $user)
+	{
+		$validator = $this->getService('quizStartValidator');
+		return $validator->validate($quiz, $user);
+	}
+
+	public function isPassed($activityObject, \Rendes\Modules\User\Entities\User $user)
+	{
+		// TODO: Implement isEnded() method.
+	}
+
+	public function currentProgress($activityObject, \Rendes\Modules\User\Entities\User $user)
+	{
+		// TODO: Implement currentProgress() method.
+	}
+
+
 }

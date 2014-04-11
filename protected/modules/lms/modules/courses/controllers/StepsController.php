@@ -34,6 +34,23 @@ class StepsController extends \Rendes\Controllers\LMSController
     }
 
 
+	public function actions()
+	{
+		return array(
+			'order'=>array(
+				'class'=>'\Rendes\Modules\Courses\Actions\OrderAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Step',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\StepService',
+			),
+			'create'=>array(
+				'class'=>'\Rendes\Modules\Courses\Actions\CourseItems\CreateAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Step',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\StepService',
+			),
+		);
+	}
+
+
 
 
     public function actionUpdate($id, $courseID)
@@ -52,7 +69,7 @@ class StepsController extends \Rendes\Controllers\LMSController
 
         if(!is_null($stepData) && $step->validate())
         {
-            $step = $stepsService->populateStep($step, $course, $stepData);
+            $step = $stepsService->populate($step, $course, $stepData);
 
             $this->getEntityManager()->persist($step);
             $this->getEntityManager()->flush();
@@ -63,39 +80,6 @@ class StepsController extends \Rendes\Controllers\LMSController
         $stepsList = $stepsService->getCourseStepsList($courseID);
 
         $this->render('update',array(
-            'model'=>$step,
-            'course' => $course,
-            'steps' => $stepsList
-        ));
-    }
-
-    public function actionCreate($courseID)
-    {
-        $step = new \Rendes\Modules\Courses\Entities\Step();
-        try{
-            $course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($courseID);
-        }catch(\Exception $e){
-            throw new \CHttpException(404, 'Such course does not exist');
-        }
-
-        $stepData = $this->getHttpClient()->get('Rendes_Modules_Courses_Entities_Step');
-        $step->setAttributes($stepData);
-
-        $stepsService = new \Rendes\Modules\Courses\Services\StepService();
-
-        if(!is_null($stepData) && $step->validate())
-        {
-            $step = $stepsService->populateStep($step, $course, $stepData);
-
-            $this->getEntityManager()->persist($step);
-            $this->getEntityManager()->flush();
-
-            $this->redirect(array('/lms/courses/default/view','id' => $courseID));
-        }
-
-        $stepsList = $stepsService->getCourseStepsList($courseID);
-
-        $this->render('create',array(
             'model'=>$step,
             'course' => $course,
             'steps' => $stepsList

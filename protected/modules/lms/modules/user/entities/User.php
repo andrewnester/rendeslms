@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="\Rendes\Modules\User\Repositories\UserRepository")
  * @ORM\HasLifecycleCallbacks
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"teacher"="Teacher", "administrator" = "Administrator", "student" = "Student"})
  */
 class User extends \CModel
 {
@@ -53,7 +56,7 @@ class User extends \CModel
      *
      * @ORM\Column(name="role", type="string", length=255, nullable=false)
      */
-    private $role;
+    private $role = 'administrator';
 
     /**
      * @var boolean
@@ -118,15 +121,24 @@ class User extends \CModel
 
     public function rules(){
         return array(
-            array('name, password', 'required'),
-            array('name, email', '\Rendes\Validators\DoctrineUnique', 'on' => 'register'),
+            array('name, password, email', 'required'),
+            array('name, email', '\Rendes\Validators\DoctrineUnique', 'on' => 'register, create'),
             array('passwordRepeat, email', 'required', 'on' => 'register'),
             array('passwordRepeat', 'compare', 'compareAttribute'=>'password', 'on' => 'register'),
         );
     }
 
 
-
+	/**
+	 * @return mixed
+	 */
+	public function getType()
+	{
+		if (preg_match('@\\\\([\w]+)$@', get_called_class(), $matches)) {
+			$classname = $matches[1];
+		}
+		return $classname;
+	}
 
 
     /**

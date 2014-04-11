@@ -1,6 +1,7 @@
 <?php
 
 namespace Rendes\Modules\User\Repositories;
+use \Rendes\Components\BaseRepository;
 
 class UserRepository extends \Rendes\Components\LMSRepository
 {
@@ -9,7 +10,7 @@ class UserRepository extends \Rendes\Components\LMSRepository
 
     public function getTeachers()
     {
-        $query = $this->getEntityManager()->createQuery('SELECT u FROM \Rendes\Modules\User\Entities\User u WHERE u.role IN (\'administrator\', \'teacher\')');
+        $query = $this->getEntityManager()->createQuery('SELECT t FROM \Rendes\Modules\User\Entities\Teacher t');
         return $query->getArrayResult();
     }
 

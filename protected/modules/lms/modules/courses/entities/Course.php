@@ -31,12 +31,22 @@ class Course extends \CFormModel
     private $id;
 
     /**
-     * @var \Rendes\Modules\User\Entities\User
+     * @var \Rendes\Modules\User\Entities\Teacher
      *
-     * @ORM\ManyToOne(targetEntity="\Rendes\Modules\User\Entities\User")
-     * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="\Rendes\Modules\User\Entities\Teacher")
+	 * @ORM\JoinTable(name="Teacher_Course",
+	 *      joinColumns={@ORM\JoinColumn(name="course_id", referencedColumnName="id")},
+	 *      inverseJoinColumns={@ORM\JoinColumn(name="teacher_id", referencedColumnName="id")}
+	 *      )
      */
-    private $teacher;
+    private $teachers;
+
+	/**
+	 * @var \Rendes\Modules\Groups\Entities\Group
+	 *
+	 * @ORM\ManyToMany(targetEntity="\Rendes\Modules\Groups\Entities\Group", mappedBy="courses")
+	 */
+	private $groups;
 
     /**
      * @var string
@@ -56,6 +66,7 @@ class Course extends \CFormModel
      * @var \Rendes\Modules\Courses\Entities\Step
      *
      * @ORM\OneToMany(targetEntity="Step", mappedBy="course")
+	 * @ORM\OrderBy({"order" = "ASC"})
      */
     private $steps;
 
@@ -84,11 +95,12 @@ class Course extends \CFormModel
     public function __construct()
     {
         $this->steps = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->teachers = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function rules(){
         return array(
-            array('name', 'required'),
+            array('name, description', 'required'),
         );
     }
 
@@ -114,7 +126,6 @@ class Course extends \CFormModel
             'isPublic' => 'Published'
         );
     }
-
 
 
 
@@ -199,19 +210,11 @@ class Course extends \CFormModel
     }
 
     /**
-     * @param mixed $teacherID
-     */
-    public function setTeacher($teacher)
-    {
-        $this->teacher = $teacher;
-    }
-
-    /**
      * @return mixed
      */
-    public function getTeacher()
+    public function getTeachers()
     {
-        return $this->teacher;
+        return $this->teachers;
     }
 
     /**
@@ -246,14 +249,6 @@ class Course extends \CFormModel
         return $this->updated->format('Y-m-d H:i:s');
     }
 
-    /**
-     * @return integer
-     */
-    public function getTeacherID()
-    {
-        return $this->teacher->getId();
-    }
-
     /** @ORM\PrePersist */
     public function setCreationDate()
     {
@@ -282,6 +277,23 @@ class Course extends \CFormModel
     {
         return $this->steps;
     }
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Group $groups
+	 */
+	public function setGroups($groups)
+	{
+		$this->groups = $groups;
+	}
+
+	/**
+	 * @return \Rendes\Modules\Courses\Entities\Group
+	 */
+	public function getGroups()
+	{
+		return $this->groups;
+	}
+
 
 
 }

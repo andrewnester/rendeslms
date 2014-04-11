@@ -1,24 +1,9 @@
 <?php
 
 namespace Rendes\Modules\Courses\Repositories;
+use \Rendes\Components\BaseRepository;
 
-use Doctrine\ORM\EntityRepository;
-
-class LectureRepository extends EntityRepository
+class LectureRepository extends BaseRepository
 {
-    protected $_id = 'LectureRepository';
-
-    public function getByID($id)
-    {
-        $query = $this->getEntityManager()->createQuery('SELECT l FROM \Rendes\Modules\Courses\Entities\Lecture\Lecture l WHERE l.id = :id');
-        $query->setParameter('id', $id);
-        return $query->getSingleResult();
-    }
-
-    public function getByIDArray($idArray)
-    {
-        $query = $this->getEntityManager()->createQuery('SELECT l FROM \Rendes\Modules\Courses\Entities\Lecture\Lecture l WHERE l.id IN (:ids)');
-        $query->setParameter('ids', $idArray);
-        return $query->getResult();
-    }
+    protected $_id = '\Rendes\Modules\Courses\Entities\Lecture\Lecture';
 }

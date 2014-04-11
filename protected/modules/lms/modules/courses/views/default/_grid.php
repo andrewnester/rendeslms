@@ -7,28 +7,23 @@
             'name'=>$filter->getAttributeLabel('name'),
             'type'=>'raw',
             'value'=>'CHtml::link($data["name"], Yii::app()->createUrl("/lms/courses/default/view", array("id" => $data["id"])))',
-            'filter'=> CHtml::textField('Course[name]', $filter->getName()),
-        ),
-        array(
-            'name'=> 'Teacher',
-            'type' => 'text',
-            'value' => '$data["teacher"]["name"]',
-            'filter'=>CHtml::dropDownList("Course[teacher]" , $filter->getTeacher() , $teachers),
+            'filter'=> CHtml::textField('Grid[name]', $filter->getName()),
         ),
         array(
             'name'=> $filter->getAttributeLabel('description'),
             'type' => 'text',
             'value' => '$data["description"]',
-            'filter'=> CHtml::textField('Course[description]', $filter->getDescription()),
+            'filter'=> CHtml::textField('Grid[description]', $filter->getDescription()),
         ),
         array(
             'name'=> $filter->getAttributeLabel('isPublic'),
             'type' => 'text',
             'value' => '$data["isPublic"] ? "Yes" : "No"',
             'filter'=> $this->checkAccess('administrator') ?
-                CHtml::dropDownList('Course[isPublic]', $filter->getIsPublic(), array(""=>"", '1'=>'Yes', '0'=>'No')) : '',
+                CHtml::dropDownList('Grid[isPublic]', $filter->getIsPublic(), array(""=>"", '1'=>'Yes', '0'=>'No')) : '',
             'htmlOptions' => array('style' => !$this->checkAccess('administrator') ? 'display:none' : ''),
             'headerHtmlOptions' => array('style' => !$this->checkAccess('administrator') ? 'display:none' : ''),
         ),
-    )
+    ),
+	'template'=>'{items}{pager}{summary}'
 ));

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Video
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Rendes\Modules\Courses\Repositories\VideoRepository")
  * @ORM\Table(name="video")
  * @ORM\HasLifecycleCallbacks
  */
@@ -51,6 +51,11 @@ class Video extends \CFormModel
      */
     private $src;
 
+	/**
+	 * @var string
+	 */
+	private $file;
+
     /**
      * @var integer
      *
@@ -73,18 +78,60 @@ class Video extends \CFormModel
      */
     private $updated;
 
-    /** @ORM\PrePersist */
-    public function setCreationDate()
-    {
-        $this->created = new \DateTime();
-        $this->updated = new \DateTime();
-    }
+
+	public function rules()
+	{
+		return array(
+			array('name, description', 'required'),
+			array('file', 'file', 'on' => 'create',
+				'types'=>'mp4, avi, flv, mov'
+			),
+			array('file', 'file', 'on' => 'update',
+				'allowEmpty' => true,
+				'types'=>'mp4, avi, flv, mov'
+			),
+		);
+	}
+
+
+	public function attributeNames()
+	{
+		return array('name', 'description', 'file');
+	}
+
+
+
+	/** @ORM\PrePersist */
+	public function onPersist()
+	{
+		$this->order = 0;
+		$this->created = new \DateTime();
+		$this->updated = new \DateTime();
+	}
 
     /** @ORM\PreUpdate */
     public function setUpdatedDate()
     {
         $this->updated = new \DateTime();
     }
+
+	/**
+	 * @param string $file
+	 */
+	public function setFile($file)
+	{
+		$this->file = $file;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFile()
+	{
+		return $this->file;
+	}
+
+
 
     /**
      * @param \DateTime $created

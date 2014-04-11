@@ -30,10 +30,6 @@ if($this->checkAccess('teacher')){
             'value'=>$model->getName(),
         ),
         array(
-            'label'=>'Teacher Name',
-            'value'=>$model->getTeacher()->getName(),
-        ),
-        array(
             'label'=>$model->getAttributeLabel('description'),
             'value'=>$model->getDescription(),
         ),
@@ -54,21 +50,21 @@ if($this->checkAccess('teacher')){
 
 <hr/>
 
-<h2>Course Steps</h2>
-<?php $courseSteps = $model->getSteps(); ?>
-<?php if(count($courseSteps) > 0): ?>
-    <table>
-    <?php foreach($courseSteps as $step): ?>
-        <tr>
-            <td><a href='<?php echo Yii::app()->createUrl('lms/courses/steps/view', array('courseID' => $model->getID(),  'id' => $step->getID())) ?>'><?php echo $step->getName(); ?></a></td>
-            <td><?php echo $step->getDescription(); ?></td>
-        </tr>
-    <?php endforeach; ?>
-    </table>
-<?php else: ?>
-    <p>There are no available steps</p>
-<?php endif; ?>
+<h1>Teachers</h1>
+<?php foreach($model->getTeachers() as $teacher): ?>
+	<div class="row">
+		<a href='<?php echo \Yii::app()->createUrl('/lms/user/view', array('id' => $teacher->getId())) ?>'><?php echo $teacher->getName() ?></a>
+		<a href="<?php echo \Yii::app()->createUrl('/lms/courses/teachers/unassign', array('courseID' => $model->getID(), 'id' => $teacher->getID())) ?>">X</a>
+	</div>
+<?php endforeach; ?>
+<a href='<?php echo \Yii::app()->createUrl('/lms/courses/teachers/assign', array('courseID' => $model->getID())) ?>'>Add New</a>
 
-<?php if($this->checkAccess('administrator')): ?>
-    <a href='<?php echo Yii::app()->createUrl('/lms/courses/steps/create', array('courseID' => $model->getId())) ?>'>Add New Step</a>
-<?php endif; ?>
+<?php $this->widget('\Rendes\Widgets\ElementRenderWidget', array(
+	'name' => 'Steps',
+	'header' => 'Course Steps',
+	'model' => $model,
+	'link' => '/lms/courses/steps',
+	'linkParams' => array(
+		'courseID' => $model->getID()
+	)
+)); ?>

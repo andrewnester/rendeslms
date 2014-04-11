@@ -68,6 +68,13 @@ class Step extends \CFormModel
      */
     private $path;
 
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="order_position", type="integer", nullable=false)
+	 */
+	private $order;
+
     /**
      * @var \DateTime
      *
@@ -86,7 +93,7 @@ class Step extends \CFormModel
 
     public function __construct()
     {
-        $this->requiredSteps = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
     public function rules(){
@@ -242,12 +249,29 @@ class Step extends \CFormModel
         return $this->updated;
     }
 
+	/**
+	 * @param int $order
+	 */
+	public function setOrder($order)
+	{
+		$this->order = $order;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getOrder()
+	{
+		return $this->order;
+	}
+
 
 
 
     /** @ORM\PrePersist */
     public function setCreationDate()
     {
+		$this->order = 0;
         $this->created = new \DateTime();
         $this->updated = new \DateTime();
     }

@@ -3,6 +3,7 @@
 namespace Rendes\Modules\Courses\Repositories;
 
 use Doctrine\ORM\EntityRepository;
+use \Rendes\Components\BaseRepository;
 
 class QuizRepository extends EntityRepository
 {

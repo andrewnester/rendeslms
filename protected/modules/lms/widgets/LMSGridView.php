@@ -6,8 +6,18 @@ namespace Rendes\Widgets;
 
 class LMSGridView extends \TbJsonGridView
 {
+	public function init()
+	{
+		parent::init();
+		\Yii::app()->clientScript->registerCssFile(
+			\Yii::app()->assetManager->publish(
+				__DIR__.'/../assets/css/grid.css'
+			)
+		);
+	}
 
-    /**
+
+	/**
      * Creates column objects and initializes them.
      */
     protected function initColumns()
@@ -48,4 +58,6 @@ class LMSGridView extends \TbJsonGridView
         foreach($this->columns as $column)
             $column->init();
     }
+
+
 }

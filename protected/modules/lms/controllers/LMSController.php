@@ -12,6 +12,16 @@ namespace Rendes\Controllers;
 class LMSController extends \Controller
 {
     private $entityManager = null;
+	protected $viewSubDir = '';
+
+
+	protected function beforeAction()
+	{
+		if($this->checkAccess('teacher')){
+			$this->viewSubDir = 'admin/';
+		}
+		return true;
+	}
 
     /**
      * @return \Doctrine\ORM\EntityManager

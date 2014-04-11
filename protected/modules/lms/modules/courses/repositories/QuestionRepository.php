@@ -4,6 +4,7 @@ namespace Rendes\Modules\Courses\Repositories;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
+use \Rendes\Components\BaseRepository;
 
 class QuestionRepository extends EntityRepository
 {

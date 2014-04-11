@@ -26,7 +26,7 @@ class StepService extends CourseBaseService
        return $stepsList;
    }
 
-    public  function populateStep(\Rendes\Modules\Courses\Entities\Step $step, \Rendes\Modules\Courses\Entities\Course $course, $stepData)
+    public  function populate(\Rendes\Modules\Courses\Entities\Step $step, \Rendes\Modules\Courses\Entities\Course $course, $stepData)
     {
         $step->setName($stepData['name']);
         $step->setDescription($stepData['description']);

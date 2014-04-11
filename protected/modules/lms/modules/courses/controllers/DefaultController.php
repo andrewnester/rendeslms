@@ -54,7 +54,29 @@ class DefaultController extends \Rendes\Controllers\LMSController
     }
 
 
-
+	public function actions()
+	{
+		return array(
+			'create'=>array(
+				'class'=>'\Rendes\Actions\CreateAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Course',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\CourseService',
+			),
+			'update'=>array(
+				'class'=>'\Rendes\Actions\UpdateAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Course',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\CourseService',
+			),
+			'index'=>array(
+				'class'=>'\Rendes\Actions\GridAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Course'
+			),
+			'search'=>array(
+				'class'=>'\Rendes\Actions\SearchAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Course'
+			),
+		);
+	}
 
     /**
      * Displays a particular model.
@@ -64,61 +86,6 @@ class DefaultController extends \Rendes\Controllers\LMSController
     {
         $this->render('view',array(
             'model'=>$this->loadCourse($id),
-        ));
-    }
-
-    /**
-     * Creates a new model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     */
-    public function actionCreate()
-    {
-        $course = new Course();
-
-        $courseData = $this->getHttpClient()->get('Course');
-        $course->setAttributes($courseData);
-        if(!is_null($courseData) && $course->validate())
-        {
-            $course->setName($courseData['name']);
-            $course->setDescription($courseData['description']);
-            $course->setIsPublic($courseData['isPublic']);
-
-            $teacher = $this->getEntityManager()
-                            ->getRepository('User')
-                            ->findOneBy(array('id' => $this->getUser()->id));
-
-            $course->setTeacher($teacher);
-            $this->getEntityManager()->persist($course);
-            $this->getEntityManager()->flush();
-            $this->redirect(array('view','id'=>$course->getId()));
-        }
-
-        $this->render('create',array(
-            'model'=>$course,
-        ));
-    }
-
-    /**
-     * Updates a particular model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id the ID of the model to be updated
-     */
-    public function actionUpdate($id)
-    {
-        $course=$this->loadCourse($id);
-
-        $courseData = $this->getHttpClient()->get('Course');
-        if(!is_null($courseData))
-        {
-            $course->setName($courseData['name']);
-            $course->setDescription($courseData['description']);
-            $course->setIsPublic($courseData['isPublic']);
-            $this->getEntityManager()->flush();
-            $this->redirect(array('view','id'=>$course->id));
-        }
-
-        $this->render('update',array(
-            'model'=>$course,
         ));
     }
 
@@ -134,45 +101,6 @@ class DefaultController extends \Rendes\Controllers\LMSController
         $this->getEntityManager()->flush();
         $this->redirect(array('index'));
     }
-
-    /**
-     * Lists all models.
-     */
-    public function actionIndex()
-    {
-        $dataProvider = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course');
-        $userService = new \Rendes\Modules\User\Services\UserService();
-
-        $this->render('index',array(
-            'dataProvider'=>$dataProvider,
-            'teachers' => $userService->getTeachersList($this->getEntityManager()),
-            'domain' => new \Rendes\Modules\Courses\Entities\Course()
-        ));
-    }
-
-
-    public function actionSearch()
-    {
-        $isAdmin = $this->checkAccess('administrator');
-
-        $requestService = new \Rendes\Modules\Courses\Services\RequestService();
-        $criteria = $requestService->prepareSearchCriteria($this->getHttpClient(), $isAdmin);
-
-        $dataProvider = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course');
-        $dataProvider->setCriteria($criteria);
-
-        $userService = new \Rendes\Modules\User\Services\UserService();
-
-        $domain = new \Rendes\Modules\Courses\Entities\Course();
-        $domain->setAttributes($requestService->getData('Course'), false);
-
-        $this->renderPartial('_grid',array(
-            'dataProvider'=>$dataProvider,
-            'teachers' => $userService->getTeachersList($this->getEntityManager()),
-            'filter' => $domain
-        ));
-    }
-
 
     /**
      * Returns the data model based on the primary key given in the GET variable.

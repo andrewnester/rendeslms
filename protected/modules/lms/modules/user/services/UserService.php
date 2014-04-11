@@ -26,16 +26,27 @@ class UserService extends BaseService
     }
 
 
-    public function populate(\Rendes\Modules\User\Entities\User $user, $userData, $role = 'student')
+    public function populate(\Rendes\Modules\User\Entities\User $user, $userData)
     {
         $user->setName($userData['name']);
         $user->setPassword($userData['password']);
         $user->setEmail($userData['email']);
         $user->setActivated(false);
         $user->setActivateCode($this->generateActivationCode($user));
-        $user->setRole($role);
         return $user;
     }
+
+
+	public function populateStudent(\Rendes\Modules\User\Entities\Student $student, $studentData)
+	{
+		$student->setFio($studentData['fio']);
+		$student->setAge($studentData['age']);
+		$student->setPlace($studentData['place']);
+		$student->setStudentNumber($studentData['studentNumber']);
+
+		$student = $this->populate($student, $studentData);
+		return $student;
+	}
 
     /**
      * @param \Rendes\Modules\User\Entities\User $user

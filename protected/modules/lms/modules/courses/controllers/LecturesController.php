@@ -31,6 +31,16 @@ class LecturesController extends \Rendes\Controllers\LMSController
         return array();
     }
 
+	public function actions()
+	{
+		return array(
+			'order'=>array(
+				'class'=>'\Rendes\Modules\Courses\Actions\OrderAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Lecture\Lecture',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\LectureService',
+			)
+		);
+	}
 
 
     public function actionUpdate($id, $stepID, $courseID)
@@ -57,9 +67,8 @@ class LecturesController extends \Rendes\Controllers\LMSController
             $this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
         }
 
-        $this->render('update',array(
+        $this->render($this->viewSubDir .'update',array(
             'model' => $lecture,
-            'rules' => $lecturesService->getAvailableRules(),
             'step' => $step,
         ));
     }
@@ -88,7 +97,7 @@ class LecturesController extends \Rendes\Controllers\LMSController
             $this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
         }
 
-        $this->render('create',array(
+        $this->render($this->viewSubDir .'create',array(
             'model'=>$lecture,
             'step' => $step,
         ));
@@ -96,30 +105,13 @@ class LecturesController extends \Rendes\Controllers\LMSController
 
     public function actionView($id, $stepID, $courseID)
     {
-        $lectureService = new \Rendes\Modules\Courses\Services\LectureService();
-
-        $this->render('view',array(
-            'rules' => $lectureService->getAvailableRules(),
+        $this->render($this->viewSubDir . 'view',array(
             'model' => $this->loadLecture($id),
             'stepID' => $stepID,
             'courseID' => $courseID
         ));
     }
 
-    public function actionOrder($stepID, $courseID)
-    {
-        $orderData = $this->getHttpClient()->get('order');
-        $lecturesService = new \Rendes\Modules\Courses\Services\LectureService();
-        $lecturesIterator = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByIDArray(array_values($orderData));
-        foreach($lecturesIterator as $lecture){
-            $lecture->setOrder($lecturesService->countOrder($orderData, $lecture->getId()));
-        }
-
-        $this->getEntityManager()->flush();
-        $this->getEntityManager()->clear();
-
-        $this->getHttpClient()->json(array('message' => 'Successfully Saved'));
-    }
 
     protected function loadLecture($id)
     {
