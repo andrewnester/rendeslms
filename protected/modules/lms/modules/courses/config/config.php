@@ -47,6 +47,7 @@ return array(
 
     'params' => array(
         'resultRepositories' => array(
+			'document' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\DocumentResultRepository',
             'quiz' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuizResultRepository',
             'question' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuestionResultRepository'
         ),

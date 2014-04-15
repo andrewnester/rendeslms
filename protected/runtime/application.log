@@ -14227,3 +14227,32 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/rendeslms/index.php/lms/user/14/marks
 ---
+2014/04/15 16:17:15 [error] [php] include(C:\xampp\htdocs\rendeslms\protected\config/../modules/lms\Modules\Courses\Entities\Lecture\Course.php): failed to open stream: No such file or directory (C:\xampp\htdocs\rendeslms\framework\YiiBase.php:433)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\RuntimeReflectionService.php(40): class_parents()
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory.php(257): Doctrine\Common\Persistence\Mapping\RuntimeReflectionService->getParentClasses()
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory.php(281): Doctrine\ORM\Mapping\ClassMetadataFactory->getParentClasses()
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory.php(212): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata()
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityManager.php(268): Doctrine\ORM\Mapping\ClassMetadataFactory->getMetadataFor()
+#6 C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\ORM\EntityManager.php(682): Doctrine\ORM\EntityManager->getClassMetadata()
+#7 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\DocumentsController.php(89): Doctrine\ORM\EntityManager->getRepository()
+#8 unknown(0): Rendes\Modules\Courses\Controllers\DocumentsController->actionView()
+#9 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#10 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#11 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): Rendes\Modules\Courses\Controllers\DocumentsController->runAction()
+#13 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(85): Rendes\Filters\LMSAccessControlFilter->filter()
+#15 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Modules\Courses\Controllers\DocumentsController->filterLMSAccessControl()
+#16 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#17 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): Rendes\Modules\Courses\Controllers\DocumentsController->runActionWithFilters()
+#19 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): Rendes\Modules\Courses\Controllers\DocumentsController->run()
+#20 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#21 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\rendeslms\index.php(13): CWebApplication->run()
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/lectures/2/documents/5
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\RuntimeReflectionService.php (40)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory.php (257)
+in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory.php (281)

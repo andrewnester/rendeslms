@@ -44,3 +44,5 @@ if($this->checkAccess('teacher')){
         )
     ),
 )); ?>
+
+<?php $this->widget('\Rendes\Widgets\LMSDocumentViewerWidget', array('src' => $model->getSrc())) ?>

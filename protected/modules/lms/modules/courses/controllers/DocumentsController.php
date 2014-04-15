@@ -85,6 +85,18 @@ class DocumentsController extends \Rendes\Controllers\LMSController
 
     public function actionView($id, $lectureID, $stepID, $courseID)
     {
+		try{
+			$document = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Document')->getByID($id);
+		}catch(\Exception $e){
+			throw new \CHttpException(404, 'There is no such step');
+		}
+
+		$user = $this->getUser()->getEntity();
+		if($user instanceof \Rendes\Modules\User\Entities\Student){
+			$documentService = new \Rendes\Modules\Courses\Services\DocumentsService();
+			$documentService->getResultRepository()->markComplete($document, $this->getUser()->getEntity());
+		}
+
         $this->render('view',array(
             'model'=>$this->loadDocument($id),
             'courseID' => $courseID,
