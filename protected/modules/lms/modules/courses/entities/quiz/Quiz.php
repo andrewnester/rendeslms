@@ -95,22 +95,6 @@ class Quiz extends \CFormModel implements IQuiz
         $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * @return bool
-     */
-    public function isPassed()
-    {
-
-    }
-
-    /**
-     * @return bool
-     */
-    public function isStarted()
-    {
-
-    }
-
 	/**
 	 * @return mixed
 	 */
@@ -312,7 +296,6 @@ class Quiz extends \CFormModel implements IQuiz
 	{
 		return $this->order;
 	}
-
 
 
 	public function getQuizTypeDescription()

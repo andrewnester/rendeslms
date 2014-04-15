@@ -39,6 +39,12 @@
         <?php echo $form->error($model,'question'); ?>
     </div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'points'); ?>
+		<?php echo $form->textField($model,'points',array('size'=>65,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'points'); ?>
+	</div>
+
     <div class="row">
         <?php echo $form->labelEx($model,'answers'); ?>
 		<?php $answers = $model->getAnswers() ?>

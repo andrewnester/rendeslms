@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Student
  *
- * @ORM\Entity(repositoryClass="\Rendes\Modules\User\Repositories\UserRepository")
+ * @ORM\Entity(repositoryClass="\Rendes\Modules\User\Repositories\StudentRepository")
  */
 class Student extends User
 {
@@ -126,7 +126,7 @@ class Student extends User
 	}
 
 	/**
-	 * @param \Rendes\Modules\Courses\Entities\Group $group
+	 * @param \Rendes\Modules\Groups\Entities\Group $group
 	 */
 	public function setGroup($group)
 	{
@@ -134,7 +134,7 @@ class Student extends User
 	}
 
 	/**
-	 * @return \Rendes\Modules\Courses\Entities\Group
+	 * @return \Rendes\Modules\Groups\Entities\Group
 	 */
 	public function getGroup()
 	{

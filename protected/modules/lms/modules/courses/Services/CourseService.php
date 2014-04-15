@@ -36,4 +36,18 @@ class CourseService extends CourseBaseService
         return $course;
     }
 
+	public function assign(\Rendes\Modules\Courses\Entities\Course $course, \Rendes\Modules\Groups\Entities\Group $group)
+	{
+		$course->getGroups()->add($group);
+		$group->getCourses()->add($course);
+		return $course;
+	}
+
+	public function unassign(\Rendes\Modules\Courses\Entities\Course $course, \Rendes\Modules\Groups\Entities\Group $group)
+	{
+		$group->getCourses()->removeElement($course);
+		$course->getGroups()->removeElement($group);
+		return $course;
+	}
+
 }

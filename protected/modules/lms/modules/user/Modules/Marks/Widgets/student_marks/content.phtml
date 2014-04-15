@@ -1,0 +1,59 @@
+<h2>Student Marks</h2>
+<div id='result'></div>
+<?php echo CHtml::form(); ?>
+
+<?php foreach($this->studentCourses as $course):?>
+<table>
+	<thead>
+		<tr>
+			<th>Step</th>
+			<th>Current Progress</th>
+			<th>Marks</th>
+		</tr>
+	</thead>
+	<?php foreach($course->getSteps() as $step):?>
+		<tr>
+			<td>
+				<a href="<?php echo \Yii::app()->createUrl('/lms/user/marks/default/breakdown', array('userID' => $this->student->getId(), 'stepID' => $step->getId())) ?>">
+				<?php echo $step->getName(); ?>
+				</a>
+			</td>
+			<td>
+				<?php $this->widget('zii.widgets.jui.CJuiProgressBar',array(
+					'value' => $this->studentProgress[$step->getId()],
+					'htmlOptions'=>array(
+						'style'=>'height:10px;',
+					),
+				));
+				?>
+			</td>
+			<td>
+				<?php if($this->isAdmin): ?>
+					<?php echo CHtml::numberField('Marks['.$step->getId().']', $this->marks[$step->getId()], array('style'=>'width:40px;')) ?>
+				<?php else: ?>
+					<?php echo $this->marks[$step->getId()]; ?>
+				<?php endif; ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<?php endforeach; ?>
+
+<?php
+	echo CHtml::ajaxSubmitButton('Save', \Yii::app()->createUrl('/lms/user/marks/default/save', array('userID' => $this->student->getId())), array(
+		'type' => 'POST',
+		'update' => '#result',
+		'success' => 'function(response) {
+				$("#result").text(response);
+				$("#result").slideDown();
+				setTimeout(function(){
+					$("#result").slideUp();
+				}, 2000);
+			}',
+	),
+	array(
+		'type' => 'submit'
+	));
+
+echo CHtml::endForm();?>
+

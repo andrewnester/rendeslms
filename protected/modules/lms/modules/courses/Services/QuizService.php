@@ -175,24 +175,58 @@ class QuizService extends CourseBaseService implements ILearningActivityService
     }
 
 	/**
-	 * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $quiz
-	 * @param \Rendes\Modules\User\Entities\User $user
+	 * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student|\Rendes\Modules\User\Entities\User $student
 	 * @return bool
 	 */
-	public function isAvailableToStart($quiz, \Rendes\Modules\User\Entities\User $user)
+	public function isAvailableToStart($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
 		$validator = $this->getService('quizStartValidator');
-		return $validator->validate($quiz, $user);
+		return $validator->validate($activityObject, $student);
 	}
 
-	public function isPassed($activityObject, \Rendes\Modules\User\Entities\User $user)
+	public function isPassed($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
-		// TODO: Implement isEnded() method.
+		$quizTypes = \Yii::app()->getModule('lms')->getModule('courses')->params->quizTypes;
+		$validator = null;
+		foreach($quizTypes as $quizType){
+			if(strpos($quizType['class'], get_class($activityObject)) !== false){
+				$validator = new $quizType['passingValidator']();
+			}
+		}
+
+		if(is_null($validator)){
+			throw new \CHttpException(500, 'There is no passing validator for quiz type');
+		}
+
+		return $validator->validate($activityObject, $student);
 	}
 
-	public function currentProgress($activityObject, \Rendes\Modules\User\Entities\User $user)
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 */
+	public function currentProgress($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
-		// TODO: Implement currentProgress() method.
+		return $this->isPassed($activityObject, $student);
+	}
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 */
+	public function isFailed($activityObject, \Rendes\Modules\User\Entities\Student $student)
+	{
+		return !$this->isAvailableToStart($activityObject, $student) && !$this->isPassed($activityObject, $student);
+	}
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Quiz\Quiz $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 */
+	public function isActive($activityObject, \Rendes\Modules\User\Entities\Student $student)
+	{
+		return !$this->isPassed($activityObject, $student) && $this->isAvailableToStart($activityObject, $student);
 	}
 
 

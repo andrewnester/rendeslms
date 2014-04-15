@@ -43,7 +43,7 @@ class DefaultController extends \Rendes\Controllers\LMSController
 			),
 			'update'=>array(
 				'class'=>'\Rendes\Actions\UpdateAction',
-				'entityName'=>'\Rendes\Modules\Groups\Entities\Groups',
+				'entityName'=>'\Rendes\Modules\Groups\Entities\Group',
 				'serviceName'=>'\Rendes\Modules\Groups\Services\GroupService',
 			),
 			'index'=>array(
@@ -64,7 +64,7 @@ class DefaultController extends \Rendes\Controllers\LMSController
     public function actionView($id)
     {
         $this->render('view',array(
-            'model'=>$this->loadCourse($id),
+            'model'=>$this->loadGroup($id),
         ));
     }
 
@@ -75,7 +75,7 @@ class DefaultController extends \Rendes\Controllers\LMSController
      */
     public function actionDelete($id)
     {
-        $course = $this->loadCourse($id);
+        $course = $this->loadGroup($id);
         $this->getEntityManager()->remove($course);
         $this->getEntityManager()->flush();
         $this->redirect(array('index'));
@@ -88,15 +88,15 @@ class DefaultController extends \Rendes\Controllers\LMSController
      * @return \Rendes\Modules\Courses\Entities\Course
      * @throws \CHttpException
      */
-    private function loadCourse($id)
+    private function loadGroup($id)
     {
         try{
-            $course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($id);
+            $group = $this->getEntityManager()->getRepository('\Rendes\Modules\Groups\Entities\Group')->getByID($id);
         }
         catch(\Exception $e){
             throw new \CHttpException(404,'The requested page does not exist.');
         }
-        return $course;
+        return $group;
     }
 
 }

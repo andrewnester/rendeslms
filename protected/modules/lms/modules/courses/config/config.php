@@ -29,7 +29,20 @@ return array(
         ),
 		'quizStartValidator' => array(
 			'class' => '\Rendes\Modules\Courses\Services\Quiz\Validators\QuizStartValidator'
+		),
+		'stepService' => array(
+			'class' => '\Rendes\Modules\Courses\Services\StepService'
+		),
+		'quizService' => array(
+			'class' => '\Rendes\Modules\Courses\Services\QuizService'
+		),
+		'lectureService' => array(
+			'class' => '\Rendes\Modules\Courses\Services\LectureService'
+		),
+		'tincanService' => array(
+			'class' => '\Rendes\Modules\Courses\Services\TinCanService'
 		)
+
     ),
 
     'params' => array(
@@ -38,8 +51,16 @@ return array(
             'question' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuestionResultRepository'
         ),
 		'quizTypes' => array(
-			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\CountAnsweredQuiz', 'name' => 'Count Answered'),
-			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\PointsReceivedQuiz', 'name' => 'Points Received'),
+			array(
+				'class' => '\Rendes\Modules\Courses\Entities\Quiz\CountAnsweredQuiz',
+				'name' => 'Count Answered',
+				'passingValidator' => '\Rendes\Modules\Courses\Services\Quiz\Validators\CountAnsweredQuizValidator',
+			),
+			array(
+				'class' => '\Rendes\Modules\Courses\Entities\Quiz\PointsReceivedQuiz',
+				'name' => 'Points Received',
+				'passingValidator' => '\Rendes\Modules\Courses\Services\Quiz\Validators\PointsReceivedQuizValidator',
+			),
 		),
 		'questionTypes' => array(
 			array('class' => '\Rendes\Modules\Courses\Entities\Quiz\Questions\Question', 'name' => 'Simple Question'),

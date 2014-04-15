@@ -280,8 +280,7 @@ class User extends \CModel
      */
     public function getAccessToken()
     {
-
-        if((time() - $this->getTokenUpdated()->getTimestamp()) >= $this->getExpires() || empty($this->accessToken)){
+        if(is_object($this->getTokenUpdated()) && (time() - $this->getTokenUpdated()->getTimestamp()) >= $this->getExpires() || empty($this->accessToken)){
             return false;
         }
         return $this->accessToken;

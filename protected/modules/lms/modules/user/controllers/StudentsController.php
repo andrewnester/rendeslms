@@ -1,6 +1,7 @@
 <?php
+namespace Rendes\Modules\User\Controllers;
 
-class StudentsController extends LMSController
+class StudentsController extends \Rendes\Controllers\LMSController
 {
 
     public $layout='//layouts/column2';
@@ -21,6 +22,14 @@ class StudentsController extends LMSController
             'page'=>array(
                 'class'=>'CViewAction',
             ),
+			'index'=>array(
+				'class'=>'\Rendes\Actions\GridAction',
+				'entityName'=>'\Rendes\Modules\User\Entities\Student'
+			),
+			'search'=>array(
+				'class'=>'\Rendes\Actions\SearchAction',
+				'entityName'=>'\Rendes\Modules\User\Entities\Student'
+			),
         );
     }
 
@@ -42,29 +51,7 @@ class StudentsController extends LMSController
      */
     public function accessRules()
     {
-        return array(
-            array('allow',
-                'actions'=>array('index'),
-                'roles'=>array('administrator', 'teacher'),
-            ),
-            array('allow',
-                'actions'=>array('create'),
-                'roles'=>array('administrator', 'teacher'),
-            ),
-            array('allow',
-                'actions'=>array('delete'),
-                'roles'=>array('administrator', 'teacher'),
-            ),
-            array('allow',
-                'actions'=>array('view'),
-                'roles'=>array('administrator', 'teacher', 'student'),
-            ),
-            array('allow',
-                'actions'=>array('update'),
-                'roles'=>array('administrator', 'teacher'),
-            ),
-            array('deny'),
-        );
+		return array();
     }
 
 
@@ -147,47 +134,6 @@ class StudentsController extends LMSController
         $this->redirect(array('index'));
     }
 
-    /**
-     * Lists all models.
-     */
-    public function actionIndex()
-    {
-        $criteria = new CDbCriteria();
-
-        $likeParams = array(
-            'name', 'email', 'created'
-        );
-
-        $studentParams = $this->getRequest()->get('Student', array());
-        $searchParams = array(
-            array(
-                'key' => 'role',
-                'value' => 'student',
-                'type' => ' = '
-            )
-        );
-        foreach($studentParams as $key=>$value){
-            if(!empty($value)){
-                $searchParams[] = array(
-                    'key' => $key,
-                    'value' => in_array($key, $likeParams) ? '%' . $value . '%' : $value,
-                    'type' => in_array($key, $likeParams) ? ' LIKE ' : ' = ',
-                );
-            }
-        }
-
-        $criteria->params = $searchParams;
-        $dataProvider = $this->getEntityManager()->getRepository('User');
-        $dataProvider->setCriteria($criteria);
-
-        $domain = new User();
-        $domain->setAttributes($studentParams, false);
-
-        $this->render('index',array(
-            'dataProvider'=>$dataProvider,
-            'domain' => $domain
-        ));
-    }
 
 
 

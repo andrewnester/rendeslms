@@ -53,10 +53,10 @@ class StepsController extends \Rendes\Controllers\LMSController
 
 
 
-    public function actionUpdate($id, $courseID)
+    public function actionUpdate($id, $itemID)
     {
         try{
-            $course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($courseID);
+            $course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($itemID);
             $step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($id);
         }catch(\Exception $e){
             throw new \CHttpException(404, 'There is no such step');
@@ -74,10 +74,10 @@ class StepsController extends \Rendes\Controllers\LMSController
             $this->getEntityManager()->persist($step);
             $this->getEntityManager()->flush();
 
-            $this->redirect(array('/lms/courses/default/view','id' => $courseID));
+            $this->redirect(array('/lms/courses/default/view','id' => $itemID));
         }
 
-        $stepsList = $stepsService->getCourseStepsList($courseID);
+        $stepsList = $stepsService->getCourseStepsList($itemID);
 
         $this->render('update',array(
             'model'=>$step,
@@ -86,11 +86,11 @@ class StepsController extends \Rendes\Controllers\LMSController
         ));
     }
 
-    public function actionView($id, $courseID)
+    public function actionView($id, $itemID)
     {
         $this->render('view',array(
             'model'=>$this->loadStep($id),
-            'courseID' => $courseID
+            'courseID' => $itemID
         ));
     }
 

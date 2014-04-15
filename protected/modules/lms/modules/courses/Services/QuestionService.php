@@ -32,6 +32,7 @@ class QuestionService extends CourseBaseService
     {
         $question->setTitle($questionData['title']);
         $question->setQuestion($questionData['question']);
+		$question->setPoints($questionData['points']);
 
 		$answers = array();
 		if(is_array($questionData['answers'])){

@@ -61,12 +61,13 @@ class Step extends \CFormModel
      */
     private $quizzes;
 
-    /**
-     * @var Array
-     *
-     * @ORM\Column(name="path", type="array")
-     */
-    private $path;
+	/**
+	 * @var \Rendes\Modules\Courses\Entities\TinCan\TinCanObject
+	 *
+	 * @ORM\OneToMany(targetEntity="\Rendes\Modules\Courses\Entities\TinCan\TinCanObject", mappedBy="step")
+	 * @ORM\OrderBy({"order" = "ASC"})
+	 */
+	private $tincan;
 
 	/**
 	 * @var integer
@@ -263,6 +264,22 @@ class Step extends \CFormModel
 	public function getOrder()
 	{
 		return $this->order;
+	}
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\TinCan\TinCanObject $tincan
+	 */
+	public function setTincan($tincan)
+	{
+		$this->tincan = $tincan;
+	}
+
+	/**
+	 * @return \Rendes\Modules\Courses\Entities\TinCan\TinCanObject
+	 */
+	public function getTincan()
+	{
+		return $this->tincan;
 	}
 
 

@@ -100,7 +100,52 @@ class DefaultController extends \Rendes\Controllers\LMSController
     }
 
 
-    public function actionActivate($code)
+	public function actionView($userID)
+	{
+		try{
+			$user = $this->getEntityManager()->getRepository('\Rendes\Modules\User\Entities\User')->getByID($userID);
+		}catch(\Exception $e){
+			$this->getHttpClient()->json('The requested user does not exist.', 400);
+		}
+
+		$this->render('view', array('model' => $user));
+	}
+
+
+
+	public function actionTokens($userID)
+	{
+		try{
+			$user = $this->getEntityManager()->getRepository('\Rendes\Modules\User\Entities\User')->getByID($userID);
+		}catch(\Exception $e){
+			$this->getHttpClient()->json('The requested user does not exist.', 400);
+		}
+
+		$xapi = $this->getXAPI();
+		$xapi->refreshTokens($user);
+
+		$this->getHttpClient()->json('Tokens refreshed', 200);
+	}
+
+
+
+
+	public function actionLrsregister($userID)
+	{
+		try{
+			$user = $this->getEntityManager()->getRepository('\Rendes\Modules\User\Entities\User')->getByID($userID);
+		}catch(\Exception $e){
+			$this->getHttpClient()->json('The requested user does not exist.', 400);
+		}
+
+		$xapi = $this->getXAPI();
+		$xapi->registerUser($user);
+
+		$this->getHttpClient()->json('User registered', 200);
+	}
+
+
+	public function actionActivate($code)
     {
         $entityManager = $this->getEntityManager();
         try{

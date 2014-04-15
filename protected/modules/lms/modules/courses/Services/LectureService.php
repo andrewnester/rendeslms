@@ -36,20 +36,34 @@ class LectureService extends CourseBaseService implements ILearningActivityServi
         return $lecture;
     }
 
-	public function isAvailableToStart($activityObject, User $user)
+	public function isAvailableToStart($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
 		// TODO: Implement isAvailableToStart() method.
+		return true;
 	}
 
-	public function isPassed($activityObject, User $user)
+	public function isPassed($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
 		// TODO: Implement isPassed() method.
+		return true;
 	}
 
-	public function currentProgress($activityObject, User $user)
+	public function currentProgress($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
 		// TODO: Implement currentProgress() method.
+		return 100;
 	}
 
+	public function isFailed($activityObject, \Rendes\Modules\User\Entities\Student $student)
+	{
+		// TODO: Implement isFailed() method.
+		return false;
+	}
+
+	public function isActive($activityObject, \Rendes\Modules\User\Entities\Student $student)
+	{
+		// TODO: Implement isActive() method.
+		return false;
+	}
 
 }

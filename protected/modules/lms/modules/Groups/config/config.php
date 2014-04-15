@@ -22,8 +22,5 @@ return array(
             'host' => 'localhost',
             'dbname' => 'yiilms'
         ),
-    ),
-	'modules'=>array(
-		'courses',
-	),
+    )
 );

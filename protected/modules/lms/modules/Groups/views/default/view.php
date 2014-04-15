@@ -50,21 +50,23 @@ if($this->checkAccess('teacher')){
 
 <hr/>
 
-<h1>Teachers</h1>
-<?php foreach($model->getTeachers() as $teacher): ?>
+<h1>Students</h1>
+<?php foreach($model->getStudents() as $course): ?>
 	<div class="row">
-		<a href='<?php echo \Yii::app()->createUrl('/lms/user/view', array('id' => $teacher->getId())) ?>'><?php echo $teacher->getName() ?></a>
-		<a href="<?php echo \Yii::app()->createUrl('/lms/courses/teachers/unassign', array('courseID' => $model->getID(), 'id' => $teacher->getID())) ?>">X</a>
+		<a href='<?php echo \Yii::app()->createUrl('/lms/user/default/view', array('id' => $course->getId())) ?>'><?php echo $course->getName() ?></a>
+		<a href="<?php echo \Yii::app()->createUrl('/lms/groups/students/unassign', array('itemID' => $model->getID(), 'id' => $course->getID())) ?>">X</a>
 	</div>
 <?php endforeach; ?>
-<a href='<?php echo \Yii::app()->createUrl('/lms/courses/teachers/assign', array('courseID' => $model->getID())) ?>'>Add New</a>
+<a href='<?php echo \Yii::app()->createUrl('/lms/groups/students/assign', array('itemID' => $model->getID())) ?>'>Add New</a>
 
-<?php $this->widget('\Rendes\Widgets\ElementRenderWidget', array(
-	'name' => 'Steps',
-	'header' => 'Course Steps',
-	'model' => $model,
-	'link' => '/lms/courses/steps',
-	'linkParams' => array(
-		'courseID' => $model->getID()
-	)
-)); ?>
+<hr/>
+<h1>Courses</h1>
+<?php foreach($model->getCourses() as $course): ?>
+	<div class="row">
+		<a href='<?php echo \Yii::app()->createUrl('/lms/courses/default/view', array('id' => $course->getId())) ?>'><?php echo $course->getName() ?></a>
+		<a href="<?php echo \Yii::app()->createUrl('/lms/groups/courses/unassign', array('itemID' => $model->getID(), 'id' => $course->getID())) ?>">X</a>
+	</div>
+<?php endforeach; ?>
+<a href='<?php echo \Yii::app()->createUrl('/lms/groups/courses/assign', array('itemID' => $model->getID())) ?>'>Add New</a>
+
+

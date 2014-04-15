@@ -11,11 +11,11 @@ class CreateAction extends \Rendes\Actions\LMSAction
 	public $entityName = '';
 	public $serviceName = '';
 
-	public function run($courseID)
+	public function run($itemID)
 	{
 		$item = new $this->entityName();
 		try{
-			$course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($courseID);
+			$course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($itemID);
 		}catch(\Exception $e){
 			throw new \CHttpException(404, 'Such course does not exist');
 		}
@@ -33,7 +33,7 @@ class CreateAction extends \Rendes\Actions\LMSAction
 			$this->getEntityManager()->persist($item);
 			$this->getEntityManager()->flush();
 
-			$this->controller->redirect(array('/lms/courses/default/view','id' => $courseID));
+			$this->controller->redirect(array('/lms/courses/default/view','id' => $itemID));
 		}
 
 		$this->controller->render('create',array(

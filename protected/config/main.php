@@ -45,8 +45,10 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-                'lms/courses/<id:\d+>'=>'lms/courses/default/view',
-                'lms/courses/<id:\d+>/<action:\w+>'=>'lms/courses/default/<action>',
+				'lms/user/login'=>'lms/user/default/login',
+				'lms/user/logout'=>'lms/user/default/logout',
+				'lms/user/register'=>'lms/user/default/register',
+				'lms/user/activate'=>'lms/user/default/activate',
 
 				'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/lectures/<lectureID:\d+>/slides/play'=>'lms/courses/slides/index',
 
@@ -62,9 +64,29 @@ return array(
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/<controller:\w+>/<id:\d+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
                 'lms/courses/<courseID:\d+>/steps/<stepID:\d+>/<controller:\w+>/<action:\w+>/'=>'lms/courses/<controller>/<action>',
 
-                'lms/courses/<courseID:\d+>/<controller:\w+>/<id:\d+>'=>'lms/courses/<controller>/view',
-                'lms/courses/<courseID:\d+>/<controller:\w+>/<action:(create|update|delete|unassign)>/<id:\d+>'=>'lms/courses/<controller>/<action>',
-                'lms/courses/<courseID:\d+>/<controller:\w+>/<action:\w+>'=>'lms/courses/<controller>/<action>',
+
+				'lms/user/<userID:\d+>/<module:(marks)>'=>'lms/user/<module>/default/index',
+				'lms/user/<userID:\d+>/<module:(marks)>/<stepID:\d+>/<action:\w+>'=>'lms/user/<module>/default/<action>',
+				'lms/user/<userID:\d+>/<module:(marks)>/<action:\w+>'=>'lms/user/<module>/default/<action>',
+				'lms/user/<userID:\d+>/<module:(marks)>/<id:\d+>/<action:\w+>'=>'lms/user/<module>/default/<action>',
+				'lms/user/<userID:\d+>/<module:(marks)>/<controller:\w+>/<action:\w+>'=>'lms/user/<module>/<controller>//<action>',
+				'lms/user/<userID:\d+>/<module:(marks)>/<controller:\w+>/<id:\d+>/<action:\w+>'=>'lms/user/<module>/<controller>/<action>',
+
+				'lms/user/<userID:\d+>'=>'lms/user/default/view',
+				'lms/user/<userID:\d+>/<action:\w+>'=>'lms/user/default/<action>',
+
+
+				'lms/user/<controller:\w+>'=>'lms/user/<controller>/index',
+				'lms/user/<controller:\w+>/<id:\d+>'=>'lms/user/<controller>/view',
+				'lms/user/<controller:\w+>/<action:\w+>'=>'lms/user/<controller>/<action>',
+
+				'lms/<module:\w+>/<itemID:\d+>/<controller:\w+>/<id:\d+>'=>'lms/<module>/<controller>/view',
+				'lms/<module:\w+>/<itemID:\d+>/<controller:\w+>/<action:\w+>'=>'lms/<module>/<controller>/<action>',
+				'lms/<module:\w+>/<itemID:\d+>/<controller:\w+>/<action:\w+>/<id:\d+>'=>'lms/<module>/<controller>/<action>',
+
+
+				'lms/<module:\w+>/<id:\d+>'=>'lms/<module>/default/view',
+				'lms/<module:\w+>/<id:\d+>/<action:\w+>'=>'lms/<module>/default/<action>',
                 'lms/<module:\w+>/<action:\w+>'=>'lms/<module>/default/<action>',
 			),
 		),

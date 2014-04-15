@@ -6,7 +6,10 @@
 
 namespace Rendes\Modules\Courses\Services;
 
-class StepService extends CourseBaseService
+use Rendes\Modules\Courses\Interfaces\Services\ILearningActivityService;
+use Rendes\Modules\User\Entities\User;
+
+class StepService extends CourseBaseService implements ILearningActivityService
 {
 
     /**
@@ -38,6 +41,126 @@ class StepService extends CourseBaseService
 	public function getResultRepository()
 	{
 		// TODO: Implement getResultRepository() method.
+	}
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Step $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 * @return bool
+	 */
+	public function isAvailableToStart($activityObject, \Rendes\Modules\User\Entities\Student $student)
+	{
+		return true;
+	}
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Step $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 * @return bool
+	 */
+	public function isPassed($activityObject, \Rendes\Modules\User\Entities\Student $student)
+	{
+		$lectures = $activityObject->getLectures();
+		$quizzes = $activityObject->getQuizzes();
+		$tincans = $activityObject->getTincan();
+
+		$lectureService = \Yii::app()->getModule('lms')->getModule('courses')->lectureService;
+		$quizService = \Yii::app()->getModule('lms')->getModule('courses')->quizService;
+		$tincanService = \Yii::app()->getModule('lms')->getModule('courses')->tincanService;
+
+		$isQuizzesPassed = true;
+		foreach($quizzes as $quiz){
+			$isQuizzesPassed = $isQuizzesPassed && $quizService->isPassed($quiz, $student);
+		}
+
+		$isLecturesPassed = true;
+		foreach($lectures as $lecture){
+			$isLecturesPassed  = $isLecturesPassed && $lectureService->isPassed($lecture, $student);
+		}
+
+		$isTincanPassed = true;
+		foreach($tincans as $tincan){
+			$isTincanPassed = $isTincanPassed && $tincanService->isPassed($tincan, $student);
+		}
+
+		return $isQuizzesPassed && $isLecturesPassed && $isTincanPassed;
+	}
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Step $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 * @return bool
+	 */
+	public function isFailed($activityObject, \Rendes\Modules\User\Entities\Student $student)
+	{
+		$quizzes = $activityObject->getQuizzes();
+
+		$quizService = \Yii::app()->getModule('lms')->getModule('courses')->quizService;
+
+		$isQuizFailed = false;
+		foreach($quizzes as $quiz){
+			$isQuizFailed = $isQuizFailed || $quizService->isFailed($quiz, $student);
+		}
+
+		return $isQuizFailed;
+	}
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Step $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 * @return bool
+	 */
+	public function isActive($activityObject, \Rendes\Modules\User\Entities\Student $student)
+	{
+		$quizzes = $activityObject->getQuizzes();
+
+		$quizService = \Yii::app()->getModule('lms')->getModule('courses')->quizService;
+
+		$isQuizActive = false;
+		foreach($quizzes as $quiz){
+			$isQuizActive = $isQuizActive || $quizService->isActive($quiz, $student);
+		}
+
+		return $isQuizActive;
+	}
+
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Step $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 * @return float
+	 */
+	public function currentProgress($activityObject, \Rendes\Modules\User\Entities\Student $student)
+	{
+		$lectures = $activityObject->getLectures();
+		$quizzes = $activityObject->getQuizzes();
+		$tincans = $activityObject->getTincan();
+
+		$lectureService = \Yii::app()->getModule('lms')->getModule('courses')->lectureService;
+		$quizService = \Yii::app()->getModule('lms')->getModule('courses')->quizService;
+		$tincanService = \Yii::app()->getModule('lms')->getModule('courses')->tincanService;
+
+		$countPassed = 0;
+		foreach($quizzes as $quiz){
+			if($quizService->isPassed($quiz, $student)){
+				$countPassed++;
+			}
+		}
+
+		foreach($lectures as $lecture){
+			if($lectureService->isPassed($lecture, $student)){
+				$countPassed++;
+			}
+		}
+
+		foreach($tincans as $tincan){
+			if($tincanService->isPassed($tincan, $student)){
+				$countPassed++;
+			}
+		}
+
+
+		$allCount = (count($lectures) + count($quizzes) + count($tincans));
+		return $allCount > 0 ? $countPassed * 100 / $allCount : 0 ;
 	}
 
 

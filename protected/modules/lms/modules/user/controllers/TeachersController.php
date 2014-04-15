@@ -35,10 +35,18 @@ class TeachersController extends \Rendes\Controllers\LMSController
 	{
 		return array(
 			'create'=>array(
-				'class'=>'\Rendes\Modules\Courses\Actions\CreateAction',
+				'class'=>'\Rendes\Actions\CreateAction',
 				'entityName'=>'\Rendes\Modules\User\Entities\Teacher',
 				'serviceName'=>'\Rendes\Modules\User\Services\TeacherService',
-			)
+			),
+			'index'=>array(
+				'class'=>'\Rendes\Actions\GridAction',
+				'entityName'=>'\Rendes\Modules\User\Entities\Teacher'
+			),
+			'search'=>array(
+				'class'=>'\Rendes\Actions\SearchAction',
+				'entityName'=>'\Rendes\Modules\User\Entities\Teacher'
+			),
 		);
 	}
 

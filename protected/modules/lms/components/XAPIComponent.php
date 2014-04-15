@@ -215,12 +215,11 @@ class XAPIComponent extends \CComponent
         return true;
     }
 
-
     /**
      * @param \Rendes\Modules\User\Entities\User $user
      * @throws \CHttpException
      */
-    private function requestTokens(\Rendes\Modules\User\Entities\User $user)
+	public function requestTokens(\Rendes\Modules\User\Entities\User $user)
     {
         $http = $this->getHttpClientComponent();
 
@@ -249,7 +248,7 @@ class XAPIComponent extends \CComponent
     /**
      * @throws \CHttpException
      */
-    private function refreshTokens(\Rendes\Modules\User\Entities\User $user)
+    public function refreshTokens(\Rendes\Modules\User\Entities\User $user)
     {
         $http = $this->getHttpClientComponent();
 
@@ -273,6 +272,10 @@ class XAPIComponent extends \CComponent
         $em->flush();
     }
 
+
+
+
+
     /**
      * @param \Rendes\Modules\User\Entities\User $user
      * @param object $tokens
@@ -285,9 +288,6 @@ class XAPIComponent extends \CComponent
         $user->setExpires($tokens->expires_in);
         $user->setTokenUpdated(new \DateTime());
     }
-
-
-
 
 
     /**

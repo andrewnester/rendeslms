@@ -1,11 +1,8 @@
-<?php
-/**
- * User: nester_a
- * Date: 11.04.14
- */
+<h1>Assign Teacher to Course "<?php echo $item->getName(); ?>"</h1>
 
-$form=$this->beginWidget('CActiveForm', array(
-	'id'=>'assign-teacher-form',
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'assign-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -13,16 +10,15 @@ $form=$this->beginWidget('CActiveForm', array(
 	'enableAjaxValidation'=>false,
 )); ?>
 
-<h1>Assign Teacher to Course "<?php echo $course->getName(); ?>"</h1>
 
-<div class="row">
-	Choose teacher: <?php echo CHtml::dropDownList('teacher_id', 0, $teachers) ?>
-</div>
+<?php $this->renderPartial('_list', array(
+	'dataProvider' => $dataProvider,
+));
+?>
 
 <div class="row buttons">
-	 <?php echo CHtml::submitButton('Assign'); ?>
+	<?php echo CHtml::submitButton('Assign'); ?>
 </div>
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->

@@ -35,6 +35,13 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
     protected $title;
 
 	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="points", type="integer", nullable=false)
+	 */
+	protected $points;
+
+	/**
 	 * @var \Rendes\Modules\Courses\Entities\Quiz\Quiz
 	 *
 	 * @ORM\ManyToOne(targetEntity="\Rendes\Modules\Courses\Entities\Quiz\Quiz")
@@ -77,7 +84,7 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
 	 */
 	public function rules(){
 		return array(
-			array('title, question, answers', 'required'),
+			array('title, question, answers, points', 'required'),
 			array('answers','type','type'=>'array','allowEmpty'=>false),
 		);
 	}
@@ -237,6 +244,22 @@ class Question extends \CFormModel implements \Rendes\Modules\Courses\Interfaces
 	public function getQuiz()
 	{
 		return $this->quiz;
+	}
+
+	/**
+	 * @param string $points
+	 */
+	public function setPoints($points)
+	{
+		$this->points = $points;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPoints()
+	{
+		return $this->points;
 	}
 
 

@@ -9,6 +9,7 @@ namespace Rendes\Actions;
 class SearchAction extends LMSAction
 {
 	public $entityName = '';
+	public $view = '_grid';
 
 	public function run()
 	{
@@ -28,7 +29,7 @@ class SearchAction extends LMSAction
 		$domain = new $this->entityName();
 		$domain->setAttributes($requestService->getData('Grid'), false);
 
-		$this->controller->renderPartial('_grid',array(
+		$this->controller->renderPartial($this->view, array(
 			'dataProvider'=>$dataProvider,
 			'filter' => $domain
 		));

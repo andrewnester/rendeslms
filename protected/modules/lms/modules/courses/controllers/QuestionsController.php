@@ -103,7 +103,7 @@ class QuestionsController extends \Rendes\Controllers\LMSController
 
 			if($question->validate()){
 				$this->getEntityManager()->flush();
-				$this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'courseID' => $courseID));
+				$this->redirect(array('/lms/courses/steps/view', 'id' => $stepID, 'itemID' => $courseID));
 			}
 		}
 

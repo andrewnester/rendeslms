@@ -8,12 +8,6 @@ class UserRepository extends \Rendes\Components\LMSRepository
     protected $_id = 'UserRepository';
 
 
-    public function getTeachers()
-    {
-        $query = $this->getEntityManager()->createQuery('SELECT t FROM \Rendes\Modules\User\Entities\Teacher t');
-        return $query->getArrayResult();
-    }
-
     /**
      * @param string $code
      * @return \Rendes\Modules\User\Entities\User
@@ -36,7 +30,14 @@ class UserRepository extends \Rendes\Components\LMSRepository
     {
         $criteria=clone $this->getCriteria();
 
-        $qb = $this->_em->getRepository("User")->createQueryBuilder('s');
+		if(($pagination=$this->getPagination())!==false)
+		{
+			$pagination->setItemCount($this->getTotalItemCount());
+			$pagination->applyLimit($criteria);
+			$pagination->route = 'search';
+		}
+
+        $qb = $this->_em->getRepository($this->getEntityName())->createQueryBuilder('s');
         if(!empty($criteria->params)){
             $params = array_pop($criteria->params);
             $qb = $qb->where('s.'.$params['key'].$params['type'].':'.$params['key']);
@@ -50,6 +51,14 @@ class UserRepository extends \Rendes\Components\LMSRepository
             }
         }
 
+		if($criteria->limit > 0){
+			$qb->setMaxResults($criteria->limit);
+		}
+
+		if($criteria->offset > 0){
+			$qb->setFirstResult($criteria->offset);
+		}
+
         $query = $qb->getQuery();
         $this->data = $query->getResult();
         return $this->data;
@@ -61,11 +70,23 @@ class UserRepository extends \Rendes\Components\LMSRepository
      */
     protected function calculateTotalItemCount()
     {
-        $qb = $this->_em->createQueryBuilder();
-        $qb->select('count(s.id)');
-        $qb->from('User','s');
 
-        $count = $qb->getQuery()->getSingleScalarResult();
-        return $count;
+		$qb = $this->_em->getRepository($this->getEntityName())->createQueryBuilder('c')->select('COUNT(c.id)');
+		$criteria=clone $this->getCriteria();
+		if(!empty($criteria->params)){
+			$params = array_pop($criteria->params);
+			$qb = $qb->where('c.'.$params['key'].$params['type'].':'.$params['key']);
+			foreach($criteria->params as $params){
+				$qb = $qb->andWhere('c.'.$params['key'].$params['type'].':'.$params['key']);
+			}
+
+			$criteria = $this->getCriteria();
+			foreach($criteria->params as $params){
+				$qb = $qb->setParameter($params['key'], $params['value']);
+			}
+		}
+
+		$query = $qb->getQuery();
+		return $query->getSingleScalarResult();
     }
 }

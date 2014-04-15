@@ -33,62 +33,28 @@ class TeachersController extends \Rendes\Controllers\LMSController
         return array();
     }
 
-
-    public function actionAssign($courseID)
-    {
-        try{
-            $course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($courseID);
-        }catch(\Exception $e){
-            throw new \CHttpException(404, 'Such course does not exist');
-        }
-
-        $teacherID = $this->getHttpClient()->get('teacher_id');
-		$teacherService = new \Rendes\Modules\User\Services\TeacherService();
-
-        if(!is_null($teacherID))
-        {
-			try{
-				$teacher = $this->getEntityManager()->getRepository('\Rendes\Modules\User\Entities\Teacher')->getByID($teacherID);
-			}catch(\Exception $e){
-				throw new \CHttpException(404, 'Such teacher does not exist');
-			}
-
-			$teacher = $teacherService->assign($teacher, $course);
-			try{
-            	$this->getEntityManager()->flush();
-			}catch(\Doctrine\DBAL\DBALException $e){
-				$this->redirect(array('/lms/courses/default/view','id' => $courseID));
-			}
-
-            $this->redirect(array('/lms/courses/default/view','id' => $courseID));
-        }
-
-        $teacherList = $teacherService ->getTeachersList();
-
-        $this->render('assign',array(
-            'course' => $course,
-            'teachers' => $teacherList
-        ));
-    }
-
-	public function actionUnassign($courseID, $id)
+	public function actions()
 	{
-		try{
-			$course = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Course')->getByID($courseID);
-			$teacher = $this->getEntityManager()->getRepository('\Rendes\Modules\User\Entities\Teacher')->getByID($id);
-		}catch(\Exception $e){
-			throw new \CHttpException(404, 'Such course does not exist');
-		}
-
-		$teacherService = new \Rendes\Modules\User\Services\TeacherService();
-
-		$teacher = $teacherService->unassign($teacher, $course);
-		$this->getEntityManager()->flush();
-
-		$this->redirect(array('/lms/courses/default/view','id' => $courseID));
-
+		return array(
+			'assign' => array(
+				'class'=>'\Rendes\Actions\AssignAction',
+				'entityName'=>'\Rendes\Modules\User\Entities\Teacher',
+				'serviceName'=>'\Rendes\Modules\User\Services\TeacherService',
+				'itemEntityName'=>'\Rendes\Modules\Courses\Entities\Course'
+			),
+			'unassign' => array(
+				'class'=>'\Rendes\Actions\UnassignAction',
+				'entityName'=>'\Rendes\Modules\User\Entities\Teacher',
+				'serviceName'=>'\Rendes\Modules\User\Services\TeacherService',
+				'itemEntityName'=>'\Rendes\Modules\Courses\Entities\Course'
+			),
+			'search' => array(
+				'class'=>'\Rendes\Actions\SearchAction',
+				'entityName'=>'\Rendes\Modules\User\Entities\Teacher',
+				'view'=>'_list'
+			),
+		);
 	}
-
 
     protected function loadStep($id)
     {

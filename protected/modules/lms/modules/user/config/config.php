@@ -36,5 +36,8 @@ return array(
     ),
     'modules'=>array(
         'courses',
+		'marks'=> array(
+			'class' => '\Rendes\Modules\User\Modules\Marks\MarksModule'
+		),
     ),
 );
