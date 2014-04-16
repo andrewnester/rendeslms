@@ -91,11 +91,11 @@ class DefaultController extends \Rendes\Controllers\LMSController
 		$this->getHttpClient()->json('Saved', 200);
 	}
 
-	public function actionBreakdown($userID, $stepID)
+	public function actionStep($userID, $id)
 	{
 		try{
 			$student = $this->getEntityManager()->getRepository('\Rendes\Modules\User\Entities\Student')->getByID($userID);
-			$step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($stepID);
+			$step = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Step')->getByID($id);
 		}catch(\Exception $e){
 			throw new \CHttpException(404,'The requested step or student does not exist.');
 		}
@@ -141,6 +141,30 @@ class DefaultController extends \Rendes\Controllers\LMSController
 
 
 	}
+
+	public function actionLecture($userID, $id)
+	{
+		try{
+			$student = $this->getEntityManager()->getRepository('\Rendes\Modules\User\Entities\Student')->getByID($userID);
+			$lecture = $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Lecture')->getByID($id);
+		}catch(\Exception $e){
+			throw new \CHttpException(404,'The requested lecture or student does not exist.');
+		}
+
+		$lectureService = new \Rendes\Modules\Courses\Services\LectureService();
+
+		$this->render('lecture', array(
+			'lecture' => $lecture,
+			'student' => $student,
+			'documents' => $lecture->getDocuments(),
+			'videos' => $lecture->getVideos(),
+			'slides' => $lecture->getSlides(),
+			'documentProgress' => $lectureService->getItemProgress($lecture, $student, 'document'),
+			'videoProgress' => $lectureService->getItemProgress($lecture, $student, 'video'),
+			'slideProgress' => $lectureService->getItemProgress($lecture, $student, 'slide'),
+		));
+	}
+
 
     /**
      * Deletes a particular model.

@@ -7,11 +7,11 @@
 namespace Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI;
 use \Rendes\Modules\Courses\Interfaces\ResultRepositories as ResultRepositories;
 
-class DocumentResultRepository extends BaseResultRepository
+class SlideResultRepository extends BaseResultRepository
 {
-    public function markComplete(\Rendes\Modules\Courses\Entities\Lecture\Document $document, \Rendes\Modules\User\Entities\Student $student)
+    public function markComplete(\Rendes\Modules\Courses\Entities\Lecture\Slide $Slide, \Rendes\Modules\User\Entities\Student $student)
 	{
-		$lecture = $document->getLecture();
+		$lecture = $Slide->getLecture();
 		$step = $lecture->getStep();
 		$course = $step->getCourse();
 
@@ -23,14 +23,14 @@ class DocumentResultRepository extends BaseResultRepository
 				'id' => 'http://adlnet.gov/expapi/verbs/viewed'
 			),
 			'object' => array(
-				'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$course->getId().'/steps/'.$step->getId().'/lectures/'.$lecture->getId().'/documents/'.$document->getId()),
+				'id' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$course->getId().'/steps/'.$step->getId().'/lectures/'.$lecture->getId().'/slides/'.$Slide->getId()),
 				'objectType' => 'Activity',
 				'definition' => array(
 					'name' => array(
-						'en-US' => $document->getName()
+						'en-US' => $Slide->getName()
 					),
 					'description' => array(
-						'en-US' => $document->getDescription())
+						'en-US' => $Slide->getDescription())
 				)
 			),
 			'context' => array(
@@ -46,9 +46,9 @@ class DocumentResultRepository extends BaseResultRepository
 		return $xapi->postStatement($statement);
 	}
 
-	public function getCountViewed(\Rendes\Modules\Courses\Entities\Lecture\Document $document, \Rendes\Modules\User\Entities\Student $student)
+	public function getCountViewed(\Rendes\Modules\Courses\Entities\Lecture\Slide $slide, \Rendes\Modules\User\Entities\Student $student)
 	{
-		$lecture = $document->getLecture();
+		$lecture = $slide->getLecture();
 		$step = $lecture->getStep();
 		$course = $step->getCourse();
 
@@ -57,10 +57,11 @@ class DocumentResultRepository extends BaseResultRepository
 				'mbox' => $student->getEmail()
 			)),
 			'verb' => 'http://adlnet.gov/expapi/verbs/viewed',
-			'activity' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$course->getId().'/steps/'.$step->getId().'/lectures/'.$lecture->getId().'/documents/'.$document->getId()),
+			'activity' => \Yii::app()->createAbsoluteUrl('/lms/courses/'.$course->getId().'/steps/'.$step->getId().'/lectures/'.$lecture->getId().'/slides/'.$slide->getId()),
 			'related_activities' => true,
 		);
-		return count($this->getXAPI()->getStatements($searchOptions));
+		$statements = $this->getXAPI()->getStatements($searchOptions);
+		return count($statements);
 	}
 
 }

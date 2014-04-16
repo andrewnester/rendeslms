@@ -43,5 +43,5 @@ if($this->checkAccess('teacher')){
     ),
 )); ?>
 
-<?php $this->widget('\Rendes\Widgets\LMSVideoWidget', array('src' => $model->src)); ?>
+<?php $this->widget('\Rendes\Widgets\LMSVideoWidget', array('src' => $model->src, 'model' => $model)); ?>
 

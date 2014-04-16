@@ -14256,3 +14256,173 @@ REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/lectures/2/documents/5
 in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\RuntimeReflectionService.php (40)
 in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory.php (257)
 in C:\xampp\htdocs\rendeslms\protected\modules\lms\vendor\Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory.php (281)
+2014/04/16 16:26:16 [error] [exception.CHttpException.0] exception 'CHttpException' with message 'Learning Record Error - Cannot get authentication tokens' in C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php:236
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(264): Rendes\Components\XAPIComponent->requestTokens(Object(Rendes\Modules\User\Entities\Student))
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(36): Rendes\Components\XAPIComponent->refreshTokens(Object(Rendes\Modules\User\Entities\Student))
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Components\XAPIComponent.php(97): Rendes\Components\XAPIComponent->authenticate()
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Repositories\ResultRepositories\XAPI\SlideResultRepository.php(46): Rendes\Components\XAPIComponent->postStatement(Array)
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\SlidesController.php(86): Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\SlideResultRepository->markComplete(Object(Rendes\Modules\Courses\Entities\Lecture\Slide), Object(Rendes\Modules\User\Entities\Student))
+#5 [internal function]: Rendes\Modules\Courses\Controllers\SlidesController->actionComplete('1', '4', '9')
+#6 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\Courses\Controllers\SlidesController), Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\Courses\Controllers\SlidesController), Object(ReflectionMethod), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(85): CFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#13 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('complete')
+#17 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/sli...')
+#18 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/lectures/2/slides/1/complete
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/courses/9/steps/4/lectures/2/slides/play
+---
+2014/04/16 16:41:44 [error] [exception.CException] exception 'CException' with message 'Property "Rendes\Widgets\LMSVideoWidget.courseID" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Widgets\video\content.phtml(11): CComponent->__get('courseID')
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Widgets\LMSVideoWidget.php(29): include('C:\xampp\htdocs...')
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Widgets\LMSVideoWidget.php(22): Rendes\Widgets\LMSVideoWidget->renderContent()
+#3 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(173): Rendes\Widgets\LMSVideoWidget->run()
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\views\videos\view.php(46): CBaseController->widget('\Rendes\Widgets...', Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#6 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Controllers\VideosController.php(96): CController->render('view', Array)
+#10 [internal function]: Rendes\Modules\Courses\Controllers\VideosController->actionView('1', '4', '9')
+#11 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\Courses\Controllers\VideosController), Array)
+#12 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\Courses\Controllers\VideosController), Object(ReflectionMethod), Array)
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(85): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('view')
+#22 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/courses/vid...')
+#23 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/rendeslms/index.php/lms/courses/9/steps/4/lectures/2/videos/1
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/courses/9/steps/4/lectures/2
+---
+2014/04/16 17:04:56 [error] [exception.CException] exception 'CException' with message 'Alias "\Rendes\Modules\Courses\Services\DocumentService" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\xampp\htdocs\rendeslms\framework\YiiBase.php:282
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\YiiBase.php(196): YiiBase::import('\Rendes\Modules...', true)
+#1 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(103): CModule->getComponent('documentService')
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Services\LectureService.php(62): CModule->__get('documentService')
+#4 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Services\StepService.php(150): Rendes\Modules\Courses\Services\LectureService->isPassed(Object(Rendes\Modules\Courses\Entities\Lecture\Lecture), Object(Rendes\Modules\User\Entities\Student))
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Services\StudentService.php(45): Rendes\Modules\Courses\Services\StepService->currentProgress(Object(Rendes\Modules\Courses\Entities\Step), Object(Rendes\Modules\User\Entities\Student))
+#6 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Modules\Marks\Controllers\DefaultController.php(65): Rendes\Modules\User\Services\StudentService->getAllProgress(Object(Rendes\Modules\User\Entities\Student))
+#7 [internal function]: Rendes\Modules\User\Modules\Marks\Controllers\DefaultController->actionIndex('14')
+#8 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Modules\Marks\Controllers\DefaultController), Array)
+#9 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Modules\Marks\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#10 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(85): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('index')
+#19 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/marks/...')
+#20 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/14/marks
+---
+2014/04/16 18:06:20 [error] [exception.CException] exception 'CException' with message 'Property "Rendes\Modules\User\Modules\Marks\Controllers\DefaultController.student" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Modules\Marks\views\default\breakdown.php(29): CComponent->__get('student')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#3 C:\xampp\htdocs\rendeslms\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\rendeslms\framework\web\CController.php(782): CController->renderPartial('breakdown', Array, true)
+#5 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Modules\Marks\Controllers\DefaultController.php(140): CController->render('breakdown', Array)
+#6 [internal function]: Rendes\Modules\User\Modules\Marks\Controllers\DefaultController->actionBreakdown('14', '4')
+#7 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Modules\Marks\Controllers\DefaultController), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Modules\Marks\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#9 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(85): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('breakdown')
+#18 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/marks/...')
+#19 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/14/marks/4/breakdown
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/14/marks
+---
+2014/04/16 18:06:57 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(85): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('lecture')
+#9 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/marks/...')
+#10 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/14/marks/2/lecture
+HTTP_REFERER=http://localhost/rendeslms/index.php/lms/user/14/marks/4/breakdown
+---
+2014/04/16 18:08:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "lms/user/14/marks/lecture.2".' in C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/14/mar...')
+#1 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/14/marks/lecture.2
+---
+2014/04/16 18:08:37 [error] [exception.CException] exception 'CException' with message 'Property "Rendes\Modules\Courses\CoursesModule.getDocumentsService" is not defined.' in C:\xampp\htdocs\rendeslms\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\base\CModule.php(105): CComponent->__get('getDocumentsSer...')
+#1 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\Courses\Services\LectureService.php(164): CModule->__get('getDocumentsSer...')
+#2 C:\xampp\htdocs\rendeslms\protected\modules\lms\Modules\User\Modules\Marks\Controllers\DefaultController.php(162): Rendes\Modules\Courses\Services\LectureService->getItemProgress(Object(Rendes\Modules\Courses\Entities\Lecture\Lecture), Object(Rendes\Modules\User\Entities\Student), 'document')
+#3 [internal function]: Rendes\Modules\User\Modules\Marks\Controllers\DefaultController->actionLecture('14', '2')
+#4 C:\xampp\htdocs\rendeslms\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(Rendes\Modules\User\Modules\Marks\Controllers\DefaultController), Array)
+#5 C:\xampp\htdocs\rendeslms\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(Rendes\Modules\User\Modules\Marks\Controllers\DefaultController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\rendeslms\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\rendeslms\protected\modules\lms\Controllers\LMSController.php(85): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\rendeslms\framework\web\filters\CInlineFilter.php(58): Rendes\Controllers\LMSController->filterLMSAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\rendeslms\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\rendeslms\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\rendeslms\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('lecture')
+#15 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/marks/...')
+#16 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/14/marks/lecture/2
+---
+2014/04/16 18:08:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "breakdown".' in C:\xampp\htdocs\rendeslms\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\rendeslms\framework\web\CController.php(270): CController->missingAction('breakdown')
+#1 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(282): CController->run('breakdown')
+#2 C:\xampp\htdocs\rendeslms\framework\web\CWebApplication.php(141): CWebApplication->runController('lms/user/marks/...')
+#3 C:\xampp\htdocs\rendeslms\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\rendeslms\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/rendeslms/index.php/lms/user/14/marks/breakdown/4
+---

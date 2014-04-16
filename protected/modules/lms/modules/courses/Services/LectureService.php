@@ -36,34 +36,139 @@ class LectureService extends CourseBaseService implements ILearningActivityServi
         return $lecture;
     }
 
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Lecture\Lecture $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 * @return bool
+	 */
 	public function isAvailableToStart($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
-		// TODO: Implement isAvailableToStart() method.
 		return true;
 	}
 
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Lecture\Lecture $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 * @return bool
+	 */
 	public function isPassed($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
-		// TODO: Implement isPassed() method.
+		$videos = $activityObject->getVideos();
+		$slides = $activityObject->getSlides();
+		$documents = $activityObject->getDocuments();
+
+		$videoService = \Yii::app()->getModule('lms')->getModule('courses')->videoService;
+		$slideService = \Yii::app()->getModule('lms')->getModule('courses')->slideService;
+		$documentService = \Yii::app()->getModule('lms')->getModule('courses')->documentService;
+
+		foreach($videos as $video){
+			if(!$videoService->isPassed($video, $student)){
+				return false;
+			}
+		}
+
+		foreach($slides as $slide){
+			if(!$slideService->isPassed($slide, $student)){
+				return false;
+			}
+		}
+
+		foreach($documents as $document){
+			if(!$documentService->isPassed($document, $student)){
+				return false;
+			}
+		}
+
 		return true;
 	}
 
 	public function currentProgress($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
-		// TODO: Implement currentProgress() method.
-		return 100;
+		$videos = $activityObject->getVideos();
+		$slides = $activityObject->getSlides();
+		$documents = $activityObject->getDocuments();
+
+		$videoService = \Yii::app()->getModule('lms')->getModule('courses')->videoService;
+		$slideService = \Yii::app()->getModule('lms')->getModule('courses')->slideService;
+		$documentService = \Yii::app()->getModule('lms')->getModule('courses')->documentService;
+
+		$progress = 0;
+		foreach($videos as $video){
+			$progress += $videoService->currentProgress($video, $student);
+		}
+
+		foreach($slides as $slide){
+			$progress += $slideService->currentProgress($slide, $student);
+		}
+
+		foreach($documents as $document){
+			$progress += $documentService->currentProgress($document, $student);
+		}
+
+		$allCount = (count($videos) + count($slides) + count($documents));
+		return $allCount > 0 ? $progress / $allCount : 0 ;
 	}
 
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Lecture\Lecture $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 * @return bool
+	 */
 	public function isFailed($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
-		// TODO: Implement isFailed() method.
 		return false;
 	}
 
+	/**
+	 * @param \Rendes\Modules\Courses\Entities\Lecture\Lecture $activityObject
+	 * @param \Rendes\Modules\User\Entities\Student $student
+	 * @return bool
+	 */
 	public function isActive($activityObject, \Rendes\Modules\User\Entities\Student $student)
 	{
-		// TODO: Implement isActive() method.
+		$videos = $activityObject->getVideos();
+		$slides = $activityObject->getSlides();
+		$documents = $activityObject->getDocuments();
+
+		$videoService = \Yii::app()->getModule('lms')->getModule('courses')->videoService;
+		$slideService = \Yii::app()->getModule('lms')->getModule('courses')->slideService;
+		$documentService = \Yii::app()->getModule('lms')->getModule('courses')->documentService;
+
+		foreach($videos as $video){
+			if($videoService->isActive($video, $student)){
+				return true;
+			}
+		}
+
+		foreach($slides as $slide){
+			if($slideService->isActive($slide, $student)){
+				return true;
+			}
+		}
+
+		foreach($documents as $document){
+			if($documentService->isActive($document, $student)){
+				return true;
+			}
+		}
+
 		return false;
+	}
+
+	public function getItemProgress(\Rendes\Modules\Courses\Entities\Lecture\Lecture $lecture, \Rendes\Modules\User\Entities\Student $student, $itemName)
+	{
+		$methodName = 'get'.ucfirst($itemName).'s';
+		$service = $itemName.'Service';
+
+		$items = $lecture->$methodName();
+		$itemService = \Yii::app()->getModule('lms')->getModule('courses')->$service;
+		$itemProgress = array();
+
+		foreach($items as $item){
+			$itemProgress[$item->getId()] = $itemService->currentProgress($item, $student);
+		}
+
+		return $itemProgress;
 	}
 
 }

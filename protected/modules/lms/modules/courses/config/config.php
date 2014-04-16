@@ -41,6 +41,15 @@ return array(
 		),
 		'tincanService' => array(
 			'class' => '\Rendes\Modules\Courses\Services\TinCanService'
+		),
+		'documentService' => array(
+			'class' => '\Rendes\Modules\Courses\Services\DocumentsService'
+		),
+		'slideService' => array(
+			'class' => '\Rendes\Modules\Courses\Services\SlideService'
+		),
+		'videoService' => array(
+			'class' => '\Rendes\Modules\Courses\Services\VideoService'
 		)
 
     ),
@@ -49,7 +58,9 @@ return array(
         'resultRepositories' => array(
 			'document' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\DocumentResultRepository',
             'quiz' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuizResultRepository',
-            'question' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuestionResultRepository'
+            'question' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\QuestionResultRepository',
+			'slide' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\SlideResultRepository',
+			'video' => '\Rendes\Modules\Courses\Repositories\ResultRepositories\XAPI\VideoResultRepository',
         ),
 		'quizTypes' => array(
 			array(

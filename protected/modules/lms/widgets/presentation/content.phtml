@@ -1,7 +1,7 @@
 <div class="reveal" style="width: 100%;">
 	<div class="slides">
 		<?php foreach($this->slides as $slide): ?>
-		<section data-background="#<?php echo $slide['backgroundColor'];?>">
+		<section id="<?php echo $slide['id'];?>" data-background="#<?php echo $slide['backgroundColor'];?>">
 			<h1><?php echo $slide['name']; ?></h1>
 			<?php echo $slide['text']; ?>
 		</section>
@@ -88,4 +88,15 @@
 
 
 	});
+
+	Reveal.addEventListener( 'ready', function( event ) {
+		$.ajax('<?php echo \Yii::app()->baseUrl ?>/index.php/lms/courses/<?php echo $this->courseID ?>/steps/<?php echo $this->stepID ?>/lectures/<?php echo $this->lectureID ?>/slides/'+event.currentSlide.id+'/complete');
+		// event.currentSlide, event.indexh, event.indexv
+	} );
+
+	Reveal.addEventListener( 'slidechanged', function( event ) {
+		$.ajax('<?php echo \Yii::app()->baseUrl ?>/index.php/lms/courses/<?php echo $this->courseID ?>/steps/<?php echo $this->stepID ?>/lectures/<?php echo $this->lectureID ?>/slides/'+event.currentSlide.id+'/complete');
+		// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+	} );
+
 </script>

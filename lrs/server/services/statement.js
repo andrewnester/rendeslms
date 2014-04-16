@@ -131,21 +131,23 @@ StatementService.prototype = {
                 matchedAgent['object.instructor']['object.instructor.'+field] = agent[field];
             }
             if(req.query.related_activities == true){
-                searchOptions.$or = [
-                    matchedAgent['actor'],
-                    matchedAgent['object'],
-                    matchedAgent['authority'],
-                    matchedAgent['instructor'],
-                    matchedAgent['object.actor'],
-                    matchedAgent['object.object'],
-                    matchedAgent['object.authority'],
-                    matchedAgent['object.instructor']
-                ];
+                searchOptions.$or.push({
+                    '$and':[
+                        matchedAgent['actor'],
+                        matchedAgent['object'],
+                        matchedAgent['instructor'],
+                        matchedAgent['object.actor'],
+                        matchedAgent['object.authority'],
+                        matchedAgent['object.instructor']
+                    ]
+                });
             }else{
-                searchOptions.$or = [
-                    matchedAgent['actor'],
-                    matchedAgent['object']
-                ];
+                searchOptions.$or.push({
+                    '$and':[
+                        matchedAgent['actor'],
+                        matchedAgent['object']
+                    ]
+                });
             }
         }
 

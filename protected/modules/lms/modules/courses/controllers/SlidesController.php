@@ -49,6 +49,11 @@ class SlidesController extends \Rendes\Controllers\LMSController
 				'class'=>'Rendes\Modules\Courses\Actions\Lectures\UpdateAction',
 				'entityName'=>'\Rendes\Modules\Courses\Entities\Lecture\Slide',
 				'serviceName'=>'\Rendes\Modules\Courses\Services\SlideService',
+			),
+			'complete'=>array(
+				'class'=>'Rendes\Modules\Courses\Actions\Lectures\MarkCompleteAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Lecture\Slide',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\SlideService',
 			)
 		);
 	}
@@ -56,9 +61,12 @@ class SlidesController extends \Rendes\Controllers\LMSController
     /**
      * Lists all models.
      */
-    public function actionIndex($lectureID)
+    public function actionIndex($lectureID, $stepID, $courseID)
     {
         $this->renderPartial('index',array(
+			'courseID' => $courseID,
+			'stepID' => $stepID,
+			'lectureID' => $lectureID,
             'slides' => $this->getEntityManager()->getRepository('\Rendes\Modules\Courses\Entities\Lecture\Slide')->getByLectureID($lectureID)
         ));
     }

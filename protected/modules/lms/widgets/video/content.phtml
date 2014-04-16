@@ -1,5 +1,13 @@
 <hr/>
-<video id="videolecture" class="video-js vjs-default-skin" controls preload="none" width="100%" height="528"
+<video id="videolecture<?php echo $this->model->getId() ?>" class="video-js vjs-default-skin" controls preload="none" width="100%" height="528"
 	   data-setup="{}">
 	<source src="<?php echo $this->src ?>" type='<?php echo $type ?>' />
 </video>
+
+<script>
+	videojs("videolecture<?php echo $this->model->getId() ?>").ready(function(){
+		this.on("ended", function(){
+			$.ajax('<?php echo \Yii::app()->baseUrl ?>/index.php/lms/courses/<?php echo $course->getId() ?>/steps/<?php echo $step->getId() ?>/lectures/<?php echo $document->getId() ?>/videos/<?php echo $this->model->getId() ?>/complete');
+		});
+	});
+</script>

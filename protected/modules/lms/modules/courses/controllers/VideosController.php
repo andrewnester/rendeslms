@@ -41,6 +41,11 @@ class VideosController extends \Rendes\Controllers\LMSController
 				'class'=>'Rendes\Modules\Courses\Actions\Lectures\CreateAction',
 				'entityName'=>'\Rendes\Modules\Courses\Entities\Lecture\Video',
 				'serviceName'=>'\Rendes\Modules\Courses\Services\VideoService',
+			),
+			'complete'=>array(
+				'class'=>'Rendes\Modules\Courses\Actions\Lectures\MarkCompleteAction',
+				'entityName'=>'\Rendes\Modules\Courses\Entities\Lecture\Video',
+				'serviceName'=>'\Rendes\Modules\Courses\Services\VideoService',
 			)
 		);
 	}

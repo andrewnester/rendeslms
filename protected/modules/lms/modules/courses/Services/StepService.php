@@ -139,28 +139,22 @@ class StepService extends CourseBaseService implements ILearningActivityService
 		$quizService = \Yii::app()->getModule('lms')->getModule('courses')->quizService;
 		$tincanService = \Yii::app()->getModule('lms')->getModule('courses')->tincanService;
 
-		$countPassed = 0;
+		$progress = 0;
 		foreach($quizzes as $quiz){
-			if($quizService->isPassed($quiz, $student)){
-				$countPassed++;
-			}
+			$progress += $quizService->currentProgress($quiz, $student);
 		}
 
 		foreach($lectures as $lecture){
-			if($lectureService->isPassed($lecture, $student)){
-				$countPassed++;
-			}
+			$progress += $lectureService->currentProgress($lecture, $student);
 		}
 
 		foreach($tincans as $tincan){
-			if($tincanService->isPassed($tincan, $student)){
-				$countPassed++;
-			}
+			$progress += $tincanService->currentProgress($tincan, $student);
 		}
 
 
 		$allCount = (count($lectures) + count($quizzes) + count($tincans));
-		return $allCount > 0 ? $countPassed * 100 / $allCount : 0 ;
+		return $allCount > 0 ? $progress / $allCount : 0 ;
 	}
 
 

@@ -9,6 +9,9 @@ namespace Rendes\Widgets;
 class LMSPresentationWidget extends \CWidget
 {
 	public $slides = array();
+	public $courseID = '';
+	public $stepID = '';
+	public $lectureID = '';
 	public $theme = 'beige';
 
 	public function init()
@@ -30,6 +33,8 @@ class LMSPresentationWidget extends \CWidget
 
 	private function registerClientScript()
 	{
+		\Yii::app()->clientScript->registerCoreScript('jquery');
+
 		\Yii::app()->clientScript->registerScriptFile(
 			\Yii::app()->assetManager->publish(
 				__DIR__.'/../assets/js/reveal.min.js'

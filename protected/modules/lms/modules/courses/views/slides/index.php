@@ -20,7 +20,7 @@ if($this->checkAccess('teacher')){
 
 ?>
 
-<?php $this->widget('\Rendes\Widgets\LMSPresentationWidget', array('slides' => $slides, 'theme' => 'moon')) ?>
+<?php $this->widget('\Rendes\Widgets\LMSPresentationWidget', array('slides' => $slides, 'theme' => 'moon', 'courseID' => $courseID, 'stepID' => $stepID, 'lectureID' => $lectureID)) ?>
 </body>
 </html>
 <?php $output = ob_get_clean(); ?>

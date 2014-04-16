@@ -14,7 +14,7 @@
 	<?php foreach($course->getSteps() as $step):?>
 		<tr>
 			<td>
-				<a href="<?php echo \Yii::app()->createUrl('/lms/user/marks/default/breakdown', array('userID' => $this->student->getId(), 'stepID' => $step->getId())) ?>">
+				<a href="<?php echo \Yii::app()->createUrl('/lms/user/marks/default/step', array('userID' => $this->student->getId(), 'id' => $step->getId())) ?>">
 				<?php echo $step->getName(); ?>
 				</a>
 			</td>
