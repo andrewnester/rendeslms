@@ -9,7 +9,7 @@ namespace Rendes\Modules\User\Modules\Marks\Widgets;
 class StudentMarksWidget extends \CWidget
 {
 
-    public $studentCourses = null;
+    public $course = null;
 	public $studentProgress = null;
 	public $marks = null;
 	public $student = null;

@@ -15,12 +15,9 @@ if($this->checkAccess('teacher')){
 
 ?>
 
-<?php $this->widget('\Rendes\Modules\User\Modules\Marks\Widgets\StudentMarksWidget', array(
-	'studentCourses' => $studentCourses,
-	'marks' => $marks,
-	'student' => $student,
-	'studentProgress' => $studentProgress,
-	'isAdmin' => $this->checkAccess('teacher')
-));
-
+<?php
+	$this->widget('CTabView', array(
+		'tabs' => $tabs
+	));
+?>
 

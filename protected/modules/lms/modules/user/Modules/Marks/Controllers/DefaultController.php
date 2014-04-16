@@ -65,11 +65,24 @@ class DefaultController extends \Rendes\Controllers\LMSController
 		$studentProgress = $studentService->getAllProgress($student);
 		$marks = $marksService->getStudentMarks($student);
 
+		$hashService = new \Rendes\Services\HashService();
+
+		$tabs = array();
+		foreach($studentCourses as $course){
+			$tabs[$hashService->hash($course->getName())] = array(
+				'title' => $course->getName(),
+				'view' => '_view',
+				'data' => array(
+					'course' => $course,
+					'studentProgress' => $studentProgress,
+					'student' => $student,
+					'marks' => $marks
+				)
+			);
+		}
+
 		$this->render('index', array(
-			'studentCourses' => $studentCourses,
-			'studentProgress' => $studentProgress,
-			'student' => $student,
-			'marks' => $marks
+			'tabs' => $tabs
 		));
 	}
 

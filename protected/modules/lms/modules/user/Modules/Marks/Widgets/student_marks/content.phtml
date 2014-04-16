@@ -1,8 +1,6 @@
-<h2>Student Marks</h2>
-<div id='result'></div>
+<div id='result<?php echo $this->course->getId() ?>'></div>
 <?php echo CHtml::form(); ?>
 
-<?php foreach($this->studentCourses as $course):?>
 <table>
 	<thead>
 		<tr>
@@ -11,7 +9,7 @@
 			<th>Marks</th>
 		</tr>
 	</thead>
-	<?php foreach($course->getSteps() as $step):?>
+	<?php foreach($this->course->getSteps() as $step):?>
 		<tr>
 			<td>
 				<a href="<?php echo \Yii::app()->createUrl('/lms/user/marks/default/step', array('userID' => $this->student->getId(), 'id' => $step->getId())) ?>">
@@ -37,23 +35,26 @@
 		</tr>
 	<?php endforeach; ?>
 </table>
-<?php endforeach; ?>
 
 <?php
+if($this->isAdmin){
 	echo CHtml::ajaxSubmitButton('Save', \Yii::app()->createUrl('/lms/user/marks/default/save', array('userID' => $this->student->getId())), array(
-		'type' => 'POST',
-		'update' => '#result',
-		'success' => 'function(response) {
-				$("#result").text(response);
-				$("#result").slideDown();
+			'type' => 'POST',
+			'update' => '#result'.$this->course->getId().'',
+			'beforeSend'=>'js:function(data){
+				$("#result'.$this->course->getId().'").text("Saving...");
+				$("#result'.$this->course->getId().'").slideDown();
+			}',
+			'success' => 'function(response) {
+				$("#result'.$this->course->getId().'").text(response);
 				setTimeout(function(){
-					$("#result").slideUp();
+					$("#result'.$this->course->getId().'").slideUp();
 				}, 2000);
 			}',
-	),
-	array(
-		'type' => 'submit'
-	));
-
+		),
+		array(
+			'type' => 'submit'
+		));
+}
 echo CHtml::endForm();?>
 
