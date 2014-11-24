@@ -21,7 +21,7 @@ class RequestService
 
 	public function getLimit()
 	{
-		return 2;
+		return 10;
 	}
 
     public function prepareSearchCriteria($isAdmin = false)

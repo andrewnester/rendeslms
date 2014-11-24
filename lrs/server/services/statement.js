@@ -80,9 +80,10 @@ StatementService.prototype = {
         return new StatementModel(statement);
     },
 
+
+    // TODO: need some refactoring - very long method
     prepareSearchOptions: function(req)
     {
-
         searchOptions = {
             'clientId': req.user.clientId,
             'verb.id':{'$ne': 'http://www.adlnet.gov/XAPIprofile/voided'}
@@ -97,19 +98,22 @@ StatementService.prototype = {
             searchOptions['verb.id'] = 'http://www.adlnet.gov/XAPIprofile/voided';
         }
 
+        searchOptions.$and = [];
+
         if(req.query.activity != undefined){
             if(req.query.related_activities == true){
-                searchOptions.$or = [
+                searchOptions.$and.push({'$or': [
                     {'context.contextActivities.parent.id': req.query.activity},
                     {'context.contextActivities.grouping.id': req.query.activity},
                     {'context.contextActivities.category.id': req.query.activity},
                     {'context.contextActivities.other.id': req.query.activity},
                     {'$and':[{'object.objectType':'Activity'}, {'object.id':req.query.activity}]},
                     {'$and':[{'object.objectType':'SubDocument'}, {'object.id':req.query.activity}]}
-                ];
+                ]});
             }else{
-                searchOptions['object.objectType'] = 'Activity';
-                searchOptions['object.id'] = req.query.activity;
+                searchOptions.$and.push({'$and':[
+                    {'object.objectType':'Activity'}, {'object.id':req.query.activity}
+                ]});
             }
         }
 
@@ -131,8 +135,8 @@ StatementService.prototype = {
                 matchedAgent['object.instructor']['object.instructor.'+field] = agent[field];
             }
             if(req.query.related_activities == true){
-                searchOptions.$or.push({
-                    '$and':[
+                searchOptions.$and.push({
+                    '$or':[
                         matchedAgent['actor'],
                         matchedAgent['object'],
                         matchedAgent['instructor'],
@@ -142,8 +146,8 @@ StatementService.prototype = {
                     ]
                 });
             }else{
-                searchOptions.$or.push({
-                    '$and':[
+                searchOptions.$and.push({
+                    '$or':[
                         matchedAgent['actor'],
                         matchedAgent['object']
                     ]
@@ -172,6 +176,7 @@ StatementService.prototype = {
         }).limit(limit);
     },
 
+    // TODO: need some refactoring - very long method
     compareStatements: function(statement1, statement2)
     {
 

@@ -17,7 +17,7 @@ if($this->checkAccess('teacher')){
 
 ?>
 
-<h1>View Step #<?php echo $model->id; ?></h1>
+<h1>View Document #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

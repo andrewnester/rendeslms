@@ -48,8 +48,6 @@ module.exports = function(app) {
         var limit = req.query.limit != undefined && req.query.limit < 50 && req.query.limit > 0 ? req.query.limit : 50;
         var searchOptions = statementService.prepareSearchOptions(req);
         statementService.findOneOrMore(req.user, searchOptions, limit, response.statementsFound.bind(response), response.error.bind(response));
-
-
     });
 
 };

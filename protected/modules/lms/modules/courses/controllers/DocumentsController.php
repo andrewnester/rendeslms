@@ -30,7 +30,34 @@ class DocumentsController extends \Rendes\Controllers\LMSController
      */
     public function accessRules()
     {
-        return array();
+        return array(
+			array('allow',
+				'actions'=>array('index', 'search'),
+				'users'=> array('*'),
+			),
+			array('allow',
+				'actions'=>array('create'),
+				'roles'=>array('administrator', 'teacher'),
+			),
+			array('allow',
+				'actions'=>array('delete'),
+				'roles'=>array('administrator', 'teacher'),
+			),
+			array('allow',
+				'actions'=>array('view'),
+				'roles'=>array('administrator', 'teacher', 'student'),
+			),
+			array('allow',
+				'actions'=>array('update'),
+				'roles'=>array('administrator', 'teacher'),
+			),
+			array('allow',
+				'actions'=>array('order'),
+				'roles'=>array('administrator', 'teacher'),
+			),
+			array('deny'),
+
+		);
     }
 
 	public function actions()

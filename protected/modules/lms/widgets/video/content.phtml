@@ -7,7 +7,7 @@
 <script>
 	videojs("videolecture<?php echo $this->model->getId() ?>").ready(function(){
 		this.on("ended", function(){
-			$.ajax('<?php echo \Yii::app()->baseUrl ?>/index.php/lms/courses/<?php echo $course->getId() ?>/steps/<?php echo $step->getId() ?>/lectures/<?php echo $document->getId() ?>/videos/<?php echo $this->model->getId() ?>/complete');
+			$.ajax('<?php echo \Yii::app()->baseUrl ?>/index.php/lms/courses/<?php echo $course->getId() ?>/steps/<?php echo $step->getId() ?>/lectures/<?php echo $lecture->getId() ?>/videos/<?php echo $this->model->getId() ?>/complete');
 		});
 	});
 </script>

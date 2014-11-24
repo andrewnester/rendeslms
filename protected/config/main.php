@@ -68,8 +68,9 @@ return array(
 				'lms/user/<userID:\d+>/<module:(marks)>'=>'lms/user/<module>/default/index',
 				'lms/user/<userID:\d+>/<module:(marks)>/<action:\w+>/<id:\d+>'=>'lms/user/<module>/default/<action>',
 				'lms/user/<userID:\d+>/<module:(marks)>/<action:\w+>'=>'lms/user/<module>/default/<action>',
+				'lms/user/<userID:\d+>/<module:(marks)>/<controller:\w+>/<itemID:\d+>/<action:\w+>/<id:\d+>'=>'lms/user/<module>/<controller>/<action>',
+				'lms/user/<userID:\d+>/<module:(marks)>/<controller:\w+>/<itemID:\d+>/<action:\w+>'=>'lms/user/<module>/<controller>/<action>',
 				'lms/user/<userID:\d+>/<module:(marks)>/<controller:\w+>/<action:\w+>'=>'lms/user/<module>/<controller>//<action>',
-				'lms/user/<userID:\d+>/<module:(marks)>/<controller:\w+>/<id:\d+>/<action:\w+>'=>'lms/user/<module>/<controller>/<action>',
 
 				'lms/user/<userID:\d+>'=>'lms/user/default/view',
 				'lms/user/<userID:\d+>/<action:\w+>'=>'lms/user/default/<action>',

@@ -42,4 +42,54 @@ class MarkRepository extends EntityRepository
 		return $mark;
 	}
 
+	public function getCourseMarks(\Rendes\Modules\Courses\Entities\Course $course, \Rendes\Modules\Groups\Entities\Group $group)
+	{
+		$steps = $course->getSteps();
+		$students = $group->getStudents();
+
+		$studentIDs = array();
+		foreach($students as $student){
+			$studentIDs[] = $student->getId();
+		}
+
+		$stepIDs = array();
+		foreach($steps as $step){
+			$stepIDs[] = $step->getId();
+		}
+
+		$query = $this->getEntityManager()
+					  ->createQuery('SELECT c.mark, st.id as student_id, s.id as step_id FROM ' . $this->getEntityName() . ' c
+					  					JOIN c.student st
+					  					JOIN c.step s
+                                        WHERE c.student IN (:students) AND c.step IN (:steps)');
+		$query->setParameter('students', $studentIDs);
+		$query->setParameter('steps', $stepIDs);
+		$rows = $query->getArrayResult();
+
+		$marks = array();
+
+		foreach($rows as $row){
+			if(!isset($marks[$row['student_id']])){
+				$marks[$row['student_id']] = array();
+			}
+			$marks[$row['student_id']][$row['step_id']] = $row['mark'];
+		}
+
+		foreach($students as $student){
+			$studentID = $student->getId();
+			if(!isset($marks[$studentID])){
+				$marks[$studentID] = array();
+			}
+			foreach($steps as $step){
+				$stepID = $step->getId();
+				if(!isset($marks[$studentID][$stepID])){
+					$marks[$studentID][$stepID] = 0;
+				}
+			}
+		}
+
+
+		return $marks;
+	}
+
 }

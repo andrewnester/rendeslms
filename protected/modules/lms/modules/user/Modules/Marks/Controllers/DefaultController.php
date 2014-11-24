@@ -178,7 +178,6 @@ class DefaultController extends \Rendes\Controllers\LMSController
 		));
 	}
 
-
     /**
      * Deletes a particular model.
      * If deletion is successful, the browser will be redirected to the 'admin' page.
